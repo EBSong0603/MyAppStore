@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		70013952253AAB0A00595C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013951253AAB0A00595C03 /* AppDelegate.swift */; };
 		70013954253AAB0A00595C03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013953253AAB0A00595C03 /* SceneDelegate.swift */; };
-		70013956253AAB0A00595C03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013955253AAB0A00595C03 /* ViewController.swift */; };
 		70013959253AAB0A00595C03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70013957253AAB0A00595C03 /* Main.storyboard */; };
 		7001395B253AAB0F00595C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7001395A253AAB0F00595C03 /* Assets.xcassets */; };
 		7001395E253AAB0F00595C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7001395C253AAB0F00595C03 /* LaunchScreen.storyboard */; };
+		70013966253AAB6D00595C03 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013965253AAB6D00595C03 /* MainViewController.swift */; };
+		70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */; };
+		7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396A253AB6E800595C03 /* FirstAppInformationView.swift */; };
+		7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396C253AB73A00595C03 /* SecondAppInformationView.swift */; };
+		7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396E253AB9CA00595C03 /* StarRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7001394E253AAB0A00595C03 /* myAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70013951253AAB0A00595C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70013953253AAB0A00595C03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		70013955253AAB0A00595C03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		70013958253AAB0A00595C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7001395A253AAB0F00595C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7001395D253AAB0F00595C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7001395F253AAB0F00595C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70013965253AAB6D00595C03 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSearchPageTableViewCell.swift; sourceTree = "<group>"; };
+		7001396A253AB6E800595C03 /* FirstAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppInformationView.swift; sourceTree = "<group>"; };
+		7001396C253AB73A00595C03 /* SecondAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppInformationView.swift; sourceTree = "<group>"; };
+		7001396E253AB9CA00595C03 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,33 @@
 			children = (
 				70013951253AAB0A00595C03 /* AppDelegate.swift */,
 				70013953253AAB0A00595C03 /* SceneDelegate.swift */,
-				70013955253AAB0A00595C03 /* ViewController.swift */,
 				70013957253AAB0A00595C03 /* Main.storyboard */,
-				7001395A253AAB0F00595C03 /* Assets.xcassets */,
-				7001395C253AAB0F00595C03 /* LaunchScreen.storyboard */,
+				70013970253AE5D600595C03 /* SearchPageCodeBased */,
+				70013967253AAB7600595C03 /* myAsset */,
 				7001395F253AAB0F00595C03 /* Info.plist */,
 			);
 			path = myAppStore;
+			sourceTree = "<group>";
+		};
+		70013967253AAB7600595C03 /* myAsset */ = {
+			isa = PBXGroup;
+			children = (
+				7001395A253AAB0F00595C03 /* Assets.xcassets */,
+				7001395C253AAB0F00595C03 /* LaunchScreen.storyboard */,
+			);
+			path = myAsset;
+			sourceTree = "<group>";
+		};
+		70013970253AE5D600595C03 /* SearchPageCodeBased */ = {
+			isa = PBXGroup;
+			children = (
+				70013965253AAB6D00595C03 /* MainViewController.swift */,
+				70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */,
+				7001396A253AB6E800595C03 /* FirstAppInformationView.swift */,
+				7001396C253AB73A00595C03 /* SecondAppInformationView.swift */,
+				7001396E253AB9CA00595C03 /* StarRatingView.swift */,
+			);
+			path = SearchPageCodeBased;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70013956253AAB0A00595C03 /* ViewController.swift in Sources */,
+				7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */,
+				7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */,
+				70013966253AAB6D00595C03 /* MainViewController.swift in Sources */,
 				70013952253AAB0A00595C03 /* AppDelegate.swift in Sources */,
+				7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */,
 				70013954253AAB0A00595C03 /* SceneDelegate.swift in Sources */,
+				70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.EB.myAppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.EB.myAppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
