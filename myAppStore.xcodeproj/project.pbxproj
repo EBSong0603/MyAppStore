@@ -17,6 +17,10 @@
 		7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396A253AB6E800595C03 /* FirstAppInformationView.swift */; };
 		7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396C253AB73A00595C03 /* SecondAppInformationView.swift */; };
 		7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396E253AB9CA00595C03 /* StarRatingView.swift */; };
+		70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013971253AF0F600595C03 /* AppStoreModel.swift */; };
+		706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailViewController.swift */; };
+		706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailTopView.swift */; };
+		706CA91C253B1FED00E22783 /* SecondShortInformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA91B253B1FED00E22783 /* SecondShortInformView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		7001396A253AB6E800595C03 /* FirstAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppInformationView.swift; sourceTree = "<group>"; };
 		7001396C253AB73A00595C03 /* SecondAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppInformationView.swift; sourceTree = "<group>"; };
 		7001396E253AB9CA00595C03 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		70013971253AF0F600595C03 /* AppStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreModel.swift; sourceTree = "<group>"; };
+		706CA916253AF8EE00E22783 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		706CA919253B13E300E22783 /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
+		706CA91B253B1FED00E22783 /* SecondShortInformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondShortInformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +75,9 @@
 				70013951253AAB0A00595C03 /* AppDelegate.swift */,
 				70013953253AAB0A00595C03 /* SceneDelegate.swift */,
 				70013957253AAB0A00595C03 /* Main.storyboard */,
+				70013973253AF0FD00595C03 /* Model */,
 				70013970253AE5D600595C03 /* SearchPageCodeBased */,
+				706CA918253AF8F700E22783 /* DetailPageCodeBased */,
 				70013967253AAB7600595C03 /* myAsset */,
 				7001395F253AAB0F00595C03 /* Info.plist */,
 			);
@@ -93,6 +103,24 @@
 				7001396E253AB9CA00595C03 /* StarRatingView.swift */,
 			);
 			path = SearchPageCodeBased;
+			sourceTree = "<group>";
+		};
+		70013973253AF0FD00595C03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70013971253AF0F600595C03 /* AppStoreModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		706CA918253AF8F700E22783 /* DetailPageCodeBased */ = {
+			isa = PBXGroup;
+			children = (
+				706CA916253AF8EE00E22783 /* DetailViewController.swift */,
+				706CA919253B13E300E22783 /* DetailTopView.swift */,
+				706CA91B253B1FED00E22783 /* SecondShortInformView.swift */,
+			);
+			path = DetailPageCodeBased;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +194,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */,
+				706CA91C253B1FED00E22783 /* SecondShortInformView.swift in Sources */,
 				7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */,
 				7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */,
 				70013966253AAB6D00595C03 /* MainViewController.swift in Sources */,
 				70013952253AAB0A00595C03 /* AppDelegate.swift in Sources */,
+				706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */,
 				7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */,
+				70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */,
 				70013954253AAB0A00595C03 /* SceneDelegate.swift in Sources */,
 				70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */,
 			);

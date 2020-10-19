@@ -18,10 +18,8 @@ class FirstAppInformationView: UIView {
     private let appIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "DearMeAppIcon")
-        imageView.tintColor = .black
-        imageView.backgroundColor = .lightGray
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 14
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -62,8 +60,8 @@ class FirstAppInformationView: UIView {
     private let downLoadButton: UIButton = {
         let button = UIButton()
         button.setTitle("받기", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
         

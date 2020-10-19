@@ -24,8 +24,12 @@ class MainViewController: UIViewController, UISearchControllerDelegate {
         view.backgroundColor = .white
         prepareTableView()
         configureAutoLayouts()
-        setNavigationBar()
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationBar()
     }
     
     
@@ -104,6 +108,11 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc: DetailViewController = DetailViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
 
