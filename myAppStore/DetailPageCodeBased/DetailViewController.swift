@@ -38,13 +38,19 @@ class DetailViewController: UIViewController {
             
         }()
         
-        let secondView: SecondShortInformView = {
-            let view = SecondShortInformView()
+        let secondView: DetailSecondView = {
+            let view = DetailSecondView()
             return view
             
         }()
         
-        let stackView = UIStackView(arrangedSubviews: [topView, secondView, imageView])
+        let thirdView: DetailThirdCapturedImageView = {
+           let view = DetailThirdCapturedImageView()
+            return view
+            
+        }()
+        
+        let stackView = UIStackView(arrangedSubviews: [topView, secondView, thirdView, imageView])
         stackView.axis = .vertical
         //stackView distribution 찾아보기
         stackView.distribution = .fillProportionally

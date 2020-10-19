@@ -15,7 +15,7 @@ class StarRatingView: UIView {
     private let starFirstImageView: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.tintColor = .black
+        imageView.tintColor = .gray
         imageView.image = UIImage(systemName: "star")
         return imageView
         
@@ -25,8 +25,9 @@ class StarRatingView: UIView {
     private let starSecondImageView: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.tintColor = .black
+        imageView.tintColor = .gray
         imageView.image = UIImage(systemName: "star")
+        
         return imageView
         
     }()
@@ -34,7 +35,7 @@ class StarRatingView: UIView {
     private let starThirdImageView: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.tintColor = .black
+        imageView.tintColor = .gray
         imageView.image = UIImage(systemName: "star")
         return imageView
         
@@ -43,7 +44,7 @@ class StarRatingView: UIView {
     private let starForthImageView: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.tintColor = .black
+        imageView.tintColor = .gray
         imageView.image = UIImage(systemName: "star")
         return imageView
         
@@ -54,7 +55,7 @@ class StarRatingView: UIView {
         
         let imageView = UIImageView()
         imageView.backgroundColor = .white
-        imageView.tintColor = .black
+        imageView.tintColor = .gray
         imageView.image = UIImage(systemName: "star")
         return imageView
         
@@ -64,6 +65,7 @@ class StarRatingView: UIView {
         
         let label = UILabel()
         label.text = "222"
+        label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()

@@ -55,8 +55,8 @@ class FirstSearchPageTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             
             firstView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            firstView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            firstView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
+            firstView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            firstView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0)
             
             
             

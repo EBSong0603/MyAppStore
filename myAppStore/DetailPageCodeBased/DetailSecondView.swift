@@ -8,33 +8,35 @@
 
 import UIKit
 
-class SecondShortInformView: UIView {
+class DetailSecondView: UIView {
     
     
     
     private let ratingStackView: UIStackView = {
         
-        let someLabel: UILabel = {
-            let label = UILabel()
-            label.text = "별점별점"
-            label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 16)
-            return label
+
+    
+        let ratingView: DetailStarRatingViewSecond = {
+           let view = DetailStarRatingViewSecond()
+            
+            return view
             
         }()
+        
+        
         
         let reviewCountLabel: UILabel = {
             let label = UILabel()
             label.text = "256 Ratings"
             label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 10)
+            label.font = UIFont.systemFont(ofSize: 12)
             return label
             
         }()
         
         
         
-        let stackView = UIStackView(arrangedSubviews: [someLabel, reviewCountLabel])
+        let stackView = UIStackView(arrangedSubviews: [ratingView, reviewCountLabel])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = 0
@@ -50,7 +52,7 @@ class SecondShortInformView: UIView {
             let label = UILabel()
             label.text = "No 40"
             label.textColor = .gray
-            label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
             
             return label
             
@@ -60,7 +62,7 @@ class SecondShortInformView: UIView {
             let label = UILabel()
             label.text = "여행"
             label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 10)
+            label.font = UIFont.systemFont(ofSize: 12)
             return label
             
         }()
@@ -82,7 +84,7 @@ class SecondShortInformView: UIView {
             
             label.text = "17+"
             label.textColor = .gray
-            label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
             return label
         }()
         
@@ -93,7 +95,7 @@ class SecondShortInformView: UIView {
             
             label.text = "Age"
             label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 10)
+            label.font = UIFont.systemFont(ofSize: 12)
             return label
         }()
         
@@ -137,7 +139,7 @@ class SecondShortInformView: UIView {
             ratingStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             ratingStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
             
-            ratingStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4)
+            ratingStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
             //            ratingStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
             
@@ -147,7 +149,7 @@ class SecondShortInformView: UIView {
             
             
             similarInformStackView.topAnchor.constraint(equalTo: ratingStackView.topAnchor),
-            similarInformStackView.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 60),
+            similarInformStackView.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 120),
             similarInformStackView.bottomAnchor.constraint(equalTo: ratingStackView.bottomAnchor)
             
             
@@ -158,7 +160,7 @@ class SecondShortInformView: UIView {
             ageStackView.topAnchor.constraint(equalTo: similarInformStackView.topAnchor),
             
             
-            ageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
+            ageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             ageStackView.bottomAnchor.constraint(equalTo: similarInformStackView.bottomAnchor)
             
             
