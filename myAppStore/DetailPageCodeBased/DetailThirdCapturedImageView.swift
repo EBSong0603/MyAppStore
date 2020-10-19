@@ -10,10 +10,16 @@ import UIKit
 
 class DetailThirdCapturedImageView: UIView {
     
-//    var mycollectionView: UICollectionView = UICollectionView()
-//    
-    
-    
+
+    private let collectionView: UICollectionView = {
+        
+       let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(CapturedImageCollectionViewCell.self, forCellWithReuseIdentifier: CapturedImageCollectionViewCell.identifier)
+        layout.scrollDirection = .horizontal
+        return cv
+    }()
     
     
     
@@ -24,7 +30,26 @@ class DetailThirdCapturedImageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     
-        self.backgroundColor = .yellow
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        
+        self.backgroundColor = .white
+        self.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        
+        
+        NSLayoutConstraint.activate([
+        
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+
+        ])
+       
         
     }
     
@@ -37,6 +62,30 @@ class DetailThirdCapturedImageView: UIView {
     
     
     
+    
+    
+}
+
+extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 200)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CapturedImageCollectionViewCell.identifier, for: indexPath) as! CapturedImageCollectionViewCell
+        cell.backgroundColor = .white
+        
+        return cell
+    }
     
     
 }

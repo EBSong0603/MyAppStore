@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
             
         }()
         
-        let stackView = UIStackView(arrangedSubviews: [topView, secondView, thirdView, imageView])
+        let stackView = UIStackView(arrangedSubviews: [topView, secondView, thirdView])
         stackView.axis = .vertical
         //stackView distribution 찾아보기
         stackView.distribution = .fillProportionally
