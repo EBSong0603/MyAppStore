@@ -21,10 +21,26 @@
 		706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailViewController.swift */; };
 		706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailTopView.swift */; };
 		706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA91B253B1FED00E22783 /* DetailSecondView.swift */; };
+		70C6405F25403BAD00D06B6A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6405E25403BAD00D06B6A /* Double+Extension.swift */; };
+		70C6406125404DC500D06B6A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406025404DC500D06B6A /* UIImageView+Extension.swift */; };
+		70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406225406B3E00D06B6A /* UILabel+Extension.swift */; };
+		70C6406525407D1600D06B6A /* GetBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406425407D1600D06B6A /* GetBasicButton.swift */; };
 		70CEE6F3253D986300569C10 /* DetailStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6F2253D986200569C10 /* DetailStarRatingView.swift */; };
 		70CEE6F5253DA0F300569C10 /* DetailStarRatingViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6F4253DA0F300569C10 /* DetailStarRatingViewSecond.swift */; };
 		70CEE6FB253DA94400569C10 /* DetailThirdCapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6FA253DA94400569C10 /* DetailThirdCapturedImageView.swift */; };
 		70CEE6FD253DA98000569C10 /* CapturedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */; };
+		70CEE701253EA23500569C10 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE700253EA23500569C10 /* UIStackView+Extension.swift */; };
+		70CEE703253EA3E600569C10 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE702253EA3E600569C10 /* UIButton+Extension.swift */; };
+		70CEE705253EA55300569C10 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE704253EA55300569C10 /* Date+Extension.swift */; };
+		70CEE707253EA64B00569C10 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE706253EA64B00569C10 /* String+Extension.swift */; };
+		70CEE709253EA7C400569C10 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE708253EA7C400569C10 /* UIApplication+Extension.swift */; };
+		70CEE70B253EAA7200569C10 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE70A253EAA7200569C10 /* UIViewController+Extension.swift */; };
+		70CEE70E253EAE3B00569C10 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE70D253EAE3B00569C10 /* BasicButton.swift */; };
+		70CEE710253EBD0A00569C10 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE70F253EBD0A00569C10 /* ViewProtocol.swift */; };
+		70CEE713253EBF6D00569C10 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE712253EBF6D00569C10 /* BaseViewController.swift */; };
+		70CEE715253ECB9700569C10 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE714253ECB9700569C10 /* UIView+Extension.swift */; };
+		70CEE718253F1F1F00569C10 /* StarRatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */; };
+		70CEE71A253F1FDF00569C10 /* ModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE719253F1FDF00569C10 /* ModuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +60,26 @@
 		706CA916253AF8EE00E22783 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		706CA919253B13E300E22783 /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		706CA91B253B1FED00E22783 /* DetailSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondView.swift; sourceTree = "<group>"; };
+		70C6405E25403BAD00D06B6A /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		70C6406025404DC500D06B6A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		70C6406225406B3E00D06B6A /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		70C6406425407D1600D06B6A /* GetBasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBasicButton.swift; sourceTree = "<group>"; };
 		70CEE6F2253D986200569C10 /* DetailStarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStarRatingView.swift; sourceTree = "<group>"; };
 		70CEE6F4253DA0F300569C10 /* DetailStarRatingViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStarRatingViewSecond.swift; sourceTree = "<group>"; };
 		70CEE6FA253DA94400569C10 /* DetailThirdCapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThirdCapturedImageView.swift; sourceTree = "<group>"; };
 		70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		70CEE700253EA23500569C10 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		70CEE702253EA3E600569C10 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		70CEE704253EA55300569C10 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		70CEE706253EA64B00569C10 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		70CEE708253EA7C400569C10 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		70CEE70A253EAA7200569C10 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		70CEE70D253EAE3B00569C10 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		70CEE70F253EBD0A00569C10 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		70CEE712253EBF6D00569C10 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		70CEE714253ECB9700569C10 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingImageView.swift; sourceTree = "<group>"; };
+		70CEE719253F1FDF00569C10 /* ModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +115,9 @@
 				70013951253AAB0A00595C03 /* AppDelegate.swift */,
 				70013953253AAB0A00595C03 /* SceneDelegate.swift */,
 				70013957253AAB0A00595C03 /* Main.storyboard */,
+				70CEE6FE253EA20E00569C10 /* Modules */,
 				70013973253AF0FD00595C03 /* Model */,
-				70013970253AE5D600595C03 /* SearchPageCodeBased */,
-				706CA918253AF8F700E22783 /* DetailPageCodeBased */,
+				70CEE711253EBF5B00569C10 /* Views */,
 				70013967253AAB7600595C03 /* myAsset */,
 				7001395F253AAB0F00595C03 /* Info.plist */,
 			);
@@ -109,6 +141,7 @@
 				7001396A253AB6E800595C03 /* FirstAppInformationView.swift */,
 				7001396C253AB73A00595C03 /* SecondAppInformationView.swift */,
 				7001396E253AB9CA00595C03 /* StarRatingView.swift */,
+				70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */,
 			);
 			path = SearchPageCodeBased;
 			sourceTree = "<group>";
@@ -133,6 +166,61 @@
 				70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */,
 			);
 			path = DetailPageCodeBased;
+			sourceTree = "<group>";
+		};
+		70CEE6FE253EA20E00569C10 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE716253EE7D500569C10 /* Protocols */,
+				70CEE70C253EADEF00569C10 /* UIComponent */,
+				70CEE6FF253EA21E00569C10 /* Extensions */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		70CEE6FF253EA21E00569C10 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE700253EA23500569C10 /* UIStackView+Extension.swift */,
+				70CEE702253EA3E600569C10 /* UIButton+Extension.swift */,
+				70CEE704253EA55300569C10 /* Date+Extension.swift */,
+				70CEE706253EA64B00569C10 /* String+Extension.swift */,
+				70CEE708253EA7C400569C10 /* UIApplication+Extension.swift */,
+				70CEE70A253EAA7200569C10 /* UIViewController+Extension.swift */,
+				70CEE714253ECB9700569C10 /* UIView+Extension.swift */,
+				70C6405E25403BAD00D06B6A /* Double+Extension.swift */,
+				70C6406025404DC500D06B6A /* UIImageView+Extension.swift */,
+				70C6406225406B3E00D06B6A /* UILabel+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		70CEE70C253EADEF00569C10 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE70D253EAE3B00569C10 /* BasicButton.swift */,
+				70C6406425407D1600D06B6A /* GetBasicButton.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		70CEE711253EBF5B00569C10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE712253EBF6D00569C10 /* BaseViewController.swift */,
+				70CEE719253F1FDF00569C10 /* ModuleView.swift */,
+				70013970253AE5D600595C03 /* SearchPageCodeBased */,
+				706CA918253AF8F700E22783 /* DetailPageCodeBased */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		70CEE716253EE7D500569C10 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE70F253EBD0A00569C10 /* ViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,21 +294,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CEE70E253EAE3B00569C10 /* BasicButton.swift in Sources */,
 				706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */,
+				70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */,
 				70CEE6F5253DA0F300569C10 /* DetailStarRatingViewSecond.swift in Sources */,
+				70CEE718253F1F1F00569C10 /* StarRatingImageView.swift in Sources */,
 				70CEE6FD253DA98000569C10 /* CapturedImageCollectionViewCell.swift in Sources */,
+				70CEE707253EA64B00569C10 /* String+Extension.swift in Sources */,
+				70CEE713253EBF6D00569C10 /* BaseViewController.swift in Sources */,
+				70CEE703253EA3E600569C10 /* UIButton+Extension.swift in Sources */,
 				706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */,
 				7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */,
 				7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */,
+				70CEE710253EBD0A00569C10 /* ViewProtocol.swift in Sources */,
 				70013966253AAB6D00595C03 /* MainViewController.swift in Sources */,
 				70013952253AAB0A00595C03 /* AppDelegate.swift in Sources */,
+				70C6406125404DC500D06B6A /* UIImageView+Extension.swift in Sources */,
+				70CEE70B253EAA7200569C10 /* UIViewController+Extension.swift in Sources */,
 				706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */,
+				70CEE71A253F1FDF00569C10 /* ModuleView.swift in Sources */,
+				70C6405F25403BAD00D06B6A /* Double+Extension.swift in Sources */,
 				7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */,
 				70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */,
 				70CEE6F3253D986300569C10 /* DetailStarRatingView.swift in Sources */,
+				70C6406525407D1600D06B6A /* GetBasicButton.swift in Sources */,
 				70CEE6FB253DA94400569C10 /* DetailThirdCapturedImageView.swift in Sources */,
+				70CEE701253EA23500569C10 /* UIStackView+Extension.swift in Sources */,
 				70013954253AAB0A00595C03 /* SceneDelegate.swift in Sources */,
 				70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */,
+				70CEE709253EA7C400569C10 /* UIApplication+Extension.swift in Sources */,
+				70CEE715253ECB9700569C10 /* UIView+Extension.swift in Sources */,
+				70CEE705253EA55300569C10 /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

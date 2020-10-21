@@ -80,8 +80,7 @@ class DetailStarRatingView: UIView {
               let label = UILabel()
               label.text = "5gg"
             label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-            label.heightAnchor.constraint(equalToConstant: 14).isActive = true
-            label.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            label.frame = CGRect(x: 0, y: 0, width: 40, height: 14)
             label.textColor = .gray
               return label
           }()
