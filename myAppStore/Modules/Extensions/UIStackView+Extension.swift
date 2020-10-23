@@ -1,10 +1,7 @@
-//
 //  UIStackView+Extension.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
-//
 
 import UIKit
 
@@ -20,8 +17,9 @@ extension UIStackView { //여기서 self는 UIStackView를 가르킴
         }
     }
     
-    func setStackViewStyle(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, distribution: UIStackView.Distribution) {
-    
+    func setStackViewStyle(axis: NSLayoutConstraint.Axis,
+                           spacing: CGFloat = 0,
+                           distribution: UIStackView.Distribution) {
         self.axis = axis
         self.spacing = spacing
         self.distribution = distribution

@@ -1,13 +1,8 @@
-//
 //  StarRatingImageView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
-
 
 public enum StarStyle {
     case empty
@@ -19,9 +14,7 @@ public enum StarStyle {
         case .filled: return (UIImage(systemName: "star.fill")!)
         }
     }
-   
 }
-
 
 //star rating ImageView 커스텀 클래스로 View 만듬 (StackView)
 class StarRatingImageView: ModuleView {
@@ -31,89 +24,55 @@ class StarRatingImageView: ModuleView {
         hStackView.setStackViewStyle(axis: .horizontal, spacing: 2, distribution: .fillProportionally)
         return hStackView
     }()
-    
     private let starFirstImageView: UIImageView = {
-        
         let imageView = UIImageView()
-        imageView.tintColor = .gray
-        imageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "star")
-        
-        
-        
+
+        imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
+        imageView.height(12)
+        imageView.width(12)
         return imageView
-        
     }()
-    
-    
     private let starSecondImageView: UIImageView = {
-        
         let imageView = UIImageView()
-        imageView.tintColor = .gray
-        imageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "star")
-        
+        imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
+        imageView.height(12)
+        imageView.width(12)
         return imageView
-        
     }()
-    
     private let starThirdImageView: UIImageView = {
-        
         let imageView = UIImageView()
-        imageView.tintColor = .gray
-        imageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "star")
+        imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
+        imageView.height(12)
+        imageView.width(12)
         return imageView
-        
     }()
-    
     private let starForthImageView: UIImageView = {
-        
         let imageView = UIImageView()
-        imageView.tintColor = .gray
-        imageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "star")
+        imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
+        imageView.height(12)
+        imageView.width(12)
         return imageView
-        
     }()
-    
-    
     private let starFifthImageView: UIImageView = {
-        
         let imageView = UIImageView()
-        imageView.backgroundColor = .white
-        imageView.tintColor = .gray
-        imageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "star")
+        imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
+        imageView.height(12)
+        imageView.width(12)
         return imageView
-        
     }()
     
     private let ratingLabel: UILabel = {
-        
         let label = UILabel()
-        label.text = "222"
-        label.textColor = .gray
-        
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.setStyle("", textColor: .gray, font: UIFont.systemFont(ofSize: 12), textAlignment: .left)
         return label
     }()
     
     init() {
         super.init(frame: .zero)
-        
-        
-        starHStackView.addArrangedSubviews([starFirstImageView, starSecondImageView, starThirdImageView, starForthImageView, starFifthImageView, ratingLabel])
+       
+        starHStackView.addArrangedSubviews([starFirstImageView, starSecondImageView,
+                                            starThirdImageView, starForthImageView,
+                                            starFifthImageView, ratingLabel])
     }
     
     required init?(coder: NSCoder) {
@@ -232,14 +191,13 @@ class StarRatingImageView: ModuleView {
     
     //자동으로 오버라이드 되고, init 에 호출해줄 필요 없음, MouduleView에서 이미 해줬고, 그 ModuleView를 상속하고 있기 때문!
     override func configureAutolayouts() {
+       
         self.addSubview(starHStackView)
         
         starHStackView.top(self.topAnchor, constant: 0)
         starHStackView.leading(self.leadingAnchor, constant: 0)
         starHStackView.trailing(self.trailingAnchor, constant: 0)
-        starHStackView.bottom(self.bottomAnchor, constant: 0)
-        //            starHStackView.width(self.widthAnchor, constant: 80)
-        
+        starHStackView.bottom(self.bottomAnchor, constant: 0) 
     }
 }
 

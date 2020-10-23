@@ -14,35 +14,46 @@ extension UIView {
     
     func top(_ equalTo: NSLayoutYAxisAnchor, constant: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.topAnchor.constraint(equalTo: equalTo, constant: constant).isActive = true
     }
     
     func leading(_ equalTo: NSLayoutXAxisAnchor, constant: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.leadingAnchor.constraint(equalTo: equalTo, constant: constant).isActive = true
     }
     
     func trailing(_ equalTo: NSLayoutXAxisAnchor, constant: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.trailingAnchor.constraint(equalTo: equalTo, constant: constant).isActive = true
     }
     
     func bottom(_ equalTo: NSLayoutYAxisAnchor, constant: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.bottomAnchor.constraint(equalTo: equalTo, constant: constant).isActive = true
     }
     
-    func width(_ equalTo: NSLayoutDimension, constant: CGFloat) {
+    func width(_ equalToConstant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-       
-        self.widthAnchor.constraint(equalToConstant: constant).isActive =  true
+        self.widthAnchor.constraint(equalToConstant: equalToConstant).isActive =  true
     }
     
+    func height(_ equalToConstant: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true
+    }
+    
+    func centerY(_ equalTo: NSLayoutYAxisAnchor) {
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerYAnchor.constraint(equalTo: equalTo).isActive = true
+    }
+    
+    func centerX(_ euqalTo: NSLayoutXAxisAnchor) {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: euqalTo).isActive = true
+    }
+
     //매개변수만 다르게 해주면 같은 변수이름의 func 만들수 있음
     func edges(_ equalTo: UIView) {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +66,6 @@ extension UIView {
             self.bottomAnchor.constraint(equalTo: equalTo.bottomAnchor)
         ])
     }
-    
 
     func edges(_ equalTo: UIView, vConstant: CGFloat, hConstant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -68,8 +78,7 @@ extension UIView {
             self.bottomAnchor.constraint(equalTo: equalTo.bottomAnchor, constant: -vConstant)
         ])
     }
-    
-    
+
     func edges(_ equalTo: UILayoutGuide) {
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -82,7 +91,17 @@ extension UIView {
         ])
     }
     
-
+    func addSubViews(_ views: [UIView]) {
+        for view in views {
+            self.addSubview(view)
+        }
+    }
+    //        self.addSubview(appIconImageView)
+    //        self.addSubview(appContentsStackView)
+    //        self.addSubview(downLoadButton)
+    //        self.addSubview(appPurchaseLabel)
+    
+    //위의 코드와 아래 코드는 같다!
     
 //    private func prepareAutolayout() {
 //        self.translatesAutoresizingMaskIntoConstraints = false

@@ -10,5 +10,13 @@ import UIKit
 
 extension UILabel {
     
-    
+    func setStyle(_ text: String,
+                  textColor: UIColor,
+                  font: UIFont,
+                  textAlignment: NSTextAlignment) { 
+        self.text = text
+        self.textColor = textColor
+        self.font = font
+        self.textAlignment = textAlignment
+    }
 }

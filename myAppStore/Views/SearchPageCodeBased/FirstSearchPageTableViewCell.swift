@@ -30,16 +30,14 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
     }
     
     required init?(coder: NSCoder) { super.init(coder: coder) }
-    
-    
+   
     //setData func 의 매개변수에 데이터값 넣어서 전달해주고(MainViewController로부터)
     //이 setData func 은 또 이 셀이 포함하고 있는 secondView로 데이터 넘겨준다
+    
     func setData(with cellData: AppStoreModel.ResultsEntry?) {
         guard let cellData = cellData else {return}
-        
         firstView.setData(with: cellData)
         secondView.setImageViews(cellData.screenshotUrls)
-
     }
     
     private func confiureAutoLayouts() {
@@ -54,6 +52,5 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
         secondView.leading(firstView.leadingAnchor)
         secondView.trailing(firstView.trailingAnchor)
         secondView.bottom(contentView.bottomAnchor, constant: -4)
-
     }
 }

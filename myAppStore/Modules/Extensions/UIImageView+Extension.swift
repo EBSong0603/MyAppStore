@@ -20,5 +20,18 @@ extension UIImageView {
             }
         }
     }
+    
+    func setImageViewStyle(_ image: UIImage,
+                           radius: CGFloat = 0,
+                           tintColor: UIColor = .clear,
+                           contentMode: UIView.ContentMode = .scaleAspectFill) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        self.tintColor = tintColor
+        self.contentMode = contentMode
+        self.image = image 
+    }
 }
+
+
 

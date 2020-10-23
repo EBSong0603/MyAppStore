@@ -4,16 +4,10 @@
 //
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
-
 import UIKit
 
-
 class SecondAppInformationView: UIView {
-    
-    
-    
+
     static let identifier = "SecondAppInformationView"
     
     private let captureImageStackView: UIStackView = {
@@ -23,26 +17,21 @@ class SecondAppInformationView: UIView {
         stackView.spacing = 10
         return stackView
     }()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
         configureAutoLayouts()
     }
-    
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
 
     func setImageViews(_ urls: [String]) {
       
         for url in urls {
-        
-         
             let imageView = UIImageView()
             imageView.load(with: url)
             
@@ -56,44 +45,18 @@ class SecondAppInformationView: UIView {
 //
 //                }
 //            }
-
                 imageView.clipsToBounds = true
                 imageView.layer.cornerRadius = 7
-
-          
+ 
             captureImageStackView.addArrangedSubview(imageView)
-            
-            
         }
     }
     
     private func configureAutoLayouts() {
-        
         self.addSubview(captureImageStackView)
-        
-        
-        
-     
-        captureImageStackView.edges(self, vConstant: 4, hConstant: 16)
-        captureImageStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
    
-        
-//     위의 View extension을 사용해서 edges Constraint를 잡아주는것과 아래의 코드는 같은 것!!
-        
-        //captureImageStackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        NSLayoutConstraint.activate([
-//
-//
-//            captureImageStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
-//            captureImageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-//            captureImageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-//            captureImageStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
-//            captureImageStackView.heightAnchor.constraint(equalToConstant: 200)
-//
-//
-//        ])
+        captureImageStackView.edges(self, vConstant: 4, hConstant: 16)
+        captureImageStackView.height(200)
     }
     
 }

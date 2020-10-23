@@ -9,7 +9,11 @@
 import UIKit
 
 extension UIButton {
-    func setTitleButtonStyle(_ title: String, font: UIFont, tintColor: UIColor, backgroundColor: UIColor, radius: CGFloat = 0) {
+    func setTitleButtonStyle(_ title: String,
+                             font: UIFont,
+                             tintColor: UIColor,
+                             backgroundColor: UIColor,
+                             radius: CGFloat = 0) {
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font
         self.setTitleColor(tintColor, for: .normal)
@@ -19,7 +23,10 @@ extension UIButton {
     }
     
     //contentEdgeImsets는 컨텐츠의 엣지를 관장함 - > UIEdgeInsets 확인
-    func setInsets(v: CGFloat, h: CGFloat) {
-        self.contentEdgeInsets = UIEdgeInsets(top: v, left: h, bottom: v, right: h)
+    func setInsets(vertical: CGFloat, horizonal: CGFloat) {
+        self.contentEdgeInsets = UIEdgeInsets(top: vertical,
+                                              left: horizonal,
+                                              bottom: vertical,
+                                              right: horizonal)
     }
 }
