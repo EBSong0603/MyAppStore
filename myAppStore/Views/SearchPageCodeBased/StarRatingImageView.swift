@@ -24,7 +24,7 @@ class StarRatingImageView: ModuleView {
         hStackView.setStackViewStyle(axis: .horizontal, spacing: 2, distribution: .fillProportionally)
         return hStackView
     }()
-    private let starFirstImageView: UIImageView = {
+    private let star1ImageView: UIImageView = {
         let imageView = UIImageView()
 
         imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
@@ -32,28 +32,28 @@ class StarRatingImageView: ModuleView {
         imageView.width(12)
         return imageView
     }()
-    private let starSecondImageView: UIImageView = {
+    private let star2ImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
         imageView.height(12)
         imageView.width(12)
         return imageView
     }()
-    private let starThirdImageView: UIImageView = {
+    private let star3ImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
         imageView.height(12)
         imageView.width(12)
         return imageView
     }()
-    private let starForthImageView: UIImageView = {
+    private let star4ImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
         imageView.height(12)
         imageView.width(12)
         return imageView
     }()
-    private let starFifthImageView: UIImageView = {
+    private let star5ImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(systemName: "star")!, tintColor: .gray, contentMode: .scaleAspectFill)
         imageView.height(12)
@@ -70,9 +70,9 @@ class StarRatingImageView: ModuleView {
     init() {
         super.init(frame: .zero)
        
-        starHStackView.addArrangedSubviews([starFirstImageView, starSecondImageView,
-                                            starThirdImageView, starForthImageView,
-                                            starFifthImageView, ratingLabel])
+        starHStackView.addArrangedSubviews([star1ImageView, star2ImageView,
+                                            star3ImageView, star4ImageView,
+                                            star5ImageView, ratingLabel])
     }
     
     required init?(coder: NSCoder) {
@@ -81,44 +81,67 @@ class StarRatingImageView: ModuleView {
     
     func setData(with data: AppStoreModel.ResultsEntry?) {
         guard let data = data else {return}
-        ratingLabel.text = "\(data.userRatingCount)"
-        
+        let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
+        ratingLabel.text = userRC
+
         let intRating = Int(data.averageUserRating)
         print("intRating: \(intRating)")
+      
+//        var views: [UIImageView] = [star1ImageView, star2ImageView, star3ImageView, star4ImageView, star5ImageView]
+//        var images: [StarStyle] = []
+//        for num in 1..<6 {
+//            let imageView: StarStyle = (num <= intRating) ? .filled : .empty
+//            images.append(imageView)
+//            if num <= intRating {
+//
+//            } else {
+//               star1ImageView.image = UIImage(systemName: "star")
+//            }
+//            starHStackView.addArrangedSubviews([star1ImageView])
+//        }
         
-        if intRating == 1 {
-            starFirstImageView.image = UIImage(systemName: "star.fill")
-            starSecondImageView.image = UIImage(systemName: "star")
-            starThirdImageView.image = UIImage(systemName: "star")
-            starForthImageView.image = UIImage(systemName: "star")
-            starFifthImageView.image = UIImage(systemName: "star")
-            
-        } else if intRating == 2 {
-            starFirstImageView.image = UIImage(systemName: "star.fill")
-            starSecondImageView.image = UIImage(systemName: "star.fill")
-            starThirdImageView.image = UIImage(systemName: "star")
-            starForthImageView.image = UIImage(systemName: "star")
-            starFifthImageView.image = UIImage(systemName: "star")
-            
-        } else if intRating == 3 {
-            starFirstImageView.image = UIImage(systemName: "star.fill")
-            starSecondImageView.image = UIImage(systemName: "star.fill")
-            starThirdImageView.image = UIImage(systemName: "star.fill")
-            starForthImageView.image = UIImage(systemName: "star")
-            starFifthImageView.image = UIImage(systemName: "star")
-        } else if intRating == 4 {
-            starFirstImageView.image = UIImage(systemName: "star.fill")
-            starSecondImageView.image = UIImage(systemName: "star.fill")
-            starThirdImageView.image = UIImage(systemName: "star.fill")
-            starForthImageView.image = UIImage(systemName: "star.fill")
-            starFifthImageView.image = UIImage(systemName: "star")
-        } else if intRating == 5 {
-            starFirstImageView.image = UIImage(systemName: "star.fill")
-            starSecondImageView.image = UIImage(systemName: "star.fill")
-            starThirdImageView.image = UIImage(systemName: "star.fill")
-            starForthImageView.image = UIImage(systemName: "star.fill")
-            starFifthImageView.image = UIImage(systemName: "star.fill")
-        }
+        
+//        if intRating == 1 {
+//            star1ImageView.image = UIImage(systemName: "star.fill")
+//            star2ImageView.image = UIImage(systemName: "star")
+//            star3ImageView.image = UIImage(systemName: "star")
+//            star4ImageView.image = UIImage(systemName: "star")
+//            star5ImageView.image = UIImage(systemName: "star")
+//
+//        } else if intRating == 2 {
+//            star1ImageView.image = UIImage(systemName: "star.fill")
+//            star2ImageView.image = UIImage(systemName: "star.fill")
+//            star3ImageView.image = UIImage(systemName: "star")
+//            star4ImageView.image = UIImage(systemName: "star")
+//            star5ImageView.image = UIImage(systemName: "star")
+//
+//        } else if intRating == 3 {
+//            star1ImageView.image = UIImage(systemName: "star.fill")
+//            star2ImageView.image = UIImage(systemName: "star.fill")
+//            star3ImageView.image = UIImage(systemName: "star.fill")
+//            star4ImageView.image = UIImage(systemName: "star")
+//            star5ImageView.image = UIImage(systemName: "star")
+//        } else if intRating == 4 {
+//            star1ImageView.image = UIImage(systemName: "star.fill")
+//            star2ImageView.image = UIImage(systemName: "star.fill")
+//            star3ImageView.image = UIImage(systemName: "star.fill")
+//            star4ImageView.image = UIImage(systemName: "star.fill")
+//            star5ImageView.image = UIImage(systemName: "star")
+//        } else if intRating == 5 {
+//            star1ImageView.image = UIImage(systemName: "star.fill")
+//            star2ImageView.image = UIImage(systemName: "star.fill")
+//            star3ImageView.image = UIImage(systemName: "star.fill")
+//            star4ImageView.image = UIImage(systemName: "star.fill")
+//            star5ImageView.image = UIImage(systemName: "star.fill")
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
         
         //        var views: [UIImage] = []
         //        for num in 1..<6 {

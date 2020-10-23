@@ -7,11 +7,13 @@
 import UIKit
 
 //BaseViewController를 상속하고 있는 뷰컨임
-class MainViewController: BaseViewController, UISearchControllerDelegate {
-    
+class MainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
+   
     var model: AppStoreModel?
     private let tableView: UITableView = UITableView()
-    private let mySearchBar: UISearchController = UISearchController()
+    private let mySearchController: UISearchController = UISearchController()
+    private let mySearchBar: UISearchBar = UISearchBar()
+    
     
     //didSet: 앞으로 변할 값이 정해지고, 그값이 변할때마다 어떤 것을 하도록 함(didSet 안에 있는 어떤것을 호출하거나 실행하기함)
     //didSet이 적혀있는 이 단하나의 ViewController에서 밖에 못씀
@@ -24,8 +26,9 @@ class MainViewController: BaseViewController, UISearchControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestAPI()
-        mySearchBar.delegate = self
+//        requestAPI()
+        mySearchController.delegate = self
+        mySearchController.searchBar.delegate = self
         view.backgroundColor = .white
         prepareTableView()
         setNavigationBar()
@@ -38,21 +41,86 @@ class MainViewController: BaseViewController, UISearchControllerDelegate {
     
     private func setNavigationBar() {
         navigationItem.title = "검색"
-        navigationItem.searchController = mySearchBar
+        navigationItem.searchController = mySearchController
+    
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func requestAPI() {
-        let url = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
+    
+    
+    
+    
+    
+    
+    
+    
+//    func requestAPI() {
+//        let url = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
+//
+//        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, reponse, error in
+//            guard let data = data, error == nil else {
+//                print("Something Wrong")
+//                return
+//            }
+//            self.bindData(with: data)
+//            self.updateUI()
+//        }).resume()
+//    }
+//
+//    func bindData(with data: Data) {
+//        var json: AppStoreModel?
+//
+//        do {
+//            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
+//        } catch {
+//            print("error: \(error)")
+//        }
+//        guard let result = json else {return}
+//        self.model = result
+//    }
+//
+//    func updateUI() {
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+    
+    
+    
+
+    
  
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, reponse, error in
-            guard let data = data, error == nil else {
-                print("Something Wrong")
-                return
-            }
-            self.bindData(with: data)
-            self.updateUI()
-        }).resume()
+//    func updateSearchResults(for searchController: UISearchController) {
+//        print("Searching with:" + (searchController.searchBar.text ?? ""))
+//
+//        fetchUserSearchKeywordAndRequestAPI(text: searchController.searchBar.text ?? "")
+//       }
+       
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
+    }
+    
+    func fetchUserSearchKeywordAndRequestAPI(text: String) {
+    
+        if mySearchController.searchBar.text == "" {
+            self.tableView.reloadData()
+        } else {
+            
+            
+          
+            let url2 = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
+               let url = "https://itunes.apple.com/search?entity=software&country=KR&term=\(text)"
+     
+            
+            URLSession.shared.dataTask(with: URL(string: url) ?? URL(string: url2)!, completionHandler: {data, reponse, error in
+                       guard let data = data, error == nil else {
+                           print("Something Wrong")
+                           return
+                       }
+                       self.bindData(with: data)
+                       self.updateUI()
+                   }).resume()
+        }
     }
     
     func bindData(with data: Data) {

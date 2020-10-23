@@ -21,6 +21,7 @@
 		706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailViewController.swift */; };
 		706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailTopView.swift */; };
 		706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA91B253B1FED00E22783 /* DetailSecondView.swift */; };
+		706E5C1B2542E05900581BA3 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E5C1A2542E05900581BA3 /* Int+Extension.swift */; };
 		70C6405F25403BAD00D06B6A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6405E25403BAD00D06B6A /* Double+Extension.swift */; };
 		70C6406125404DC500D06B6A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406025404DC500D06B6A /* UIImageView+Extension.swift */; };
 		70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406225406B3E00D06B6A /* UILabel+Extension.swift */; };
@@ -60,6 +61,7 @@
 		706CA916253AF8EE00E22783 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		706CA919253B13E300E22783 /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		706CA91B253B1FED00E22783 /* DetailSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondView.swift; sourceTree = "<group>"; };
+		706E5C1A2542E05900581BA3 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		70C6405E25403BAD00D06B6A /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		70C6406025404DC500D06B6A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		70C6406225406B3E00D06B6A /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				70C6405E25403BAD00D06B6A /* Double+Extension.swift */,
 				70C6406025404DC500D06B6A /* UIImageView+Extension.swift */,
 				70C6406225406B3E00D06B6A /* UILabel+Extension.swift */,
+				706E5C1A2542E05900581BA3 /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CEE70E253EAE3B00569C10 /* BasicButton.swift in Sources */,
+				706E5C1B2542E05900581BA3 /* Int+Extension.swift in Sources */,
 				706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */,
 				70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */,
 				70CEE6F5253DA0F300569C10 /* DetailStarRatingViewSecond.swift in Sources */,

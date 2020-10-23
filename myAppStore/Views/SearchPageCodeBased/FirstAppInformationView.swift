@@ -85,6 +85,8 @@ class FirstAppInformationView: UIView {
             appPurchaseLabel.isHidden = true
         }
         starRatingView.setData(with: data)
+    
+        
     }
     
     private func configureAutoLayouts() {

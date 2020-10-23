@@ -13,6 +13,14 @@ extension Double {
     var toInt: Int {
         return Int(self) 
     }
+    
+    func reduceScale(to places: Int) -> Double {
+        let multiplier = pow(10, Double(places))
+        let newDecimal = multiplier * self
+        let truncated = Double(Int(newDecimal))
+        let originalDecimal = truncated
+        return originalDecimal
+    }
 }
 
 
