@@ -8,7 +8,7 @@ import UIKit
 
 //BaseViewController를 상속하고 있는 뷰컨임
 class MainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
-   
+    
     var model: AppStoreModel?
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
@@ -26,7 +26,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        requestAPI()
+        //        requestAPI()
         mySearchController.delegate = self
         mySearchController.searchBar.delegate = self
         view.backgroundColor = .white
@@ -42,7 +42,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     private func setNavigationBar() {
         navigationItem.title = "검색"
         navigationItem.searchController = mySearchController
-    
+        
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
@@ -54,72 +54,73 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     
     
     
-//    func requestAPI() {
-//        let url = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
-//
-//        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, reponse, error in
-//            guard let data = data, error == nil else {
-//                print("Something Wrong")
-//                return
-//            }
-//            self.bindData(with: data)
-//            self.updateUI()
-//        }).resume()
-//    }
-//
-//    func bindData(with data: Data) {
-//        var json: AppStoreModel?
-//
-//        do {
-//            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
-//        } catch {
-//            print("error: \(error)")
-//        }
-//        guard let result = json else {return}
-//        self.model = result
-//    }
-//
-//    func updateUI() {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
+    //    func requestAPI() {
+    //        let url = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
+    //
+    //        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, reponse, error in
+    //            guard let data = data, error == nil else {
+    //                print("Something Wrong")
+    //                return
+    //            }
+    //            self.bindData(with: data)
+    //            self.updateUI()
+    //        }).resume()
+    //    }
+    //
+    //    func bindData(with data: Data) {
+    //        var json: AppStoreModel?
+    //
+    //        do {
+    //            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
+    //        } catch {
+    //            print("error: \(error)")
+    //        }
+    //        guard let result = json else {return}
+    //        self.model = result
+    //    }
+    //
+    //    func updateUI() {
+    //        DispatchQueue.main.async {
+    //            self.tableView.reloadData()
+    //        }
+    //    }
     
     
     
-
     
- 
-//    func updateSearchResults(for searchController: UISearchController) {
-//        print("Searching with:" + (searchController.searchBar.text ?? ""))
-//
-//        fetchUserSearchKeywordAndRequestAPI(text: searchController.searchBar.text ?? "")
-//       }
-       
+    
+    
+    //    func updateSearchResults(for searchController: UISearchController) {
+    //        print("Searching with:" + (searchController.searchBar.text ?? ""))
+    //
+    //        fetchUserSearchKeywordAndRequestAPI(text: searchController.searchBar.text ?? "")
+    //       }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
     }
     
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
-    
+        
         if mySearchController.searchBar.text == "" {
             self.tableView.reloadData()
         } else {
             
             
-          
-            let url2 = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
-               let url = "https://itunes.apple.com/search?entity=software&country=KR&term=\(text)"
-     
             
-            URLSession.shared.dataTask(with: URL(string: url) ?? URL(string: url2)!, completionHandler: {data, reponse, error in
-                       guard let data = data, error == nil else {
-                           print("Something Wrong")
-                           return
-                       }
-                       self.bindData(with: data)
-                       self.updateUI()
-                   }).resume()
+            let url2 = "https://itunes.apple.com/search?entity=software&country=KR"
+            let url = "https://itunes.apple.com/search?entity=software&country=KR&term=\(text)"
+            
+            guard let target = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
+            
+            URLSession.shared.dataTask(with: URL(string: target) ?? URL(string: url2)!, completionHandler: {data, reponse, error in
+                guard let data = data, error == nil else {
+                    print("Something Wrong")
+                    return
+                }
+                self.bindData(with: data)
+                self.updateUI()
+            }).resume()
         }
     }
     
