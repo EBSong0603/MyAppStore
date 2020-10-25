@@ -10,7 +10,7 @@ import UIKit
 
 class DetailThirdCapturedImageView: UIView {
 
-    var data: [String] = []
+    var screenshotData: [String] = []
     private let collectionView: UICollectionView = {
         
        let layout = UICollectionViewFlowLayout()
@@ -48,7 +48,7 @@ class DetailThirdCapturedImageView: UIView {
     }
     
     func setData(with urls: [String]) {
-      data = urls
+      screenshotData = urls
     }
 }
 
@@ -63,8 +63,8 @@ extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(data.count)
-        return data.count
+        print(screenshotData.count)
+        return screenshotData.count
         
     }
     
@@ -72,7 +72,7 @@ extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CapturedImageCollectionViewCell.identifier, for: indexPath) as! CapturedImageCollectionViewCell
         cell.backgroundColor = .white
-        cell.setData(with: data[indexPath.row])
+        cell.setData(with: screenshotData[indexPath.row])
         return cell
     }
 }

@@ -14,25 +14,25 @@ class DetailViewController: UIViewController {
     let scrollView: UIScrollView = UIScrollView()
     
     
-   private let topView: DetailTopView = {
-              let view = DetailTopView()
-              return view
-              
-          }()
-          
-       private let secondView: DetailSecondView = {
-              let view = DetailSecondView()
-              return view
-              
-          }()
-          
-        private let thirdView: DetailThirdCapturedImageView = {
-             let view = DetailThirdCapturedImageView()
-           
-            
-              return view
-              
-          }()
+    private let topView: DetailTopView = {
+        let view = DetailTopView()
+        return view
+        
+    }()
+    
+    private let secondView: DetailSecondView = {
+        let view = DetailSecondView()
+        return view
+        
+    }()
+    
+    private let thirdView: DetailThirdCapturedImageView = {
+        let view = DetailThirdCapturedImageView()
+        
+        
+        return view
+        
+    }()
     
     private let detailContentVStackView: UIStackView = {
         let stackView = UIStackView()
@@ -54,6 +54,7 @@ class DetailViewController: UIViewController {
         detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView])
         guard let data = data else {return}
         thirdView.setData(with: data.screenshotUrls)
+        topView.setData(with: data)
         view.backgroundColor = .white
         
     }

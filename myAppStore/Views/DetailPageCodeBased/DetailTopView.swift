@@ -1,27 +1,22 @@
-//
 //  File.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class DetailTopView: UIView {
     
+    var topcontentData: AppStoreModel.ResultsEntry?
     
     static let identifier = "DetailTopView"
     
     private let appIconImageView: UIImageView = {
-        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "DearMeAppIcon")
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
         imageView.contentMode = .scaleAspectFill
         return imageView
-        
     }()
     
     private let getButton: UIButton = {
@@ -30,9 +25,7 @@ class DetailTopView: UIView {
         button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
-        
         return button
-        
     }()
     
     private let furtherButton: UIButton = {
@@ -41,63 +34,65 @@ class DetailTopView: UIView {
         button.tintColor = .systemBlue
         button.scalesLargeContentImage = true
         return button
-        
     }()
-    private let stackView: UIStackView = {
+    
+    
+    private let appNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "앱이름"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }()
+    
+    private let subAppNameLabel: UILabel = {
         
-        
-        let appNameLabel: UILabel = {
-            let label = UILabel()
-            label.text = "앱이름"
-            label.textColor = .black
-            label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            return label
-            
-        }()
-        
-        let subAppNameLabel: UILabel = {
-            
-            let label = UILabel()
-            label.text = "서브이름"
-            label.textColor = .gray
-            label.font = UIFont.systemFont(ofSize: 15)
-            return label
-        }()
-        
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [appNameLabel, subAppNameLabel])
+        let label = UILabel()
+        label.text = "서브이름"
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 15)
+        return label
+    }()
+    
+    
+    private let appInfoVStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
         stackView.axis = .vertical
+        stackView.spacing = 0
         return stackView
-        
     }()
+    
+    
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .white
         configureAutoLayouts()
+        appInfoVStackView.addArrangedSubviews([appNameLabel, subAppNameLabel])
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        appIconImageView.load(with: data.artworkUrl512)
+        appNameLabel.text = data.trackName
+        subAppNameLabel.text = data.artistName
+    }
     
     
     private func configureAutoLayouts() {
         
         self.addSubview(appIconImageView)
-        self.addSubview(stackView)
+        self.addSubview(appInfoVStackView)
         self.addSubview(getButton)
         self.addSubview(furtherButton)
         
         appIconImageView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        appInfoVStackView.translatesAutoresizingMaskIntoConstraints = false
         getButton.translatesAutoresizingMaskIntoConstraints = false
         furtherButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -107,7 +102,7 @@ class DetailTopView: UIView {
             
             appIconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
             appIconImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-//            appIconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            //            appIconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             appIconImageView.heightAnchor.constraint(equalToConstant: 100),
             appIconImageView.widthAnchor.constraint(equalToConstant: 100),
             appIconImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -118,8 +113,8 @@ class DetailTopView: UIView {
         NSLayoutConstraint.activate([
             
             
-            stackView.topAnchor.constraint(equalTo: appIconImageView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: appIconImageView.trailingAnchor, constant: 16)
+            appInfoVStackView.topAnchor.constraint(equalTo: appIconImageView.topAnchor),
+            appInfoVStackView.leadingAnchor.constraint(equalTo: appIconImageView.trailingAnchor, constant: 16)
             
         ])
         
