@@ -6,7 +6,7 @@ import UIKit
 
 class FirstAppInformationView: UIView {
     
-    var isGameEnabled: Bool = false
+    var isGame: Bool = false
     
     private var appIconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -23,17 +23,15 @@ class FirstAppInformationView: UIView {
         return stackView
     }()
     
-    private let appNameLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("앱이름", textColor: .black,
-                       font: UIFont.systemFont(ofSize: 16), textAlignment: .left)
+    private let appNameLabel: BasicLabel = {
+        let label = BasicLabel(.appTitle)
+        label.setStyle(.appTitle, text: "앱이름")
         return label
     }()
     
-    private let appCategoryLabel: UILabel = {
-        let label = UILabel()
-                label.setStyle("카테고리", textColor: .gray,
-                               font: UIFont.systemFont(ofSize: 12), textAlignment: .left)
+    private let appCategoryLabel: BasicLabel = {
+        let label = BasicLabel(.subTitle)
+        label.setStyle(.subTitle, text: "카테고리이름")
         return label
     }()
     
@@ -49,17 +47,16 @@ class FirstAppInformationView: UIView {
         return button
     }()
     
-    private let appPurchaseLabel: UILabel = {
+    private let appPurchaseLabel: BasicLabel = {
         
-        let label = UILabel()
-        label.setStyle("앱내구입", textColor: .black,
-                       font: UIFont.systemFont(ofSize: 10), textAlignment: .center)
+        let label = BasicLabel(.purchase)
+        label.setStyle(.purchase, text: "앱내구입")
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         self.backgroundColor = .white
         configureAutoLayouts()
         //UIStackView의 extension 함수 사용한 코드
@@ -71,7 +68,9 @@ class FirstAppInformationView: UIView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry?) {
+        
         guard let data = data else {return}
+        starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
         
@@ -84,9 +83,6 @@ class FirstAppInformationView: UIView {
         } else {
             appPurchaseLabel.isHidden = true
         }
-        starRatingView.setData(with: data)
-    
-        
     }
     
     private func configureAutoLayouts() {

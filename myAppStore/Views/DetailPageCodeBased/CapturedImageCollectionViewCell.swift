@@ -11,44 +11,43 @@ import UIKit
 class CapturedImageCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CapturedImageCollectionViewCell"
-    private let capturedImage: UIImageView = {
+    private var capturedImage: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "이미지")
+        imageView.image = UIImage(named: "DearMeAppIcon")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
-        return imageView
-        
+        imageView.layer.cornerRadius = 10
+        return imageView  
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureAutoLayouts()
+        
+        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    
-    
+   
+    func setData(with cellData: String) {
+      
+        self.capturedImage.load(with: cellData)
+      
+      
+    }
     private func configureAutoLayouts() {
         
         contentView.addSubview(capturedImage)
         capturedImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        
-            
             capturedImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             capturedImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             capturedImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             capturedImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        
         ])
-        
-        
     }
-    
 }

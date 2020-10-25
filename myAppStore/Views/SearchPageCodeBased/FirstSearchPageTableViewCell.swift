@@ -24,7 +24,6 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         contentView.backgroundColor = .white
         confiureAutoLayouts()
     }
@@ -37,6 +36,8 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
     func setData(with cellData: AppStoreModel.ResultsEntry?) {
         guard let cellData = cellData else {return}
         firstView.setData(with: cellData)
+//        let data: [String] = [cellData.screenshotUrls[0], cellData.screenshotUrls[1], cellData.screenshotUrls[2]]
+//        secondView.setImageViews(data)
         secondView.setImageViews(cellData.screenshotUrls)
     }
     

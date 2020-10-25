@@ -10,9 +10,7 @@ import UIKit
 
 
 class DetailStarRatingView: UIView {
-    
- 
-      
+
     
     private let contentStackView: UIStackView = {
         

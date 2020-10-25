@@ -10,56 +10,37 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var data: AppStoreModel.ResultsEntry?
     let scrollView: UIScrollView = UIScrollView()
     
-    private let detailContentStackView: UIStackView = {
-        
-        
-        
-        
-        let label: UILabel = {
+    
+   private let topView: DetailTopView = {
+              let view = DetailTopView()
+              return view
+              
+          }()
+          
+       private let secondView: DetailSecondView = {
+              let view = DetailSecondView()
+              return view
+              
+          }()
+          
+        private let thirdView: DetailThirdCapturedImageView = {
+             let view = DetailThirdCapturedImageView()
+           
             
-            let label = UILabel()
-            label.text = "안녕"
-            label.backgroundColor = .yellow
-            
-            return label
-        }()
-        
-        let imageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(named: "이미지")
-            return imageView
-        }()
-        
-        let topView: DetailTopView = {
-            let view = DetailTopView()
-            return view
-            
-        }()
-        
-        let secondView: DetailSecondView = {
-            let view = DetailSecondView()
-            return view
-            
-        }()
-        
-        let thirdView: DetailThirdCapturedImageView = {
-           let view = DetailThirdCapturedImageView()
-            return view
-            
-        }()
-        
-        let stackView = UIStackView(arrangedSubviews: [topView, secondView, thirdView])
-        stackView.axis = .vertical
-        //stackView distribution 찾아보기
+              return view
+              
+          }()
+    
+    private let detailContentVStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
-        
     }()
-    
-    
     
     
     
@@ -70,8 +51,9 @@ class DetailViewController: UIViewController {
         setNavigationBar()
         prepareScrollView()
         configureAutoLayouts()
-        
-        
+        detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView])
+        guard let data = data else {return}
+        thirdView.setData(with: data.screenshotUrls)
         view.backgroundColor = .white
         
     }
@@ -100,11 +82,11 @@ class DetailViewController: UIViewController {
         
         
         view.addSubview(scrollView)
-        scrollView.addSubview(detailContentStackView)
+        scrollView.addSubview(detailContentVStackView)
         
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        detailContentStackView.translatesAutoresizingMaskIntoConstraints = false
+        detailContentVStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
@@ -117,11 +99,11 @@ class DetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            detailContentStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            detailContentStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            detailContentStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            detailContentStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            detailContentStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+            detailContentVStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            detailContentVStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            detailContentVStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            detailContentVStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            detailContentVStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
             
         ])
         

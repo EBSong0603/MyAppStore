@@ -104,10 +104,9 @@ class DetailStarRatingViewSecond: UIView {
         
         
         NSLayoutConstraint.activate([
-        
-            ratingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+//
+//            ratingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             ratingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            ratingLabel.heightAnchor.constraint(equalToConstant: 18),
             ratingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
         
@@ -117,7 +116,8 @@ class DetailStarRatingViewSecond: UIView {
            
            NSLayoutConstraint.activate([
                
-            starImageViewOne.topAnchor.constraint(equalTo: ratingLabel.topAnchor),
+//            starImageViewOne.topAnchor.constraint(equalTo: ratingLabel.topAnchor),
+//            starImageViewOne.leadingAnchor.constraint(equalTo: ratingLabel.trailingAnchor, constant: 4),
             starImageViewOne.leadingAnchor.constraint(equalTo: ratingLabel.trailingAnchor, constant: 4),
             starImageViewOne.centerYAnchor.constraint(equalTo: ratingLabel.centerYAnchor),
                starImageViewOne.heightAnchor.constraint(equalToConstant: 18),
@@ -131,12 +131,12 @@ class DetailStarRatingViewSecond: UIView {
            NSLayoutConstraint.activate([
                
                
-               starImageViewTwo.topAnchor.constraint(equalTo: starImageViewOne.topAnchor),
+//               starImageViewTwo.topAnchor.constraint(equalTo: starImageViewOne.topAnchor),
                starImageViewTwo.leadingAnchor.constraint(equalTo: starImageViewOne.trailingAnchor, constant: 1),
                starImageViewTwo.centerYAnchor.constraint(equalTo: starImageViewOne.centerYAnchor),
                starImageViewTwo.heightAnchor.constraint(equalToConstant: 18),
                starImageViewTwo.widthAnchor.constraint(equalToConstant: 18),
-               starImageViewTwo.bottomAnchor.constraint(equalTo: starImageViewOne.bottomAnchor)
+//               starImageViewTwo.bottomAnchor.constraint(equalTo: starImageViewOne.bottomAnchor)
                
            ])
            
@@ -144,12 +144,12 @@ class DetailStarRatingViewSecond: UIView {
            
            NSLayoutConstraint.activate([
                
-               starImageViewThree.topAnchor.constraint(equalTo: starImageViewTwo.topAnchor),
+//               starImageViewThree.topAnchor.constraint(equalTo: starImageViewTwo.topAnchor),
                starImageViewThree.leadingAnchor.constraint(equalTo: starImageViewTwo.trailingAnchor, constant: 1),
                starImageViewThree.centerYAnchor.constraint(equalTo: starImageViewTwo.centerYAnchor),
                starImageViewThree.heightAnchor.constraint(equalToConstant: 18),
                starImageViewThree.widthAnchor.constraint(equalToConstant: 18),
-               starImageViewThree.bottomAnchor.constraint(equalTo: starImageViewTwo.bottomAnchor)
+//               starImageViewThree.bottomAnchor.constraint(equalTo: starImageViewTwo.bottomAnchor)
                
                
            ])
@@ -157,12 +157,12 @@ class DetailStarRatingViewSecond: UIView {
            
            NSLayoutConstraint.activate([
                
-               starImageViewFour.topAnchor.constraint(equalTo: starImageViewThree.topAnchor),
+//               starImageViewFour.topAnchor.constraint(equalTo: starImageViewThree.topAnchor),
                starImageViewFour.leadingAnchor.constraint(equalTo: starImageViewThree.trailingAnchor, constant: 1),
                starImageViewFour.centerYAnchor.constraint(equalTo: starImageViewThree.centerYAnchor),
                starImageViewFour.heightAnchor.constraint(equalToConstant: 18),
                starImageViewFour.widthAnchor.constraint(equalToConstant: 18),
-               starImageViewFour.bottomAnchor.constraint(equalTo: starImageViewThree.bottomAnchor)
+//               starImageViewFour.bottomAnchor.constraint(equalTo: starImageViewThree.bottomAnchor)
                
                
            ])
@@ -170,14 +170,14 @@ class DetailStarRatingViewSecond: UIView {
            
            NSLayoutConstraint.activate([
                
-               starImageViewFive.topAnchor.constraint(equalTo: starImageViewFour.topAnchor),
+//               starImageViewFive.topAnchor.constraint(equalTo: starImageViewFour.topAnchor),
                starImageViewFive.leadingAnchor.constraint(equalTo: starImageViewFour.trailingAnchor, constant: 1),
                starImageViewFive.centerYAnchor.constraint(equalTo: starImageViewFour.centerYAnchor),
                
               
                starImageViewFive.heightAnchor.constraint(equalToConstant: 18),
                starImageViewFive.widthAnchor.constraint(equalToConstant: 18),
-               starImageViewFive.bottomAnchor.constraint(equalTo: starImageViewFour.bottomAnchor)
+//               starImageViewFive.bottomAnchor.constraint(equalTo: starImageViewFour.bottomAnchor)
                
                
            ])

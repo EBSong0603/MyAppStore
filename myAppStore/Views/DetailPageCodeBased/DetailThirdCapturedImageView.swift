@@ -9,8 +9,8 @@
 import UIKit
 
 class DetailThirdCapturedImageView: UIView {
-    
 
+    var data: [String] = []
     private let collectionView: UICollectionView = {
         
        let layout = UICollectionViewFlowLayout()
@@ -20,72 +20,59 @@ class DetailThirdCapturedImageView: UIView {
         layout.scrollDirection = .horizontal
         return cv
     }()
-    
-    
-    
-    
-    
-    
-    
+     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
-        
+          
+        self.heightAnchor.constraint(equalToConstant: 270).isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        
+  
         self.backgroundColor = .white
-        self.heightAnchor.constraint(equalToConstant: 200).isActive = true
         self.addSubview(collectionView)
         collectionView.backgroundColor = .white
-        
-        
-        NSLayoutConstraint.activate([
-        
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
 
+        NSLayoutConstraint.activate([
+
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+     
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-       
-        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    
-    
-    
-    
-    
-    
-    
+    func setData(with urls: [String]) {
+      data = urls
+    }
 }
 
 extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 200)
+        return CGSize(width: 150, height: 250)
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        print(data.count)
+        return data.count
+        
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CapturedImageCollectionViewCell.identifier, for: indexPath) as! CapturedImageCollectionViewCell
         cell.backgroundColor = .white
-        
+        cell.setData(with: data[indexPath.row])
         return cell
     }
-    
-    
 }

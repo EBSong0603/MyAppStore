@@ -13,8 +13,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
     private let mySearchBar: UISearchBar = UISearchBar()
-    
-    
+
     //didSet: 앞으로 변할 값이 정해지고, 그값이 변할때마다 어떤 것을 하도록 함(didSet 안에 있는 어떤것을 호출하거나 실행하기함)
     //didSet이 적혀있는 이 단하나의 ViewController에서 밖에 못씀
     private var models: [AppStoreModel.ResultsEntry] = [] {
@@ -26,7 +25,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        requestAPI()
         mySearchController.delegate = self
         mySearchController.searchBar.delegate = self
         view.backgroundColor = .white
@@ -37,65 +35,15 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        tableView.reloadData()
     }
     
     private func setNavigationBar() {
         navigationItem.title = "검색"
         navigationItem.searchController = mySearchController
-        
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //    func requestAPI() {
-    //        let url = "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
-    //
-    //        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, reponse, error in
-    //            guard let data = data, error == nil else {
-    //                print("Something Wrong")
-    //                return
-    //            }
-    //            self.bindData(with: data)
-    //            self.updateUI()
-    //        }).resume()
-    //    }
-    //
-    //    func bindData(with data: Data) {
-    //        var json: AppStoreModel?
-    //
-    //        do {
-    //            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
-    //        } catch {
-    //            print("error: \(error)")
-    //        }
-    //        guard let result = json else {return}
-    //        self.model = result
-    //    }
-    //
-    //    func updateUI() {
-    //        DispatchQueue.main.async {
-    //            self.tableView.reloadData()
-    //        }
-    //    }
-    
-    
-    
-    
-    
-    
-    //    func updateSearchResults(for searchController: UISearchController) {
-    //        print("Searching with:" + (searchController.searchBar.text ?? ""))
-    //
-    //        fetchUserSearchKeywordAndRequestAPI(text: searchController.searchBar.text ?? "")
-    //       }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
     }
@@ -105,15 +53,16 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         if mySearchController.searchBar.text == "" {
             self.tableView.reloadData()
         } else {
-            
-            
+
             
             let url2 = "https://itunes.apple.com/search?entity=software&country=KR"
+         
             let url = "https://itunes.apple.com/search?entity=software&country=KR&term=\(text)"
             
             guard let target = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
             
-            URLSession.shared.dataTask(with: URL(string: target) ?? URL(string: url2)!, completionHandler: {data, reponse, error in
+            URLSession.shared.dataTask(with: URL(string: target) ?? URL(string: url2)!,
+                                       completionHandler: {data, reponse, error in
                 guard let data = data, error == nil else {
                     print("Something Wrong")
                     return
@@ -151,17 +100,16 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         
         tableView.edges(self.safeArea)
         //extension중 Date extension 과 string extension 확인하기 위해 쓴 코드(아래)
-        let now: Date = Date()
-        let str: String = now.dateToString(format: "yyyy-MM-dd")
-        print("now = \(str)")
-        print("nowDate = \(str.stringToDate(format: "yyyy-MM-dd"))")
+//        let now: Date = Date()
+//        let str: String = now.dateToString(format: "yyyy-MM-dd")
+//        print("now = \(str)")
+//        print("nowDate = \(str.stringToDate(format: "yyyy-MM-dd"))")
     }
     private func prepareTableView() {
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        
         //tableView Cell register
         tableView.register(FirstSearchPageTableViewCell.self,
                            forCellReuseIdentifier: FirstSearchPageTableViewCell.identifier)
@@ -195,7 +143,13 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc: DetailViewController = DetailViewController()
+        if let item = model?.results {
+            vc.data = item[indexPath.row]
+        }
+        
+        
         navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 

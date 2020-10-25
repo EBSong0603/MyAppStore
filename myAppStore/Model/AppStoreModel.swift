@@ -87,7 +87,6 @@ struct AppStoreModel: Codable {
             advisories = (try? values.decode([String].self, forKey: .advisories)) ?? [""]
             screenshotUrls = (try? values.decode([String].self, forKey: .screenshotUrls)) ?? [""]
             artworkUrl512 = (try? values.decode(String.self, forKey: .artworkUrl512)) ?? ""
-            print("artwork: \(artworkUrl512)")
             kind = (try? values.decode(String.self, forKey: .kind)) ?? ""
             sellerName = (try? values.decode(String.self, forKey: .kind)) ?? ""
             trackName = (try? values.decode(String.self, forKey: .trackName)) ?? ""
@@ -100,7 +99,6 @@ struct AppStoreModel: Codable {
             trackCensoredName = (try? values.decode(String.self, forKey: .trackCensoredName)) ?? ""
             fileSizeBytes = (try? values.decode(String.self, forKey: .fileSizeBytes)) ?? ""
             averageUserRating = round(((try? values.decode(Float.self, forKey: .averageUserRating))) ?? 0)
-            print("평점: \(averageUserRating)")
             contentAdvisoryRating = (try? values.decode(String.self, forKey: .contentAdvisoryRating)) ?? ""
             trackContentRating = (try? values.decode(String.self, forKey: .trackContentRating)) ?? ""
             description = (try? values.decode(String.self, forKey: .description)) ?? ""
@@ -109,9 +107,7 @@ struct AppStoreModel: Codable {
             genreIds = (try? values.decode([String].self, forKey: .genreIds)) ?? [""]
             bundleId = (try? values.decode(String.self, forKey: .bundleId)) ?? ""
             userRatingCount = (try? values.decode(Int.self, forKey: .userRatingCount)) ?? 0
-               
         }
-     
     }
 }
 

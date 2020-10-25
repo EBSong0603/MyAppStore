@@ -107,7 +107,7 @@ class DetailTopView: UIView {
             
             appIconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
             appIconImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            appIconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+//            appIconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             appIconImageView.heightAnchor.constraint(equalToConstant: 100),
             appIconImageView.widthAnchor.constraint(equalToConstant: 100),
             appIconImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)

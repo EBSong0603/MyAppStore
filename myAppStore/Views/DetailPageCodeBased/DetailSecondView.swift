@@ -40,6 +40,7 @@ class DetailSecondView: UIView {
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = 0
+    
         
         return stackView
     }()
@@ -69,7 +70,8 @@ class DetailSecondView: UIView {
         let stackView = UIStackView(arrangedSubviews: [countLabel, categoryLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
+        stackView.spacing = 2
+     
         return stackView
         
     }()
@@ -102,8 +104,9 @@ class DetailSecondView: UIView {
         
         let stackView = UIStackView(arrangedSubviews: [ageLabel, infoLabel])
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
+        stackView.spacing = 2
         stackView.axis = .vertical
+    
         return stackView
         
         
@@ -113,7 +116,7 @@ class DetailSecondView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.heightAnchor.constraint(equalToConstant: 60).isActive = true
         configureAutoLayouts()
     }
     
@@ -139,8 +142,8 @@ class DetailSecondView: UIView {
             ratingStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             ratingStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
             
-            ratingStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-            //            ratingStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            ratingStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+//                        ratingStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
             
         ])
@@ -148,20 +151,22 @@ class DetailSecondView: UIView {
         NSLayoutConstraint.activate([
             
             
-            similarInformStackView.topAnchor.constraint(equalTo: ratingStackView.topAnchor),
+//            similarInformStackView.topAnchor.constraint(equalTo: ratingStackView.topAnchor),
             similarInformStackView.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 120),
-            similarInformStackView.bottomAnchor.constraint(equalTo: ratingStackView.bottomAnchor)
+            similarInformStackView.centerYAnchor.constraint(equalTo: ratingStackView.centerYAnchor)
+//            similarInformStackView.bottomAnchor.constraint(equalTo: ratingStackView.bottomAnchor)
             
             
         ])
         
         NSLayoutConstraint.activate([
             
-            ageStackView.topAnchor.constraint(equalTo: similarInformStackView.topAnchor),
+//            ageStackView.topAnchor.constraint(equalTo: similarInformStackView.topAnchor),
             
             
             ageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            ageStackView.bottomAnchor.constraint(equalTo: similarInformStackView.bottomAnchor)
+            ageStackView.centerYAnchor.constraint(equalTo: similarInformStackView.centerYAnchor)
+//            ageStackView.bottomAnchor.constraint(equalTo: similarInformStackView.bottomAnchor)
             
             
         ])
