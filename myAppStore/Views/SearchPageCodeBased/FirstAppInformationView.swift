@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class FirstAppInformationView: UIView {
+class FirstAppInformationView: ModuleView {
     
     var isGame: Bool = false
     
@@ -58,7 +58,6 @@ class FirstAppInformationView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        configureAutoLayouts()
         //UIStackView의 extension 함수 사용한 코드
         appContentsStackView.addArrangedSubviews([appNameLabel, appCategoryLabel, starRatingView])
     }
@@ -82,7 +81,7 @@ class FirstAppInformationView: UIView {
         }
     }
     
-    private func configureAutoLayouts() {
+    override func configureAutolayouts() {
         let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
         
         self.addSubViews([appIconImageView, appContentsStackView, downLoadButton, appPurchaseLabel])

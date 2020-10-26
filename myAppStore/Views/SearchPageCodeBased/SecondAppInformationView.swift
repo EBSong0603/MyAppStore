@@ -4,9 +4,8 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class SecondAppInformationView: UIView, Viewable {
-    static let identifier = "SecondAppInformationView"
-    
+class SecondAppInformationView: ModuleView {
+   
     private let captureImageStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .horizontal, spacing: 10, distribution: .fillEqually)
@@ -32,10 +31,10 @@ class SecondAppInformationView: UIView, Viewable {
             imageView.layer.cornerRadius = 7
         }
         captureImageStackView.addArrangedSubviews(myView)
-        captureImageStackView.removeSubviews(myView)
+//        captureImageStackView.removeSubviews(myView)
     }
     
-    func configureAutolayouts() {
+    override func configureAutolayouts() {
         self.addSubview(captureImageStackView)
         captureImageStackView.edges(self, vConstant: 4, hConstant: 16)
         captureImageStackView.height(200)

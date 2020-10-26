@@ -1,14 +1,14 @@
 //
-//  ModuleView.swift
+//  BaseCell.swift
 //  myAppStore
 //
-//  Created by 송은비 on 2020/10/20.
+//  Created by 송은비 on 2020/10/26.
 //  Copyright © 2020 EB. All rights reserved.
 //
 
 import UIKit
 
-class ModuleView: UIView, Viewable {
+class BaseCollectionViewCell: UICollectionViewCell, Viewable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,13 +17,10 @@ class ModuleView: UIView, Viewable {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func configureAutolayouts() {
         
     }
 }
-
-
-

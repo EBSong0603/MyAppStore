@@ -4,10 +4,10 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
+class FirstSearchPageTableViewCell: BaseTableViewCell {
     
-    static let identifier = "FirstSearchPageTableViewCell"
-    
+    static let identifier: String = "FirstSearchPageTableViewCell"
+ 
     private let firstView: FirstAppInformationView = {
         let view = FirstAppInformationView()
         return view
@@ -21,14 +21,14 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
-        confiureAutoLayouts()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    required init?(coder: NSCoder) { super.init(coder: coder) }
-   
     //setData func 의 매개변수에 데이터값 넣어서 전달해주고(MainViewController로부터)
     //이 setData func 은 또 이 셀이 포함하고 있는 secondView로 데이터 넘겨준다
-    
     func setData(with cellData: AppStoreModel.ResultsEntry?) {
         guard let cellData = cellData else {return}
         firstView.setData(with: cellData)
@@ -37,7 +37,7 @@ class FirstSearchPageTableViewCell: UITableViewCell, Cellable {
         secondView.setImageViews(cellData.screenshotUrls)
     }
     
-    private func confiureAutoLayouts() {
+    override func configureAutolayouts() {
         contentView.addSubview(firstView)
         contentView.addSubview(secondView)
         

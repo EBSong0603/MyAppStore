@@ -16,7 +16,6 @@
 		70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */; };
 		7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396A253AB6E800595C03 /* FirstAppInformationView.swift */; };
 		7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396C253AB73A00595C03 /* SecondAppInformationView.swift */; };
-		7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396E253AB9CA00595C03 /* StarRatingView.swift */; };
 		70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013971253AF0F600595C03 /* AppStoreModel.swift */; };
 		706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailViewController.swift */; };
 		706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailTopView.swift */; };
@@ -43,6 +42,8 @@
 		70CEE718253F1F1F00569C10 /* StarRatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */; };
 		70CEE71A253F1FDF00569C10 /* ModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE719253F1FDF00569C10 /* ModuleView.swift */; };
 		70DD5C7E2546AE4000738B8C /* Binding Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C7D2546AE4000738B8C /* Binding Data.swift */; };
+		70DD5C802546F62F00738B8C /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */; };
+		70DD5C822546F97B00738B8C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,6 @@
 		70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSearchPageTableViewCell.swift; sourceTree = "<group>"; };
 		7001396A253AB6E800595C03 /* FirstAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppInformationView.swift; sourceTree = "<group>"; };
 		7001396C253AB73A00595C03 /* SecondAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppInformationView.swift; sourceTree = "<group>"; };
-		7001396E253AB9CA00595C03 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		70013971253AF0F600595C03 /* AppStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreModel.swift; sourceTree = "<group>"; };
 		706CA916253AF8EE00E22783 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		706CA919253B13E300E22783 /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 		70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingImageView.swift; sourceTree = "<group>"; };
 		70CEE719253F1FDF00569C10 /* ModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleView.swift; sourceTree = "<group>"; };
 		70DD5C7D2546AE4000738B8C /* Binding Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding Data.swift"; sourceTree = "<group>"; };
+		70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +146,6 @@
 				70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */,
 				7001396A253AB6E800595C03 /* FirstAppInformationView.swift */,
 				7001396C253AB73A00595C03 /* SecondAppInformationView.swift */,
-				7001396E253AB9CA00595C03 /* StarRatingView.swift */,
 				70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */,
 			);
 			path = SearchPageCodeBased;
@@ -215,6 +216,8 @@
 			children = (
 				70CEE712253EBF6D00569C10 /* BaseViewController.swift */,
 				70CEE719253F1FDF00569C10 /* ModuleView.swift */,
+				70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */,
+				70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */,
 				70013970253AE5D600595C03 /* SearchPageCodeBased */,
 				706CA918253AF8F700E22783 /* DetailPageCodeBased */,
 			);
@@ -307,13 +310,14 @@
 				70A16EF6254410C900FEC0DF /* BasicLabel.swift in Sources */,
 				70CEE6F5253DA0F300569C10 /* DetailStarRatingViewSecond.swift in Sources */,
 				70CEE718253F1F1F00569C10 /* StarRatingImageView.swift in Sources */,
+				70DD5C802546F62F00738B8C /* BaseCollectionViewCell.swift in Sources */,
 				70CEE6FD253DA98000569C10 /* CapturedImageCollectionViewCell.swift in Sources */,
 				70CEE707253EA64B00569C10 /* String+Extension.swift in Sources */,
 				70CEE713253EBF6D00569C10 /* BaseViewController.swift in Sources */,
 				70CEE703253EA3E600569C10 /* UIButton+Extension.swift in Sources */,
+				70DD5C822546F97B00738B8C /* BaseTableViewCell.swift in Sources */,
 				706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */,
 				70DD5C7E2546AE4000738B8C /* Binding Data.swift in Sources */,
-				7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */,
 				7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */,
 				70CEE710253EBD0A00569C10 /* ViewProtocol.swift in Sources */,
 				70013966253AAB6D00595C03 /* MainViewController.swift in Sources */,

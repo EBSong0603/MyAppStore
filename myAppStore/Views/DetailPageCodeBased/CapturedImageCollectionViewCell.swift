@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class CapturedImageCollectionViewCell: UICollectionViewCell {
+class CapturedImageCollectionViewCell: BaseCollectionViewCell {
     
     static let identifier = "CapturedImageCollectionViewCell"
     
@@ -16,18 +16,17 @@ class CapturedImageCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureAutoLayouts()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
-   
+
     func setData(with cellData: String) {
         self.capturedImage.load(with: cellData)
     }
     
-    private func configureAutoLayouts() {
+    override func configureAutolayouts() {
         contentView.addSubview(capturedImage)
  
         capturedImage.top(contentView.topAnchor)
