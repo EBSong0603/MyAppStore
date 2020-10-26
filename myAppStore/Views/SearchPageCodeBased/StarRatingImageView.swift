@@ -47,11 +47,9 @@ class StarRatingImageView: ModuleView {
         
         var imageViews: [UIImageView] = []
         for num in 1..<6 {
-            
             let imageView: UIImageView = (num <= intRating)
                 ? UIImageView.init(image: StarStyle.filled.rawValue)
                 : UIImageView.init(image: StarStyle.empty.rawValue)
-            
             imageViews.append(imageView)
             imageView.tintColor = .gray
             imageView.width(12)
@@ -60,12 +58,10 @@ class StarRatingImageView: ModuleView {
         starHStackView.addArrangedSubviews(imageViews)
         starHStackView.addArrangedSubview(ratingLabel)
     }
-    
     //자동으로 오버라이드 되고, init 에 호출해줄 필요 없음, MouduleView에서 이미 해줬고, 그 ModuleView를 상속하고 있기 때문!
     override func configureAutolayouts() {
         
         self.addSubview(starHStackView)
-        
         starHStackView.top(self.topAnchor, constant: 0)
         starHStackView.leading(self.leadingAnchor, constant: 0)
         starHStackView.trailing(self.trailingAnchor, constant: 0)

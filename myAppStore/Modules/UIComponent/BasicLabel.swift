@@ -15,12 +15,14 @@ class BasicLabel: UILabel {
         case subTitle
         case purchase
     }
+    
     let style: LabelStyle
     
     init(_ style: LabelStyle) {
         self.style = style
         super.init(frame: .zero)
     }
+    
  required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

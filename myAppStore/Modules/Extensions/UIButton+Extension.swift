@@ -22,6 +22,12 @@ extension UIButton {
         self.clipsToBounds = true
     }
     
+    func setImageButton(_ image: UIImage, tintcolor: UIColor, scale: Bool) {
+        self.setImage(image, for: .normal)
+        self.tintColor = tintcolor
+        self.scalesLargeContentImage = scale
+    }
+    
     //contentEdgeImsets는 컨텐츠의 엣지를 관장함 - > UIEdgeInsets 확인
     func setInsets(vertical: CGFloat, horizonal: CGFloat) {
         self.contentEdgeInsets = UIEdgeInsets(top: vertical,

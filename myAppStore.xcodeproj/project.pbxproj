@@ -27,7 +27,6 @@
 		70C6406125404DC500D06B6A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406025404DC500D06B6A /* UIImageView+Extension.swift */; };
 		70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406225406B3E00D06B6A /* UILabel+Extension.swift */; };
 		70C6406525407D1600D06B6A /* GetBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C6406425407D1600D06B6A /* GetBasicButton.swift */; };
-		70CEE6F3253D986300569C10 /* DetailStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6F2253D986200569C10 /* DetailStarRatingView.swift */; };
 		70CEE6F5253DA0F300569C10 /* DetailStarRatingViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6F4253DA0F300569C10 /* DetailStarRatingViewSecond.swift */; };
 		70CEE6FB253DA94400569C10 /* DetailThirdCapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6FA253DA94400569C10 /* DetailThirdCapturedImageView.swift */; };
 		70CEE6FD253DA98000569C10 /* CapturedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */; };
@@ -43,6 +42,7 @@
 		70CEE715253ECB9700569C10 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE714253ECB9700569C10 /* UIView+Extension.swift */; };
 		70CEE718253F1F1F00569C10 /* StarRatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */; };
 		70CEE71A253F1FDF00569C10 /* ModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEE719253F1FDF00569C10 /* ModuleView.swift */; };
+		70DD5C7E2546AE4000738B8C /* Binding Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C7D2546AE4000738B8C /* Binding Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,6 @@
 		70C6406025404DC500D06B6A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		70C6406225406B3E00D06B6A /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		70C6406425407D1600D06B6A /* GetBasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBasicButton.swift; sourceTree = "<group>"; };
-		70CEE6F2253D986200569C10 /* DetailStarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStarRatingView.swift; sourceTree = "<group>"; };
 		70CEE6F4253DA0F300569C10 /* DetailStarRatingViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStarRatingViewSecond.swift; sourceTree = "<group>"; };
 		70CEE6FA253DA94400569C10 /* DetailThirdCapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThirdCapturedImageView.swift; sourceTree = "<group>"; };
 		70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		70CEE714253ECB9700569C10 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingImageView.swift; sourceTree = "<group>"; };
 		70CEE719253F1FDF00569C10 /* ModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleView.swift; sourceTree = "<group>"; };
+		70DD5C7D2546AE4000738B8C /* Binding Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding Data.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				70013971253AF0F600595C03 /* AppStoreModel.swift */,
+				70DD5C7D2546AE4000738B8C /* Binding Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,7 +165,6 @@
 				706CA916253AF8EE00E22783 /* DetailViewController.swift */,
 				706CA919253B13E300E22783 /* DetailTopView.swift */,
 				706CA91B253B1FED00E22783 /* DetailSecondView.swift */,
-				70CEE6F2253D986200569C10 /* DetailStarRatingView.swift */,
 				70CEE6F4253DA0F300569C10 /* DetailStarRatingViewSecond.swift */,
 				70CEE6FA253DA94400569C10 /* DetailThirdCapturedImageView.swift */,
 				70CEE6FC253DA98000569C10 /* CapturedImageCollectionViewCell.swift */,
@@ -312,6 +312,7 @@
 				70CEE713253EBF6D00569C10 /* BaseViewController.swift in Sources */,
 				70CEE703253EA3E600569C10 /* UIButton+Extension.swift in Sources */,
 				706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */,
+				70DD5C7E2546AE4000738B8C /* Binding Data.swift in Sources */,
 				7001396F253AB9CA00595C03 /* StarRatingView.swift in Sources */,
 				7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */,
 				70CEE710253EBD0A00569C10 /* ViewProtocol.swift in Sources */,
@@ -324,7 +325,6 @@
 				70C6405F25403BAD00D06B6A /* Double+Extension.swift in Sources */,
 				7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */,
 				70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */,
-				70CEE6F3253D986300569C10 /* DetailStarRatingView.swift in Sources */,
 				70C6406525407D1600D06B6A /* GetBasicButton.swift in Sources */,
 				70CEE6FB253DA94400569C10 /* DetailThirdCapturedImageView.swift in Sources */,
 				70CEE701253EA23500569C10 /* UIStackView+Extension.swift in Sources */,

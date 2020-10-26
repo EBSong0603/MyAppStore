@@ -1,178 +1,89 @@
-//
 //  SecondShortInformView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
-class DetailSecondView: UIView {
-    
-    
-    
-    private let ratingStackView: UIStackView = {
-        
+class DetailSecondView: ModuleView {
 
-    
-        let ratingView: DetailStarRatingViewSecond = {
-           let view = DetailStarRatingViewSecond()
-            
-            return view
-            
-        }()
-        
-        
-        
-        let reviewCountLabel: UILabel = {
-            let label = UILabel()
-            label.text = "256 Ratings"
-            label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 12)
-            return label
-            
-        }()
-        
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [ratingView, reviewCountLabel])
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.spacing = 0
-    
-        
+    private let ratingVStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.setStackViewStyle(axis: .vertical, spacing: 0, distribution: .fillEqually)
         return stackView
     }()
+    private let ratingView: DetailStarRatingViewSecond = {
+         let view = DetailStarRatingViewSecond()
+         return view
+      }()
+     private let reviewCountLabel: UILabel = {
+          let label = UILabel()
+        label.setStyle("256 Ratings", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12))
+          return label
+      }()
     
-    
-    
-    private let similarInformStackView: UIStackView = {
-        
-        let countLabel: UILabel = {
-            let label = UILabel()
-            label.text = "No 40"
-            label.textColor = .gray
-            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-            
-            return label
-            
-        }()
-        
-        let categoryLabel: UILabel = {
-            let label = UILabel()
-            label.text = "여행"
-            label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 12)
-            return label
-            
-        }()
-        let stackView = UIStackView(arrangedSubviews: [countLabel, categoryLabel])
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 2
-     
+    private let similarInfoVStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
         return stackView
-        
+    }()
+    private let countLabel: UILabel = {
+        let label = UILabel()
+        label.setStyle("No 40", textColor: .gray, font: UIFont.systemFont(ofSize: 18, weight: .bold))
+        return label
+    }()
+    private let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.setStyle("여행", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12))
+        return label
     }()
     
-    
-    private let ageStackView: UIStackView = {
-        
-        
-        let ageLabel: UILabel = {
-            
-            let label = UILabel()
-            
-            label.text = "17+"
-            label.textColor = .gray
-            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-            return label
-        }()
-        
-        
-        let infoLabel: UILabel = {
-            
-            let label = UILabel()
-            
-            label.text = "Age"
-            label.textColor = .lightGray
-            label.font = UIFont.systemFont(ofSize: 12)
-            return label
-        }()
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [ageLabel, infoLabel])
-        stackView.distribution = .fillEqually
-        stackView.spacing = 2
-        stackView.axis = .vertical
-    
+    private let ageVStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
         return stackView
-        
-        
     }()
-    
-
+        private let ageLabel: UILabel = {
+         let label = UILabel()
+            label.setStyle("17+", textColor: .gray, font: UIFont.systemFont(ofSize: 18, weight: .bold))
+             return label
+         }()
+        private let infoLabel: UILabel = {
+             let label = UILabel()
+            label.setStyle("Age", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12))
+             return label
+         }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        configureAutoLayouts()
+        ratingVStackView.addArrangedSubviews([ratingView,reviewCountLabel])
+        similarInfoVStackView.addArrangedSubviews([countLabel, categoryLabel])
+        ageVStackView.addArrangedSubviews([ageLabel, infoLabel])
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    
-    
-    
-    private func configureAutoLayouts() {
-        
-        self.addSubview(ratingStackView)
-        self.addSubview(similarInformStackView)
-        self.addSubview(ageStackView)
-        
-        ratingStackView.translatesAutoresizingMaskIntoConstraints = false
-        similarInformStackView.translatesAutoresizingMaskIntoConstraints = false
-        ageStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            
-            ratingStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
-            ratingStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
-            
-            ratingStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-//                        ratingStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            
-            
-//            similarInformStackView.topAnchor.constraint(equalTo: ratingStackView.topAnchor),
-            similarInformStackView.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 120),
-            similarInformStackView.centerYAnchor.constraint(equalTo: ratingStackView.centerYAnchor)
-//            similarInformStackView.bottomAnchor.constraint(equalTo: ratingStackView.bottomAnchor)
-            
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            
-//            ageStackView.topAnchor.constraint(equalTo: similarInformStackView.topAnchor),
-            
-            
-            ageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            ageStackView.centerYAnchor.constraint(equalTo: similarInformStackView.centerYAnchor)
-//            ageStackView.bottomAnchor.constraint(equalTo: similarInformStackView.bottomAnchor)
-            
-            
-        ])
-        
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
+        reviewCountLabel.text = userRC + " " + "Ratings"
     }
-    
-    
-    
+
+    override func configureAutolayouts() {
+        
+        self.addSubview(ratingVStackView)
+        self.addSubview(similarInfoVStackView)
+        self.addSubview(ageVStackView)
+
+        ratingVStackView.top(self.topAnchor, constant: 4)
+        ratingVStackView.leading(self.leadingAnchor, constant: 16)
+        ratingVStackView.bottom(self.bottomAnchor, constant: -4)
+        
+        similarInfoVStackView.leading(ratingVStackView.trailingAnchor, constant: 120)
+        similarInfoVStackView.centerY(ratingVStackView.centerYAnchor)
+        
+        ageVStackView.trailing(self.trailingAnchor, constant: -16)
+        ageVStackView.centerY(similarInfoVStackView.centerYAnchor)
+    }
 }

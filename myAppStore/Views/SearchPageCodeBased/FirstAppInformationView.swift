@@ -68,16 +68,13 @@ class FirstAppInformationView: UIView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry?) {
-        
         guard let data = data else {return}
         starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
-        
         let appIcon = data.artworkUrl512
         appIconImageView.load(with: appIcon)
         
-        //다른식으로 표현가능함!!
         if data.isGameCenterEnabled == true {
             appPurchaseLabel.isHidden = false
         } else {

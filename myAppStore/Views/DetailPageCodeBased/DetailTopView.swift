@@ -4,72 +4,50 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailTopView: UIView {
-    
-    var topcontentData: AppStoreModel.ResultsEntry?
-    
-    static let identifier = "DetailTopView"
+class DetailTopView: ModuleView {
     
     private let appIconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "DearMeAppIcon")
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
-        imageView.contentMode = .scaleAspectFill
+        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 20, contentMode: .scaleAspectFill)
         return imageView
     }()
     
-    private let getButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("받기", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 10
+    private let getButton: GetBasicButton = {
+        let button = GetBasicButton(.lightGray)
+        button.setStyle(.lightGray, title: "받기")
+        button.setInsets(vertical: 5, horizonal: 16)
         return button
     }()
     
     private let furtherButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        button.tintColor = .systemBlue
-        button.scalesLargeContentImage = true
+        button.setImageButton(UIImage(systemName: "square.and.arrow.up")!, tintcolor: .systemBlue, scale: true)
         return button
     }()
-    
-    
+     
     private let appNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "앱이름"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.setStyle("앱이름", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .semibold))
         return label
     }()
     
-    private let subAppNameLabel: UILabel = {
-        
+    private let subAppNameLabel: UILabel = { 
         let label = UILabel()
-        label.text = "서브이름"
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.setStyle("회사이름", textColor: .gray, font: UIFont.systemFont(ofSize: 15))
         return label
     }()
     
     
     private let appInfoVStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.setStackViewStyle(axis: .vertical, spacing: 0, distribution: .fillEqually)
         return stackView
     }()
-    
-    
-    
-    
+ 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.backgroundColor = .white
-        configureAutoLayouts()
         appInfoVStackView.addArrangedSubviews([appNameLabel, subAppNameLabel])
     }
     
@@ -82,67 +60,31 @@ class DetailTopView: UIView {
         appNameLabel.text = data.trackName
         subAppNameLabel.text = data.artistName
     }
-    
-    
-    private func configureAutoLayouts() {
+
+    override func configureAutolayouts() {
         
         self.addSubview(appIconImageView)
         self.addSubview(appInfoVStackView)
         self.addSubview(getButton)
         self.addSubview(furtherButton)
+     
+        appIconImageView.top(self.topAnchor, constant: 2)
+        appIconImageView.leading(self.leadingAnchor, constant: 16)
+        appIconImageView.bottom(self.bottomAnchor)
+        appIconImageView.width(100)
+        appIconImageView.height(100)
+ 
+        appInfoVStackView.top(appIconImageView.topAnchor)
+        appInfoVStackView.leading(appIconImageView.trailingAnchor, constant: 16)
         
-        appIconImageView.translatesAutoresizingMaskIntoConstraints = false
-        appInfoVStackView.translatesAutoresizingMaskIntoConstraints = false
-        getButton.translatesAutoresizingMaskIntoConstraints = false
-        furtherButton.translatesAutoresizingMaskIntoConstraints = false
+        getButton.leading(appIconImageView.trailingAnchor, constant: 16)
+        getButton.bottom(appIconImageView.bottomAnchor)
+        getButton.width(70)
+        getButton.height(28)
         
-        
-        
-        NSLayoutConstraint.activate([
-            
-            appIconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            appIconImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            //            appIconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            appIconImageView.heightAnchor.constraint(equalToConstant: 100),
-            appIconImageView.widthAnchor.constraint(equalToConstant: 100),
-            appIconImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-            
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            
-            
-            appInfoVStackView.topAnchor.constraint(equalTo: appIconImageView.topAnchor),
-            appInfoVStackView.leadingAnchor.constraint(equalTo: appIconImageView.trailingAnchor, constant: 16)
-            
-        ])
-        
-        
-        NSLayoutConstraint.activate([
-            
-            
-            getButton.leadingAnchor.constraint(equalTo: appIconImageView.trailingAnchor, constant: 16),
-            getButton.widthAnchor.constraint(equalToConstant: 60),
-            getButton.heightAnchor.constraint(equalToConstant: 20),
-            getButton.bottomAnchor.constraint(equalTo: appIconImageView.bottomAnchor)
-            
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            
-            furtherButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            furtherButton.bottomAnchor.constraint(equalTo: getButton.bottomAnchor),
-            furtherButton.heightAnchor.constraint(equalToConstant: 20),
-            furtherButton.widthAnchor.constraint(equalToConstant: 20)
-            
-            
-        ])
-        
+        furtherButton.trailing(self.trailingAnchor, constant: -16)
+        furtherButton.bottom(getButton.bottomAnchor)
+        furtherButton.height(20)
+        furtherButton.width(20)
     }
-    
-    
-    
-    
 }
