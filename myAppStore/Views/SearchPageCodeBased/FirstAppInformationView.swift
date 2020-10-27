@@ -16,25 +16,28 @@ class FirstAppInformationView: ModuleView {
     }()
     
     //보통 스택뷰를 쓰면, 스택뷰 아래에 포함될 객체들 적어둠
-    private let appContentsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .vertical,
-                                    spacing: 5, distribution: .fillEqually)
-        return stackView
-    }()
+//    private let appContentsStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.setStackViewStyle(axis: .vertical,
+//                                    spacing: 5, distribution: .fillEqually)
+//        return stackView
+//    }()
+//
+    
+    //위의 스택뷰 코드는 그냥 간단한것을 이니셜라이즈하기엔 코드가 복잡함
+    //그래서 stackView extension에서 새로 반환값이 있는 함수를 지정해주고 그것으로 코드를 아래와 같이 간결하게 만들었다!(return 따로 해줄필요xx)
+    private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 5, distribution: .fillEqually)
     
     private let appNameLabel: BasicLabel = {
         let label = BasicLabel(.appTitle)
         label.setStyle(.appTitle, text: "앱이름")
         return label
     }()
-    
     private let appCategoryLabel: BasicLabel = {
         let label = BasicLabel(.subTitle)
         label.setStyle(.subTitle, text: "카테고리이름")
         return label
-    }()
-    
+    }()  
     private let starRatingView: StarRatingImageView = {
         let view = StarRatingImageView()
         return view
@@ -48,7 +51,6 @@ class FirstAppInformationView: ModuleView {
     }()
     
     private let appPurchaseLabel: BasicLabel = {
-        
         let label = BasicLabel(.purchase)
         label.setStyle(.purchase, text: "앱내구입")
         return label
@@ -56,9 +58,7 @@ class FirstAppInformationView: ModuleView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .white
-        //UIStackView의 extension 함수 사용한 코드
         appContentsStackView.addArrangedSubviews([appNameLabel, appCategoryLabel, starRatingView])
     }
     
@@ -74,6 +74,8 @@ class FirstAppInformationView: ModuleView {
         let appIcon = data.artworkUrl512
         appIconImageView.load(with: appIcon)
         
+//        appPurchaseLabel.isHidden = !data.isGameCenterEnabled
+        //위의 코드와 아래 코드는 같다 -> 두개의 Bool 값이 서로 반대되는 중이잖어
         if data.isGameCenterEnabled == true {
             appPurchaseLabel.isHidden = false
         } else {

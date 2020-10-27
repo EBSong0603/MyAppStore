@@ -22,6 +22,8 @@ class SecondAppInformationView: ModuleView {
     }
     
     func setImageViews(_ urls: [String]) {
+        captureImageStackView.removeAllSubViews()
+        
         var myView: [UIImageView] = []
         for url in urls {
             let imageView = UIImageView()
@@ -31,7 +33,6 @@ class SecondAppInformationView: ModuleView {
             imageView.layer.cornerRadius = 7
         }
         captureImageStackView.addArrangedSubviews(myView)
-//        captureImageStackView.removeSubviews(myView)
     }
     
     override func configureAutolayouts() {

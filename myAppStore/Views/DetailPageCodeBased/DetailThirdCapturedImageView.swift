@@ -7,6 +7,7 @@ import UIKit
 class DetailThirdCapturedImageView: ModuleView {
     
     var screenshotData: [String] = []
+    
     private let collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -58,7 +59,7 @@ extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

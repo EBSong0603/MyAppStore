@@ -34,7 +34,6 @@ class DetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setNavigationBar()
         prepareScrollView()
         detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView])
@@ -56,7 +55,6 @@ class DetailViewController: BaseViewController {
     }
     
     override func configureAutolayouts() {
-
         view.addSubview(scrollView)
         scrollView.addSubview(detailContentVStackView)
   

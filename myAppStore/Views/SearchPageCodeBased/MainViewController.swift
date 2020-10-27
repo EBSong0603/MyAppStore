@@ -7,17 +7,30 @@ import UIKit
 //BaseViewController를 상속하고 있는 뷰컨임
 class MainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
-    var model: AppStoreModel?
+//   private var model: AppStoreModel?
+    
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
-    
     //didSet: 앞으로 변할 값이 정해지고, 그값이 변할때마다 어떤 것을 하도록 함(didSet 안에 있는 어떤것을 호출하거나 실행하기함)
-    //didSet이 적혀있는 이 단하나의 ViewController에서 밖에 못씀
+    //didSet이 적혀있는 이 단하나의 ViewController 안에서 밖에 못씀
     private var models: [AppStoreModel.ResultsEntry] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
         }
     }
+    
+    //프라이빗 변수 Bool 값을 만듬 : "이게 클로져의 형태임" (여기서는 private으로 했지만 전역변수 (static)으로 만들어서 다른 뷰컨에서도 접근 가능하게 바꾸기
+    //변수 isCompleted는 Bool 값을 가진 클로져 타입! 이라는 뜻임, 이렇게 표현함 -> ((Bool) -> Void)
+    //Bool 값이 들어간 그 안에 두가지가 들어갈 수도 있음 Int: Int 이런식?(찾아보기)
+    //아마 얘가 숙제의 디테일뷰(두번째뷰)에 넣어져야 할 코드가 아닐까 싶음 ?
+    private var isCompleted: ((Bool) -> Void)?
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +39,23 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         view.backgroundColor = .white
         prepareTableView()
         setNavigationBar()
+        
+        
+        
+        
+        
+        //값이 바뀌는것을 주시하고 있다가 값이 바뀌자마자 감지하고 무언가를 해주기 위한 코드 (viewDidLoad같은 곳에 쓴다)
+        //값이 바뀐것이 행동된 것은 아래의 URLSession 호출시 isCompleted 값에 false, true 값 각각 넣어준것이 변화가 일어난 순간인 것
+        isCompleted = { Bool in
+            print("completed = \(Bool)")
+        }
+    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        tableView.reloadData()
     }
     
     private func setNavigationBar() {
@@ -45,55 +69,86 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     }
     
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
-        if mySearchController.searchBar.text == "" {
-            self.tableView.reloadData()
+
+        guard let text = mySearchController.searchBar.text else {
+            models = []
+            return}
+        if text.isEmpty {
+            models = []
         } else {
-            let url2 = "https://itunes.apple.com/search?entity=software&country=KR"
-            let url = "https://itunes.apple.com/search?entity=software&country=KR&term=\(text)"
-            guard let target = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
-            URLSession.shared.dataTask(with: URL(string: target) ?? URL(string: url2)!,
-                                       completionHandler: {data, reponse, error in
-                                        guard let data = data, error == nil else {
-                                            print("Something Wrong")
-                                            return
-                                        }
-            self.bindData(with: data)
-            self.updateUI()
-            }).resume()
+            
+            //이것이 감지기 역할을 할 수 있는 이유는 클로저인 responseData 가 매개변수로 쓰인 함수 requestData를 불러줬기 때문이고 그 안에 있는
+            //매개변수 responseData의 값(그 안에 들어있는 값)을 사용해서 뭔갈 해줄수 있는것
+            //self.requestData의 함수를 부르면 자동으로 나오고 나오는 매개변수 'response'에 가서 엔터를 눌러 깨면 그 resonseData 값을
+            //이용해서 클로져 감지기를 만들수 있게 된다
+            //함수안의 매개변수가 클로져 타입이기 때문에 함수를 불러야만 이 클로져 감지기 코드를 만들수 있고 함수안의 매개변수이기 때문에 =이 쓰이지 않는 코드가 된다
+            //사실상 내가 정한 models 란 값은 아래의 함수안에서 response에 대입되는 안에 있는 값이라고 할수 있다
+            //클로져 감지기 역할을 하려면 전역이든 프라이빗이든 변수가 잇어야 하는데 여긴 없잖아 왜냐면 함수 안에서 썼기 때문에 (response)!
+            //그렇기 때문에 escaping 과정을 통해서 하나의 독립적인 존재로 그전함수에서 튀어나왔고, 그걸 가지고 위의 isCompleted 처럼 하나의 독립적인 변수로서
+            //클로져 감지기 역할을 할수 있는 코드를 구성할 수있는게 아닐까?
+            self.requestData(term: text) { [weak self] models in
+                self?.models = models
+                self?.isCompleted?(true)
+            }
         }
     }
     
-    func bindData(with data: Data) {
-        var json: AppStoreModel?
-        
-        do {
-            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
-        } catch {
-            print("error: \(error)")
-        }
-        guard let result = json else {return}
-        self.model = result
+    
+    //@escaping (탈출)과 Closure(클로져)는 같이 갈수 밖에 없다. 이스케이핑을 쓰려면 클로져는 무조건 써야한다 '탈출클로져' 로서
+    //@escaping 을 쓰는 이유는 이 함수에서 값을 완전히 받아와서 아예 다른 함수에서 사용해야 하기 때문에 탈출을 쓸수 밖에없음
+    //그리고 이스케이핑을 여기서 쓰는 이유는 보통 비동기 처리 할때임 = 비동기 처리란? = 여러가지 과정을 거쳐서 오래걸리는 어떤 처리를 할때 씀
+    //동기 처리란? = 간단한 함수등 빠르게 끝나는 것
+    //이 예제는 클로져를 함수안에서, 매개변수에서 쓴 예임 (그냥 클로져를 따로 쓰는거랑은 방식의 차이가있음)
+    //매개변수인 responseData는 탈출, 클로져임
+    //클로져인 responseData (타입은 : [AppStoreModel.ResultsEntry]) 가 클로져로서 값을 받아 result.results가 들어가서, 변하고 그것이 위의 클로져 감지기코드에 감지되는 순간! 어떤행위를 해줄것이다~ 라는 코드가 클로져 감지기 코드 안에 들어감
+    //클로져감지기 = self.requestData(term: text) 함수의 매개변수 뒤의 코드 { models in } 가 클로져 감지기임
+    //그 클로져감지기 안의 in 뒤에 내가 바꿔줄 변화를 넣어줄 수 있다 (뭘 해라! 뭘 바꿔라 등등)
+    //위의 작업은 만들어준 변수 models에 클로져감지기로 감지한 responseData의 값을 (내가 지정한 이름 아무거나 (models) 라고 지정하든 뭐든) 그 값을 넣어준다는 행위함
+    private func requestData(term: String, responseData: @escaping (([AppStoreModel.ResultsEntry]) -> Void)) {
+        let urlSting = "https://itunes.apple.com/search?entity=software&country=KR&term=\(term)"
+        guard let target = urlSting.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
+        guard let url = URL(string: target) else {return}
+        URLSession.shared.dataTask(with: url,
+                                   completionHandler: {data, reponse, error in
+                                    guard let data = data, error == nil else {
+                                        print("Something Wrong")
+                                        self.isCompleted?(false)
+                                        return
+                                    }
+                                    
+                                    var json: AppStoreModel?
+                                    
+                                    do {
+                                        json = try JSONDecoder().decode(AppStoreModel.self, from: data)
+                                    } catch {
+                                        print("error: \(error)")
+                                    }
+                                    guard let result = json else {return}
+                                    responseData(result.results)
+//                                    self.bindData(with: data)
+        }).resume()
     }
     
-    func updateUI() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+//
+//    func bindData(with data: Data) {
+//        var json: AppStoreModel?
+//
+//        do {
+//            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
+//        } catch {
+//            print("error: \(error)")
+//        }
+//        guard let result = json else {return}
+//        self.models = result.results
+//    }
+//
+  
     
-    //BaseViewController를 인풋했기때문에 그 뷰컨안에서 정의해 놓은 것들은 override로 써야 함
-    //이미 삽입한 뷰컨에서 configureAutolayouts 가 func으로 있기 때문에 이건 override 된것임
-    //그리고 그 삽입한 뷰컨안에서 이미 viewdidload안에 configure- 가 호출된게 이미 셋팅되어 있기 때문에
-    //그 뷰컨을 삽입한 이 MainViewController에서는 따로 또 호출해줄 필요 없음!
     override func configureAutolayouts() {
         view.addSubview(tableView)
         tableView.edges(self.safeArea)
-        //extension중 Date extension 과 string extension 확인하기 위해 쓴 코드(아래)
-        //        let now: Date = Date()
-        //        let str: String = now.dateToString(format: "yyyy-MM-dd")
-        //        print("now = \(str)")
-        //        print("nowDate = \(str.stringToDate(format: "yyyy-MM-dd"))")
     }
+    
     private func prepareTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -105,10 +160,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
 }
 
 extension MainViewController: UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -117,26 +168,42 @@ extension MainViewController: UITableViewDataSource {
     //        300
     //    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.resultCount ?? 0
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FirstSearchPageTableViewCell.identifier,
                                                  for: indexPath) as! FirstSearchPageTableViewCell
-        if let model = model?.results {
-            cell.setData(with: model[indexPath.row])
-        }
+        let model = models[indexPath.row]
+            cell.setData(with: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc: DetailViewController = DetailViewController()
-        if let item = model?.results {
-            vc.data = item[indexPath.row]
-        }
+        let model = models[indexPath.row]
+        vc.data = model
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
+
+
+//알파값 변화해서 자연스러운 애니메이션 주는 코드//--------------------------------------//
+        //alpha 값은 투명도, alpha 값이 1 = 완전투명 / alpha 값이 0 = 완전불투명
+        //offset이 변함에 따라 컨텐츠의 유무가 아닌, 투명도를 조절해준다
+//        UIView.transition(with: view, duration: 0.2, options: .transitionCrossDissolve, animations: {
+//            if contentOffsetY <= 18 {
+//                self.titleLabel.alpha = 0
+//
+//            } else {
+//                self.titleLabel.alpha = 1
+//            }
+//        }, completion: nil)
+//
+
+
 
 //private extension UIViewController {
 //    func setNaviCustomColor(_ color: UIColor, shadowAlpha: CGFloat = 0.5) {
