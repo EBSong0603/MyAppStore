@@ -42,6 +42,11 @@ extension UIView {
         self.widthAnchor.constraint(equalTo: equalTo).isActive = true
     }
     
+    func heightDemension(_ euqalTo: NSLayoutDimension) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.heightAnchor.constraint(equalTo: euqalTo).isActive = true
+    }
+    
     func height(_ equalToConstant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true

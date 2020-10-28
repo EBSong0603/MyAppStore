@@ -59,14 +59,11 @@ class FirstSearchPageTableViewCell: BaseTableViewCell {
             if urls.count > 2 {return urls} //urls의 갯수가 3개가 넘어가는 순간 그냥 return 시킨다, urls로
             urls.append(url)
         }
+        
         return urls
     }
     
-    
-    
-    
-    
-    
+
     
     override func configureAutolayouts() {
         contentView.addSubview(firstView)

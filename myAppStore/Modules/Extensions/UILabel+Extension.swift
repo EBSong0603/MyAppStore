@@ -19,4 +19,14 @@ extension UILabel {
         self.font = font
         self.textAlignment = textAlignment
     }
+    
+    
+    func setSimple(_ text: String, textColor: UIColor, font: UIFont, textAlignment: NSTextAlignment = .left) -> UILabel {
+        let label = UILabel()
+        self.text = text
+        self.textColor = textColor
+        self.font = font
+        self.textAlignment = textAlignment
+        return label
+    }
 }

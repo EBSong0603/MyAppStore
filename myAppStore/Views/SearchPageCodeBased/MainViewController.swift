@@ -86,6 +86,9 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
             //클로져 감지기 역할을 하려면 전역이든 프라이빗이든 변수가 잇어야 하는데 여긴 없잖아 왜냐면 함수 안에서 썼기 때문에 (response)!
             //그렇기 때문에 escaping 과정을 통해서 하나의 독립적인 존재로 그전함수에서 튀어나왔고, 그걸 가지고 위의 isCompleted 처럼 하나의 독립적인 변수로서
             //클로져 감지기 역할을 할수 있는 코드를 구성할 수있는게 아닐까?
+            
+            //그리고 [weak self] 약한참조라는 개념으로, 참조할 self 가 존재할 경우, 그 self를 확실하게 참조하지 않고 하지 않을수도 있는 경우의 수를 제공함으로서
+            //좀더 안전한 코드를 만드는 것(부담도 적고)
             self.requestData(term: text) { [weak self] models in
                 self?.models = models
                 self?.isCompleted?(true)
@@ -96,7 +99,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     
     //@escaping (탈출)과 Closure(클로져)는 같이 갈수 밖에 없다. 이스케이핑을 쓰려면 클로져는 무조건 써야한다 '탈출클로져' 로서
     //@escaping 을 쓰는 이유는 이 함수에서 값을 완전히 받아와서 아예 다른 함수에서 사용해야 하기 때문에 탈출을 쓸수 밖에없음
-    //그리고 이스케이핑을 여기서 쓰는 이유는 보통 비동기 처리 할때임 = 비동기 처리란? = 여러가지 과정을 거쳐서 오래걸리는 어떤 처리를 할때 씀
+    //그리고 @escaping을 여기서 쓰는 이유는 보통 비동기 처리 할때임 = 비동기 처리란? = 여러가지 과정을 거쳐서 오래걸리는 어떤 처리를 할때 씀
     //동기 처리란? = 간단한 함수등 빠르게 끝나는 것
     //이 예제는 클로져를 함수안에서, 매개변수에서 쓴 예임 (그냥 클로져를 따로 쓰는거랑은 방식의 차이가있음)
     //매개변수인 responseData는 탈출, 클로져임

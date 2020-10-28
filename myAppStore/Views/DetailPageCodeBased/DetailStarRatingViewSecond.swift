@@ -73,6 +73,7 @@ class DetailStarRatingViewSecond: UIView {
        override init(frame: CGRect) {
            super.init(frame: frame)
         
+    
            configureAutoLayouts()
            self.backgroundColor = .white
          
@@ -92,34 +93,34 @@ class DetailStarRatingViewSecond: UIView {
            self.addSubview(starImageViewThree)
            self.addSubview(starImageViewFour)
            self.addSubview(starImageViewFive)
-           self.addSubview(ratingLabel)
+//           self.addSubview(ratingLabel)
            
            starImageViewOne.translatesAutoresizingMaskIntoConstraints = false
            starImageViewTwo.translatesAutoresizingMaskIntoConstraints = false
            starImageViewThree.translatesAutoresizingMaskIntoConstraints = false
            starImageViewFour.translatesAutoresizingMaskIntoConstraints = false
            starImageViewFive.translatesAutoresizingMaskIntoConstraints = false
-           ratingLabel.translatesAutoresizingMaskIntoConstraints = false
+//           ratingLabel.translatesAutoresizingMaskIntoConstraints = false
            
         
         
-        NSLayoutConstraint.activate([
+//        NSLayoutConstraint.activate([
+////
+////            ratingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+//            ratingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+//            ratingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 //
-//            ratingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            ratingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            ratingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            
-        
-        
-        ])
+//
+//
+//        ])
            
            
            NSLayoutConstraint.activate([
                
 //            starImageViewOne.topAnchor.constraint(equalTo: ratingLabel.topAnchor),
 //            starImageViewOne.leadingAnchor.constraint(equalTo: ratingLabel.trailingAnchor, constant: 4),
-            starImageViewOne.leadingAnchor.constraint(equalTo: ratingLabel.trailingAnchor, constant: 4),
-            starImageViewOne.centerYAnchor.constraint(equalTo: ratingLabel.centerYAnchor),
+            starImageViewOne.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            starImageViewOne.centerYAnchor.constraint(equalTo: self.centerYAnchor),
                starImageViewOne.heightAnchor.constraint(equalToConstant: 18),
                starImageViewOne.widthAnchor.constraint(equalToConstant: 18)
               

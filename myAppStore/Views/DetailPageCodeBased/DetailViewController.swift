@@ -24,9 +24,19 @@ class DetailViewController: BaseViewController {
         return view
     }()
     
+    private let forthView: DetailForthPhoneView = {
+       let view = DetailForthPhoneView()
+        return view
+    }()
+    
+    private let fifthView: DetailFifthDiscriptionView = {
+       let view = DetailFifthDiscriptionView()
+        return view
+    }()
+    
     private let detailContentVStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
@@ -36,7 +46,7 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         setNavigationBar()
         prepareScrollView()
-        detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView])
+        detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView, forthView, fifthView])
         guard let data = data else {return}
         topView.setData(with: data)
         secondView.setData(with: data)
@@ -64,6 +74,8 @@ class DetailViewController: BaseViewController {
         detailContentVStackView.trailing(scrollView.contentLayoutGuide.trailingAnchor)
         detailContentVStackView.bottom(scrollView.contentLayoutGuide.bottomAnchor)
         detailContentVStackView.widthDemension(scrollView.frameLayoutGuide.widthAnchor)
+        //만약 가로 스크롤로 바꾸고 싶으면 scrollView.frameLayoutGuide.heightAnchor 로 contraint를 주면됨
+        
     }
 }
 
