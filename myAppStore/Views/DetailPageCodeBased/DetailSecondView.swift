@@ -6,6 +6,8 @@ import UIKit
 
 class DetailSecondView: ModuleView, UIScrollViewDelegate {
     
+  
+    
     //1. 스택뷰안의 스택뷰를 넣는다
     //만약 스택뷰를 스크롤되게 할거면 일단 지금여기 detailSecondView에다가 스크롤뷰를 올리고 그 스크롤뷰 위에 total 스택뷰를 올린다
     //그 다음 total 스택뷰 위에 각각 스택뷰를 또 올려준다(ratingVStackView, similarInfoVStackView, ageVStackView...그외)
@@ -42,6 +44,8 @@ class DetailSecondView: ModuleView, UIScrollViewDelegate {
     func setData(with data: AppStoreModel.ResultsEntry) {
 //        let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
 //        reviewCountLabel.text = userRC + " " + "Ratings"
+        firstView.setData(with: data)
+    
     }
     
     override func configureAutolayouts() {

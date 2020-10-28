@@ -13,7 +13,7 @@ class DetailFifthDiscriptionView: ModuleView {
     
     private let vStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .vertical, spacing: 10, distribution: .fillEqually)
+        stackView.setStackViewStyle(axis: .vertical, spacing: 10, distribution: .equalSpacing)
         return stackView
     }()
     
@@ -36,13 +36,15 @@ class DetailFifthDiscriptionView: ModuleView {
         
        let label = UILabel()
         label.setStyle("dkdkdkdk", textColor: .black, font: UIFont.systemFont(ofSize: 15))
+        label.numberOfLines = 0
+        
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .yellow
-     
+        longLabel.isHidden = true
         vStackView.addArrangedSubviews([pracView, longLabel])
         ppbutton.addTarget(self, action: #selector(clickec), for: .touchUpInside)
         
@@ -60,13 +62,13 @@ class DetailFifthDiscriptionView: ModuleView {
     
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
+        longLabel.text = data.description
     }
     
     override func configureAutolayouts() {
         self.addSubview(vStackView)
         self.addSubview(ppbutton)
-        vStackView.edges(self)
+        vStackView.edges(self, vConstant: 0, hConstant: 16)
         ppbutton.edges(self)
     }
     

@@ -14,7 +14,7 @@ class DetailFifthTopView: ModuleView {
     private let shortInfoLabel: UILabel = {
         
        let label = UILabel()
-        label.setStyle("dddddd", textColor: .black, font: UIFont.systemFont(ofSize: 15))
+        label.setStyle("간략소개", textColor: .black, font: UIFont.systemFont(ofSize: 15))
         return label
     }()
     

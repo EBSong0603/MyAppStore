@@ -51,6 +51,7 @@ class DetailViewController: BaseViewController {
         topView.setData(with: data)
         secondView.setData(with: data)
         thirdView.setData(with: data.screenshotUrls)
+        fifthView.setData(with: data)
         view.backgroundColor = .white
     }
     

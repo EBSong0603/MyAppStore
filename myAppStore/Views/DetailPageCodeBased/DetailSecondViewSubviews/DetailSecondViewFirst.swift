@@ -41,6 +41,13 @@ class DetailSecondViewFirst: ModuleView {
     }
     
 
+    func setData(with data: AppStoreModel.ResultsEntry) {
+         let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
+        reviewCountLabel.text = "\(userRC) 개의 리뷰"
+        
+        ratingIntLabel.text = "\(Double(data.averageUserRating))"
+    }
+    
     override func configureAutolayouts() {
 
         self.addSubview(ratingVStackView)
