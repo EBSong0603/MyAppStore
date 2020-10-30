@@ -8,7 +8,7 @@ class SecondAppInformationView: ModuleView {
    
     private let captureImageStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .horizontal, spacing: 10, distribution: .fillEqually)
+        stackView.setStackViewStyle(axis: .horizontal, spacing: 5, distribution: .fillEqually)
         return stackView
     }()
     
@@ -33,7 +33,7 @@ class SecondAppInformationView: ModuleView {
 //            imageView.layer.cornerRadius = 7
 //        }
 //
-        //위의 for문과 아래 forEach 문은 같은것!
+        //위의 for문과 아래 forEach 문은 같은것! in 뒤에는 어떤 수행, 액션이 들어감
         urls.forEach { url in
             let imageView = UIImageView()
             imageView.load(with: url)
@@ -41,26 +41,13 @@ class SecondAppInformationView: ModuleView {
             imageView.clipsToBounds = true
             imageView.layer.cornerRadius = 7
         }
-        
-        
-        
-        
-        
-        
         captureImageStackView.addArrangedSubviews(myView)
     }
-    
-    
-    
-    
-    
-    
-    
+ 
     override func configureAutolayouts() {
         self.addSubview(captureImageStackView)
         captureImageStackView.edges(self, vConstant: 4, hConstant: 16)
-        captureImageStackView.height(200)
-        
+        captureImageStackView.height(180)
     }
 }
 

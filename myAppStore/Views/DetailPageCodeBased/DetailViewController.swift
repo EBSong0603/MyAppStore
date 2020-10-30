@@ -29,10 +29,17 @@ class DetailViewController: BaseViewController {
         return view
     }()
     
-    private let fifthView: DetailFifthDiscriptionView = {
-       let view = DetailFifthDiscriptionView()
+    private let fifthView: DetailFifthDescriptionView = {
+       let view = DetailFifthDescriptionView()
         return view
     }()
+    
+    private let sixthView: DetailSixthView = {
+          let view = DetailSixthView()
+           return view
+       }()
+    
+    
     
     private let detailContentVStackView: UIStackView = {
         let stackView = UIStackView()
@@ -46,7 +53,7 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         setNavigationBar()
         prepareScrollView()
-        detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView, forthView, fifthView])
+        detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView, forthView, fifthView, sixthView])
         guard let data = data else {return}
         topView.setData(with: data)
         secondView.setData(with: data)

@@ -74,13 +74,13 @@ class FirstAppInformationView: ModuleView {
         let appIcon = data.artworkUrl512
         appIconImageView.load(with: appIcon)
         
-//        appPurchaseLabel.isHidden = !data.isGameCenterEnabled
+        appPurchaseLabel.isHidden = !data.isGameCenterEnabled
         //위의 코드와 아래 코드는 같다 -> 두개의 Bool 값이 서로 반대되는 중이잖어
-        if data.isGameCenterEnabled == true {
-            appPurchaseLabel.isHidden = false
-        } else {
-            appPurchaseLabel.isHidden = true
-        }
+//        if data.isGameCenterEnabled == true {
+//            appPurchaseLabel.isHidden = false
+//        } else {
+//            appPurchaseLabel.isHidden = true
+//        }
     }
     
     override func configureAutolayouts() {

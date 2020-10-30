@@ -49,6 +49,16 @@ class FirstSearchPageTableViewCell: BaseTableViewCell {
         //일급객체로서의 함수란? -> 반환값을 가지고 있는 함수는 상수나 변수에 담지 않고 반환값을 그대로 쓸수 있습니다!
         //아래처럼! 한줄로 쓸수 있다! (그 함수의 반환값을 그냥 바로 대입시키는 식으로 쓸수 있는겨)
         secondView.setImageViews(filteredImageUrls(with: cellData))
+        
+//        secondView.setImageViews({(data: AppStoreModel.ResultsEntry) -> [String] in
+//            let urlArray2: [String] = data.screenshotUrls
+//            var urls: [String] = []
+//            for url in urlArray2 {
+//                if urls.count > 2 {return urls}
+//                urls.append(url)
+//            }
+//            return urls
+//        })
     }
     
     //이미지 3장만 뽑아오기! function -> forEach로 바꿔보기
@@ -59,12 +69,9 @@ class FirstSearchPageTableViewCell: BaseTableViewCell {
             if urls.count > 2 {return urls} //urls의 갯수가 3개가 넘어가는 순간 그냥 return 시킨다, urls로
             urls.append(url)
         }
-        
         return urls
     }
-    
-
-    
+ 
     override func configureAutolayouts() {
         contentView.addSubview(firstView)
         contentView.addSubview(secondView)

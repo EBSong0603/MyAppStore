@@ -10,7 +10,14 @@ import UIKit
 
 class DetailSecondViewFirst: ModuleView {
     
-    private let ratingVStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)
+ 
+    private let ratingVStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.setStackViewStyle(axis: .vertical, spacing: 0, distribution: .fillEqually)
+        stackView.alignment = .center
+        
+        return stackView
+    }()
 
     private let ratingIntLabel: UILabel = {
          let label = UILabel()
@@ -24,13 +31,13 @@ class DetailSecondViewFirst: ModuleView {
          return label
      }()
 
-     private let ratingView = DetailStarRatingViewSecond()
+     private let ratingView = DetailStarRatingStackView()
         
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        self.width(150)
+//        self.width(150)
 
         ratingVStackView.addArrangedSubviews([reviewCountLabel, ratingIntLabel, ratingView])
         
@@ -46,6 +53,7 @@ class DetailSecondViewFirst: ModuleView {
         reviewCountLabel.text = "\(userRC) 개의 리뷰"
         
         ratingIntLabel.text = "\(Double(data.averageUserRating))"
+        ratingView.setData(with: data)
     }
     
     override func configureAutolayouts() {

@@ -89,12 +89,22 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
             
             //그리고 [weak self] 약한참조라는 개념으로, 참조할 self 가 존재할 경우, 그 self를 확실하게 참조하지 않고 하지 않을수도 있는 경우의 수를 제공함으로서
             //좀더 안전한 코드를 만드는 것(부담도 적고)
-            self.requestData(term: text) { [weak self] models in
+            self.requestData(term: text, responseData: { [weak self] models in
                 self?.models = models
                 self?.isCompleted?(true)
-            }
+            })
+            
+            
         }
     }
+    
+    
+    //만약 내가 함수 내부의 매개변수를 클로져로 만들고 그것을 escaping 으로 만들지 않는다면 클로져 감지기도 결국 다 함수 안에서 일어나야한다.
+    //클로져타입인 매개변수를 만드는 일도, 그 매개변수의 값이 변화하는 일도 그리고 걔의 변화 감지기도 결국 다 함수안에서 일어나게 됨
+    //그렇다면 무슨 의미가 있나??? 비동기적 처리를 위해 이 API 통신 함수도 다른데서 불러주는데, 그 안에서 다 해야하면 결국 쓰나마다이다
+    //함수의 매개변수로서 다른데서 쓰고싶다면 escaping을 해라!
+    //저 밑의 함수 completionHandler도 이미 다른 함수에서 escaping 해서 나와서 다른 함수 (requestData_내가 만듬)에서 쓰일수 있는겨, 클로져 감지기형태로!
+    //아래 함수에서 매개변수인 responseData에 값이 들어가는 순간 escaping 될것이고 그것은 클로져 감지기에 감지되어 변화가 감지되는 순간 그 안의 어떤일을 수행할것임
     
     
     //@escaping (탈출)과 Closure(클로져)는 같이 갈수 밖에 없다. 이스케이핑을 쓰려면 클로져는 무조건 써야한다 '탈출클로져' 로서
@@ -128,6 +138,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
                                     }
                                     guard let result = json else {return}
                                     responseData(result.results)
+                                   
 //                                    self.bindData(with: data)
         }).resume()
     }

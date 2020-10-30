@@ -9,12 +9,17 @@
 import UIKit
 
 class DetailSEcondViewThird: ModuleView {
-    
-      private let developerInfoVStackView = UIStackView().style(axis: .vertical, spacing: 2, distribution: .equalSpacing)
+
+    private let developerInfoVStackView: UIStackView = {
+    let stackView = UIStackView()
+        stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
+        stackView.alignment = .center
+        return stackView
+    }()
    
        private let devLabel: UILabel = {
           let label = UILabel()
-        label.setStyle("개발자", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
+        label.setStyle("개발자", textColor: .lightGray, font: UIFont.systemFont(ofSize: 15), textAlignment: .center)
            return label
        }()
     
@@ -29,7 +34,7 @@ class DetailSEcondViewThird: ModuleView {
      
     private let devName: UILabel = {
        let label = UILabel()
-        label.setStyle("아무개", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
+        label.setStyle("아무개", textColor: .lightGray, font: UIFont.systemFont(ofSize: 15), textAlignment: .center)
            return label
        }()
        
@@ -50,7 +55,9 @@ class DetailSEcondViewThird: ModuleView {
     }
     
     
-    
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        devName.text = data.artistName
+    }
     override func configureAutolayouts() {
         self.addSubview(developerInfoVStackView)
         
