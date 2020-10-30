@@ -250,11 +250,6 @@
 				70C6406425407D1600D06B6A /* GetBasicButton.swift */,
 				70A16EF5254410C900FEC0DF /* BasicLabel.swift */,
 				70EAFAA7254C23F000C6BAED /* RatingStarImageView.swift */,
-				70EAFAA9254C2B8200C6BAED /* RatingStarFiveStackView.swift */,
-				70EAFAAB254C35FF00C6BAED /* RatingStarFourStackView.swift */,
-				70EAFAAD254C389700C6BAED /* RatingStarThreeStackView.swift */,
-				70EAFAAF254C390C00C6BAED /* RatingStarTwoStackView.swift */,
-				70EAFAB1254C393200C6BAED /* RatingStarOneStackView.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -342,9 +337,22 @@
 			isa = PBXGroup;
 			children = (
 				70EAFAA1254C0F5000C6BAED /* DetailSixthViewSecondSubviewStar.swift */,
+				70EAFAB6254C75AB00C6BAED /* RatingStarViews */,
 				70EAFAA3254C13F700C6BAED /* DetailSixthViewSecondSubviewStick.swift */,
 			);
 			path = DetailSixthViewSecondSubviews;
+			sourceTree = "<group>";
+		};
+		70EAFAB6254C75AB00C6BAED /* RatingStarViews */ = {
+			isa = PBXGroup;
+			children = (
+				70EAFAA9254C2B8200C6BAED /* RatingStarFiveStackView.swift */,
+				70EAFAAB254C35FF00C6BAED /* RatingStarFourStackView.swift */,
+				70EAFAAD254C389700C6BAED /* RatingStarThreeStackView.swift */,
+				70EAFAAF254C390C00C6BAED /* RatingStarTwoStackView.swift */,
+				70EAFAB1254C393200C6BAED /* RatingStarOneStackView.swift */,
+			);
+			path = RatingStarViews;
 			sourceTree = "<group>";
 		};
 		70EDC26025497DA200A3A0E9 /* DetailSecondView */ = {

@@ -11,21 +11,10 @@ import UIKit
 class DetailSixthViewSecondSubviewStick: ModuleView {
     
     private let reviewStickVStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 4, distribution: .fillEqually)
         return stackView
     }()
-    
-//    private let viewLabel: UILabel = {
-//       let label = UILabel()
-//        label.setStyle("모두보기", textColor: .blue, font: UIFont.systemFont(ofSize: 12))
-//        return label
-//    }()
-//    private let reviewRatingLabel: UILabel = {
-//       let label = UILabel()
-//        label.setStyle("2개의 평가", textColor: .black, font: UIFont.systemFont(ofSize: 12))
-//        return label
-//    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +22,7 @@ class DetailSixthViewSecondSubviewStick: ModuleView {
         
         for _ in 1...5 {
             let imageView: UIImageView = UIImageView()
-            imageView.width(150)
+            imageView.width(180)
             imageView.height(5)
             imageView.backgroundColor = .lightGray
             imageView.clipsToBounds = true
@@ -47,10 +36,8 @@ class DetailSixthViewSecondSubviewStick: ModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func configureAutolayouts() {
         self.addSubview(reviewStickVStackView)
         reviewStickVStackView.edges(self)
-        
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RatingStarFourStackView.swift
+//  RatingStarThreeStackView.swift
 //  myAppStore
 //
 //  Created by 송은비 on 2020/10/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RatingStarFourStackView: ModuleView {
+class RatingStarThreeStackView: ModuleView {
     
     private let hStackView: UIStackView = {
         let stackView = UIStackView()
@@ -19,17 +19,12 @@ class RatingStarFourStackView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        var fourStarViews: [UIView] = []
-        for _ in 1...4 {
-            
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "star.fill")
-            imageView.width(8)
-            imageView.height(8)
-            imageView.tintColor = .gray
-            fourStarViews.append(imageView)
+        var threeStarView: [UIView] = []
+        for _ in 1...3 {  
+            let imageView = ratingStar(.smallStar)
+            threeStarView.append(imageView)
         }
-        hStackView.addArrangedSubviews(fourStarViews)
+        hStackView.addArrangedSubviews(threeStarView)
     }
     
     required init?(coder: NSCoder) {
@@ -41,4 +36,3 @@ class RatingStarFourStackView: ModuleView {
         hStackView.edges(self)
     }
 }
-

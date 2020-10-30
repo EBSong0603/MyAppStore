@@ -8,20 +8,20 @@
 
 import UIKit
 
-
 class ratingStar: UIImageView {
     
     enum StarStyle {
-        case smallStar
-        case middleStar
-        case largeStar
-    }
-    
+         case smallStar
+         case middleStar
+         case largeStar
+     }
+  
     let style: StarStyle
     
     init(_ style: StarStyle) {
         self.style = style
         super.init(frame: .zero)
+        setStyle(style)
     }
     
     required init?(coder: NSCoder) {
@@ -36,20 +36,20 @@ class ratingStar: UIImageView {
         var tintColor: UIColor = .lightGray
         switch style {
         case .smallStar:
-            image = UIImage(systemName: "star")!
-            width = 10
-            height = 10
-            tintColor = .lightGray
+            image = UIImage(systemName: "star.fill")!
+            width = 8
+            height = 8
+            tintColor = .gray
         case .middleStar:
-            image = UIImage(systemName: "star")!
+            image = UIImage(systemName: "star.fill")!
+            width = 12
+            height = 12
+            tintColor = .gray
+        case .largeStar:
+            image = UIImage(systemName: "star.fill")!
             width = 15
             height = 15
-            tintColor = .lightGray
-        case .largeStar:
-            image = UIImage(systemName: "star")!
-            width = 20
-            height = 20
-            tintColor = .lightGray
+            tintColor = .gray
         }
         self.image = image
         self.width(width)

@@ -1,5 +1,5 @@
 //
-//  RatingStarFiveStackView.swift
+//  RatingStarOneStackView.swift
 //  myAppStore
 //
 //  Created by 송은비 on 2020/10/30.
@@ -8,27 +8,19 @@
 
 import UIKit
 
-class RatingStarFiveStackView: ModuleView {
+class RatingStarOneStackView: ModuleView {
     
     private let hStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .horizontal, spacing: 1, distribution: .fillEqually)
         return stackView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        var fiveStarView: [UIView] = []
-        for _ in 1...5 {
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "star.fill")
-            imageView.width(8)
-            imageView.height(8)
-            imageView.tintColor = .gray
-            fiveStarView.append(imageView)
-        }
-        hStackView.addArrangedSubviews(fiveStarView) 
+   
+        let imageView = ratingStar(.smallStar)
+        hStackView.addArrangedSubview(imageView)
     }
     
     required init?(coder: NSCoder) {

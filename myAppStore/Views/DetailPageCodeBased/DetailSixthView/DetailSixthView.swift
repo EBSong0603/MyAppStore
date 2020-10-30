@@ -1,10 +1,7 @@
-//
 //  DetailSixthView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/30.
 //  Copyright © 2020 EB. All rights reserved.
-
 import UIKit
 
 class DetailSixthView: ModuleView {
@@ -12,7 +9,6 @@ class DetailSixthView: ModuleView {
     private let topView = DetailSixthViewFirst()
     private let secondView = DetailSixthViewSecond()
     private let thirdView = DetailSixthViewThird()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
