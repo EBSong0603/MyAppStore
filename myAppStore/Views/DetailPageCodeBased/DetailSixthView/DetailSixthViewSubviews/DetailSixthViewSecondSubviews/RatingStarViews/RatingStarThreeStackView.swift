@@ -1,11 +1,7 @@
-//
 //  RatingStarThreeStackView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/30.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class RatingStarThreeStackView: ModuleView {
@@ -20,10 +16,10 @@ class RatingStarThreeStackView: ModuleView {
         super.init(frame: frame)
         
         var threeStarView: [UIView] = []
-        for _ in 1...3 {  
-            let imageView = ratingStar(.smallStar)
-            threeStarView.append(imageView)
-        }
+            (1...3).forEach { index in
+                let imageView = ratingStar(.smallStar)
+                threeStarView.append(imageView)
+            }
         hStackView.addArrangedSubviews(threeStarView)
     }
     

@@ -1,11 +1,7 @@
-//
 //  RatingStarTwoStackView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/30.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class RatingStarTwoStackView: ModuleView {
@@ -20,9 +16,9 @@ class RatingStarTwoStackView: ModuleView {
         super.init(frame: frame)
         
         var twoStarView: [UIView] = []
-        for _ in 1...2 {
+        (1...2).forEach { index in
             let imageView = ratingStar(.smallStar)
-            twoStarView.append(imageView)
+                      twoStarView.append(imageView)
         }
         hStackView.addArrangedSubviews(twoStarView)
     }

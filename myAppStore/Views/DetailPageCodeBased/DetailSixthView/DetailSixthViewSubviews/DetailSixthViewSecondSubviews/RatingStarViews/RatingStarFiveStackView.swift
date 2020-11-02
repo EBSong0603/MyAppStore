@@ -16,10 +16,14 @@ class RatingStarFiveStackView: ModuleView {
         super.init(frame: frame)
         
         var fiveStarView: [UIView] = []
-        for _ in 1...5 {
-            let imageView = ratingStar(.smallStar)
-            fiveStarView.append(imageView)
-        }
+//        for _ in 1...5 {
+//            let imageView = ratingStar(.smallStar)
+//            fiveStarView.append(imageView)
+        //위의 for in 문과 아래 forEach는 같음
+            (1...5).forEach { index in
+                let imageView = ratingStar(.smallStar)
+                           fiveStarView.append(imageView)
+            }
         hStackView.addArrangedSubviews(fiveStarView) 
     }
     

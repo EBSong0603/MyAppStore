@@ -18,7 +18,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
     
@@ -28,10 +27,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     //아마 얘가 숙제의 디테일뷰(두번째뷰)에 넣어져야 할 코드가 아닐까 싶음 ?
     private var isCompleted: ((Bool) -> Void)?
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mySearchController.delegate = self
@@ -39,18 +34,12 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         view.backgroundColor = .white
         prepareTableView()
         setNavigationBar()
-        
-        
-        
-        
-        
+   
         //값이 바뀌는것을 주시하고 있다가 값이 바뀌자마자 감지하고 무언가를 해주기 위한 코드 (viewDidLoad같은 곳에 쓴다)
         //값이 바뀐것이 행동된 것은 아래의 URLSession 호출시 isCompleted 값에 false, true 값 각각 넣어준것이 변화가 일어난 순간인 것
         isCompleted = { Bool in
             print("completed = \(Bool)")
         }
-    
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,12 +82,8 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
                 self?.models = models
                 self?.isCompleted?(true)
             })
-            
-            
         }
     }
-    
-    
     //만약 내가 함수 내부의 매개변수를 클로져로 만들고 그것을 escaping 으로 만들지 않는다면 클로져 감지기도 결국 다 함수 안에서 일어나야한다.
     //클로져타입인 매개변수를 만드는 일도, 그 매개변수의 값이 변화하는 일도 그리고 걔의 변화 감지기도 결국 다 함수안에서 일어나게 됨
     //그렇다면 무슨 의미가 있나??? 비동기적 처리를 위해 이 API 통신 함수도 다른데서 불러주는데, 그 안에서 다 해야하면 결국 쓰나마다이다
@@ -138,26 +123,9 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
                                     }
                                     guard let result = json else {return}
                                     responseData(result.results)
-                                   
-//                                    self.bindData(with: data)
         }).resume()
     }
-    
-//
-//    func bindData(with data: Data) {
-//        var json: AppStoreModel?
-//
-//        do {
-//            json = try JSONDecoder().decode(AppStoreModel.self, from: data)
-//        } catch {
-//            print("error: \(error)")
-//        }
-//        guard let result = json else {return}
-//        self.models = result.results
-//    }
-//
   
-    
     override func configureAutolayouts() {
         view.addSubview(tableView)
         tableView.edges(self.safeArea)
@@ -177,10 +145,7 @@ extension MainViewController: UITableViewDelegate {
 }
 
 extension MainViewController: UITableViewDataSource {
-    // todo: 오로레이아웃 잡고 이 함수는 삭제할 것
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        300
-    //    }
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -200,24 +165,6 @@ extension MainViewController: UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-
-
-
-//알파값 변화해서 자연스러운 애니메이션 주는 코드//--------------------------------------//
-        //alpha 값은 투명도, alpha 값이 1 = 완전투명 / alpha 값이 0 = 완전불투명
-        //offset이 변함에 따라 컨텐츠의 유무가 아닌, 투명도를 조절해준다
-//        UIView.transition(with: view, duration: 0.2, options: .transitionCrossDissolve, animations: {
-//            if contentOffsetY <= 18 {
-//                self.titleLabel.alpha = 0
-//
-//            } else {
-//                self.titleLabel.alpha = 1
-//            }
-//        }, completion: nil)
-//
-
-
 
 //private extension UIViewController {
 //    func setNaviCustomColor(_ color: UIColor, shadowAlpha: CGFloat = 0.5) {

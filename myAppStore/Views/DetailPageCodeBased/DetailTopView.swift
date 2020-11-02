@@ -37,7 +37,6 @@ class DetailTopView: ModuleView {
         return label
     }()
     
-    
     private let appInfoVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 0, distribution: .fillEqually)
@@ -76,6 +75,7 @@ class DetailTopView: ModuleView {
  
         appInfoVStackView.top(appIconImageView.topAnchor)
         appInfoVStackView.leading(appIconImageView.trailingAnchor, constant: 16)
+        appInfoVStackView.trailing(self.trailingAnchor, constant: -16)
         
         getButton.leading(appIconImageView.trailingAnchor, constant: 16)
         getButton.bottom(appIconImageView.bottomAnchor)

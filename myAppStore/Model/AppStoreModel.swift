@@ -1,11 +1,7 @@
-//
 //  AppStoreModel.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import Foundation
 
 struct AppStoreModel: Codable {
@@ -20,7 +16,6 @@ struct AppStoreModel: Codable {
     
     init(from decode: Decoder) throws {
         let values = try decode.container(keyedBy: CodingKeys.self)
-        
         resultCount = (try? values.decode(Int.self, forKey: .resultCount)) ?? 0
         results = (try? values.decode([ResultsEntry].self, forKey: .results)) ?? []
     }
@@ -82,7 +77,6 @@ struct AppStoreModel: Codable {
         
         init(from decode: Decoder) throws {
             let values = try decode.container(keyedBy: CodingKeys.self)
-            
             isGameCenterEnabled = (try? values.decode(Bool.self, forKey: .isGameCenterEnabled)) ?? false
             advisories = (try? values.decode([String].self, forKey: .advisories)) ?? [""]
             screenshotUrls = (try? values.decode([String].self, forKey: .screenshotUrls)) ?? [""]

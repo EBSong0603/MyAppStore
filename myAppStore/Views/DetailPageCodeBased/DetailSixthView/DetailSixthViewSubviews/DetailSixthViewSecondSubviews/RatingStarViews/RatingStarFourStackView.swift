@@ -1,11 +1,7 @@
-//
 //  RatingStarFourStackView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/30.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class RatingStarFourStackView: ModuleView {
@@ -20,10 +16,10 @@ class RatingStarFourStackView: ModuleView {
         super.init(frame: frame)
         
         var fourStarViews: [UIView] = []
-        for _ in 1...4 {
-            let imageView = ratingStar(.smallStar)
-            fourStarViews.append(imageView)
-        }
+            (1...4).forEach { index in
+                let imageView = ratingStar(.smallStar)
+                fourStarViews.append(imageView)
+            }
         hStackView.addArrangedSubviews(fourStarViews)
     }
     

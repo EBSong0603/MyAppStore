@@ -1,11 +1,7 @@
-//
 //  DetailSixthViewSecondSubviewStick.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/30.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class DetailSixthViewSecondSubviewStick: ModuleView {
@@ -18,17 +14,17 @@ class DetailSixthViewSecondSubviewStick: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        var subViews: [UIView] = []
         
-        for _ in 1...5 {
-            let imageView: UIImageView = UIImageView()
-            imageView.width(180)
-            imageView.height(5)
-            imageView.backgroundColor = .lightGray
-            imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 2.5
-            subViews.append(imageView)
-        }
+        var subViews: [UIView] = []
+            (1...5).forEach { index in
+                let imageView: UIImageView = UIImageView()
+                imageView.width(180)
+                imageView.height(5)
+                imageView.backgroundColor = .lightGray
+                imageView.clipsToBounds = true
+                imageView.layer.cornerRadius = 2.5
+                subViews.append(imageView)
+            }
         reviewStickVStackView.addArrangedSubviews(subViews)
     }
     

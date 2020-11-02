@@ -22,8 +22,8 @@ class SecondAppInformationView: ModuleView {
     }
     
     func setImageViews(_ urls: [String]) {
-        captureImageStackView.removeAllSubViews()
         
+        captureImageStackView.removeAllSubViews()
         var myView: [UIImageView] = []
 //        for url in urls {
 //            let imageView = UIImageView()

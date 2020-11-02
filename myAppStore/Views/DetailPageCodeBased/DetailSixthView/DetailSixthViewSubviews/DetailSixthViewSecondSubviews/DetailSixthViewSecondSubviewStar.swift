@@ -6,22 +6,20 @@ import UIKit
 
 class DetailSixthViewSecondSubviewStar: ModuleView {
     
+    private let vStackView: UIStackView = {
+          let stackView = UIStackView()
+          stackView.setStackViewStyle(axis: .vertical, spacing: 1, distribution: .fillEqually)
+          stackView.alignment = .trailing
+          return stackView
+      }()
     private let fiveStarView = RatingStarFiveStackView()
     private let fourStarView = RatingStarFourStackView()
     private let threeStarView = RatingStarThreeStackView()
     private let twoStarView = RatingStarTwoStackView()
     private let oneStarView = RatingStarOneStackView()
-    
-    private let vStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .vertical, spacing: 1, distribution: .fillEqually)
-        stackView.alignment = .trailing
-        return stackView
-    }()
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         vStackView.addArrangedSubviews([fiveStarView, fourStarView, threeStarView, twoStarView, oneStarView])
     }
     
@@ -32,7 +30,6 @@ class DetailSixthViewSecondSubviewStar: ModuleView {
     override func configureAutolayouts() {
         
         self.addSubview(vStackView)
-        
         vStackView.edges(self)
     }
 }

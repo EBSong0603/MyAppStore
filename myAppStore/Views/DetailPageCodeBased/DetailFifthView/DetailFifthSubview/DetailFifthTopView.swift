@@ -7,14 +7,12 @@ import UIKit
 class DetailFifthTopView: ModuleView {
     
     private let shortInfoLabel: UILabel = {
-        
         let label = UILabel()
         label.setStyle("간략소개", textColor: .black, font: UIFont.systemFont(ofSize: 12))
         return label
     }()
     
     let moreInfoLabel: UILabel = {
-        
         let label = UILabel()
         label.setStyle("더보기", textColor: .systemBlue, font: UIFont.systemFont(ofSize: 12))
         label.alpha = 1

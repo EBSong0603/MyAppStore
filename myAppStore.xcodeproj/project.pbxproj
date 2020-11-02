@@ -17,6 +17,7 @@
 		7001396B253AB6E800595C03 /* FirstAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396A253AB6E800595C03 /* FirstAppInformationView.swift */; };
 		7001396D253AB73A00595C03 /* SecondAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7001396C253AB73A00595C03 /* SecondAppInformationView.swift */; };
 		70013972253AF0F600595C03 /* AppStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70013971253AF0F600595C03 /* AppStoreModel.swift */; };
+		702CF828254FF4D1006D7B00 /* RatingStarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702CF827254FF4D1006D7B00 /* RatingStarStackView.swift */; };
 		706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailViewController.swift */; };
 		706CA91A253B13E300E22783 /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailTopView.swift */; };
 		706CA91C253B1FED00E22783 /* DetailSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA91B253B1FED00E22783 /* DetailSecondView.swift */; };
@@ -43,7 +44,6 @@
 		70DD5C7E2546AE4000738B8C /* Binding Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C7D2546AE4000738B8C /* Binding Data.swift */; };
 		70DD5C802546F62F00738B8C /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */; };
 		70DD5C822546F97B00738B8C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */; };
-		70EAFA96254BF6FB00C6BAED /* DetailStarRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EAFA95254BF6FB00C6BAED /* DetailStarRatingStackView.swift */; };
 		70EAFA9C254C0EE500C6BAED /* DetailSixthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EAFA9B254C0EE500C6BAED /* DetailSixthView.swift */; };
 		70EAFA9E254C0F0D00C6BAED /* DetailSixthViewFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EAFA9D254C0F0D00C6BAED /* DetailSixthViewFirst.swift */; };
 		70EAFAA0254C0F2300C6BAED /* DetailSixthViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EAFA9F254C0F2300C6BAED /* DetailSixthViewSecond.swift */; };
@@ -79,6 +79,7 @@
 		7001396A253AB6E800595C03 /* FirstAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppInformationView.swift; sourceTree = "<group>"; };
 		7001396C253AB73A00595C03 /* SecondAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppInformationView.swift; sourceTree = "<group>"; };
 		70013971253AF0F600595C03 /* AppStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreModel.swift; sourceTree = "<group>"; };
+		702CF827254FF4D1006D7B00 /* RatingStarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarStackView.swift; sourceTree = "<group>"; };
 		706CA916253AF8EE00E22783 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		706CA919253B13E300E22783 /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		706CA91B253B1FED00E22783 /* DetailSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondView.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		70DD5C7D2546AE4000738B8C /* Binding Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding Data.swift"; sourceTree = "<group>"; };
 		70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		70EAFA95254BF6FB00C6BAED /* DetailStarRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStarRatingStackView.swift; sourceTree = "<group>"; };
 		70EAFA9B254C0EE500C6BAED /* DetailSixthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSixthView.swift; sourceTree = "<group>"; };
 		70EAFA9D254C0F0D00C6BAED /* DetailSixthViewFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSixthViewFirst.swift; sourceTree = "<group>"; };
 		70EAFA9F254C0F2300C6BAED /* DetailSixthViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSixthViewSecond.swift; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 				70013965253AAB6D00595C03 /* MainViewController.swift */,
 				70013968253AB50A00595C03 /* FirstSearchPageTableViewCell.swift */,
 				7001396A253AB6E800595C03 /* FirstAppInformationView.swift */,
+				702CF82925500077006D7B00 /* FirstAppInformSubview */,
 				7001396C253AB73A00595C03 /* SecondAppInformationView.swift */,
-				70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */,
 			);
 			path = SearchPageCodeBased;
 			sourceTree = "<group>";
@@ -200,13 +200,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		702CF82925500077006D7B00 /* FirstAppInformSubview */ = {
+			isa = PBXGroup;
+			children = (
+				70CEE717253F1F1F00569C10 /* StarRatingImageView.swift */,
+			);
+			path = FirstAppInformSubview;
+			sourceTree = "<group>";
+		};
 		706CA918253AF8F700E22783 /* DetailPageCodeBased */ = {
 			isa = PBXGroup;
 			children = (
 				706CA916253AF8EE00E22783 /* DetailViewController.swift */,
 				706CA919253B13E300E22783 /* DetailTopView.swift */,
 				70EDC26025497DA200A3A0E9 /* DetailSecondView */,
-				70EAFA95254BF6FB00C6BAED /* DetailStarRatingStackView.swift */,
 				70EAFA98254C0DEA00C6BAED /* DetailThirdView */,
 				70EAFA99254C0DFA00C6BAED /* DetailForthView */,
 				70EAFA9A254C0E0500C6BAED /* DetailFifthView */,
@@ -250,6 +257,7 @@
 				70C6406425407D1600D06B6A /* GetBasicButton.swift */,
 				70A16EF5254410C900FEC0DF /* BasicLabel.swift */,
 				70EAFAA7254C23F000C6BAED /* RatingStarImageView.swift */,
+				702CF827254FF4D1006D7B00 /* RatingStarStackView.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -447,7 +455,6 @@
 				706E5C1B2542E05900581BA3 /* Int+Extension.swift in Sources */,
 				706CA917253AF8EE00E22783 /* DetailViewController.swift in Sources */,
 				70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */,
-				70EAFA96254BF6FB00C6BAED /* DetailStarRatingStackView.swift in Sources */,
 				70EAFAB2254C393200C6BAED /* RatingStarOneStackView.swift in Sources */,
 				70EDC26B2549A7AE00A3A0E9 /* DetailFifthDescriptionView.swift in Sources */,
 				70A16EF6254410C900FEC0DF /* BasicLabel.swift in Sources */,
@@ -494,6 +501,7 @@
 				70EDC26D2549A9C800A3A0E9 /* DetailFifthTopView.swift in Sources */,
 				70CEE705253EA55300569C10 /* Date+Extension.swift in Sources */,
 				70EDC25B25497D7700A3A0E9 /* DetailSecondViewSecond.swift in Sources */,
+				702CF828254FF4D1006D7B00 /* RatingStarStackView.swift in Sources */,
 				70EAFAA4254C13F700C6BAED /* DetailSixthViewSecondSubviewStick.swift in Sources */,
 				70EAFAA2254C0F5000C6BAED /* DetailSixthViewSecondSubviewStar.swift in Sources */,
 				70EDC2622549990F00A3A0E9 /* DetailForthPhoneView.swift in Sources */,
