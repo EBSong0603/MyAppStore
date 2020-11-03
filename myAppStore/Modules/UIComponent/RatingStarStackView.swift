@@ -12,7 +12,7 @@ class RatingStarStackView: ModuleView {
         hStackView.alignment = .center
         return hStackView
     }()
-    
+  
     init() {
         super.init(frame: .zero)
     }
@@ -38,8 +38,8 @@ class RatingStarStackView: ModuleView {
     }
     
     func setDataForLargeStar(with data: AppStoreModel.ResultsEntry) {
-        
         starHStackView.removeAllSubViews()
+        
         var subViews: [UIView] = []
         let intRating = Int(data.averageUserRating)
         print("intRating: \(intRating)")

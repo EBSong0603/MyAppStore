@@ -1,11 +1,7 @@
-//
 //  BasicButton.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 enum BasicButtonStyle {
@@ -14,9 +10,7 @@ enum BasicButtonStyle {
 }
 
 class BasicButton: UIButton {
-    
-
-    
+     
     let style: BasicButtonStyle
     
     init(_ style: BasicButtonStyle) {

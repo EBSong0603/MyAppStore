@@ -1,11 +1,7 @@
-//
 //  UILabel+Extension.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/21.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 extension UILabel {
@@ -19,7 +15,6 @@ extension UILabel {
         self.font = font
         self.textAlignment = textAlignment
     }
-    
     
     func setSimple(_ text: String, textColor: UIColor, font: UIFont, textAlignment: NSTextAlignment = .left) -> UILabel {
         let label = UILabel()

@@ -4,9 +4,15 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class FirstSearchPageTableViewCell: BaseTableViewCell {
+//extension UITableViewCell {
+////    static var identifierString: String {
+////        return String(describing: self)
+////    }
+////}
 
-    static let identifier: String = "FirstSearchPageTableViewCell"
+class FirstSearchPageTableViewCell: BaseTableViewCell, Cellable {
+
+    static var identifier: String = FirstSearchPageTableViewCell.identifierString
     private let firstView = FirstAppInformationView()
     private let secondView = SecondAppInformationView()
     
@@ -23,7 +29,6 @@ class FirstSearchPageTableViewCell: BaseTableViewCell {
         
         guard let cellData = cellData else {return}
         firstView.setData(with: cellData)
-        
         let urls: [String] = filteredImageUrls(with: cellData)
         secondView.setImageViews(urls)
         //위와 아래는 같은것

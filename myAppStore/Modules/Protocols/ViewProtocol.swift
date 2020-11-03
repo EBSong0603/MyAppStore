@@ -12,7 +12,7 @@ protocol Viewable {
     func configureAutolayouts()
 }
 
-protocol Cellable {
+protocol Cellable: Viewable {
     static var identifier: String { get }
 }
 

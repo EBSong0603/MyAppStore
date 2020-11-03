@@ -1,13 +1,8 @@
-//
 //  UIView+Extension.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
-
 //UIView를 상속하고 있는 어떤 클래스에서든 쓸 수 있는 extension들
 //Layout 잡기위한 extension 임
 extension UIView {

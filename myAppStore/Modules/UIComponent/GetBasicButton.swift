@@ -1,17 +1,11 @@
-//
 //  GetBasicButton.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/10/21.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class GetBasicButton: UIButton {
-    
-    //enum 으로 버튼의 타입을 만들어놔야 함!
-    //class 의 경우 이 버튼이 어떤타입인지를 알아야 작성 가능..?
+
     enum ButtonStyle {
         case blue
         case lightGray
