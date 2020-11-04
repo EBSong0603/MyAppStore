@@ -12,8 +12,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     
     private let viewModel: AppStoreViewModel = AppStoreViewModel()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mySearchController.delegate = self
@@ -26,7 +24,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
     
@@ -54,8 +51,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         if text.isEmpty {
             viewModel.reset()
         } else {
-            viewModel.requestData(term: text) { _ in
-            }
+            viewModel.requestData(term: text)
         }
     }
  

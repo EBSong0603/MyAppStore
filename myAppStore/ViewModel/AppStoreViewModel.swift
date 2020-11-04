@@ -14,7 +14,7 @@ class AppStoreViewModel {
     
     var models: [AppStoreModel.ResultsEntry] = []
     
-    func requestData(term: String, responseData: @escaping (([AppStoreModel.ResultsEntry]) -> Void)) {
+    func requestData(term: String, responseData:  (([AppStoreModel.ResultsEntry]) -> Void)? = nil) {
         let urlSting = "https://itunes.apple.com/search?entity=software&country=KR&term=\(term)"
         guard let target = urlSting.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
         guard let url = URL(string: target) else {return}
@@ -30,7 +30,8 @@ class AppStoreViewModel {
                                     
                                     do {
                                         let result: AppStoreModel = try JSONDecoder().decode(AppStoreModel.self, from: data)
-                                        responseData(result.results)
+                                        
+                                        responseData?(result.results)
                                         self.models = result.results
                                         self.isChanged?(true)
                                     } catch {
