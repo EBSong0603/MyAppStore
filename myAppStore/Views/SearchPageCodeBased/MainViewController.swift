@@ -20,6 +20,9 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         prepareTableView()
         setNavigationBar()
         
+        //서치컨트롤러 프로퍼티, 어두운 화면 없애기
+        mySearchController.obscuresBackgroundDuringPresentation = false
+        
         viewModel.isChanged = { isChangedTrue in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -32,7 +35,6 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    
     private func setNavigationBar() {
         navigationItem.title = "검색"
         navigationItem.searchController = mySearchController
@@ -41,8 +43,15 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
+       navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.titleView?.isHidden = true
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       navigationController?.navigationBar.prefersLargeTitles = true
+//        mySearchController.dismiss(animated: true, completion: nil)
+    }
+   
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
 
         guard let text = mySearchController.searchBar.text else {
