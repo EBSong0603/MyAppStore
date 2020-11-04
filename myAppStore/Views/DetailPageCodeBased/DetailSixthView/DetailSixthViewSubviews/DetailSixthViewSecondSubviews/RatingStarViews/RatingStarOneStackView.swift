@@ -6,25 +6,25 @@ import UIKit
 
 class RatingStarOneStackView: ModuleView {
     
-    private let hStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .horizontal, spacing: 1, distribution: .fillEqually)
-        return stackView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-   
-        let imageView = ratingStar(.smallStar)
-        hStackView.addArrangedSubview(imageView)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func configureAutolayouts() {
-        self.addSubview(hStackView)
-        hStackView.edges(self)
-    }
+//    private let hStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.setStackViewStyle(axis: .horizontal, spacing: 1, distribution: .fillEqually)
+//        return stackView
+//    }()
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//   
+//        let imageView = ratingStar(.smallStar)
+//        hStackView.addArrangedSubview(imageView)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    override func configureAutolayouts() {
+//        self.addSubview(hStackView)
+//        hStackView.edges(self)
+//    }
 }

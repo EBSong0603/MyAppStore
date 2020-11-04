@@ -5,30 +5,30 @@
 import UIKit
 
 class RatingStarThreeStackView: ModuleView {
-    
-    private let hStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.setStackViewStyle(axis: .horizontal, spacing: 1, distribution: .fillEqually)
-        return stackView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        var threeStarView: [UIView] = []
-            (1...3).forEach { index in
-                let imageView = ratingStar(.smallStar)
-                threeStarView.append(imageView)
-            }
-        hStackView.addArrangedSubviews(threeStarView)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func configureAutolayouts() {
-        self.addSubview(hStackView)
-        hStackView.edges(self)
-    }
+//    
+//    private let hStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.setStackViewStyle(axis: .horizontal, spacing: 1, distribution: .fillEqually)
+//        return stackView
+//    }()
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        
+//        var threeStarView: [UIView] = []
+//            (1...3).forEach { index in
+//                let imageView = ratingStar(.smallStar)
+//                threeStarView.append(imageView)
+//            }
+//        hStackView.addArrangedSubviews(threeStarView)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    override func configureAutolayouts() {
+//        self.addSubview(hStackView)
+//        hStackView.edges(self)
+//    }
 }

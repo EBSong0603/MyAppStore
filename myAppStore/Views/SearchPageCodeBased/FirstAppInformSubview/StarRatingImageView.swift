@@ -11,7 +11,7 @@ class StarRatingImageView: ModuleView {
         hStackView.setStackViewStyle(axis: .horizontal, spacing: 2, distribution: .fillProportionally)
         return hStackView
     }()
-    private let fiveStarStackView = RatingStarStackView()
+    private let fiveStarStackView = RatingStarStackView(starStyle: .middle, count: 5)
     private let ratingLabel: UILabel = {
         let label = UILabel()
         label.setStyle("", textColor: .gray, font: UIFont.systemFont(ofSize: 12), textAlignment: .left)
@@ -29,7 +29,7 @@ class StarRatingImageView: ModuleView {
     
     func setData(with data: AppStoreModel.ResultsEntry) {
         
-        fiveStarStackView.setDataForMidStar(with: data)
+        fiveStarStackView.setData(with: data)
         let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
         ratingLabel.text = userRC
     }

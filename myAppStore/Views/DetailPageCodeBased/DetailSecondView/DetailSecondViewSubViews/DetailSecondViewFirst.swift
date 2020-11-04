@@ -23,7 +23,7 @@ class DetailSecondViewFirst: ModuleView {
         label.setStyle("256 개의 평가", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
          return label
      }()
-     private let ratingView = RatingStarStackView()
+    private let ratingView = RatingStarStackView(starStyle: .large, count: 5)
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +41,7 @@ class DetailSecondViewFirst: ModuleView {
          let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
         reviewCountLabel.text = "\(userRC) 개의 리뷰"
         ratingIntLabel.text = "\(Double(data.averageUserRating))"
-        ratingView.setDataForLargeStar(with: data)
+        ratingView.setData(with: data)
     }
     
     override func configureAutolayouts() {

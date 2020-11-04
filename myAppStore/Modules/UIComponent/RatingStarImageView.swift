@@ -1,67 +1,21 @@
 //  RatingStarImageView.swift
 //  myAppStore
 //  Created by 송은비 on 2020/10/30.
-//  Copyright © 2020 EB. All rights reserved.
-import UIKit
+////  Copyright © 2020 EB. All rights reserved.
+//import UIKit
+//
+//enum StarStyle {
+//    case small
+//    case middle
+//    case large
+//    
+//    var rawVale: (imageName: String, size: CGFloat, tintColor: UIColor) {
+//        switch self {
+//        case .small: return ("star", 8, .lightGray)
+//        case .middle: return ("star", 12, .gray)
+//        case .large: return ("star", 14,.lightGray)
+//        }
+//    }
+//}
+//
 
-class ratingStar: UIImageView {
-    
-    enum StarStyle {
-         case smallStar
-         case middleStarFill
-        case middleStarEmpty
-         case largeStarFill
-        case largeStarEmpty
-     }
-  
-    let style: StarStyle
-    
-    init(_ style: StarStyle) {
-        self.style = style
-        super.init(frame: .zero)
-        setStyle(style)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setStyle(_ style: StarStyle) {
-        var width: CGFloat = 10
-        var height: CGFloat = 10
-        var image: UIImage = UIImage(systemName: "star")!
-        var tintColor: UIColor = .lightGray
-        
-        switch style {
-        case .smallStar:
-            image = UIImage(systemName: "star.fill")!
-            width = 8
-            height = 8
-            tintColor = .gray
-        case .middleStarFill:
-            image = UIImage(systemName: "star.fill")!
-            width = 12
-            height = 12
-            tintColor = .gray
-        case .middleStarEmpty:
-            image = UIImage(systemName: "star")!
-            width = 12
-            height = 12
-            tintColor = .gray
-        case .largeStarFill:
-            image = UIImage(systemName: "star.fill")!
-            width = 14
-            height = 14
-            tintColor = .lightGray   
-        case .largeStarEmpty:
-            image = UIImage(systemName: "star")!
-            width = 14
-            height = 14
-            tintColor = .lightGray
-        }
-        self.image = image
-        self.width(width)
-        self.height(height)
-        self.tintColor = tintColor
-    }
-}
