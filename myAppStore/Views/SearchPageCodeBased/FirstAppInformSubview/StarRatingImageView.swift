@@ -11,6 +11,7 @@ class StarRatingImageView: ModuleView {
         hStackView.setStackViewStyle(axis: .horizontal, spacing: 2, distribution: .fillProportionally)
         return hStackView
     }()
+    //여기에서 RatingStarStackView의 이니셜라이즈를 결정해줄 매개변수에 값을 담아 class를 참조한다 (어떤 별의 타입을, 어떤 숫자를 넣어주냐에 따라 다른 이니셜라이즈드된 클래스가 나올것이다)
     private let fiveStarStackView = RatingStarStackView(starStyle: .middle, count: 5)
     private let ratingLabel: UILabel = {
         let label = UILabel()

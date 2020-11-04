@@ -65,6 +65,7 @@
 		70EDC26D2549A9C800A3A0E9 /* DetailFifthTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EDC26C2549A9C800A3A0E9 /* DetailFifthTopView.swift */; };
 		70FB8CE025516B67000459E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB8CDF25516B67000459E4 /* UITableViewCell+Extension.swift */; };
 		70FB8D0E2551CE3E000459E4 /* AppStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB8D0D2551CE3E000459E4 /* AppStoreViewModel.swift */; };
+		70FB8D1A2552D1AF000459E4 /* ButtonPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB8D192552D1AF000459E4 /* ButtonPractice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		70EDC26C2549A9C800A3A0E9 /* DetailFifthTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFifthTopView.swift; sourceTree = "<group>"; };
 		70FB8CDF25516B67000459E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		70FB8D0D2551CE3E000459E4 /* AppStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreViewModel.swift; sourceTree = "<group>"; };
+		70FB8D192552D1AF000459E4 /* ButtonPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPractice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			children = (
 				70CEE70D253EAE3B00569C10 /* BasicButton.swift */,
 				70C6406425407D1600D06B6A /* GetBasicButton.swift */,
+				70FB8D192552D1AF000459E4 /* ButtonPractice.swift */,
 				70A16EF5254410C900FEC0DF /* BasicLabel.swift */,
 				70EAFAA7254C23F000C6BAED /* RatingStarImageView.swift */,
 				702CF827254FF4D1006D7B00 /* RatingStarStackView.swift */,
@@ -508,6 +511,7 @@
 				70013969253AB50A00595C03 /* FirstSearchPageTableViewCell.swift in Sources */,
 				70EAFAA8254C23F000C6BAED /* RatingStarImageView.swift in Sources */,
 				70CEE709253EA7C400569C10 /* UIApplication+Extension.swift in Sources */,
+				70FB8D1A2552D1AF000459E4 /* ButtonPractice.swift in Sources */,
 				70EDC2532549735500A3A0E9 /* ForEachExamples.swift in Sources */,
 				70CEE715253ECB9700569C10 /* UIView+Extension.swift in Sources */,
 				70EDC26D2549A9C800A3A0E9 /* DetailFifthTopView.swift in Sources */,
