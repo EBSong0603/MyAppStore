@@ -4,23 +4,15 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailFifthDescriptionView: ModuleView {
+class DetailFifthView: ModuleView {
     
     private let vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 5, distribution: .equalSpacing)
         return stackView
     }()
-    private let bottomDescriptionView: DetailFifthTopView = {
-        let view = DetailFifthTopView()
-        return view
-    }()
-    private let longLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("dkdkdkdk", textColor: .black, font: UIFont.systemFont(ofSize: 12))
-        label.numberOfLines = 0
-        return label
-    }()
+    private let topView = DetailFifthViewTopView()
+    private let bottomView = DetailFifthViewBottmView()
     
     private let openDescriptionButtom: UIButton = {
         let button = UIButton()
@@ -31,8 +23,8 @@ class DetailFifthDescriptionView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        longLabel.isHidden = true
-        vStackView.addArrangedSubviews([bottomDescriptionView, longLabel])
+        bottomView.isHidden = false
+        vStackView.addArrangedSubviews([topView, bottomView])
         openDescriptionButtom.addTarget(self, action: #selector(openDescriptionButtonClikced), for: .touchUpInside)
     }
     
@@ -41,17 +33,28 @@ class DetailFifthDescriptionView: ModuleView {
     }
     
     @objc func openDescriptionButtonClikced() {
-        longLabel.isHidden = !longLabel.isHidden
-        UIView.transition(with: self.bottomDescriptionView.moreInfoLabel,
+        bottomView.isHidden = !bottomView.isHidden
+        UIView.transition(with: self.topView.moreInfoLabel,
                           duration: 0.1,
                           options: .transitionCrossDissolve,
                           animations: {
-                            self.bottomDescriptionView.moreInfoLabel.alpha = 0
+                            self.topView.moreInfoLabel.alpha = 0
         })
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        longLabel.text = data.description
+        let forbottomViewDescription = data.description
+      
+        let firstIndix = forbottomViewDescription.index(forbottomViewDescription.startIndex, offsetBy: 0)
+        let lastItdenx = forbottomViewDescription.index(forbottomViewDescription.startIndex, offsetBy: 50)
+        let mobCom = "\(forbottomViewDescription[firstIndix..<lastItdenx])"
+        
+        let bottomFirstIndex = forbottomViewDescription.index(forbottomViewDescription.startIndex, offsetBy: 50)
+        let bottomLastIndex  = forbottomViewDescription.index(forbottomViewDescription.endIndex, offsetBy: 0)
+        let bottomMobCom = "\(forbottomViewDescription[bottomFirstIndex..<bottomLastIndex])"
+        bottomView.longLabel.text = bottomMobCom
+        topView.shortInfoLabel.text = mobCom
+        
     }
     
     override func configureAutolayouts() {

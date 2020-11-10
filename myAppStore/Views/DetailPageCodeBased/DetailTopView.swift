@@ -12,8 +12,8 @@ class DetailTopView: ModuleView {
         return imageView
     }()
     
-    private let getButton: GetBasicButton = {
-        let button = GetBasicButton(.lightGray)
+    private let getButton: BasicGetButton = {
+        let button = BasicGetButton(.lightGray)
         button.setStyle(.lightGray, title: "받기")
         button.setInsets(vertical: 5, horizonal: 16)
         return button

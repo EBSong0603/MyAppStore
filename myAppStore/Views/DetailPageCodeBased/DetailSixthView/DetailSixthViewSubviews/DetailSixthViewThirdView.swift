@@ -4,10 +4,11 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSixthViewThird: ModuleView {
+class DetailSixthViewThirdView: ModuleView {
+    
     private let maxRatingLabel: UILabel = {
        let label = UILabel()
-        label.setStyle("최고 5.0", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+        label.setStyle("5점 중", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
         return label
     }()
     private let reviewIntLabel: UILabel = {

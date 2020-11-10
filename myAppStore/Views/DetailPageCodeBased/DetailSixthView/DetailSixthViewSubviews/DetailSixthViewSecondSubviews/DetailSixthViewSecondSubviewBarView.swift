@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSixthViewSecondSubviewStick: ModuleView {
+class DetailSixthViewSecondSubviewBarView: ModuleView {
     
     private let reviewStickVStackView: UIStackView = {
         let stackView = UIStackView()

@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSecondViewFirst: ModuleView {
+class DetailSecondViewFirstView: ModuleView {
     
     private let ratingVStackView: UIStackView = {
         let stackView = UIStackView()
@@ -23,13 +23,13 @@ class DetailSecondViewFirst: ModuleView {
         label.setStyle("256 개의 평가", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
          return label
      }()
-    private let ratingView = RatingStarStackView(starStyle: .large, count: 5)
+    private let DetailViewRatingStarView = BasicRatingStarView(starStyle: .large, count: 5)
         
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        ratingVStackView.addArrangedSubviews([reviewCountLabel, ratingIntLabel, ratingView])
+        ratingVStackView.addArrangedSubviews([reviewCountLabel, ratingIntLabel, DetailViewRatingStarView])
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +41,7 @@ class DetailSecondViewFirst: ModuleView {
          let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
         reviewCountLabel.text = "\(userRC) 개의 리뷰"
         ratingIntLabel.text = "\(Double(data.averageUserRating))"
-        ratingView.setData(with: data)
+        DetailViewRatingStarView.setData(with: data)
     }
     
     override func configureAutolayouts() {

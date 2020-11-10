@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class SecondAppInformationView: ModuleView {
+class SearchPageAppScreenShotsView: ModuleView {
    
     private let captureImageStackView: UIStackView = {
         let stackView = UIStackView()

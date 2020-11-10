@@ -4,11 +4,12 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailFifthTopView: ModuleView {
+class DetailFifthViewTopView: ModuleView {
     
-    private let shortInfoLabel: UILabel = {
+     let shortInfoLabel: UILabel = {
         let label = UILabel()
         label.setStyle("간략소개", textColor: .black, font: UIFont.systemFont(ofSize: 12))
+        label.numberOfLines = 3
         return label
     }()
     
@@ -28,6 +29,9 @@ class DetailFifthTopView: ModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        
+    }
     override func configureAutolayouts() {
         
         self.addSubview(shortInfoLabel)

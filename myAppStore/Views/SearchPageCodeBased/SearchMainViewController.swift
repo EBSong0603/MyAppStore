@@ -5,7 +5,7 @@
 import UIKit
 
 //BaseViewController를 상속하고 있는 뷰컨임
-class MainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class SearchMainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
@@ -49,7 +49,7 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
        navigationController?.navigationBar.prefersLargeTitles = true
-//        mySearchController.dismiss(animated: true, completion: nil)
+        viewModel.reset() //팝되어 나오면서, 검색기록 블랭크로 만듬
     }
    
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
@@ -74,23 +74,23 @@ class MainViewController: BaseViewController, UISearchControllerDelegate, UISear
         tableView.dataSource = self
         tableView.separatorStyle = .none
         //tableView Cell register
-        tableView.register(FirstSearchPageTableViewCell.self,
-                           forCellReuseIdentifier: FirstSearchPageTableViewCell.identifier)
+        tableView.register(SearchPageTableViewCell.self,
+                           forCellReuseIdentifier: SearchPageTableViewCell.identifier)
     }
 }
 
-extension MainViewController: UITableViewDelegate {
+extension SearchMainViewController: UITableViewDelegate {
 }
 
-extension MainViewController: UITableViewDataSource {
+extension SearchMainViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FirstSearchPageTableViewCell.identifier,
-                                                 for: indexPath) as! FirstSearchPageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchPageTableViewCell.identifier,
+                                                 for: indexPath) as! SearchPageTableViewCell
         let model = viewModel.models[indexPath.row]
             cell.setData(with: model)
         return cell
@@ -99,7 +99,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
         let model = viewModel.models[indexPath.row]
-        let vc: DetailViewController = DetailViewController(with: model)
+        let vc: DetailMainViewController = DetailMainViewController(with: model)
 //        vc.data = model
         navigationController?.pushViewController(vc, animated: true)
     }

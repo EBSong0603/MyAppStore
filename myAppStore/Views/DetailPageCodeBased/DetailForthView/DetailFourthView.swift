@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailForthPhoneView: ModuleView {
+class DetailFourthView: ModuleView {
     
     private let phoneImageView: UIImageView = {
         let imageView = UIImageView()

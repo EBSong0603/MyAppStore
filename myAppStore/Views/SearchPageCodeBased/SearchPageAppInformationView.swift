@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class FirstAppInformationView: ModuleView {
+class SearchPageAppInformationView: ModuleView {
     
     var isGame: Bool = false
     
@@ -27,13 +27,13 @@ class FirstAppInformationView: ModuleView {
         label.setStyle(.subTitle, text: "카테고리이름")
         return label
     }()  
-    private let starRatingView: StarRatingImageView = {
-        let view = StarRatingImageView()
+    private let starRatingView: RatingContentsView = {
+        let view = RatingContentsView()
         return view
     }()
     
-    private let downLoadButton: GetBasicButton = {
-        let button = GetBasicButton(.lightGray)
+    private let downLoadButton: BasicGetButton = {
+        let button = BasicGetButton(.lightGray)
         button.setStyle(.lightGray, title: "받기")
         button.setInsets(vertical: 5, horizonal: 16)
         return button

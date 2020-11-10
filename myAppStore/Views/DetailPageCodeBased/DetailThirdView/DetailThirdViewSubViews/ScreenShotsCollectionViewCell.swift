@@ -4,10 +4,11 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class CapturedImageCollectionViewCell: BaseCollectionViewCell {
+class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     
-    static let identifier = "CapturedImageCollectionViewCell"
-    
+    static var identifier = ScreenShotsCollectionViewCell.identifierString
+//    static let identifier = "CapturedImageCollectionViewCell"
+//
     private var capturedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 10, contentMode: .scaleAspectFill)

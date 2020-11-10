@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSecondViewSecond: ModuleView {
+class DetailSecondViewSecondView: ModuleView {
     
     private let ageVStackView: UIStackView = {
        let stackView = UIStackView()

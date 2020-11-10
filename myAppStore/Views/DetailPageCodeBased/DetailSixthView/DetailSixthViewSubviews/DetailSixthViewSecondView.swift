@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSixthViewSecond: ModuleView {
+class DetailSixthViewSecondView: ModuleView {
     
     private let reviewIntLabel: UILabel = {
         let label = UILabel()
@@ -12,8 +12,8 @@ class DetailSixthViewSecond: ModuleView {
         return label
     }()
     
-    private let reviewStickView = DetailSixthViewSecondSubviewStick()
-    private let reviewStarView = DetailSixthViewSecondSubviewStar()
+    private let reviewStickView = DetailSixthViewSecondSubviewBarView()
+    private let reviewStarView = DetailSixthViewSecondSubviewStarsView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +21,10 @@ class DetailSixthViewSecond: ModuleView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        reviewIntLabel.text = "\(data.averageUserRating)"
     }
     
     override func configureAutolayouts() {

@@ -6,9 +6,9 @@ import UIKit
 
 class DetailSixthView: ModuleView {
     
-    private let topView = DetailSixthViewFirst()
-    private let secondView = DetailSixthViewSecond()
-    private let thirdView = DetailSixthViewThird()
+    private let topView = DetailSixthViewFirstView()
+    private let secondView = DetailSixthViewSecondView()
+    private let thirdView = DetailSixthViewThirdView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +17,11 @@ class DetailSixthView: ModuleView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        secondView.setData(with: data)
+    }
+    
     
     override func configureAutolayouts() {
         self.addSubViews([topView, secondView, thirdView])

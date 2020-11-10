@@ -42,6 +42,6 @@ class AppStoreViewModel {
     
     func reset() {
         models = []
-        isChanged?(true)
+        self.isChanged?(true)
     }
 }

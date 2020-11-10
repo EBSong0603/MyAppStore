@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSixthViewFirst: ModuleView {
+class DetailSixthViewFirstView: ModuleView {
     
     private let reviewLabel: UILabel = {
         let label = UILabel()

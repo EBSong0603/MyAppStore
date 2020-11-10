@@ -36,7 +36,7 @@ struct AppStoreModel: Codable {
         let languageCodesISO2A : [String] //지원 언어
 //        let releaseNotes: String //출시노트: 버그들이 수정되었어요
         let trackCensoredName: String //앱이름
-        let fileSizeBytes: String //앱사이즈
+        let fileSizeBytes: String //앱사이즈(바이트)
 //        let sellerUrl: String //판매자 주소 sellerUrl
         let averageUserRating: Float //유저 평가점수(1-5)
         let contentAdvisoryRating: String //age: 4+
@@ -47,6 +47,7 @@ struct AppStoreModel: Codable {
         let genreIds: [String]
         let bundleId: String //만든 사람 번들아이디: com.cashwalk.cashwalk
         let userRatingCount: Int //리뷰갯수
+    
         
         private enum CodingKeys: String, CodingKey {
             case isGameCenterEnabled
@@ -73,6 +74,7 @@ struct AppStoreModel: Codable {
             case genreIds
             case bundleId
             case userRatingCount
+           
         }
         
         init(from decode: Decoder) throws {
@@ -101,6 +103,7 @@ struct AppStoreModel: Codable {
             genreIds = (try? values.decode([String].self, forKey: .genreIds)) ?? [""]
             bundleId = (try? values.decode(String.self, forKey: .bundleId)) ?? ""
             userRatingCount = (try? values.decode(Int.self, forKey: .userRatingCount)) ?? 0
+            
         }
     }
 }

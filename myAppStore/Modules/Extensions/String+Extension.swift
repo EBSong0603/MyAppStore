@@ -20,4 +20,8 @@ extension String {
     var toFloat: Float {
         return Float(self) ?? 0
     }
+    
+    var toDouble: Double {
+        return Double(self) ?? 0
+    }
 }

@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailSEcondViewThird: ModuleView {
+class DetailSecondViewFourthView: ModuleView {
     
     private let developerInfoVStackView: UIStackView = {
         let stackView = UIStackView()

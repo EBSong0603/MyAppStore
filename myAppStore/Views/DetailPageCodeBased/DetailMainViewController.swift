@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailViewController: BaseViewController {
+class DetailMainViewController: BaseViewController {
     
     //여기서는 기존의 오리지널 MVVM 방식처럼 ViewModel을 그대로 얻어온 것이 아니라
     //init만 MVVM 방식의 일부로 진행하고, 결국 받은 값은 AppStoreModel.ResultEntry 타입으로 받음 (model로 받음)
@@ -19,6 +19,7 @@ class DetailViewController: BaseViewController {
     private let model: AppStoreModel.ResultsEntry
     
     let scrollView: UIScrollView = UIScrollView()
+    
     private let detailContentVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
@@ -28,14 +29,13 @@ class DetailViewController: BaseViewController {
     }()
     private let topView: DetailTopView = DetailTopView()
     private let secondView: DetailSecondView = DetailSecondView()
-    private let thirdView: DetailThirdCapturedImageView = DetailThirdCapturedImageView()
-    private let forthView: DetailForthPhoneView = DetailForthPhoneView()
-    private let fifthView: DetailFifthDescriptionView = DetailFifthDescriptionView()
+    private let thirdView: DetailThirdView = DetailThirdView()
+    private let forthView: DetailFourthView = DetailFourthView()
+    private let fifthView: DetailFifthView = DetailFifthView()
     private let sixthView: DetailSixthView = DetailSixthView()
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         prepareScrollView()
         detailContentVStackView.addArrangedSubviews([topView, secondView, thirdView, forthView, fifthView, sixthView])
         
@@ -43,9 +43,16 @@ class DetailViewController: BaseViewController {
         secondView.setData(with: model)
         thirdView.setData(with: model.screenshotUrls)
         fifthView.setData(with: model)
+        sixthView.setData(with: model)
         view.backgroundColor = .white
     }
     
+    override func viewWillLayoutSubviews() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.barTintColor = .white
+    }
+
     init(with data: AppStoreModel.ResultsEntry) {
         self.model = data
         super.init(nibName: nil, bundle: nil)
@@ -54,12 +61,6 @@ class DetailViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.barTintColor = .white
     }
     
     private func prepareScrollView() {
@@ -78,7 +79,7 @@ class DetailViewController: BaseViewController {
         detailContentVStackView.widthDemension(scrollView.frameLayoutGuide.widthAnchor)
     }
 }
-extension DetailViewController: UIScrollViewDelegate {
+extension DetailMainViewController: UIScrollViewDelegate {
  
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffsetY: CGFloat = scrollView.contentOffset.y

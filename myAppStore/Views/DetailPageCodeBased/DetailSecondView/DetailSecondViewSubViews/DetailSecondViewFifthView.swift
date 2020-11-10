@@ -4,20 +4,8 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-public enum languageStyle {
-    case en
-    case ko
-    var rawValue: (code: String, lang: String) {
-        switch self {
-        case .en: return ("EN", "영어")
-        case .ko: return ("KO", "한국어")
-        }
-    }
-}
-class DetailSecondViewForth: ModuleView {
-    
-    private let languageVStackView1 = UIStackView().style(axis: .vertical, spacing: 2, distribution: .fillEqually)
-    
+class DetailSecondViewFifthView: ModuleView {
+
     private let languageVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
@@ -34,9 +22,9 @@ class DetailSecondViewForth: ModuleView {
         label.setStyle("EN", textColor: .gray, font: UIFont.systemFont(ofSize: 20), textAlignment: .center)
         return label
     }()
-    private let langKoreanLabel: UILabel = {
+    private let otherLanguageCountLabel: UILabel = {
         let label = UILabel()
-        label.setStyle("영어", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
+        label.setStyle("+ 10 More", textColor: .lightGray, font: UIFont.systemFont(ofSize: 14), textAlignment: .center)
         return label
     }()
     
@@ -44,7 +32,7 @@ class DetailSecondViewForth: ModuleView {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        languageVStackView.addArrangedSubviews([langInfoLabel, langLabel, langKoreanLabel])
+        languageVStackView.addArrangedSubviews([langInfoLabel, langLabel, otherLanguageCountLabel])
     }
     
     required init?(coder: NSCoder) {
@@ -52,9 +40,9 @@ class DetailSecondViewForth: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        langLabel.text = data.languageCodesISO2A.joined(separator: ",")
-        
-        //        langKoreanLabel.text = (data.languageCodesISO2A.contains("EN")) ? languageStyle.en.rawValue : languageStyle.ko.rawValue
+    
+        langLabel.text = data.languageCodesISO2A.first
+        otherLanguageCountLabel.text = "+ \(data.languageCodesISO2A.count - 1) More"
     }
     
     override func configureAutolayouts() {

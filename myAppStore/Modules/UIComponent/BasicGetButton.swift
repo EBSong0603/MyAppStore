@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class GetBasicButton: UIButton {
+class BasicGetButton: UIButton {
 
     enum ButtonStyle {
         case blue

@@ -9,14 +9,14 @@ import UIKit
 //이니셜라이즈드도 매개변수처럼 사용이 가능함!!!!!(init 으로 뭔갈 전달할 수 있단겨)
 //이 이니셜라이즈드 되어있는 클래스를 가져다 쓰는 어떤 곳에서 이니셜라이즈의 매개변수를 통해 어떤 값을 전달해서 이니셜라이즈드를 각각 상황에 맞게 할수 있단겨...
 
-class RatingStarStackView: ModuleView {
+class BasicRatingStarView: ModuleView {
     
     enum StarStyle {
         case small
         case middle
         case large
         //각 case(starStyle의 타입)가 가지고 있는 value들을 설정해줌
-        var rawVale: (imageName: String, size: CGFloat, tintColor: UIColor) {
+        var rawValue: (imageName: String, size: CGFloat, tintColor: UIColor) {
             switch self {
             case .small: return ("star", 8, .lightGray)
             case .middle: return ("star", 12, .gray)
@@ -81,14 +81,14 @@ class RatingStarStackView: ModuleView {
     private func setStarImageView(isFilled: Bool) -> UIImageView {
         //여기서 쓰는 style은 이 클래스 변수로지정해준 style임!
         let imageView: UIImageView = UIImageView()
-        var imageName: String = style.rawVale.imageName
+        var imageName: String = style.rawValue.imageName
         if isFilled == true {
             imageName.append(".fill")
         }
         imageView.image = UIImage(systemName: imageName)!
-        imageView.width(style.rawVale.size)
-        imageView.height(style.rawVale.size)
-        imageView.tintColor = style.rawVale.tintColor
+        imageView.width(style.rawValue.size)
+        imageView.height(style.rawValue.size)
+        imageView.tintColor = style.rawValue.tintColor
         //imageView라는 객체 하나를 밷어냄, 이걸 가지고 어디선가 쓸수있게댐
         return imageView
     }

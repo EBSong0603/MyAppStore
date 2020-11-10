@@ -4,7 +4,7 @@
 //  Copyright © 2020 EB. All rights reserved.
 import UIKit
 
-class DetailThirdCapturedImageView: ModuleView {
+class DetailThirdView: ModuleView {
     
     var screenshotData: [String] = []
     
@@ -13,8 +13,8 @@ class DetailThirdCapturedImageView: ModuleView {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CapturedImageCollectionViewCell.self,
-                    forCellWithReuseIdentifier: CapturedImageCollectionViewCell.identifier)
+        cv.register(ScreenShotsCollectionViewCell.self,
+                    forCellWithReuseIdentifier: ScreenShotsCollectionViewCell.identifier)
         layout.scrollDirection = .horizontal
         return cv
     }()
@@ -50,7 +50,7 @@ class DetailThirdCapturedImageView: ModuleView {
     }
 }
 
-extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension DetailThirdView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -69,8 +69,8 @@ extension DetailThirdCapturedImageView: UICollectionViewDelegateFlowLayout, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CapturedImageCollectionViewCell.identifier,
-                                                          for: indexPath) as! CapturedImageCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenShotsCollectionViewCell.identifier,
+                                                          for: indexPath) as! ScreenShotsCollectionViewCell
             cell.backgroundColor = .white
             cell.setData(with: screenshotData[indexPath.row])
             return cell
