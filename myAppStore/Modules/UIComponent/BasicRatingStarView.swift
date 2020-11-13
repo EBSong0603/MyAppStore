@@ -20,7 +20,7 @@ class BasicRatingStarView: ModuleView {
             switch self {
             case .small: return ("star", 8, .lightGray)
             case .middle: return ("star", 12, .gray)
-            case .large: return ("star", 14,.lightGray)
+            case .large: return ("star", 14,.gray)
             }
         }
     }
@@ -77,12 +77,13 @@ class BasicRatingStarView: ModuleView {
         starHStackView.addArrangedSubviews(subViews)
     }
     
+    //Bool 타입은 기본값이 true 임, 그래서 그냥 기본값 true 쓰려면 ==true 해줄필요없이, 그냥 bool {} 하면됨
     //UIImageView 객체를 만들어주는 메서드임 (반환값 객체를 가지고 어딘가에서 쓴다)
     private func setStarImageView(isFilled: Bool) -> UIImageView {
         //여기서 쓰는 style은 이 클래스 변수로지정해준 style임!
         let imageView: UIImageView = UIImageView()
         var imageName: String = style.rawValue.imageName
-        if isFilled == true {
+        if isFilled {
             imageName.append(".fill")
         }
         imageView.image = UIImage(systemName: imageName)!

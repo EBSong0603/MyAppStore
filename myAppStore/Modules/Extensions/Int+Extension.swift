@@ -22,4 +22,13 @@ extension Int {
             return "\(Int(number))"
         }
     }
+    
+    func Decimal(with value: Int) -> String {
+          let numberFormatter = NumberFormatter()
+          numberFormatter.numberStyle = .decimal
+          if let result = numberFormatter.string(from: NSNumber(value: value)) {
+              return result
+          }
+          return ""
+      }
 }

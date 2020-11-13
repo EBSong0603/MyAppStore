@@ -34,7 +34,7 @@ struct AppStoreModel: Codable {
         let formattedPrice: String //앱가격: 무료
         let primaryGenreName: String //앱 카테고리 이름(영어)
         let languageCodesISO2A : [String] //지원 언어
-//        let releaseNotes: String //출시노트: 버그들이 수정되었어요
+        let releaseNotes: String //출시노트: 버그들이 수정되었어요
         let trackCensoredName: String //앱이름
         let fileSizeBytes: String //앱사이즈(바이트)
 //        let sellerUrl: String //판매자 주소 sellerUrl
@@ -47,6 +47,7 @@ struct AppStoreModel: Codable {
         let genreIds: [String]
         let bundleId: String //만든 사람 번들아이디: com.cashwalk.cashwalk
         let userRatingCount: Int //리뷰갯수
+        let version: String
     
         
         private enum CodingKeys: String, CodingKey {
@@ -63,6 +64,7 @@ struct AppStoreModel: Codable {
             case formattedPrice
             case primaryGenreName
             case languageCodesISO2A
+            case releaseNotes
             case trackCensoredName
             case fileSizeBytes
             case averageUserRating
@@ -74,6 +76,7 @@ struct AppStoreModel: Codable {
             case genreIds
             case bundleId
             case userRatingCount
+            case version
            
         }
         
@@ -92,9 +95,11 @@ struct AppStoreModel: Codable {
             formattedPrice = (try? values.decode(String.self, forKey: .formattedPrice)) ?? ""
             primaryGenreName = (try? values.decode(String.self, forKey: .primaryGenreName)) ?? ""
             languageCodesISO2A = (try? values.decode([String].self, forKey: .languageCodesISO2A)) ?? [""]
+            releaseNotes = (try? values.decode(String.self, forKey: .releaseNotes)) ?? ""
             trackCensoredName = (try? values.decode(String.self, forKey: .trackCensoredName)) ?? ""
             fileSizeBytes = (try? values.decode(String.self, forKey: .fileSizeBytes)) ?? ""
-            averageUserRating = round(((try? values.decode(Float.self, forKey: .averageUserRating))) ?? 0)
+            averageUserRating = round((((try? values.decode(Float.self, forKey: .averageUserRating))) ?? 0) * 10) / 10
+            print("\(averageUserRating)")
             contentAdvisoryRating = (try? values.decode(String.self, forKey: .contentAdvisoryRating)) ?? ""
             trackContentRating = (try? values.decode(String.self, forKey: .trackContentRating)) ?? ""
             description = (try? values.decode(String.self, forKey: .description)) ?? ""
@@ -103,7 +108,7 @@ struct AppStoreModel: Codable {
             genreIds = (try? values.decode([String].self, forKey: .genreIds)) ?? [""]
             bundleId = (try? values.decode(String.self, forKey: .bundleId)) ?? ""
             userRatingCount = (try? values.decode(Int.self, forKey: .userRatingCount)) ?? 0
-            
+            version = (try? values.decode(String.self, forKey: .version)) ?? ""
         }
     }
 }

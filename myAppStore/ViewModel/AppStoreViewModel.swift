@@ -12,36 +12,36 @@ class AppStoreViewModel {
     
     var isChanged: ((Bool) -> Void)?
     
-    var models: [AppStoreModel.ResultsEntry] = []
+    struct OutPut {
+        var models: [AppStoreModel.ResultsEntry] = []
+    }
     
-    func requestData(term: String, responseData:  (([AppStoreModel.ResultsEntry]) -> Void)? = nil) {
-        let urlSting = "https://itunes.apple.com/search?entity=software&country=KR&term=\(term)"
-        guard let target = urlSting.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
-        guard let url = URL(string: target) else {return}
-        URLSession.shared.dataTask(with: url,
-                                   completionHandler: {data, reponse, error in
-                                    guard let data = data, error == nil else {
-                                        print("Something Wrong")
-                                        
-                                        return
-                                    }
-                                    
-                                   
-                                    
-                                    do {
-                                        let result: AppStoreModel = try JSONDecoder().decode(AppStoreModel.self, from: data)
-                                        
-                                        responseData?(result.results)
-                                        self.models = result.results
-                                        self.isChanged?(true)
-                                    } catch {
-                                        print("error: \(error)")
-                                    }
-        }).resume()
+    struct InPut {
+        var selectedModel: AppStoreModel.ResultsEntry?
+    }
+    
+    var outPut: OutPut = OutPut()
+    var inPut: InPut = InPut()
+    
+    
+    func requestData(term: String) {
+
+        // Full API 주소: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
+
+        let domain: String = "https://itunes.apple.com"
+        let path: String = "/search?"
+        let param: [String:Any] = ["entity":"software", "country":"KR", "term":"\(term)"]
+  
+        RequestManager.finalRequest(with: AppStoreModel.self, domain: domain, path: path, param: param) { [weak self] model, error  in
+            guard let self = self, let model = model else {return}
+            
+            self.outPut.models = model.results
+            self.isChanged?(true)
+        }
     }
     
     func reset() {
-        models = []
+        outPut.models = []
         self.isChanged?(true)
     }
 }

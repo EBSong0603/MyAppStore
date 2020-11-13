@@ -21,19 +21,11 @@ class SearchPageAppScreenShotsView: ModuleView {
         super.init(coder: coder)
     }
     
-    func setImageViews(_ urls: [String]) {
+    func setData(_ urls: [String]) {
         
         captureImageStackView.removeAllSubViews()
         var myView: [UIImageView] = []
-//        for url in urls {
-//            let imageView = UIImageView()
-//            imageView.load(with: url)
-//            myView.append(imageView)
-//            imageView.clipsToBounds = true
-//            imageView.layer.cornerRadius = 7
-//        }
-//
-        //위의 for문과 아래 forEach 문은 같은것! in 뒤에는 어떤 수행, 액션이 들어감
+
         urls.forEach { url in
             let imageView = UIImageView()
             imageView.load(with: url)

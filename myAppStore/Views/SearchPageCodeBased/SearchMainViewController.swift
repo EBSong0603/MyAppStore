@@ -24,9 +24,9 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
         mySearchController.obscuresBackgroundDuringPresentation = false
         
         viewModel.isChanged = { isChangedTrue in
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
+//            }
         }
     }
     
@@ -72,6 +72,7 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
     private func prepareTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         //tableView Cell register
         tableView.register(SearchPageTableViewCell.self,
@@ -85,22 +86,26 @@ extension SearchMainViewController: UITableViewDelegate {
 extension SearchMainViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.models.count
+        return viewModel.outPut.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchPageTableViewCell.identifier,
                                                  for: indexPath) as! SearchPageTableViewCell
-        let model = viewModel.models[indexPath.row]
+        let model = viewModel.outPut.models[indexPath.row]
             cell.setData(with: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
-        let model = viewModel.models[indexPath.row]
-        let vc: DetailMainViewController = DetailMainViewController(with: model)
-//        vc.data = model
+        //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기
+        let model = viewModel.outPut.models[indexPath.row]
+        viewModel.inPut.selectedModel = model
+        
+        //다음 뷰컨트롤러 이니셜라이즈로 viewModel 넘기기
+        let vc: DetailMainViewController = DetailMainViewController(with: viewModel)
+
         navigationController?.pushViewController(vc, animated: true)
     }
 }
