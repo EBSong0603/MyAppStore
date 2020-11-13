@@ -8,12 +8,13 @@ class SearchPageAppIconInfoView: ModuleView {
     
     var isGame: Bool = false
     
-    private var appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!,
-                                    radius: 14, tintColor: .clear, contentMode: .scaleAspectFill)
+    
+    private var appIconImageView: BasicAppIconImageView = {
+        let imageView = BasicAppIconImageView(appIconStyle: .small)
+        imageView.setStyle()
         return imageView
     }()
+
     //위의 스택뷰 코드는 그냥 간단한것을 이니셜라이즈하기엔 코드가 복잡함
     //그래서 stackView extension에서 새로 반환값이 있는 함수를 지정해주고 그것으로 코드를 아래와 같이 간결하게 만들었다!(return 따로 해줄필요xx)
     private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)

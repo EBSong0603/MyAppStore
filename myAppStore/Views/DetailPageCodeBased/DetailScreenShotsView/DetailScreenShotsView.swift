@@ -19,10 +19,12 @@ class DetailScreenShotsView: ModuleView {
         return cv
     }()
     
+    private let previewTitleView: PreviewTitleView = PreviewTitleView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        self.heightAnchor.constraint(equalToConstant: 270).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 460).isActive = true
         prepareCollectionView()
         collectionView.showsHorizontalScrollIndicator = false
     }
@@ -38,9 +40,14 @@ class DetailScreenShotsView: ModuleView {
     }
     
     override func configureAutolayouts() {
+  
         self.addSubview(collectionView)
+        self.addSubview(previewTitleView)
+        previewTitleView.top(self.topAnchor)
+        previewTitleView.leading(self.leadingAnchor, constant: 16)
+        previewTitleView.trailing(self.trailingAnchor)
         
-        collectionView.top(self.topAnchor)
+        collectionView.top(previewTitleView.bottomAnchor, constant: 8)
         collectionView.leading(self.leadingAnchor)
         collectionView.trailing(self.trailingAnchor)
         collectionView.bottom(self.bottomAnchor)
@@ -55,7 +62,7 @@ extension DetailScreenShotsView: UICollectionViewDelegateFlowLayout, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 250)
+        return CGSize(width: 230, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

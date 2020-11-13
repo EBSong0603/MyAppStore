@@ -12,6 +12,8 @@ class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     private var capturedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 10, contentMode: .scaleAspectFill)
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
         return imageView  
     }()
     

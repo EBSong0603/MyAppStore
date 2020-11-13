@@ -32,6 +32,8 @@ class SearchPageAppScreenShotsView: ModuleView {
             myView.append(imageView)
             imageView.clipsToBounds = true
             imageView.layer.cornerRadius = 7
+            imageView.layer.borderWidth = 0.5
+            imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
         }
         captureImageStackView.addArrangedSubviews(myView)
     }

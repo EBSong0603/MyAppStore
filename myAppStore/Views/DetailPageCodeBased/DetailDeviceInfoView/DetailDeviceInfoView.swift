@@ -8,7 +8,7 @@ class DetailDeviceInfoView: ModuleView {
     
     private let phoneImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(systemName: "phone")!, tintColor: .black, contentMode: .scaleAspectFill)
+        imageView.setImageViewStyle(UIImage(systemName: "iphone")!, tintColor: .black, contentMode: .scaleAspectFill)
         imageView.height(13)
         imageView.width(13)
         return imageView

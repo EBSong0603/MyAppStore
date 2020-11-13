@@ -39,6 +39,7 @@ class DetailMainViewController: BaseViewController {
     private let naviTitleView: NaviTitleView = NaviTitleView()
  
     private let seperatorView: HorizonSeperatorView = HorizonSeperatorView()
+    private let seperatorView1: HorizonSeperatorView = HorizonSeperatorView()
     private let seperatorView2: HorizonSeperatorView = HorizonSeperatorView()
     private let seperatorView3: HorizonSeperatorView = HorizonSeperatorView()
     private let seperatorView4: HorizonSeperatorView = HorizonSeperatorView()
@@ -49,7 +50,7 @@ class DetailMainViewController: BaseViewController {
         view.backgroundColor = .white
         setNavigationBar()
         prepareScrollView()
-        detailContentVStackView.addArrangedSubviews([appIconInfoView, seperatorView, appVerietyInfoView, appScreenShotsView, appDeviceInfoView, seperatorView2, appDescriptionView, seperatorView3, appRatingReviewView, seperatorView4, appWhatsNewInfoView, seperatorView5, informationView])
+        detailContentVStackView.addArrangedSubviews([appIconInfoView, seperatorView, appVerietyInfoView, seperatorView1, appWhatsNewInfoView, seperatorView2, appScreenShotsView, appDeviceInfoView, seperatorView3, appDescriptionView, seperatorView4, appRatingReviewView, seperatorView5, informationView])
 
         
         //inPut 모델 데이터에 접근하고 싶으면 일단 viewModel 자체를 이니셜라이즈로 받고! 그 다음에 할수 있음

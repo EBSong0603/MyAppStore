@@ -38,12 +38,12 @@ class RequestManager {
         
         
         guard let urlComps = urlComponents else { return }
-        print("\(urlComps)")
+        print("인코딩전\(urlComps)")
         let urlString = String(describing: urlComps)
         print(urlString)
-        guard let target = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { throw CustomError.invalidURL}
-        print("\(target)")
-        guard let url = URL(string: target) else {throw CustomError.invalidURL}
+//        guard let target = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { throw CustomError.invalidURL}
+//        print("\(target)")
+        guard let url = URL(string: urlString) else {throw CustomError.invalidURL}
         URLSession.shared.dataTask(with: url) { data, respon, error in
             //내 status code 가 200-300 안에 들어왔을떄만 다음 코드 탈수 있게 제약건 코드
             guard let responsed = respon as? HTTPURLResponse else { return }

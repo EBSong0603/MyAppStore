@@ -49,7 +49,7 @@ class VersionHistoryView: ModuleView {
             updatePeriodLabel.text = "\(timeGap.dG)d ago"
         case 7..<14:
             updatePeriodLabel.text = "1w ago"
-        case 15..<21:
+        case 14..<21:
             updatePeriodLabel.text = "2w ago"
         case 21..<28:
             updatePeriodLabel.text = "3w ago"
@@ -57,8 +57,10 @@ class VersionHistoryView: ModuleView {
             updatePeriodLabel.text = "4w ago"
         case 35..<365:
             updatePeriodLabel.text = "\(timeGap.mG)m ago"
-        default:
+        case 365...Int.max:
             updatePeriodLabel.text = "\(timeGap.yG)y ago"
+        default:
+            break
         }
     }
     

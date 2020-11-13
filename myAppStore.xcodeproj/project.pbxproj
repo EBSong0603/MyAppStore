@@ -23,6 +23,8 @@
 		7027C201255C3C5B006A329B /* NaviTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7027C200255C3C5B006A329B /* NaviTitleView.swift */; };
 		7027C203255C4E32006A329B /* HorizonSeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7027C202255C4E32006A329B /* HorizonSeperatorView.swift */; };
 		702CF828254FF4D1006D7B00 /* BasicRatingStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702CF827254FF4D1006D7B00 /* BasicRatingStarView.swift */; };
+		7040576B255EFBA50022A8DA /* PreviewTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7040576A255EFBA50022A8DA /* PreviewTitleView.swift */; };
+		70405770255F01D50022A8DA /* BasicAppIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */; };
 		7049A4F625598CB600C7D604 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7049A4F525598CB600C7D604 /* UICollectionViewCell+Extension.swift */; };
 		7049A509255AF26A00C7D604 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7049A508255AF26A00C7D604 /* RequestManager.swift */; };
 		706CA917253AF8EE00E22783 /* DetailMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailMainViewController.swift */; };
@@ -106,6 +108,8 @@
 		7027C200255C3C5B006A329B /* NaviTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviTitleView.swift; sourceTree = "<group>"; };
 		7027C202255C4E32006A329B /* HorizonSeperatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonSeperatorView.swift; sourceTree = "<group>"; };
 		702CF827254FF4D1006D7B00 /* BasicRatingStarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRatingStarView.swift; sourceTree = "<group>"; };
+		7040576A255EFBA50022A8DA /* PreviewTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTitleView.swift; sourceTree = "<group>"; };
+		7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAppIconImageView.swift; sourceTree = "<group>"; };
 		7049A4F525598CB600C7D604 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		7049A508255AF26A00C7D604 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		706CA916253AF8EE00E22783 /* DetailMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		701355DA255943FB00AD21CA /* DetailScreenShotsViewSubviews */ = {
 			isa = PBXGroup;
 			children = (
+				7040576A255EFBA50022A8DA /* PreviewTitleView.swift */,
 				70CEE6FC253DA98000569C10 /* ScreenShotsCollectionViewCell.swift */,
 			);
 			path = DetailScreenShotsViewSubviews;
@@ -286,11 +291,11 @@
 				7027C200255C3C5B006A329B /* NaviTitleView.swift */,
 				70E7C103255D240E0009E776 /* DetailAppIconInfoView */,
 				70EDC26025497DA200A3A0E9 /* DetailAppVerietyInfoView */,
+				70E7C0F8255D145D0009E776 /* WhatsNewInformationView */,
 				70EAFA98254C0DEA00C6BAED /* DetailScreenShotsView */,
 				70EAFA99254C0DFA00C6BAED /* DetailDeviceInfoView */,
 				70EAFA9A254C0E0500C6BAED /* DetailAppDescriptionView */,
 				70EAFAB3254C403D00C6BAED /* DetailAppRatingReviewView */,
-				70E7C0F8255D145D0009E776 /* WhatsNewInformationView */,
 				70E7C0FA255D1A8C0009E776 /* InformationTotalView */,
 			);
 			path = DetailPageCodeBased;
@@ -335,6 +340,7 @@
 				70FB8D192552D1AF000459E4 /* ButtonPractice.swift */,
 				70A16EF5254410C900FEC0DF /* BasicLabel.swift */,
 				702CF827254FF4D1006D7B00 /* BasicRatingStarView.swift */,
+				7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				70EDC25D25497D8D00A3A0E9 /* ShortDeveloperView.swift in Sources */,
 				70CEE713253EBF6D00569C10 /* BaseViewController.swift in Sources */,
 				70CEE703253EA3E600569C10 /* UIButton+Extension.swift in Sources */,
+				7040576B255EFBA50022A8DA /* PreviewTitleView.swift in Sources */,
 				70EAFAA6254C1D7700C6BAED /* ReviewCountView.swift in Sources */,
 				70DD5C822546F97B00738B8C /* BaseTableViewCell.swift in Sources */,
 				70E7C12F255D9D2E0009E776 /* TestView2.swift in Sources */,
@@ -612,6 +619,7 @@
 				70013966253AAB6D00595C03 /* SearchMainViewController.swift in Sources */,
 				70FB8D0E2551CE3E000459E4 /* AppStoreViewModel.swift in Sources */,
 				70013952253AAB0A00595C03 /* AppDelegate.swift in Sources */,
+				70405770255F01D50022A8DA /* BasicAppIconImageView.swift in Sources */,
 				70EDC25F25497D9A00A3A0E9 /* ShortLanguagesView.swift in Sources */,
 				70EAFAA0254C0F2300C6BAED /* RatingReviewInfoView.swift in Sources */,
 				70C6406125404DC500D06B6A /* UIImageView+Extension.swift in Sources */,

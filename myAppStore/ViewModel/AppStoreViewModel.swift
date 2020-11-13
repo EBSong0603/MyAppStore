@@ -25,7 +25,6 @@ class AppStoreViewModel {
     
     
     func requestData(term: String) {
-
         // Full API 주소: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
 
         let domain: String = "https://itunes.apple.com"
