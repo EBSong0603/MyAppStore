@@ -8,3 +8,7 @@
 - [설계 및 구현](#설계-및-구현)
 - [trouble shooting](#trouble-shooting)
 - [학습한 내용](#관련-학습-내용)
+
+- 설정 : `URLSessionConfiguration`
+- 설정2: 'URLSessionConfiguration2'
+- 설정3: `URLSessionCongfiguration3`
