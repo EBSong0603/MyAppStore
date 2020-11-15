@@ -25,7 +25,7 @@ class SearchPageTableViewCell: BaseTableViewCell, Cellable {
         firstView.setData(with: cellData)
 //
 //        let urlsss: [String] = cellData.screenshotUrls.makeFilteredStringArray(with: cellData.screenshotUrls, count: 2)
-        
+
         secondView.setData(cellData.screenshotUrls.makeFilteredStringArray(with: cellData.screenshotUrls, count: 2))
         
 //

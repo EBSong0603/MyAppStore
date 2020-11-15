@@ -5,15 +5,7 @@
 import UIKit
 
 class DetailAppIconInfoView: ModuleView {
-//    
-//    private let appIconImageView2: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 20, contentMode: .scaleAspectFill)
-//        imageView.layer.borderWidth = 0.5
-//        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
-//        return imageView
-//    }()
-//    
+  
     private let appIconImageView: BasicAppIconImageView = {
         let imageView = BasicAppIconImageView(appIconStyle: .large)
         imageView.setStyle()

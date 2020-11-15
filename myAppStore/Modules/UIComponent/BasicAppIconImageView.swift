@@ -44,24 +44,4 @@ class BasicAppIconImageView: UIImageView {
         self.width(style.rawValue.width)
         self.height(style.rawValue.height)
     }
-    
-    //large
-    private let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 20, contentMode: .scaleAspectFill)
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
-        return imageView
-    }()
-
-    //small
-    private var appIconImageView2: UIImageView = {
-        let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!,
-                                    radius: 14, tintColor: .clear, contentMode: .scaleAspectFill)
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
-        return imageView
-    }()
-    
 }

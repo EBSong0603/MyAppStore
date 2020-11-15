@@ -37,6 +37,7 @@ class VersionHistoryView: ModuleView {
         let realseStringDate = data.currentVersionReleaseDate
         
         let releasDate = realseStringDate.stringToDate(stringDate: realseStringDate)
+        
         let interval = todayDate.timeIntervalSince(releasDate)
         let days = Int(interval / 86400)
 

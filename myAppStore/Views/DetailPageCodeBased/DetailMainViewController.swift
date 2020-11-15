@@ -76,7 +76,7 @@ class DetailMainViewController: BaseViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
         
-        
+   
 
     }
     
