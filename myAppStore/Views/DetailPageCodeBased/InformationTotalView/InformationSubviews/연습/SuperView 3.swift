@@ -17,7 +17,12 @@ class SuperView: ModuleView {
         return stackView
     }()
     
-    private let myButton: UIButton = UIButton()
+    private let myButton: UIButton = {
+       let button = UIButton()
+        button.backgroundColor = .clear
+     
+        return button
+    }()
     
     private let view1: TestView1 = TestView1()
     private let view2: TestView2 = TestView2()
@@ -56,17 +61,11 @@ class SuperView: ModuleView {
             
             
             override func configureAutolayouts() {
-                
+
+                self.addSubview(vStackView)
                 self.addSubview(myButton)
+                vStackView.edges(self)
                 myButton.edges(self)
-                myButton.addSubview(vStackView) 
-                vStackView.edges(myButton)
-                
-//                
-//                self.addSubview(vStackView)
-//                self.addSubview(myButton)
-//                vStackView.edges(self)
-//                myButton.edges(self)
         
                 
  

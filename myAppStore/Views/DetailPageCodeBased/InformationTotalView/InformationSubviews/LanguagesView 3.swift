@@ -7,6 +7,21 @@
 import UIKit
 
 class LanguagesView: ModuleView {
+//
+//    public enum LanguageType {
+//        case KO
+//        case EN
+//        case JA
+//        case CN
+//        var rawValue: (LangCode: String, Language: String) {
+//            switch self {
+//            case .KO: return (LangCode: "KO", Language: "Korean")
+//            case .EN: return (LangCode: "EN", Language: "English")
+//            case .JA: return (LangCode: "JA", Language: "Japanese")
+//            case .CN: return (LangCode: "CN", Language: "Chinese")
+//            }
+//        }
+//    }
     
     private let langLabel: UILabel = {
         let label = UILabel()
@@ -37,13 +52,43 @@ class LanguagesView: ModuleView {
         
         
         let willFiltered: [String] = data.languageCodesISO2A.makeFilteredStringArray(with: data.languageCodesISO2A, count: 1)
+  
+//        let langs: [String] = filteredLanguages(with: data)
 
         var finalLanguageArray : [String] = []
             
         finalLanguageArray = willFiltered.languageChange(with: willFiltered)
         
+//        willFiltered.forEach { lang in
+//            switch lang {
+//            case LanguageType.KO.rawValue.LangCode:
+//                practiceLang.append(LanguageType.KO.rawValue.Language)
+//            case LanguageType.EN.rawValue.LangCode:
+//                practiceLang.append(LanguageType.EN.rawValue.Language)
+//            case LanguageType.JA.rawValue.LangCode:
+//                practiceLang.append(LanguageType.JA.rawValue.Language)
+//            case LanguageType.CN.rawValue.LangCode:
+//                practiceLang.append(LanguageType.CN.rawValue.Language)
+//            default:
+//                break
+//            }
+//        }
+        
+        
         langInfoLabel.text = (langsCount > 2) ? "\(finalLanguageArray.first ?? "") and \(langsCount - 1) more" : "\(finalLanguageArray.joined(separator: " and "))"
     }
+    
+    //일단 사용은 안하지만 혹시나 모를것에 대비 살려놓음
+//    private func filteredLanguages(with data: AppStoreModel.ResultsEntry) -> [String] {
+//
+//        let langArray: [String] = data.languageCodesISO2A
+//        var langs: [String] = []
+//        langArray.forEach { lang in
+//            if langs.count > 1 {return}
+//            langs.append(lang)
+//        }
+//        return langs
+//    }
 
     override func configureAutolayouts() {
         

@@ -21,7 +21,7 @@ class InformationTotalView: ModuleView {
     private let categoryView: CategoryView = CategoryView()
     private let compatiView: CompatibilityView = CompatibilityView()
     private let languagesView: LanguagesView = LanguagesView()
-    private let ageRatingView: SuperView = SuperView()
+    private let ageRatingView: AgeRatingView = AgeRatingView()
     private var inAppPurchaseView: InAppPurchaseView = InAppPurchaseView()
     private let copyrightView: CopyrightView = CopyrightView()
     private let developerWebsiteView: DeveloperWebsiteView = DeveloperWebsiteView()

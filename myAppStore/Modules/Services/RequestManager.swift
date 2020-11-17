@@ -41,8 +41,6 @@ class RequestManager {
         print("인코딩전\(urlComps)")
         let urlString = String(describing: urlComps)
         print(urlString)
-//        guard let target = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { throw CustomError.invalidURL}
-//        print("\(target)")
         guard let url = URL(string: urlString) else {throw CustomError.invalidURL}
         URLSession.shared.dataTask(with: url) { data, respon, error in
             //내 status code 가 200-300 안에 들어왔을떄만 다음 코드 탈수 있게 제약건 코드
@@ -89,7 +87,6 @@ class RequestManager {
         urlComponents?.queryItems = queryItems.map {
             URLQueryItem(name: $0, value: String(describing: $1))
         }
-      
         
         guard let urlComps = urlComponents else {return}
         let urlString = "\(urlComps)"

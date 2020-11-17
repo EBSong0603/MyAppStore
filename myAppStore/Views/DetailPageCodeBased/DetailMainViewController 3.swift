@@ -51,6 +51,7 @@ class DetailMainViewController: BaseViewController {
         setNavigationBar()
         prepareScrollView()
         detailContentVStackView.addArrangedSubviews([appIconInfoView, seperatorView, appVerietyInfoView, seperatorView1, appWhatsNewInfoView, seperatorView2, appScreenShotsView, appDeviceInfoView, seperatorView3, appDescriptionView, seperatorView4, appRatingReviewView, seperatorView5, informationView])
+
         
         //inPut 모델 데이터에 접근하고 싶으면 일단 viewModel 자체를 이니셜라이즈로 받고! 그 다음에 할수 있음
         //왜냐면 앞에 뷰컨에서 InPut 모델에 값을 넣던, 여기서 그 InPut 데이터 모델을 받아와서 뿌려주던 다 ViewModel을 통해서 하기 땜에!
@@ -67,24 +68,31 @@ class DetailMainViewController: BaseViewController {
             appWhatsNewInfoView.setData(with: model)
             informationView.setData(with: model)
         }
+     
+      
     }
-    
     func setNavigationBar() {
          navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
+        
+   
+
     }
     
     //viewWillLayoutSubviews 델리게이트 이용하면, 화면전환시 검색 큰 글자 바로 사라짐
     override func viewWillLayoutSubviews() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never
+//        navigationController?.navigationBar.barTintColor = .white
+     
     }
 
     //여기서 init 으로 그전에 뷰컨에서 넘겨줬던 viewModel 받아서 내가 만든 viewModel 변수에 넣어줌 (이니셜라이즈 방식)
     init(with viewModel: AppStoreViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -96,7 +104,6 @@ class DetailMainViewController: BaseViewController {
     }
     
     override func configureAutolayouts() {
-        
         view.addSubview(scrollView)
         scrollView.addSubview(detailContentVStackView)
   
@@ -108,7 +115,6 @@ class DetailMainViewController: BaseViewController {
         detailContentVStackView.widthDemension(scrollView.frameLayoutGuide.widthAnchor)
     }
 }
-
 //UIScrollViewDelegate 이용해서 네비게이션바 안에 이미지랑 버튼 띄우기
 extension DetailMainViewController: UIScrollViewDelegate {
  
@@ -117,10 +123,10 @@ extension DetailMainViewController: UIScrollViewDelegate {
         let contentOffsetY: CGFloat = scrollView.contentOffset.y
         print(contentOffsetY)
         if contentOffsetY > 104 {
-            self.navigationItem.titleView = naviTitleView
-     
+            self.navigationItem.titleView = naviTitleView   
         } else {
             self.navigationItem.titleView = nil
         }
+        
     }
 }

@@ -17,15 +17,15 @@ class DetailAppDescriptionView: ModuleView {
     private let moreInfoLabel: UILabel = {
        let label = UILabel()
         label.setStyle("더보기", textColor: .systemBlue, font: UIFont.systemFont(ofSize: 12))
-        label.backgroundColor = .white
+        label.backgroundColor = .clear
         label.alpha = 1
         return label
     }()
 
     private let backView: UIView = {
        let view = UIView()
-        view.backgroundColor = .white
-        view.alpha = 0.5
+        view.backgroundColor = .clear
+        view.alpha = 1
         return view
     }()
     
@@ -61,7 +61,7 @@ class DetailAppDescriptionView: ModuleView {
     
     override func configureAutolayouts() {
         
-        // =========== 버튼이 레이블보다 아래 있을때 버튼이 먹음, 그런데 더보기 레이블 쪽만 누르면 버튼 안먹음 ======//
+        // =========== 버튼이 레이블보다 아래 있을때 버튼이 먹음, 그런데 더보기 레이블 누르면 버튼 안먹음 ======//
         self.addSubview(openDescriptionButtom)
         openDescriptionButtom.top(self.topAnchor)
         openDescriptionButtom.leading(self.leadingAnchor)

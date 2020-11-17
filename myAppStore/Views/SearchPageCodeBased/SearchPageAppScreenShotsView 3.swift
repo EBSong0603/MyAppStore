@@ -31,7 +31,7 @@ class SearchPageAppScreenShotsView: ModuleView {
             imageView.load(with: url)
             myView.append(imageView)
             imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 5
+            imageView.layer.cornerRadius = 7
             imageView.layer.borderWidth = 0.5
             imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
         }
@@ -41,7 +41,7 @@ class SearchPageAppScreenShotsView: ModuleView {
     override func configureAutolayouts() {
         self.addSubview(captureImageStackView)
         captureImageStackView.edges(self, vConstant: 4, hConstant: 16)
-        captureImageStackView.height(210)
+        captureImageStackView.height(180)
     }
 }
 

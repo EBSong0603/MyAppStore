@@ -23,8 +23,19 @@ class SearchPageTableViewCell: BaseTableViewCell, Cellable {
         
         guard let cellData = cellData else {return}
         firstView.setData(with: cellData)
-                
+//
+//        let urlsss: [String] = cellData.screenshotUrls.makeFilteredStringArray(with: cellData.screenshotUrls, count: 2)
+
         secondView.setData(cellData.screenshotUrls.makeFilteredStringArray(with: cellData.screenshotUrls, count: 2))
+        
+//
+//        let urls: [String] = filteredScreenShotsUrls(with: cellData)
+//        secondView.setData(urls)
+//        //위와 아래는 같은것
+//        //일급객체로서의 함수란? -> 반환값을 가지고 있는 함수는 상수나 변수에 담지 않고 반환값을 그대로 쓸수 있습니다!
+//        //반환값이 있어야지만 객체로 쓸수 있다! 있어야지만!!
+//        //아래처럼! 한줄로 쓸수 있다! (그 함수의 반환값을 그냥 바로 대입시키는 식으로 쓸수 있는겨)
+//        secondView.setData(filteredScreenShotsUrls(with: cellData))
     }
     
     

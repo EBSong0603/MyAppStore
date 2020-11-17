@@ -27,6 +27,7 @@
 		70405770255F01D50022A8DA /* BasicAppIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */; };
 		7049A4F625598CB600C7D604 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7049A4F525598CB600C7D604 /* UICollectionViewCell+Extension.swift */; };
 		7049A509255AF26A00C7D604 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7049A508255AF26A00C7D604 /* RequestManager.swift */; };
+		705BD24225629365008F7050 /* MakeFilteredStringArrayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705BD24125629365008F7050 /* MakeFilteredStringArrayManager.swift */; };
 		706CA917253AF8EE00E22783 /* DetailMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA916253AF8EE00E22783 /* DetailMainViewController.swift */; };
 		706CA91A253B13E300E22783 /* DetailAppIconInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA919253B13E300E22783 /* DetailAppIconInfoView.swift */; };
 		706CA91C253B1FED00E22783 /* DetailAppVerietyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CA91B253B1FED00E22783 /* DetailAppVerietyInfoView.swift */; };
@@ -112,6 +113,7 @@
 		7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAppIconImageView.swift; sourceTree = "<group>"; };
 		7049A4F525598CB600C7D604 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		7049A508255AF26A00C7D604 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		705BD24125629365008F7050 /* MakeFilteredStringArrayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeFilteredStringArrayManager.swift; sourceTree = "<group>"; };
 		706CA916253AF8EE00E22783 /* DetailMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainViewController.swift; sourceTree = "<group>"; };
 		706CA919253B13E300E22783 /* DetailAppIconInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAppIconInfoView.swift; sourceTree = "<group>"; };
 		706CA91B253B1FED00E22783 /* DetailAppVerietyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAppVerietyInfoView.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				7049A508255AF26A00C7D604 /* RequestManager.swift */,
+				705BD24125629365008F7050 /* MakeFilteredStringArrayManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				70EAFA9E254C0F0D00C6BAED /* RatingReviewTitleView.swift in Sources */,
 				70E7C0D8255D12B10009E776 /* InformationTotalView.swift in Sources */,
 				7049A509255AF26A00C7D604 /* RequestManager.swift in Sources */,
+				705BD24225629365008F7050 /* MakeFilteredStringArrayManager.swift in Sources */,
 				7027C1F7255C2CB9006A329B /* WhatsNewTitleView.swift in Sources */,
 				70013969253AB50A00595C03 /* SearchPageTableViewCell.swift in Sources */,
 				70CEE709253EA7C400569C10 /* UIApplication+Extension.swift in Sources */,

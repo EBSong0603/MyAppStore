@@ -15,8 +15,6 @@ class NaviTitleView: ModuleView {
           imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 5, contentMode: .scaleAspectFill)
      imageView.width(30)
      imageView.height(30)
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
           return imageView
       }()
     
@@ -39,6 +37,8 @@ class NaviTitleView: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+      
     }
     
     required init?(coder: NSCoder) {
@@ -50,17 +50,13 @@ class NaviTitleView: ModuleView {
     }
     
     override func configureAutolayouts() {
-        
-        let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
-        
-        self.addSubViews([naviAppIconImageView, getButton])
-//        naviAppIconImageView.top(self.topAnchor, constant: 4)
+        self.addSubViews([naviAppIconImageView])
         naviAppIconImageView.centerY(self.centerYAnchor)
         naviAppIconImageView.centerX(self.centerXAnchor)
         
-        getButton.leading(naviAppIconImageView.trailingAnchor, constant: 90 * ratio)
+//        getButton.leading(naviAppIconImageView.trailingAnchor, constant: 70)
 //        getButton.trailing(self.trailingAnchor, constant: -4)
-        getButton.centerY(naviAppIconImageView.centerYAnchor)
+//        getButton.centerY(naviAppIconImageView.centerYAnchor)
      
         
     }
