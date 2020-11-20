@@ -7,8 +7,7 @@ import UIKit
 class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     
     static var identifier = ScreenShotsCollectionViewCell.identifierString
-//    static let identifier = "CapturedImageCollectionViewCell"
-//
+
     private var capturedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 10, contentMode: .scaleAspectFill)

@@ -25,7 +25,7 @@ class DetailAppDescriptionView: ModuleView {
     private let backView: UIView = {
        let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.5
+        view.alpha = 0.4
         return view
     }()
     
@@ -34,19 +34,19 @@ class DetailAppDescriptionView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        openDescriptionButtom.addTarget(self, action: #selector(openDescriptionButtonClikced), for: .touchUpInside)
-        
-    }
+        openDescriptionButtom.addTarget(self, action: #selector(openDescriptionButtonClikced)
+                                        , for: .touchUpInside)
+         }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func openDescriptionButtonClikced() {
+    @objc private func openDescriptionButtonClikced() {
 
         infoLabel.numberOfLines = 0
         UIView.transition(with: self.infoLabel,
-                          duration: 0.1,
+                          duration: 0.2,
                           options: .transitionCrossDissolve,
                           animations: {
                             self.moreInfoLabel.alpha = 0
@@ -67,19 +67,16 @@ class DetailAppDescriptionView: ModuleView {
         openDescriptionButtom.leading(self.leadingAnchor)
         openDescriptionButtom.bottom(self.bottomAnchor, constant: -20)
         openDescriptionButtom.trailing(self.trailingAnchor)
-        openDescriptionButtom.addSubViews([infoLabel, backView])
-        
+        openDescriptionButtom.addSubViews([infoLabel, moreInfoLabel])
+        self.addSubview(backView)
+ 
         infoLabel.edges(openDescriptionButtom, vConstant: 0, hConstant: 16)
-        backView.top(infoLabel.topAnchor, constant: 20)
-        backView.trailing(self.trailingAnchor, constant: -16)
+        moreInfoLabel.top(infoLabel.topAnchor, constant: 15)
+        moreInfoLabel.trailing(self.trailingAnchor, constant: -16)
         
-        backView.addSubview(moreInfoLabel)
+        backView.edges(moreInfoLabel, vConstant: 8, hConstant: 8)
         
-        moreInfoLabel.edges(backView, vConstant: 4, hConstant: 8)
-        
-     
-        
-      
+
         
         
         

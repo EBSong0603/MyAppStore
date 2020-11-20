@@ -7,12 +7,21 @@ import UIKit
 extension UIImageView {
     
     func load(with url: String) {
+        
+        let cacheKey = NSString(string: url)
+        if let cachedImage = ImageCacheManager.useCache.object(forKey: cacheKey) {
+            self.image = cachedImage
+            return
+        }
         guard let imageURL = URL(string: url) else {return}
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else {return}
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
                 self.image = image
+                if let image = image {
+                    ImageCacheManager.useCache.setObject(image, forKey: cacheKey)
+                }
             }
         }
     }

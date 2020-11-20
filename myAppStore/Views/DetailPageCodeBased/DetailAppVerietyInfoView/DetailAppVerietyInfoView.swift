@@ -15,27 +15,29 @@ class DetailAppVerietyInfoView: ModuleView, UIScrollViewDelegate {
     private let developerView = ShortDeveloperView()
     private let languagesView = ShortLanguagesView()
     private let appSizeView = ShortSizeView()
-    
-    private let seperatorView: VerticalSeperatorView = VerticalSeperatorView()
-    private let seperatorView2: VerticalSeperatorView = VerticalSeperatorView()
-    private let seperatorView3: VerticalSeperatorView = VerticalSeperatorView()
-    private let seperatorView4: VerticalSeperatorView = VerticalSeperatorView()
-    private let seperatorView5: VerticalSeperatorView = VerticalSeperatorView()
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        hStackView.addArrangedSubviews([reviewsView, seperatorView, ageView, seperatorView2, chartView, seperatorView3, developerView, seperatorView4, languagesView, seperatorView5, appSizeView])
         
+        let views = [reviewsView, ageView, chartView, developerView, languagesView, appSizeView]
+ 
+        for (index, view) in views.enumerated() {
+            if index != 5 {
+                let seperator = VerticalSeperatorView()
+                hStackView.addArrangedSubview(view)
+                hStackView.addArrangedSubview(seperator)
+            } else {
+                hStackView.addArrangedSubview(view)
+            }
+        }
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {

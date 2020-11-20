@@ -13,7 +13,7 @@ class ShortChartView: ModuleView {
     }()
     private let infoLabel: UILabel = {
        let label = UILabel()
-        label.setStyle("CHART", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
+        label.setStyle("차트", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
         return label
     }()
     private let rankLabel: UILabel = {

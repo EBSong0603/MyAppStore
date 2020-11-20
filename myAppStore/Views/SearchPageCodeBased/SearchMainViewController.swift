@@ -20,7 +20,6 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
         prepareTableView()
         setNavigationBar()
         
-        //서치컨트롤러 프로퍼티, 어두운 화면 없애기
         mySearchController.obscuresBackgroundDuringPresentation = false
         
         viewModel.isChanged = { isChangedTrue in

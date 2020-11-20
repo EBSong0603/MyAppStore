@@ -18,8 +18,6 @@ class DetailDeviceInfoView: ModuleView {
         label.setStyle("iPhone", textColor: .gray, font: UIFont.systemFont(ofSize: 14))
         return label
     }()
-    
-    //    private let phoneLabel = UILabel().setSimple("Iphone", textColor: .black, font: UIFont.systemFont(ofSize: 12))
 
     override init(frame: CGRect) {
         super.init(frame: frame)

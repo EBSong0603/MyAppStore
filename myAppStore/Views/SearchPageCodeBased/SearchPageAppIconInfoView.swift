@@ -8,15 +8,12 @@ class SearchPageAppIconInfoView: ModuleView {
     
     var isGame: Bool = false
     
-    
     private var appIconImageView: BasicAppIconImageView = {
         let imageView = BasicAppIconImageView(appIconStyle: .small)
         imageView.setStyle()
         return imageView
     }()
 
-    //위의 스택뷰 코드는 그냥 간단한것을 이니셜라이즈하기엔 코드가 복잡함
-    //그래서 stackView extension에서 새로 반환값이 있는 함수를 지정해주고 그것으로 코드를 아래와 같이 간결하게 만들었다!(return 따로 해줄필요xx)
     private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)
     private let appNameLabel: BasicLabel = {
         let label = BasicLabel(.appTitle)
@@ -66,12 +63,6 @@ class SearchPageAppIconInfoView: ModuleView {
         let appIcon = data.artworkUrl512
         appIconImageView.load(with: appIcon)
         appPurchaseLabel.isHidden = !data.isGameCenterEnabled
-        //위의 코드와 아래 코드는 같다 -> 두개의 Bool 값이 서로 반대되는 중이잖어
-//        if data.isGameCenterEnabled == true {
-//            appPurchaseLabel.isHidden = false
-//        } else {
-//            appPurchaseLabel.isHidden = true
-//        }
     }
     
     override func configureAutolayouts() {
@@ -91,7 +82,7 @@ class SearchPageAppIconInfoView: ModuleView {
 
         downLoadButton.trailing(self.trailingAnchor, constant: -16)
         downLoadButton.centerY(self.centerYAnchor)
-        downLoadButton.leading(appContentsStackView.trailingAnchor, constant: 16)
+        downLoadButton.leading(appContentsStackView.trailingAnchor, constant: 8)
         
         appPurchaseLabel.top(downLoadButton.bottomAnchor, constant: 4)
         appPurchaseLabel.trailing(downLoadButton.trailingAnchor)

@@ -23,21 +23,19 @@ class SearchPageTableViewCell: BaseTableViewCell, Cellable {
         
         guard let cellData = cellData else {return}
         firstView.setData(with: cellData)
-                
-        secondView.setData(cellData.screenshotUrls.makeFilteredStringArray(with: cellData.screenshotUrls, count: 2))
+        secondView.setData(cellData.screenshotUrls.makeFilteredStringArray( count: 2))
     }
     
-    
-    //이미지 3장만 뽑아오기! function -> forEach로 바꿔보기
-    private func filteredScreenShotsUrls(with cellData: AppStoreModel.ResultsEntry) -> [String] {
-        let urlArray: [String] = cellData.screenshotUrls
-        var urls: [String] = []
-            urlArray.forEach { url in
-                if urls.count > 2 {return}
-                urls.append(url)
-            }
-        return urls
-    }
+//    //이미지 3장만 뽑아오기! function -> forEach로 바꿔보기
+//    private func filteredScreenShotsUrls(with cellData: AppStoreModel.ResultsEntry) -> [String] {
+//        let urlArray: [String] = cellData.screenshotUrls
+//        var urls: [String] = []
+//            urlArray.forEach { url in
+//                if urls.count > 2 {return}
+//                urls.append(url)
+//            }
+//        return urls
+//    }
  
     override func configureAutolayouts() {
         contentView.addSubview(firstView)

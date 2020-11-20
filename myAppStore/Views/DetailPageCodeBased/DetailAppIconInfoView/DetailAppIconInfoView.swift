@@ -84,7 +84,5 @@ class DetailAppIconInfoView: ModuleView {
         
         furtherButton.trailing(self.trailingAnchor, constant: -16)
         furtherButton.bottom(getButton.bottomAnchor)
-//        furtherButton.height(30)
-//        furtherButton.width(30)
     }
 }

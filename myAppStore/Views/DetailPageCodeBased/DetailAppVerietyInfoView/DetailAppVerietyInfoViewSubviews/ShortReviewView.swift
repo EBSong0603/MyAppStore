@@ -27,10 +27,10 @@ class ShortReviewView: ModuleView {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.backgroundColor = .white
         self.height(70)
         self.width(100)
-     
-        self.backgroundColor = .white
         ratingVStackView.addArrangedSubviews([reviewCountLabel, ratingIntLabel, DetailViewRatingStarView])
     }
     

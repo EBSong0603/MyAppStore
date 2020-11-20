@@ -10,13 +10,13 @@ class VersionHistoryView: ModuleView {
     
     private let versionHistoryLabel: UILabel = {
        let label = UILabel()
-        label.setStyle("version 1.42", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+        label.setStyle("버전 1.42", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
         return label
     }()
     
     private let updatePeriodLabel: UILabel = {
        let label = UILabel()
-        label.setStyle("1mo age", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+        label.setStyle("1일 전", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
         return label
     }()
     
@@ -47,19 +47,19 @@ class VersionHistoryView: ModuleView {
         case 0:
             print("zero")
         case 1..<7:
-            updatePeriodLabel.text = "\(timeGap.dG)d ago"
+            updatePeriodLabel.text = "\(timeGap.dG)일 전"
         case 7..<14:
-            updatePeriodLabel.text = "1w ago"
+            updatePeriodLabel.text = "1주 전"
         case 14..<21:
-            updatePeriodLabel.text = "2w ago"
+            updatePeriodLabel.text = "2주 전"
         case 21..<28:
-            updatePeriodLabel.text = "3w ago"
+            updatePeriodLabel.text = "3주 전"
         case 28..<35:
-            updatePeriodLabel.text = "4w ago"
+            updatePeriodLabel.text = "4주 전"
         case 35..<365:
-            updatePeriodLabel.text = "\(timeGap.mG)m ago"
+            updatePeriodLabel.text = "\(timeGap.mG)달 전"
         case 365...Int.max:
-            updatePeriodLabel.text = "\(timeGap.yG)y ago"
+            updatePeriodLabel.text = "\(timeGap.yG)년 전"
         default:
             break
         }

@@ -8,7 +8,8 @@ class RatingReviewTitleView: ModuleView {
     
     private let reviewLabel: UILabel = {
         let label = UILabel()
-        label.setStyle("평가 및 리뷰", textColor: .gray, font: UIFont.systemFont(ofSize: 20, weight: .semibold), textAlignment: .left)
+        label.setStyle("평가 및 리뷰", textColor: .black, font: .systemFont(ofSize: 20, weight: .semibold)
+                       , textAlignment: .left)
         return label
     }()
     
