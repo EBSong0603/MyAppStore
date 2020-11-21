@@ -53,7 +53,7 @@
 
 ### View Controller 구성
 
-<img src= ./IMAGES/viewControllerComponent.png>
+<img src= ./Images/viewControllerComponent.png>
 
 &nbsp;
 
