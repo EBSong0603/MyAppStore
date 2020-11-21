@@ -14,9 +14,9 @@
 ---
 
 <p float="left">
-  <img src= "./IMAGES/SearchPageGIF-1.gif" width="250" />
-  <img src= "./IMAGES/SearchPageGIF-2.gif" width="250" /> 
-  <img src= "./IMAGES/SearchPageGIF-3.gif" width="250" />
+  <img src= "./Images/SearchPageGIF-1.gif" width="250" />
+  <img src= "./Images/SearchPageGIF-2.gif" width="250" /> 
+  <img src= "./Images/SearchPageGIF-3.gif" width="250" />
 </p>
 
  &nbsp;
@@ -33,13 +33,13 @@
 
 검색할 키워드로 검색하여 결과를 볼 수 있다
 
-<img src= "./IMAGES/SearchPageCapture-1.png" width="250">
+<img src= "./Images/SearchPageCapture-1.png" width="250">
 
 ### 검색 결과
 
 검색 결과의 디테일 정보를 확인할 수 있다
 
-<img src= "./IMAGES/SearchPageCapture-3.png" width="250">
+<img src= "./Images/SearchPageCapture-3.png" width="250">
 
 ### 검색어 저장
 
@@ -61,7 +61,7 @@
 
 #### SearchPageViewController, DetailViewController - AppStoreViewModel
 
-<img src= "./IMAGES/AppStoreViewModel_View.png" width="800">
+<img src= "./Images/AppStoreViewModel_View.png" width="800">
 
 - ViewModel 의 view 관련 data Update에 대한 것을 Closure를 이용하여 구현
   - ViewModel - data의 변화에 대해 Closure를 이용하여 UI update 타이밍 확인
