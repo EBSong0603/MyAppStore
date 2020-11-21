@@ -166,7 +166,7 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   
  &nbsp;
  
-### 각 View에서 공통적으로 사용될 Rating Star View를 공통 Component 화에 어려움을 
+### 각 View에서 공통적으로 사용될 Rating Star View를 공통 Component화 
 
 - 문제상황
   - Rating Star가 쓰이는 상황과 타이밍에 따라 별이 filled or empty 되어야 하고, 필요한 별의 갯수도 달라져야함
