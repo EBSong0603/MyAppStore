@@ -63,8 +63,7 @@
 
 <img src= "./Images/AppStoreViewModel_View.png" width="800">
 
-- ViewModel 의 view 관련 data Update에 대한 것을 Closure를 이용하여 구현
-  - ViewModel - data의 변화에 대해 Closure를 이용하여 UI update 타이밍 확인
+- ViewModel 의 Closure 사용하여 data 변경사항 캐치하여 data binding 및 UI Update
 
 &nbsp;
 
@@ -95,9 +94,6 @@
 ### 정보 받아오기 & 파싱하기 - 애플 Open API / URLSession / Codable
 
 >  [애플 Open API](https://itunes.apple.com/search?entity=software&country=KR)
-*API JSON 구조*
-
-![](./images/api-data-structure.png)
 
 - [URLSession 학습한 내용](#url-loading-system)
 - Codable
@@ -138,6 +134,19 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
     ```
 &nbsp;
 
+### 검색시 Load되는 이미지가 화면이 보여질때마다 계속 요청되는 문제
+
+- 문제상황
+  - 검색시 테이블뷰의 이미지와 detailViewController의 스크린샷 이미지가 View가 보여질때마다 재요청되어 UI의 딜레이 생성
+- 해결 방법 
+  - NSCache
+   - NSCache를 이용하여 이미지를 load하고 나서는 이미지캐시로 저장되어 재요청하지 않고 캐시에 저장하여 View가 보여질때마다 이를 반환하도록 구현
+   
+   ```swift
+    static let useCache = NSCache<NSString, UIImage>()
+    ```
+&nbsp;
+
 ### UIStackView의 Distribution 사용
 
 - 문제상황
@@ -154,9 +163,10 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   - 따라서, 현재 시간과 released Date 사이의 Time Gap을 구해야 함
 - 해결방법
   - `TimeInterval`을 이용하여 Time Gap을 구하고 그 값을 기간의 조건에 따라 다르게 보여지도록 함
+  
+ &nbsp;
  
- 
-### 각 View에서 공통적으로 사용될 Rating Star View를 Component화 하는데 어려움을 겪음
+### 각 View에서 공통적으로 사용될 Rating Star View를 공통 Component 화에 어려움을 
 
 - 문제상황
   - Rating Star가 쓰이는 상황과 타이밍에 따라 별이 filled or empty 되어야 하고, 필요한 별의 갯수도 달라져야함
