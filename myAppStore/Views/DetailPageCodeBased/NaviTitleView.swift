@@ -27,12 +27,10 @@ class NaviTitleView: ModuleView {
     }()
     
     
-    private let getButton: BasicGetButton = {
-         let button = BasicGetButton(.blue)
-         button.setStyle(.blue, title: "받기")
-         button.setInsets(vertical: 5, horizonal: 16)
-        button.width(70)
-        button.height(28)
+    private let getButton: BasicButton = {
+        let button = BasicButton(buttonStyle: .blue)
+
+        button.setStyle(title: "받기")
          return button
      }()
      

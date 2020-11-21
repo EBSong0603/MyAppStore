@@ -1,21 +1,29 @@
-//  BasicButton.swift
+//
+//  ButtonPractice.swift
 //  myAppStore
-//  Created by 송은비 on 2020/10/20.
+//
+//  Created by 송은비 on 2020/11/04.
 //  Copyright © 2020 EB. All rights reserved.
+//
+
 import UIKit
 
-enum BasicButtonStyle {
-    case outlined
-    case filled
-}
-
 class BasicButton: UIButton {
-     
-    let style: BasicButtonStyle
+    let mycolor = #colorLiteral(red: 0.8783541322, green: 0.8784807324, blue: 0.8783264756, alpha: 1)
+    enum ButtonStyle {
+        case blue
+        case gray
+        var rawValue: (title: String, backgroundColor: UIColor, titleColor: UIColor) {
+        switch self {
+        case .blue: return ("받기", .systemBlue, .white)
+        case .gray: return ("받기", .systemGray5, .systemBlue)
+        }
+    }
+}
+    var style: ButtonStyle
     
-    init(_ style: BasicButtonStyle) {
-        //self.style = style 이건 이니셜라이즈 하기 전에 미리 코드 써줘야함
-        self.style = style
+    init(buttonStyle: ButtonStyle) {
+        self.style = buttonStyle
         super.init(frame: .zero)
     }
     
@@ -23,51 +31,16 @@ class BasicButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //didSet= isHightlighted 의 상태가 바뀔때를 포착해서 그에 맞는 함수를 요청해서 상태의 변화를 이끌어낸다
-    override var isHighlighted: Bool {
-        didSet {
-            setBackground(isHighlighted)
-        }
-    }
-    
-    func setBackground(_ isH: Bool) {
-        var backgroundColor: UIColor = .clear
-        switch self.style {
-        case .outlined:
-            
-            //backgroundColor는 isHighlighted 일땐? lightGray, 아니라면 white 라는 뜻임(아래코드)
-            backgroundColor = isHighlighted ? .lightGray : .white
-        case .filled:
-            backgroundColor = isHighlighted ? .darkGray : .systemBlue
-        }
-        self.backgroundColor = backgroundColor
-    }
-    
-    func set(_ style: BasicButtonStyle, title: String? = "") {
-        var backgroundColor: UIColor = .clear
-        var linedColor: UIColor = .clear
-        var lineWidth: CGFloat = 0
-        switch style {
-        case .outlined:
-            backgroundColor = .white
-            linedColor = .darkGray
-            lineWidth = 1
-        case .filled:
-            backgroundColor = .systemBlue
-            linedColor = .clear
-            lineWidth = 0
-        }
-        
+    func setStyle(title: String) {
+   
         self.setTitle(title, for: .normal)
-        self.titleLabel?.font = .systemFont(ofSize: 14)
-        self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 14.5
-        self.layer.borderColor = linedColor.cgColor
-        self.layer.borderWidth = lineWidth
-        //layer.borerWidth = 버튼의 아웃라인의 두께 설정하는 프로퍼티
+        self.backgroundColor = style.rawValue.backgroundColor
+        self.setTitleColor(style.rawValue.titleColor, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        self.layer.cornerRadius = 14
+        self.width(70)
+        self.height(28)
+        self.setInsets(vertical: 5, horizonal: 16)
     }
+    
 }
-
-
-
-

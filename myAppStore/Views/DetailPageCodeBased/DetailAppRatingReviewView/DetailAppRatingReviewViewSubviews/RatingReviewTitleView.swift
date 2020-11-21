@@ -6,16 +6,15 @@ import UIKit
 
 class RatingReviewTitleView: ModuleView {
     
-    private let reviewLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("평가 및 리뷰", textColor: .black, font: .systemFont(ofSize: 20, weight: .semibold)
-                       , textAlignment: .left)
+    private let reviewLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "평가 및 리뷰", color: .black)
         return label
     }()
     
-    private let furtherLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("모두보기", textColor: .systemBlue, font: UIFont.systemFont(ofSize: 15), textAlignment: .left)
+    private let furtherLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "모두보기", color: .systemBlue)
         return label
     }()
     

@@ -6,9 +6,9 @@ import UIKit
 
 class InfoDescriptionView: ModuleView {
     
-    private let descriptionLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("description", textColor: .black, font: UIFont.systemFont(ofSize: 12))
+    private let descriptionLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "디스크립션", color: .black)
         label.numberOfLines = 0
         return label
     }()

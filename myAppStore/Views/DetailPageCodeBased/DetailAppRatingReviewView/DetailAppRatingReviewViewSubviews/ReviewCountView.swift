@@ -6,14 +6,14 @@ import UIKit
 
 class ReviewCountView: ModuleView {
     
-    private let maxRatingLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("5점 중", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+    private let maxRatingLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "5점 중", color: .gray)
         return label
     }()
-    private let reviewIntLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("2개의 평가", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+    private let reviewIntLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "2개의 평가", color: .gray)
         return label
     }()
     

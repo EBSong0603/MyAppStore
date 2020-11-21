@@ -12,9 +12,9 @@ class ShortDeveloperView: ModuleView {
         stackView.alignment = .center
         return stackView
     }()
-    private let devLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("개발자", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold))
+    private let devLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "개발자", color: .lightGray, alignment: .center)
         return label
     }()
     private let devImageView: UIImageView = {
@@ -25,9 +25,9 @@ class ShortDeveloperView: ModuleView {
         imageView.tintColor = .gray
         return imageView
     }()
-    private let devName: UILabel = {
-        let label = UILabel()
-        label.setStyle("아무개", textColor: .gray, font: UIFont.systemFont(ofSize: 12), textAlignment: .center)
+    private let devName: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "아무개", color: .gray, alignment: .center)
         return label
     }()
     

@@ -8,15 +8,15 @@ import UIKit
 
 class VersionHistoryView: ModuleView {
     
-    private let versionHistoryLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("버전 1.42", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+    private let versionHistoryLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "버전 14.2", color: .gray)
         return label
     }()
     
-    private let updatePeriodLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("1일 전", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+    private let updatePeriodLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "1일 전", color: .gray)
         return label
     }()
     

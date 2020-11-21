@@ -15,14 +15,14 @@ class SearchPageAppIconInfoView: ModuleView {
     }()
 
     private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)
-    private let appNameLabel: BasicLabel = {
-        let label = BasicLabel(.appTitle)
-        label.setStyle(.appTitle, title: "앱이름")
+    private let appNameLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "앱이름", color: .black)
         return label
     }()
-    private let appCategoryLabel: BasicLabel = {
-        let label = BasicLabel(.subTitle)
-        label.setStyle(.subTitle, title: "카테고리이름")
+    private let appCategoryLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "카테고리", color: .gray)
         return label
     }()  
     private let starRatingView: RatingContentsView = {
@@ -30,16 +30,15 @@ class SearchPageAppIconInfoView: ModuleView {
         return view
     }()
     
-    private let downLoadButton: BasicGetButton = {
-        let button = BasicGetButton(.lightGray)
-        button.setStyle(.lightGray, title: "받기")
-        button.setInsets(vertical: 5, horizonal: 16)
+    private let downLoadButton: BasicButton = {
+        let button = BasicButton(buttonStyle: .gray)
+        button.setStyle(title: "받기")
         return button
     }()
     
-    private let appPurchaseLabel: BasicLabel = {
-        let label = BasicLabel(.purchase)
-        label.setStyle(.purchase, title: "앱내구입")
+    private let appPurchaseLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system10)
+        label.setStyle(title: "앱내구입", color: .black)
         return label
     }()
 

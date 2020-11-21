@@ -8,42 +8,42 @@ import UIKit
 
 class WhatsNewInformationView: ModuleView {
     
-    private let whatsNewLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("새로운 기능", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .bold))
+    private let whatsNewLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "새로운기능", color: .black)
         return label
     }()
     
-    private let versionLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("버전 기록", textColor: .systemBlue, font: UIFont.systemFont(ofSize: 15))
+    private let versionLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "버전기록", color: .systemBlue)
         return label
     }()
     
     private let versionHistoryView: VersionHistoryView = VersionHistoryView()
     
-    let whatsNewDescriptionLabel: UILabel = {
-      let label = UILabel()
-       label.setStyle("기능이 향상됐어욤!", textColor: .black, font: UIFont.systemFont(ofSize: 12))
-       label.numberOfLines = 3
-       return label
-   }()
+    let whatsNewDescriptionLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "기능이 향상되었어요!", color: .black)
+        label.numberOfLines = 3
+        return label
+    }()
     
     private let backView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.4
+        view.alpha = 0.9
         return view
     }()
     
     let openButton: UIButton = UIButton(type: .custom)
     
-    let moreInfoLabel: UILabel = {
-      let label = UILabel()
-       label.setStyle("더보기", textColor: .systemBlue, font: .systemFont(ofSize: 12))
-       return label
-   }()
-
+    let moreInfoLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "더보기", color: .systemBlue)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -62,11 +62,12 @@ class WhatsNewInformationView: ModuleView {
     }
     
     @objc private func openButtonClicked() {
-       whatsNewDescriptionLabel.numberOfLines = 0
-       UIView.transition(with: self.moreInfoLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
-           self.moreInfoLabel.alpha = 0
-       })
-   }
+        whatsNewDescriptionLabel.numberOfLines = 0
+        UIView.transition(with: self.moreInfoLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.moreInfoLabel.alpha = 0
+            self.backView.alpha = 0
+        })
+    }
     
     override func configureAutolayouts() {
         
@@ -80,19 +81,21 @@ class WhatsNewInformationView: ModuleView {
         versionHistoryView.top(whatsNewLabel.bottomAnchor, constant: 8)
         versionHistoryView.leading(self.leadingAnchor)
         versionHistoryView.trailing(self.trailingAnchor)
-        self.addSubview(openButton)
-//        self.addSubview(backView)
         
+        self.addSubview(openButton)
         openButton.top(versionHistoryView.bottomAnchor, constant: 8)
         openButton.leading(self.leadingAnchor)
         openButton.trailing(self.trailingAnchor)
         openButton.bottom(self.bottomAnchor)
-        openButton.addSubViews([whatsNewDescriptionLabel, moreInfoLabel])
+        openButton.addSubViews([whatsNewDescriptionLabel, backView, moreInfoLabel])
         whatsNewDescriptionLabel.edges(openButton, vConstant: 0, hConstant: 16)
-        moreInfoLabel.trailing(openButton.trailingAnchor, constant: -16)
-     
-        moreInfoLabel.bottom(openButton.bottomAnchor)
-//        backView.edges(moreInfoLabel, vConstant: 8, hConstant: 8)
         
+        moreInfoLabel.trailing(openButton.trailingAnchor, constant: -16)
+        moreInfoLabel.top(whatsNewDescriptionLabel.topAnchor, constant: 28)
+        
+        backView.top(moreInfoLabel.topAnchor, constant: -8)
+        backView.leading(moreInfoLabel.leadingAnchor, constant: -8)
+        backView.trailing(moreInfoLabel.trailingAnchor, constant: 8)
+        backView.bottom(moreInfoLabel.bottomAnchor, constant: 8)
     }
 }

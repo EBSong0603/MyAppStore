@@ -6,9 +6,9 @@ import UIKit
 
 class PreviewTitleView: ModuleView {
     
-    private let PreviewTitle: UILabel = {
-       let label = UILabel()
-        label.setStyle("미리보기", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .bold))
+    private let PreviewTitle: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "미리보기", color: .black)
         return label
     }()
  

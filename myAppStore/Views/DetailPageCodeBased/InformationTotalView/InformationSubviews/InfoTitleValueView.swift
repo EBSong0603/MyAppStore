@@ -6,15 +6,15 @@ import UIKit
 
 class InfoTitleValueView: ModuleView {
 
-    private let infoTitleLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("제공자", textColor: .gray, font: UIFont.systemFont(ofSize: 12))
+    private let infoTitleLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "제공자", color: .gray)
         return label
     }()
     
-      let infoValueLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("kakao", textColor: .black, font: UIFont.systemFont(ofSize: 12))
+      let infoValueLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "아무개", color: .black)
         return label
     }()
     
@@ -29,10 +29,21 @@ class InfoTitleValueView: ModuleView {
     
     private var infoValueLabelConstraint: NSLayoutConstraint!
     
+    private var con1: NSLayoutConstraint? = nil
+    private var con2: NSLayoutConstraint? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
+        
+        con1 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        con1?.isActive = true
+        con1?.priority = UILayoutPriority(rawValue: 500)
+        
+        con2 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
+        con2?.isActive = true
+        con2?.priority = UILayoutPriority(rawValue: 250)
     }
     
     required init?(coder: NSCoder) {
@@ -42,13 +53,8 @@ class InfoTitleValueView: ModuleView {
     func setData(with item: InformationItem) {
         infoTitleLabel.text = item.title
         infoValueLabel.text = item.value
-       
-        if infoValueLabelConstraint == nil {
-            infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor
-                                                                                , constant: 0)
-            infoValueLabelConstraint.isActive = true
-        }
-
+ 
+        
         if let icon = item.icon {
             arrowImageView.image = icon
             infoTitleLabel.textColor = .systemBlue
@@ -56,11 +62,21 @@ class InfoTitleValueView: ModuleView {
         } else {
             if item.isArrow == true {
                 arrowImageView.image = UIImage(systemName: "chevron.down")!
+//                infoValueLabelConstraint.constant = -50
+   
                 
-                infoValueLabelConstraint.constant = -50
+                
+                con2?.priority = .defaultHigh
+                
             } else {
                 arrowImageView.isHidden = true
-                infoValueLabelConstraint.constant = -16
+//                infoValueLabelConstraint.constant = -16
+                
+                
+
+                con2?.priority = .defaultLow
+       
+               
             }
         }
     }

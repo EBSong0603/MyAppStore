@@ -20,9 +20,9 @@ class InformationTotalView: ModuleView {
         return stackView
     }()
     
-    private let informationtitleLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("정보", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .bold))
+    private let informationtitleLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "정보", color: .black)
         return label
     }()
     

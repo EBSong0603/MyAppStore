@@ -17,8 +17,7 @@ class DetailMainViewController: BaseViewController {
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
-   
-    
+
     private let scrollView: UIScrollView = UIScrollView()
     private let detailContentVStackView: UIStackView = {
        let stackView = UIStackView()
@@ -73,6 +72,11 @@ class DetailMainViewController: BaseViewController {
             appWhatsNewInfoView.setData(with: model)
             informationView.setData(with: model)
         }
+   
+//        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+//        visualEffectView.frame = (self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -10).offsetBy(dx: 0, dy: -10))!
+//        self.navigationController?.navigationBar.addSubview(visualEffectView)
+        
     }
     
     func setNavigationBar() {
@@ -109,15 +113,16 @@ class DetailMainViewController: BaseViewController {
     }
     
     override func configureAutolayouts() {
-        
+                
         view.addSubview(scrollView)
         view.addSubview(navBackView)
+
         scrollView.addSubview(detailContentVStackView)
         
         navBackView.top(view.topAnchor)
         navBackView.leading(view.leadingAnchor)
         navBackView.trailing(view.trailingAnchor)
-        
+ 
         scrollView.top(navBackView.bottomAnchor)
         scrollView.leading(view.leadingAnchor)
         scrollView.trailing(view.trailingAnchor)
@@ -140,7 +145,8 @@ extension DetailMainViewController: UIScrollViewDelegate {
         
 //        let blurEffect = UIBlurEffect(style: .light)
 //        let blurView = UIVisualEffectView(effect: blurEffect)
-//        blurView.frame = navBackView.frame
+//        blurView.alpha = 0.5
+//        blurView.frame = navBackView.bounds
 //        navBackView.addSubview(blurView)
 
 //        if contentOffsetY > 14 {
@@ -154,7 +160,7 @@ extension DetailMainViewController: UIScrollViewDelegate {
 //        }
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0
                                                        , options: .beginFromCurrentState, animations: {
-            self.navBackView.alpha = (contentOffsetY > 14) ?  0.2 : 0
+                                                        self.navBackView.alpha = (contentOffsetY > 14) ?  0.2 : 0
             (self.navigationItem.titleView, self.naviTitleView.alpha) =
                 (contentOffsetY > 104) ? (self.naviTitleView, 1) : (nil, 0)
         })
