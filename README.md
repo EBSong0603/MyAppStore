@@ -74,8 +74,8 @@
 | class / struct               | 역할                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | `SearchPageViewController`   | AppStoreViewModel을 이용하여 받은 현재 검색 결과를 테이블뷰 상에 보여준다 |
-| `DetailViewController`       | SearchPageViewController에서 넘겨 받은 data값의 디테일 정보를 보여준다  |
-| `AppStoreViewModel`          | Request Manager를 이용하여 SearchPageViewController의 검색어에 받는 검색 정보를 요청한다 |
+| `DetailViewController`       | SearchPageViewController에서 넘겨 받은 viewModel의 값의 디테일 정보를 보여준다  |
+| `AppStoreViewModel`          | Request Manager를 이용해 검색한 정보를 가져온다 |
 
 
 #### Utilities
