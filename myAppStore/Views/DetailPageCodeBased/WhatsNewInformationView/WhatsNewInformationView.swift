@@ -91,7 +91,7 @@ class WhatsNewInformationView: ModuleView {
         whatsNewDescriptionLabel.edges(openButton, vConstant: 0, hConstant: 16)
         
         moreInfoLabel.trailing(openButton.trailingAnchor, constant: -16)
-        moreInfoLabel.top(whatsNewDescriptionLabel.topAnchor, constant: 28)
+        moreInfoLabel.top(whatsNewDescriptionLabel.topAnchor, constant: 12)
         
         backView.top(moreInfoLabel.topAnchor, constant: -8)
         backView.leading(moreInfoLabel.leadingAnchor, constant: -8)
