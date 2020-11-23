@@ -163,7 +163,7 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
         }
     }
 }
-    ```
+```
 &nbsp;
 
 ### UIStackView의 Distribution 사용
