@@ -1,5 +1,5 @@
 
-# MyAppStore App
+# MyAppStore App🍎
 
 > 애플 Open API를 통해 AppStore 의 검색 페이지 구현
 &nbsp;
