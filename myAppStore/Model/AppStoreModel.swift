@@ -2,17 +2,18 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
+
 import Foundation
 
 struct AppStoreModel: Codable {
     
     let resultCount: Int
     let results: [ResultsEntry]
-
+    
     private enum CodingKeys: String, CodingKey {
         case resultCount
         case results
-         }
+    }
     
     init(from decode: Decoder) throws {
         let values = try decode.container(keyedBy: CodingKeys.self)
@@ -37,7 +38,7 @@ struct AppStoreModel: Codable {
         let releaseNotes: String //출시노트: 버그들이 수정되었어요
         let trackCensoredName: String //앱이름
         let fileSizeBytes: String //앱사이즈(바이트)
-//        let sellerUrl: String //판매자 주소 sellerUrl
+        //        let sellerUrl: String //판매자 주소 sellerUrl
         let averageUserRating: Float //유저 평가점수(1-5)
         let contentAdvisoryRating: String //age: 4+
         let trackContentRating: String //등급: 4+
@@ -49,7 +50,7 @@ struct AppStoreModel: Codable {
         let userRatingCount: Int //리뷰갯수
         let version: String
         let supportedDevices: [String]
-    
+        
         
         private enum CodingKeys: String, CodingKey {
             case isGameCenterEnabled
@@ -79,7 +80,7 @@ struct AppStoreModel: Codable {
             case userRatingCount
             case version
             case supportedDevices
-           
+            
         }
         
         init(from decode: Decoder) throws {

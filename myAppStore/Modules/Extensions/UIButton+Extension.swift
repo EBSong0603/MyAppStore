@@ -2,6 +2,7 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
+
 import UIKit
 
 extension UIButton {
@@ -25,7 +26,6 @@ extension UIButton {
         self.scalesLargeContentImage = scale
     }
     
-    //contentEdgeImsets는 컨텐츠의 엣지를 관장함 - > UIEdgeInsets 확인
     func setInsets(vertical: CGFloat, horizonal: CGFloat) {
         self.contentEdgeInsets = UIEdgeInsets(top: vertical,
                                               left: horizonal,

@@ -2,6 +2,7 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
+
 import UIKit
 
 class DetailMainViewController: BaseViewController {
@@ -17,10 +18,10 @@ class DetailMainViewController: BaseViewController {
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
-
+    
     private let scrollView: UIScrollView = UIScrollView()
     private let detailContentVStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 5, distribution: .equalSpacing)
         return stackView
     }()
@@ -52,7 +53,6 @@ class DetailMainViewController: BaseViewController {
         
         let views = [appIconInfoView, appVerietyInfoView, appWhatsNewInfoView, appScreenShotsView,
                      appDeviceInfoView, appDescriptionView, appRatingReviewView, informationView]
-        
         for (index, view) in views.enumerated() {
             if index != 3, index != 7 {
                 let seperator = HorizonSeperatorView()
@@ -62,6 +62,7 @@ class DetailMainViewController: BaseViewController {
                 detailContentVStackView.addArrangedSubview(view)
             }
         }
+        
         if let model: AppStoreModel.ResultsEntry = viewModel.inPut.selectedModel {
             naviTitleView.setData(with: model)
             appIconInfoView.setData(with: model)
@@ -82,7 +83,6 @@ class DetailMainViewController: BaseViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    //viewWillLayoutSubviews 델리게이트 이용하면, 화면전환시 검색 큰 글자 바로 사라짐
     override func viewWillLayoutSubviews() {
         
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -93,7 +93,6 @@ class DetailMainViewController: BaseViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    //여기서 init 으로 그전에 뷰컨에서 넘겨줬던 viewModel 받아서 내가 만든 viewModel 변수에 넣어줌 (이니셜라이즈 방식)
     init(with viewModel: AppStoreViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -108,16 +107,16 @@ class DetailMainViewController: BaseViewController {
     }
     
     override func configureAutolayouts() {
-                
+        
         view.addSubview(scrollView)
         view.addSubview(navBackView)
-
+        
         scrollView.addSubview(detailContentVStackView)
         
         navBackView.top(view.topAnchor)
         navBackView.leading(view.leadingAnchor)
         navBackView.trailing(view.trailingAnchor)
- 
+        
         scrollView.top(navBackView.bottomAnchor)
         scrollView.leading(view.leadingAnchor)
         scrollView.trailing(view.trailingAnchor)
@@ -139,8 +138,8 @@ extension DetailMainViewController: UIScrollViewDelegate {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0
                                                        , options: .beginFromCurrentState, animations: {
                                                         self.navBackView.alpha = (contentOffsetY > 14) ?  0.2 : 0
-            (self.navigationItem.titleView, self.naviTitleView.alpha) =
-                (contentOffsetY > 104) ? (self.naviTitleView, 1) : (nil, 0)
-        })
+                                                        (self.navigationItem.titleView, self.naviTitleView.alpha) =
+                                                            (contentOffsetY > 104) ? (self.naviTitleView, 1) : (nil, 0)
+                                                       })
     }
 }

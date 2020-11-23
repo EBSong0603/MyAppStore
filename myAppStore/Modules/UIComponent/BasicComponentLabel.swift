@@ -1,10 +1,7 @@
-//
 //  BasicComponentLabel.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/20.
 //  Copyright © 2020 EB. All rights reserved.
-//
 
 import UIKit
 
@@ -30,10 +27,11 @@ class BasicComponentLabel: UILabel {
             case .system20: return UIFont.systemFont(ofSize: 20)
             case .system20B: return UIFont.systemFont(ofSize: 20, weight: .bold)
             case .arial20: return UIFont(name: "Arial Rounded MT Bold", size: 20)!
-            case .arial50: return UIFont(name: "Arial Rounded MT Bold", size: 20)!
+            case .arial50: return UIFont(name: "Arial Rounded MT Bold", size: 50)!
             }
         }
     }
+    
     var style: LabelStyle
     
     init(labelStyle: LabelStyle) {

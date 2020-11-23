@@ -2,9 +2,9 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
+
 import UIKit
 
-//BaseViewController를 상속하고 있는 뷰컨임
 class SearchMainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     private let tableView: UITableView = UITableView()
@@ -23,9 +23,7 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
         mySearchController.obscuresBackgroundDuringPresentation = false
         
         viewModel.isChanged = { isChangedTrue in
-//            DispatchQueue.main.async {
-                self.tableView.reloadData()
-//            }
+            self.tableView.reloadData()
         }
     }
     
@@ -33,7 +31,7 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
     }
-
+    
     private func setNavigationBar() {
         navigationItem.title = "검색"
         navigationItem.searchController = mySearchController
@@ -42,17 +40,17 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
-       navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.titleView?.isHidden = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       navigationController?.navigationBar.prefersLargeTitles = true
-        viewModel.reset() //팝되어 나오면서, 검색기록 블랭크로 만듬
+        navigationController?.navigationBar.prefersLargeTitles = true
+        viewModel.reset()
     }
-   
+    
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
-
+        
         guard let text = mySearchController.searchBar.text else {
             viewModel.reset()
             return}
@@ -62,7 +60,7 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
             viewModel.requestData(term: text)
         }
     }
- 
+    
     override func configureAutolayouts() {
         view.addSubview(tableView)
         tableView.edges(self.safeArea)
@@ -83,7 +81,7 @@ extension SearchMainViewController: UITableViewDelegate {
 }
 
 extension SearchMainViewController: UITableViewDataSource {
-  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.outPut.models.count
     }
@@ -92,19 +90,19 @@ extension SearchMainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchPageTableViewCell.identifier,
                                                  for: indexPath) as! SearchPageTableViewCell
         let model = viewModel.outPut.models[indexPath.row]
-            cell.setData(with: model)
+        cell.setData(with: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
+        
         //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기
         let model = viewModel.outPut.models[indexPath.row]
         viewModel.inPut.selectedModel = model
         
         //다음 뷰컨트롤러 이니셜라이즈로 viewModel 넘기기
         let vc: DetailMainViewController = DetailMainViewController(with: viewModel)
-
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -2,6 +2,7 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/17.
 //  Copyright © 2020 EB. All rights reserved.
+
 import UIKit
 
 class SearchPageAppIconInfoView: ModuleView {
@@ -59,9 +60,8 @@ class SearchPageAppIconInfoView: ModuleView {
         starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
-        let appIconUrl = data.artworkUrl512
-//        appIconImageView.load(with: appIcon)
         
+        let appIconUrl = data.artworkUrl512
         ImageCacheManager.load(with: appIconUrl, imageView: appIconImageView)
         appPurchaseLabel.isHidden = !data.isGameCenterEnabled
     }

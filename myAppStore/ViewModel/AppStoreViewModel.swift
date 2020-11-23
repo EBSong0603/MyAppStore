@@ -1,10 +1,7 @@
-//
 //  AppStoreViewModel.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/04.
 //  Copyright © 2020 EB. All rights reserved.
-//
 
 import Foundation
 
@@ -27,7 +24,6 @@ class AppStoreViewModel {
     func requestData(term: String) {
         // Full API 주소: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
 
-//        let domain: String = "https://itunes.apple.com"
         let path: String = "/search?"
         let param: [String:Any] = ["entity":"software", "country":"KR", "term":"\(term)"]
   

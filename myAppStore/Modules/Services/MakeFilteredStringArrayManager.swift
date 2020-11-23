@@ -10,7 +10,6 @@ class MakeFilteredStringArrayManager {
     static func makeFilteredArray<T>(with data: [T], count: Int) -> [T] {
         let array: [T] = data
         var each: [T] = []
-        
         array.forEach { piece in
             if each.count > count {return}
             each.append(piece)
