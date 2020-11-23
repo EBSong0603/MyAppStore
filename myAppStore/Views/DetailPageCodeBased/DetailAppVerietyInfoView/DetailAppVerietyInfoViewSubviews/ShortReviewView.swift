@@ -13,24 +13,24 @@ class ShortReviewView: ModuleView {
         
         return stackView
     }()
-    private let ratingIntLabel: UILabel = {
-         let label = UILabel()
-        label.setStyle("5.0", textColor: .gray, font: UIFont(name: "Arial Rounded MT Bold", size: 20)!, textAlignment: .center)
-         return label
-     }()
-     private let reviewCountLabel: UILabel = {
-         let label = UILabel()
-        label.setStyle("256 개의 평가", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
-         return label
-     }()
+    private let ratingIntLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial20)
+        label.setStyle(title: "5.0", color: .gray, alignment: .center)
+        return label
+    }()
+    private let reviewCountLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "256개의 평가", color: .lightGray, alignment: .center)
+        return label
+    }()
     private let DetailViewRatingStarView = BasicRatingStarView(starStyle: .large, count: 5)
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.backgroundColor = .white
         self.height(70)
         self.width(100)
-     
-        self.backgroundColor = .white
         ratingVStackView.addArrangedSubviews([reviewCountLabel, ratingIntLabel, DetailViewRatingStarView])
     }
     
@@ -41,7 +41,7 @@ class ShortReviewView: ModuleView {
     func setData(with data: AppStoreModel.ResultsEntry) {
         
          let userRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
-        reviewCountLabel.text = "\(userRC) 개의 리뷰"
+        reviewCountLabel.text = "\(userRC) 개의 평가"
         ratingIntLabel.text = "\(data.averageUserRating)"
         DetailViewRatingStarView.setData(with: data)
     }

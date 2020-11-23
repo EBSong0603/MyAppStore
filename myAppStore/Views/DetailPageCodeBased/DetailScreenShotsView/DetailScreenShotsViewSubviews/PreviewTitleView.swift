@@ -1,18 +1,14 @@
-//
 //  PreviewTitleView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/14.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
 
 class PreviewTitleView: ModuleView {
     
-    private let PreviewTitle: UILabel = {
-       let label = UILabel()
-        label.setStyle("Preview", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .bold))
+    private let PreviewTitle: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "미리보기", color: .black)
         return label
     }()
  

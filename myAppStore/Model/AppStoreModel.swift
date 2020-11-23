@@ -48,6 +48,7 @@ struct AppStoreModel: Codable {
         let bundleId: String //만든 사람 번들아이디: com.cashwalk.cashwalk
         let userRatingCount: Int //리뷰갯수
         let version: String
+        let supportedDevices: [String]
     
         
         private enum CodingKeys: String, CodingKey {
@@ -77,6 +78,7 @@ struct AppStoreModel: Codable {
             case bundleId
             case userRatingCount
             case version
+            case supportedDevices
            
         }
         
@@ -99,7 +101,6 @@ struct AppStoreModel: Codable {
             trackCensoredName = (try? values.decode(String.self, forKey: .trackCensoredName)) ?? ""
             fileSizeBytes = (try? values.decode(String.self, forKey: .fileSizeBytes)) ?? ""
             averageUserRating = round((((try? values.decode(Float.self, forKey: .averageUserRating))) ?? 0) * 10) / 10
-            print("\(averageUserRating)")
             contentAdvisoryRating = (try? values.decode(String.self, forKey: .contentAdvisoryRating)) ?? ""
             trackContentRating = (try? values.decode(String.self, forKey: .trackContentRating)) ?? ""
             description = (try? values.decode(String.self, forKey: .description)) ?? ""
@@ -109,6 +110,7 @@ struct AppStoreModel: Codable {
             bundleId = (try? values.decode(String.self, forKey: .bundleId)) ?? ""
             userRatingCount = (try? values.decode(Int.self, forKey: .userRatingCount)) ?? 0
             version = (try? values.decode(String.self, forKey: .version)) ?? ""
+            supportedDevices = (try? values.decode([String].self, forKey: .supportedDevices)) ?? [""]
         }
     }
 }

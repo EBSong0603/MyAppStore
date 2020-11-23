@@ -27,11 +27,11 @@ class AppStoreViewModel {
     func requestData(term: String) {
         // Full API 주소: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
 
-        let domain: String = "https://itunes.apple.com"
+//        let domain: String = "https://itunes.apple.com"
         let path: String = "/search?"
         let param: [String:Any] = ["entity":"software", "country":"KR", "term":"\(term)"]
   
-        RequestManager.finalRequest(with: AppStoreModel.self, domain: domain, path: path, param: param) { [weak self] model, error  in
+        RequestManager.request(with: AppStoreModel.self, path: path, param: param) { [weak self] model  in
             guard let self = self, let model = model else {return}
             
             self.outPut.models = model.results

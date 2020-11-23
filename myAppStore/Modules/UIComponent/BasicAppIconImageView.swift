@@ -1,10 +1,7 @@
-//
 //  BasicAppIconImageView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/14.
 //  Copyright © 2020 EB. All rights reserved.
-//
 
 import UIKit
 

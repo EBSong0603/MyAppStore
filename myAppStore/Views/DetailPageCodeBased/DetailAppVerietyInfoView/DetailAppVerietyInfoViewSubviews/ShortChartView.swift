@@ -11,20 +11,19 @@ class ShortChartView: ModuleView {
         stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
         return stackView
     }()
-    private let infoLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("CHART", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
+    private let infoLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "차트", color: .lightGray, alignment: .center)
         return label
     }()
-    private let rankLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("No 4", textColor: .gray, font: UIFont(name: "Arial Rounded MT Bold", size: 20)!, textAlignment: .center)
+    private let rankLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial20)
+        label.setStyle(title: "No 4", color: .gray, alignment: .center)
         return label
     }()
-    private let categoryLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("Health & Fitness", textColor: .gray, font: UIFont.systemFont(ofSize: 12),
-                       textAlignment: .center)
+    private let categoryLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "Health & Fitness", color: .gray, alignment: .center)
         return label
     }()
     

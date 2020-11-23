@@ -12,19 +12,19 @@ class ShortAgeView: ModuleView {
         stackView.alignment = .center
         return stackView
     }()
-    private let infoLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("연령", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
+    private let infoLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "연령", color: .lightGray, alignment: .center)
         return label
     }()
-    private let ageLabel: UILabel = {
-    let label = UILabel()
-        label.setStyle("17+", textColor: .gray, font: UIFont(name: "Arial Rounded MT Bold", size: 20)!, textAlignment: .center)
+    private let ageLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial20)
+        label.setStyle(title: "147+", color: .gray, alignment: .center)
         return label
     }()
-    private let ageSufixLabel: UILabel = {
-      let label = UILabel()
-        label.setStyle("세", textColor: .gray, font: UIFont.systemFont(ofSize: 12), textAlignment: .center)
+    private let ageSufixLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "세", color: .gray, alignment: .center)
         return label
     }()
     

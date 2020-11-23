@@ -15,6 +15,8 @@ class NaviTitleView: ModuleView {
           imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 5, contentMode: .scaleAspectFill)
      imageView.width(30)
      imageView.height(30)
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
           return imageView
       }()
     
@@ -25,20 +27,16 @@ class NaviTitleView: ModuleView {
     }()
     
     
-    private let getButton: BasicGetButton = {
-         let button = BasicGetButton(.lightGray)
-         button.setStyle(.lightGray, title: "받기")
-         button.setInsets(vertical: 5, horizonal: 16)
-        button.width(70)
-        button.height(28)
+    private let getButton: BasicButton = {
+        let button = BasicButton(buttonStyle: .blue)
+
+        button.setStyle(title: "받기")
          return button
      }()
      
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-      
     }
     
     required init?(coder: NSCoder) {
@@ -50,13 +48,17 @@ class NaviTitleView: ModuleView {
     }
     
     override func configureAutolayouts() {
-        self.addSubViews([naviAppIconImageView])
+        
+        let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
+        
+        self.addSubViews([naviAppIconImageView, getButton])
+//        naviAppIconImageView.top(self.topAnchor, constant: 4)
         naviAppIconImageView.centerY(self.centerYAnchor)
         naviAppIconImageView.centerX(self.centerXAnchor)
         
-//        getButton.leading(naviAppIconImageView.trailingAnchor, constant: 70)
+        getButton.leading(naviAppIconImageView.trailingAnchor, constant: 90 * ratio)
 //        getButton.trailing(self.trailingAnchor, constant: -4)
-//        getButton.centerY(naviAppIconImageView.centerYAnchor)
+        getButton.centerY(naviAppIconImageView.centerYAnchor)
      
         
     }

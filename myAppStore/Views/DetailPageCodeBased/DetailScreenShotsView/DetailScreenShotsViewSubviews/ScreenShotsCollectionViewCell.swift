@@ -7,8 +7,7 @@ import UIKit
 class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     
     static var identifier = ScreenShotsCollectionViewCell.identifierString
-//    static let identifier = "CapturedImageCollectionViewCell"
-//
+
     private var capturedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 10, contentMode: .scaleAspectFill)
@@ -26,7 +25,9 @@ class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     }
 
     func setData(with cellData: String) {
-        self.capturedImage.load(with: cellData)
+//        self.capturedImage.load(with: cellData)
+        let screenShotsUrl = cellData
+        ImageCacheManager.load(with: screenShotsUrl, imageView: capturedImage)
     }
     
     override func configureAutolayouts() {

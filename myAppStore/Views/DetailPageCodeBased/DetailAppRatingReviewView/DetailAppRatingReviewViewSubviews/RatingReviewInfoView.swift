@@ -6,9 +6,9 @@ import UIKit
 
 class RatingReviewInfoView: ModuleView {
     
-    private let reviewIntLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("5.0", textColor: .black, font: UIFont(name: "Arial Rounded MT Bold", size: 50)!)
+    private let reviewIntLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial50)
+        label.setStyle(title: "5.0", color: .black)
         return label
     }()
     

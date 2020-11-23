@@ -1,12 +1,16 @@
-//
 //  InformationView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/12.
 //  Copyright © 2020 EB. All rights reserved.
-//
-
 import UIKit
+
+struct InformationItem {
+    var title: String
+    var value: String?
+    var description: String?
+    var isArrow: Bool
+    var icon: UIImage?
+}
 
 class InformationTotalView: ModuleView {
     
@@ -15,36 +19,19 @@ class InformationTotalView: ModuleView {
         stackView.setStackViewStyle(axis: .vertical, spacing: 10, distribution: .fill)
         return stackView
     }()
-    private let informationTitleview: InformationTitleView = InformationTitleView()
-    private let providerView: ProvideView = ProvideView()
-    private let sizeVew: SizeView = SizeView()
-    private let categoryView: CategoryView = CategoryView()
-    private let compatiView: CompatibilityView = CompatibilityView()
-    private let languagesView: LanguagesView = LanguagesView()
-    private let ageRatingView: AgeRatingView = AgeRatingView()
-    private var inAppPurchaseView: InAppPurchaseView = InAppPurchaseView()
-    private let copyrightView: CopyrightView = CopyrightView()
-    private let developerWebsiteView: DeveloperWebsiteView = DeveloperWebsiteView()
-    private let privatePolicyView: PrivatePolicyView = PrivatePolicyView()
     
-    private let seperateView1: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview2: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview3: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview4: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview5: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview6: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview7: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview8: HorizonSeperatorView = HorizonSeperatorView()
-    private let seperateview9: HorizonSeperatorView = HorizonSeperatorView()
+    private let informationtitleLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20B)
+        label.setStyle(title: "정보", color: .black)
+        return label
+    }()
     
-    
-    
-    
+    var infoItems: [InformationItem] = []
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
-        infoTotalVStackView.addArrangedSubviews([informationTitleview, providerView, seperateView1, sizeVew, seperateview2, categoryView, seperateview3, compatiView, seperateview4, languagesView, seperateview5, ageRatingView, seperateview6, inAppPurchaseView, seperateview7, copyrightView, seperateview8, developerWebsiteView, seperateview9, privatePolicyView])
         
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -52,27 +39,49 @@ class InformationTotalView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        providerView.setData(with: data)
-        sizeVew.setData(with: data)
-        categoryView.setData(with: data)
-        compatiView.setData(with: data)
-        languagesView.setData(with: data)
-//        ageRatingView.setData(with: data)
-        inAppPurchaseView.setData(with: data)
-        copyrightView.setData(with: data)
-
-        inAppPurchaseView.isHidden = !data.isGameCenterEnabled
-        seperateview7.isHidden = !data.isGameCenterEnabled
-//        if data.isGameCenterEnabled == false {
-//            inAppPurchaseView.isHidden = true
-//            seperateview7.isHidden = true
-//        }
         
+        let fileSize = data.fileSizeBytes.fileSizeTrans()
+        
+        let devices = data.supportedDevices.availableDevices(with: data)
+
+        let langsCount: Int = data.languageCodesISO2A.count
+        let languages = data.languageCodesISO2A.languageChange()
+        let filteredLangs: [String] = languages.makeFilteredStringArray(count: 1)
+        let langsResult: String = (langsCount > 2) ? ((filteredLangs.first ?? "")+"외 "+"\(langsCount - 1)개") : (filteredLangs.joined(separator: "와 "))
+        
+        infoItems = [
+            InformationItem(title: "제공자", value: data.artistName, description: nil, isArrow: false, icon: nil),
+            InformationItem(title: "크기", value: fileSize+"MB", description: nil, isArrow: false, icon: nil),
+            InformationItem(title: "카테고리", value: data.primaryGenreName, description: nil, isArrow: false, icon: nil),
+            InformationItem(title: "호환성", value: "이 iPhone과 호환", description: devices.joined(), isArrow: true, icon: nil),
+            InformationItem(title: "언어", value: langsResult, description: "\(languages.joined(separator: ","))", isArrow: true, icon: nil),
+            InformationItem(title: "연령등급", value: data.trackContentRating, description: data.trackContentRating + "\n" + data.advisories.joined(), isArrow: true, icon: nil),
+            InformationItem(title: "앱내구입", value: "사용가능", description: "", isArrow: true, icon: nil),
+            InformationItem(title: "저작권", value: "© "+data.artistName, description: nil, isArrow: false, icon: nil),
+            InformationItem(title: "개발자 웹 사이트", value: "", description: nil, isArrow: false, icon: UIImage(systemName: "safari")!),
+            InformationItem(title: "개인정보 처리방침", value: "", description: nil, isArrow: false, icon: UIImage(systemName: "hand.raised.fill")!)
+        ]
+        
+        for item in infoItems {
+            let infoView = InformationView(with: item)
+            infoTotalVStackView.addArrangedSubview(infoView)
+            let seperator = HorizonSeperatorView()
+            infoTotalVStackView.addArrangedSubview(seperator)
+        }
     }
-    
+
     override func configureAutolayouts() {
+        
         self.addSubview(infoTotalVStackView)
-        infoTotalVStackView.edges(self)
+        self.addSubview(informationtitleLabel)
+        
+        informationtitleLabel.top(self.topAnchor)
+        informationtitleLabel.leading(self.leadingAnchor, constant: 16)
+        informationtitleLabel.trailing(self.trailingAnchor)
+        
+        infoTotalVStackView.top(informationtitleLabel.bottomAnchor, constant: 8)
+        infoTotalVStackView.leading(self.leadingAnchor)
+        infoTotalVStackView.trailing(self.trailingAnchor)
+        infoTotalVStackView.bottom(self.bottomAnchor)
     }
-    
 }

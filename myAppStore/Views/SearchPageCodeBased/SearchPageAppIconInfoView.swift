@@ -8,24 +8,21 @@ class SearchPageAppIconInfoView: ModuleView {
     
     var isGame: Bool = false
     
-    
     private var appIconImageView: BasicAppIconImageView = {
         let imageView = BasicAppIconImageView(appIconStyle: .small)
         imageView.setStyle()
         return imageView
     }()
 
-    //위의 스택뷰 코드는 그냥 간단한것을 이니셜라이즈하기엔 코드가 복잡함
-    //그래서 stackView extension에서 새로 반환값이 있는 함수를 지정해주고 그것으로 코드를 아래와 같이 간결하게 만들었다!(return 따로 해줄필요xx)
     private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)
-    private let appNameLabel: BasicLabel = {
-        let label = BasicLabel(.appTitle)
-        label.setStyle(.appTitle, title: "앱이름")
+    private let appNameLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "앱이름", color: .black)
         return label
     }()
-    private let appCategoryLabel: BasicLabel = {
-        let label = BasicLabel(.subTitle)
-        label.setStyle(.subTitle, title: "카테고리이름")
+    private let appCategoryLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "카테고리", color: .gray)
         return label
     }()  
     private let starRatingView: RatingContentsView = {
@@ -33,16 +30,15 @@ class SearchPageAppIconInfoView: ModuleView {
         return view
     }()
     
-    private let downLoadButton: BasicGetButton = {
-        let button = BasicGetButton(.lightGray)
-        button.setStyle(.lightGray, title: "받기")
-        button.setInsets(vertical: 5, horizonal: 16)
+    private let downLoadButton: BasicButton = {
+        let button = BasicButton(buttonStyle: .gray)
+        button.setStyle(title: "받기")
         return button
     }()
     
-    private let appPurchaseLabel: BasicLabel = {
-        let label = BasicLabel(.purchase)
-        label.setStyle(.purchase, title: "앱내구입")
+    private let appPurchaseLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system10)
+        label.setStyle(title: "앱내구입", color: .black)
         return label
     }()
 
@@ -63,15 +59,11 @@ class SearchPageAppIconInfoView: ModuleView {
         starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
-        let appIcon = data.artworkUrl512
-        appIconImageView.load(with: appIcon)
+        let appIconUrl = data.artworkUrl512
+//        appIconImageView.load(with: appIcon)
+        
+        ImageCacheManager.load(with: appIconUrl, imageView: appIconImageView)
         appPurchaseLabel.isHidden = !data.isGameCenterEnabled
-        //위의 코드와 아래 코드는 같다 -> 두개의 Bool 값이 서로 반대되는 중이잖어
-//        if data.isGameCenterEnabled == true {
-//            appPurchaseLabel.isHidden = false
-//        } else {
-//            appPurchaseLabel.isHidden = true
-//        }
     }
     
     override func configureAutolayouts() {
@@ -82,8 +74,6 @@ class SearchPageAppIconInfoView: ModuleView {
         appIconImageView.top(self.topAnchor, constant: 16)
         appIconImageView.leading(self.leadingAnchor, constant: 16)
         appIconImageView.bottom(self.bottomAnchor, constant: -16)
-        appIconImageView.height(60)
-        appIconImageView.width(60)
         
         appContentsStackView.centerY(appIconImageView.centerYAnchor)
         appContentsStackView.leading(appIconImageView.trailingAnchor, constant: 8)
@@ -91,7 +81,6 @@ class SearchPageAppIconInfoView: ModuleView {
 
         downLoadButton.trailing(self.trailingAnchor, constant: -16)
         downLoadButton.centerY(self.centerYAnchor)
-        downLoadButton.leading(appContentsStackView.trailingAnchor, constant: 16)
         
         appPurchaseLabel.top(downLoadButton.bottomAnchor, constant: 4)
         appPurchaseLabel.trailing(downLoadButton.trailingAnchor)

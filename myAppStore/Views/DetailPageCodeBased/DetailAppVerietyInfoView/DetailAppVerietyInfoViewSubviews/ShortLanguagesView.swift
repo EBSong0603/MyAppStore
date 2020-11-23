@@ -12,19 +12,19 @@ class ShortLanguagesView: ModuleView {
         stackView.alignment = .center
         return stackView
     }()
-    private let langInfoLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("언어", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
+    private let langInfoLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "언어", color: .lightGray, alignment: .center)
         return label
     }()
-    private let langLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("EN", textColor: .gray, font: UIFont(name: "Arial Rounded MT Bold", size: 20)!, textAlignment: .center)
+    private let langLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial20)
+        label.setStyle(title: "EN", color: .gray, alignment: .center)
         return label
     }()
-    private let otherLanguageCountLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("+ 10 More", textColor: .gray, font: UIFont.systemFont(ofSize: 12), textAlignment: .center)
+    private let otherLanguageCountLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "+ 10 More", color: .gray, alignment: .center)
         return label
     }()
     
@@ -44,7 +44,7 @@ class ShortLanguagesView: ModuleView {
     func setData(with data: AppStoreModel.ResultsEntry) {
     
         langLabel.text = data.languageCodesISO2A.first
-        otherLanguageCountLabel.text = "+ \(data.languageCodesISO2A.count - 1) More"
+        otherLanguageCountLabel.text = "+ \(data.languageCodesISO2A.count - 1)개 언어"
     }
     
     override func configureAutolayouts() {

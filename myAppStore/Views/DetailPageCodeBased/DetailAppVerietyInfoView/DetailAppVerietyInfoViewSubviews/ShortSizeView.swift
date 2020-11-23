@@ -12,14 +12,14 @@ class ShortSizeView: ModuleView {
         stackView.alignment = .center
         return stackView
     }()
-    private let infoLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("사이즈", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .semibold), textAlignment: .center)
+    private let infoLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12SB)
+        label.setStyle(title: "사이즈", color: .lightGray, alignment: .center)
         return label
     }()
-    private let sizeLabel: UILabel = {
-       let label = UILabel()
-        label.setStyle("188", textColor: .gray, font: UIFont(name: "Arial Rounded MT Bold", size: 20)! )
+    private let sizeLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial20)
+        label.setStyle(title: "188", color: .gray, alignment: .center)
         return label
     }()
     private let megaBytesLabel: UILabel = {

@@ -11,10 +11,9 @@ class DetailAppIconInfoView: ModuleView {
         imageView.setStyle()
         return imageView
     }()
-    private let getButton: BasicGetButton = {
-        let button = BasicGetButton(.blue)
-        button.setStyle(.blue, title: "받기")
-        button.setInsets(vertical: 5, horizonal: 16)
+    private let getButton: BasicButton = {
+        let button = BasicButton(buttonStyle: .blue)
+        button.setStyle(title: "받기")
         return button
     }()
     
@@ -84,7 +83,5 @@ class DetailAppIconInfoView: ModuleView {
         
         furtherButton.trailing(self.trailingAnchor, constant: -16)
         furtherButton.bottom(getButton.bottomAnchor)
-//        furtherButton.height(30)
-//        furtherButton.width(30)
     }
 }

@@ -13,13 +13,11 @@ class DetailDeviceInfoView: ModuleView {
         imageView.width(13)
         return imageView
     }()
-    private let phoneLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("iPhone", textColor: .gray, font: UIFont.systemFont(ofSize: 14))
+    private let phoneLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "iPhone", color: .gray)
         return label
     }()
-    
-    //    private let phoneLabel = UILabel().setSimple("Iphone", textColor: .black, font: UIFont.systemFont(ofSize: 12))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
