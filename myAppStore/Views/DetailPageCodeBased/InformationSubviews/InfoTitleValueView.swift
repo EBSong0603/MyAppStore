@@ -37,10 +37,7 @@ class InfoTitleValueView: ModuleView {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        
         willChangedConstraintSet()
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -61,6 +58,7 @@ class InfoTitleValueView: ModuleView {
             infoValueLabelConstraint.isActive = true
         }
     }
+    
     func setData(with item: InformationItem) {
         infoTitleLabel.text = item.title
         infoValueLabel.text = item.value
