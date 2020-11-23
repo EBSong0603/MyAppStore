@@ -158,12 +158,12 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
                 imageView.image = image
                 if let image = image {
                     nsCache.setObject(image, forKey: cacheKey)
-                }
-            }
-        }
-    }
-}
-```
+                 }
+             }
+         }
+      }
+  }
+  ```
 &nbsp;
 
 ### UIStackView의 Distribution 사용
