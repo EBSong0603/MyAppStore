@@ -25,7 +25,9 @@ class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     }
 
     func setData(with cellData: String) {
-        self.capturedImage.load(with: cellData)
+//        self.capturedImage.load(with: cellData)
+        let screenShotsUrl = cellData
+        ImageCacheManager.load(with: screenShotsUrl, imageView: capturedImage)
     }
     
     override func configureAutolayouts() {

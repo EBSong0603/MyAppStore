@@ -101,7 +101,6 @@ struct AppStoreModel: Codable {
             trackCensoredName = (try? values.decode(String.self, forKey: .trackCensoredName)) ?? ""
             fileSizeBytes = (try? values.decode(String.self, forKey: .fileSizeBytes)) ?? ""
             averageUserRating = round((((try? values.decode(Float.self, forKey: .averageUserRating))) ?? 0) * 10) / 10
-            print("\(averageUserRating)")
             contentAdvisoryRating = (try? values.decode(String.self, forKey: .contentAdvisoryRating)) ?? ""
             trackContentRating = (try? values.decode(String.self, forKey: .trackContentRating)) ?? ""
             description = (try? values.decode(String.self, forKey: .description)) ?? ""

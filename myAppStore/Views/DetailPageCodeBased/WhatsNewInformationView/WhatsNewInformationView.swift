@@ -1,9 +1,8 @@
-//
 //  WhatsNewInformationView.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/12.
 //  Copyright © 2020 EB. All rights reserved.
+
 import UIKit
 
 class WhatsNewInformationView: ModuleView {
@@ -91,7 +90,7 @@ class WhatsNewInformationView: ModuleView {
         whatsNewDescriptionLabel.edges(openButton, vConstant: 0, hConstant: 16)
         
         moreInfoLabel.trailing(openButton.trailingAnchor, constant: -16)
-        moreInfoLabel.top(whatsNewDescriptionLabel.topAnchor, constant: 12)
+        moreInfoLabel.bottom(openButton.bottomAnchor, constant: 0)
         
         backView.top(moreInfoLabel.topAnchor, constant: -8)
         backView.leading(moreInfoLabel.leadingAnchor, constant: -8)

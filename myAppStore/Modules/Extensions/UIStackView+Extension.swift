@@ -36,7 +36,6 @@ extension UIStackView { //여기서 self는 UIStackView를 가르킴
         return stackView
     }
     
-    
     func removeAllSubViews() {
         for view in arrangedSubviews {
             removeArrangedSubview(view)

@@ -72,11 +72,6 @@ class DetailMainViewController: BaseViewController {
             appWhatsNewInfoView.setData(with: model)
             informationView.setData(with: model)
         }
-   
-//        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-//        visualEffectView.frame = (self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -10).offsetBy(dx: 0, dy: -10))!
-//        self.navigationController?.navigationBar.addSubview(visualEffectView)
-        
     }
     
     func setNavigationBar() {
@@ -141,23 +136,6 @@ extension DetailMainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let contentOffsetY: CGFloat = scrollView.contentOffset.y
-        print(contentOffsetY)
-        
-//        let blurEffect = UIBlurEffect(style: .light)
-//        let blurView = UIVisualEffectView(effect: blurEffect)
-//        blurView.alpha = 0.5
-//        blurView.frame = navBackView.bounds
-//        navBackView.addSubview(blurView)
-
-//        if contentOffsetY > 14 {
-//            let blurEffect = UIBlurEffect(style: .dark)
-//            let blurView = UIVisualEffectView(effect: blurEffect)
-//            blurView.frame = navBackView.bounds
-//            blurView.alpha = 0.5
-//            navBackView.addSubview(blurView)
-//            navBackView.alpha = 0
-//            
-//        }
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0
                                                        , options: .beginFromCurrentState, animations: {
                                                         self.navBackView.alpha = (contentOffsetY > 14) ?  0.2 : 0

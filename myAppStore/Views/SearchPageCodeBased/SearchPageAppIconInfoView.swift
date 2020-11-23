@@ -59,8 +59,10 @@ class SearchPageAppIconInfoView: ModuleView {
         starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
-        let appIcon = data.artworkUrl512
-        appIconImageView.load(with: appIcon)
+        let appIconUrl = data.artworkUrl512
+//        appIconImageView.load(with: appIcon)
+        
+        ImageCacheManager.load(with: appIconUrl, imageView: appIconImageView)
         appPurchaseLabel.isHidden = !data.isGameCenterEnabled
     }
     
@@ -72,8 +74,6 @@ class SearchPageAppIconInfoView: ModuleView {
         appIconImageView.top(self.topAnchor, constant: 16)
         appIconImageView.leading(self.leadingAnchor, constant: 16)
         appIconImageView.bottom(self.bottomAnchor, constant: -16)
-        appIconImageView.height(60)
-        appIconImageView.width(60)
         
         appContentsStackView.centerY(appIconImageView.centerYAnchor)
         appContentsStackView.leading(appIconImageView.trailingAnchor, constant: 8)
@@ -81,7 +81,6 @@ class SearchPageAppIconInfoView: ModuleView {
 
         downLoadButton.trailing(self.trailingAnchor, constant: -16)
         downLoadButton.centerY(self.centerYAnchor)
-        downLoadButton.leading(appContentsStackView.trailingAnchor, constant: 8)
         
         appPurchaseLabel.top(downLoadButton.bottomAnchor, constant: 4)
         appPurchaseLabel.trailing(downLoadButton.trailingAnchor)
