@@ -63,7 +63,7 @@
 
 <img src= "./Images/AppStoreViewModel_View.png" width="800">
 
-- ViewModel 의 Closure 사용하여 data 변경사항 캐치하여 data binding 및 UI Update
+- ViewModel class안에서 Closure 사용하여 data 변경사항 캐치 후 data binding 및 UI Update
 
 &nbsp;
 
@@ -83,13 +83,9 @@
 | class / struct          | 역할                                                         |
 | ----------------------- | ------------------------------------------------------------ |
 | `Request Manager`       | URLSession을 이용하여 현재 검색어에 대한 정보를 요청함                |
-| `OpenWeatherMapService` | - 네트워킹 통한 날씨 예측 정보 가져오기<br />- `WeatherData` 타입으로 json decoding 하기 |
-| `WeatherBuilder`        | `WeatherData` → `WeatherViewModel` 이 가진 각 type으로 데이터 가공 |
-| `WindDirection`         | 바람의 방향 값(360도 내)을 compass direction으로 변환        |
-| `DateConverter`         | 주어진 timezone 을 사용하여 문자열로 된 날짜를 변환해 주는 역할 |
+| `ImageCacheManager`     | NSCache 사용하여 이미지 Load 후 캐시에 저장하여 뷰가 보여질때마다 재요청 방지 |
 
 &nbsp;
-
 
 ### 정보 받아오기 & 파싱하기 - 애플 Open API / URLSession / Codable
 
@@ -122,7 +118,7 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   - StackView안에 쌓아서 보여줘야 하는 재사용 View들이 새롭게 업데이트하여 보여질때마다 무한대로 생성되어 StackView안에 쌓이게 되어 오토레이아웃이 깨지게 됨
 - 해결 방법 : **StackView RemoveAllView** 
 
-    - StackView를 새로 쌓을때마다 처음 쌓아줬던 View를 지워줌(extension으로 빼서 사용함)
+    - StackView를 새로 쌓을때마다 처음 쌓아줬던 View를 지워줌(extension 사용)
     
     ```swift
     func removeSubviews(_ views: [UIView]) {
@@ -134,16 +130,39 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
     ```
 &nbsp;
 
-### 검색시 Load되는 이미지가 화면이 보여질때마다 계속 요청되는 문제
+### 검색시 Load되는 앱의 ScreenShot 이미지가 View가 보여질때마다 재요청
 
 - 문제상황
   - 검색시 테이블뷰의 이미지와 detailViewController의 스크린샷 이미지가 View가 보여질때마다 재요청되어 UI의 딜레이 생성
 - 해결 방법 
   - NSCache
    - NSCache를 이용하여 이미지를 load하고 나서는 이미지캐시로 저장되어 재요청하지 않고 캐시에 저장하여 View가 보여질때마다 이를 반환하도록 구현
+   - ImageCacheManager를 만들어 사용함
    
    ```swift
-    static let useCache = NSCache<NSString, UIImage>()
+    class ImageCacheManager {
+    
+    static let nsCache = NSCache<NSString, UIImage>()
+    
+    static func load(with url: String, imageView: UIImageView) {
+        let cacheKey = NSString(string: url)
+        if let cachedImage = nsCache.object(forKey: cacheKey) {
+            imageView.image = cachedImage
+            return
+        }
+        guard let imageURL = URL(string: url) else {return}
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else {return }
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                imageView.image = image
+                if let image = image {
+                    nsCache.setObject(image, forKey: cacheKey)
+                }
+            }
+        }
+    }
+}
     ```
 &nbsp;
 
@@ -176,7 +195,6 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   - API로 제공되는 평점 데이터를 받도록 setData 메서드를 활용하여 평점에 따라 filled Star의 갯수를 지정함
   
 &nbsp;
-
 
 
 ---
@@ -253,9 +271,6 @@ let task = URLSession.shared.dataTask(with: url) {
 
 
 - 네트워크 종료시 .resume()
-
-
-
 
 
 ### GCD (Grand Central Dispatch)
