@@ -19,7 +19,7 @@ class InformationView: ModuleView {
     
     private let infoDescriptionView: InfoDescriptionView = InfoDescriptionView()
     
-    init(with item: InformationItem) {
+    init(with item: InfoItem) {
         super.init(frame: .zero)
         
         self.backgroundColor = .white
@@ -30,7 +30,7 @@ class InformationView: ModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setData(with item: InformationItem) {
+    private func setData(with item: InfoItem) {
         
         infoTitleValueView.setData(with: item)
         

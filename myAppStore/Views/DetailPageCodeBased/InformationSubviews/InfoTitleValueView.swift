@@ -59,7 +59,7 @@ class InfoTitleValueView: ModuleView {
         }
     }
     
-    func setData(with item: InformationItem) {
+    func setData(with item: InfoItem) {
         infoTitleLabel.text = item.title
         infoValueLabel.text = item.value
         

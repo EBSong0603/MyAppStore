@@ -23,7 +23,7 @@ class InfoDescriptionView: ModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(with item: InformationItem) {
+    func setData(with item: InfoItem) {
         
         if let description = item.description {
             descriptionLabel.text = description
