@@ -31,11 +31,16 @@ class DetailMainViewController: BaseViewController {
     private let appVerietyInfoView: DetailAppVerietyInfoView = DetailAppVerietyInfoView()
     
  
+    private let previewTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "미리보기", with: nil)
+    
     private let appScreenShotsView: DetailScreenShotsView = DetailScreenShotsView()
-    private let appDeviceInfoView: DetailDeviceInfoView = DetailDeviceInfoView()
+//    private let appDeviceInfoView: DetailDeviceInfoView = DetailDeviceInfoView()
     private let appDescriptionView: DetailAppDescriptionView = DetailAppDescriptionView()
+    private let appRatingTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "평가 및 리뷰", with: "모두보기")
     private let appRatingReviewView: DetailAppRatingReviewView = DetailAppRatingReviewView()
+    private let whatsNewTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "새로운 기능", with: "버전기록")
     private let appWhatsNewInfoView: WhatsNewInformationView = WhatsNewInformationView()
+    private let informationTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "정보", with: nil)
     private let informationView: InformationTotalView = InformationTotalView()
     
     private let naviTitleView: NaviTitleView = NaviTitleView()
@@ -55,10 +60,10 @@ class DetailMainViewController: BaseViewController {
         setNavigationBar()
         prepareScrollView()
         
-        let views = [appIconInfoView, appVerietyInfoView, appWhatsNewInfoView, appScreenShotsView,
-                     appDeviceInfoView, appDescriptionView, appRatingReviewView, informationView]
+        let views = [appIconInfoView, appVerietyInfoView, whatsNewTitleView, appWhatsNewInfoView, previewTitleView, appScreenShotsView,
+                      appDescriptionView, appRatingTitleView, appRatingReviewView, informationTitleView, informationView]
         for (index, view) in views.enumerated() {
-            if index != 3, index != 7 {
+            if index != 3, index != 7, index != 4 {
                 let seperator = HorizonSeperatorView()
                 detailContentVStackView.addArrangedSubview(view)
                 detailContentVStackView.addArrangedSubview(seperator)

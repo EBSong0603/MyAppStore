@@ -20,8 +20,19 @@ class DetailScreenShotsView: ModuleView {
         return cv
     }()
     
-    private let previewTitleView: PreviewTitleView = PreviewTitleView()
-    
+    private let phoneImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.setImageViewStyle(UIImage(systemName: "iphone")!, tintColor: .black, contentMode: .scaleAspectFill)
+        imageView.height(13)
+        imageView.width(13)
+        return imageView
+    }()
+    private let phoneLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "iPhone", color: .gray)
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -43,15 +54,20 @@ class DetailScreenShotsView: ModuleView {
     override func configureAutolayouts() {
         
         self.addSubview(collectionView)
-        self.addSubview(previewTitleView)
-        previewTitleView.top(self.topAnchor)
-        previewTitleView.leading(self.leadingAnchor, constant: 16)
-        previewTitleView.trailing(self.trailingAnchor)
-        
-        collectionView.top(previewTitleView.bottomAnchor, constant: 8)
+        self.addSubview(phoneImageView)
+        self.addSubview(phoneLabel)
+        collectionView.top(self.topAnchor)
         collectionView.leading(self.leadingAnchor)
         collectionView.trailing(self.trailingAnchor)
-        collectionView.bottom(self.bottomAnchor)
+//        collectionView.bottom(self.bottomAnchor)
+        phoneImageView.top(collectionView.bottomAnchor)
+        phoneImageView.leading(self.leadingAnchor)
+//        phoneImageView.trailing(self.trailingAnchor)
+        phoneImageView.bottom(self.bottomAnchor)
+        phoneLabel.leading(phoneImageView.trailingAnchor, constant: 8)
+        phoneLabel.centerY(phoneImageView.centerYAnchor)
+        phoneLabel.trailing(self.trailingAnchor)
+        
     }
     
     func setData(with urls: [String]) {
@@ -68,7 +84,7 @@ extension DetailScreenShotsView: UICollectionViewDelegateFlowLayout, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 8, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

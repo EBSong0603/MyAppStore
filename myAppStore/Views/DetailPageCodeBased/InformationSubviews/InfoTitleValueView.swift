@@ -19,6 +19,8 @@ class InfoTitleValueView: ModuleView {
         return label
     }()
     
+    private let openButton = UIButton()
+    
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")!
@@ -40,6 +42,9 @@ class InfoTitleValueView: ModuleView {
         willChangedConstraintSet()
     }
     
+    @objc func openButtonClicked() {
+    
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,11 +72,15 @@ class InfoTitleValueView: ModuleView {
             arrowImageView.image = icon
             infoTitleLabel.textColor = .systemBlue
             arrowImageView.tintColor = .systemBlue
+            
         } else {
             if item.isArrow == true {
+                
                 arrowImageView.image = UIImage(systemName: "chevron.down")!
                 infoValueLabelConstraint.constant = -50
                 //                con2?.priority = .defaultHigh
+                
+               
                 
             } else {
                 arrowImageView.isHidden = true

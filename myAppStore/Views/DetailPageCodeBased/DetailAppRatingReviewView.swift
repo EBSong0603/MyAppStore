@@ -7,9 +7,25 @@ import UIKit
 
 class DetailAppRatingReviewView: ModuleView {
     
-    private let topView = RatingReviewTitleView()
-    private let secondView = RatingReviewInfoView()
-    private let thirdView = ReviewCountView()
+    private let averageRatingLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .arial50)
+        label.setStyle(title: "5.0", color: .black)
+        return label
+    }()
+    private let reviewStickView = RatingFiveStickView()
+    private let reviewStarView = FullStarStackView()
+    
+    private let maxRatingLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "5점 중", color: .gray)
+        return label
+    }()
+    
+    private let reviewIntLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "2개의 평가", color: .gray)
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,24 +36,32 @@ class DetailAppRatingReviewView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        secondView.setData(with: data)
-        thirdView.setData(with: data)
+        reviewIntLabel.text = "\(data.userRatingCount.Decimal(with: data.userRatingCount)) 개의 평가"
+
+        averageRatingLabel.text = "\(data.averageUserRating)"
+
     }
     
     override func configureAutolayouts() {
         
-        self.addSubViews([topView, secondView, thirdView])
-        topView.top(self.topAnchor)
-        topView.leading(self.leadingAnchor)
-        topView.trailing(self.trailingAnchor)
+        self.addSubViews([ averageRatingLabel, reviewStickView, reviewStarView, maxRatingLabel, reviewIntLabel])
+
+        averageRatingLabel.top(self.topAnchor)
+        averageRatingLabel.leading(self.leadingAnchor, constant: 16)
         
-        secondView.top(topView.bottomAnchor, constant: 16)
-        secondView.leading(topView.leadingAnchor)
-        secondView.trailing(topView.trailingAnchor)
+        reviewStickView.centerY(averageRatingLabel.centerYAnchor)
+        reviewStickView.trailing(self.trailingAnchor, constant: -16)
+        reviewStarView.trailing(reviewStickView.leadingAnchor, constant: -10)
+        reviewStarView.centerY(reviewStickView.centerYAnchor)
+
+        maxRatingLabel.top(averageRatingLabel.bottomAnchor, constant: 10)
+        maxRatingLabel.leading(self.leadingAnchor, constant: 35)
+        maxRatingLabel.trailing(self.trailingAnchor)
+        maxRatingLabel.bottom(self.bottomAnchor, constant: -20)
         
-        thirdView.top(secondView.bottomAnchor,constant: 10)
-        thirdView.leading(secondView.leadingAnchor)
-        thirdView.trailing(secondView.trailingAnchor)
-        thirdView.bottom(self.bottomAnchor)
+        
+        
+        reviewIntLabel.centerY(maxRatingLabel.centerYAnchor)
+        reviewIntLabel.trailing(self.trailingAnchor, constant: -16)
     }
 }

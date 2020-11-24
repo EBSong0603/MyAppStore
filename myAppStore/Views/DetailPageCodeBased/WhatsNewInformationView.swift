@@ -7,19 +7,31 @@ import UIKit
 
 class WhatsNewInformationView: ModuleView {
     
-    private let whatsNewLabel: BasicComponentLabel = {
-        let label = BasicComponentLabel(labelStyle: .system20B)
-        label.setStyle(title: "새로운기능", color: .black)
+//    private let whatsNewLabel: BasicComponentLabel = {
+//        let label = BasicComponentLabel(labelStyle: .system20B)
+//        label.setStyle(title: "새로운기능", color: .black)
+//        return label
+//    }()
+//    
+//    private let versionLabel: BasicComponentLabel = {
+//        let label = BasicComponentLabel(labelStyle: .system15)
+//        label.setStyle(title: "버전기록", color: .systemBlue)
+//        return label
+//    }()
+    
+    private let versionHistoryLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "버전 14.2", color: .gray)
         return label
     }()
     
-    private let versionLabel: BasicComponentLabel = {
-        let label = BasicComponentLabel(labelStyle: .system15)
-        label.setStyle(title: "버전기록", color: .systemBlue)
+    private let updatePeriodLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "1일 전", color: .gray)
         return label
     }()
     
-    private let versionHistoryView: VersionHistoryView = VersionHistoryView()
+//    private let versionHistoryView: VersionHistoryView = VersionHistoryView()
     
     let whatsNewDescriptionLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
@@ -56,8 +68,42 @@ class WhatsNewInformationView: ModuleView {
     
     func setData(with data: AppStoreModel.ResultsEntry) {
         
-        versionHistoryView.setData(with: data)
+//        versionHistoryView.setData(with: data)
+        
         whatsNewDescriptionLabel.text = data.releaseNotes
+        
+        versionHistoryLabel.text = data.version
+        
+        let todayDate = Date()
+        let realseStringDate = data.currentVersionReleaseDate
+        
+        let releasDate = realseStringDate.stringToDate(stringDate: realseStringDate)
+        
+        let interval = todayDate.timeIntervalSince(releasDate)
+        let days = Int(interval / 86400)
+
+        let timeGap = releasDate.makeTimeGap(today: todayDate, date: releasDate)
+
+        switch days {
+        case 0:
+            print("zero")
+        case 1..<7:
+            updatePeriodLabel.text = "\(timeGap.dG)일 전"
+        case 7..<14:
+            updatePeriodLabel.text = "1주 전"
+        case 14..<21:
+            updatePeriodLabel.text = "2주 전"
+        case 21..<28:
+            updatePeriodLabel.text = "3주 전"
+        case 28..<35:
+            updatePeriodLabel.text = "4주 전"
+        case 35..<365:
+            updatePeriodLabel.text = "\(timeGap.mG)달 전"
+        case 365...Int.max:
+            updatePeriodLabel.text = "\(timeGap.yG)년 전"
+        default:
+            break
+        }
     }
     
     @objc private func openButtonClicked() {
@@ -69,20 +115,29 @@ class WhatsNewInformationView: ModuleView {
     }
     
     override func configureAutolayouts() {
+//
+//        self.addSubViews([whatsNewLabel, versionLabel])
+//        whatsNewLabel.top(self.topAnchor)
+//        whatsNewLabel.leading(self.leadingAnchor, constant: 16)
+//        versionLabel.trailing(self.trailingAnchor, constant: -16)
+//        versionLabel.centerY(whatsNewLabel.centerYAnchor)
+        self.addSubview(versionHistoryLabel)
+        self.addSubview(updatePeriodLabel)
+        versionHistoryLabel.top(self.topAnchor, constant: 0)
+        versionHistoryLabel.leading(self.leadingAnchor, constant: 16)
         
-        self.addSubViews([whatsNewLabel, versionLabel])
-        whatsNewLabel.top(self.topAnchor)
-        whatsNewLabel.leading(self.leadingAnchor, constant: 16)
-        versionLabel.trailing(self.trailingAnchor, constant: -16)
-        versionLabel.centerY(whatsNewLabel.centerYAnchor)
+        updatePeriodLabel.trailing(self.trailingAnchor, constant: -16)
+        updatePeriodLabel.centerY(versionHistoryLabel.centerYAnchor)
         
-        self.addSubview(versionHistoryView)
-        versionHistoryView.top(whatsNewLabel.bottomAnchor, constant: 8)
-        versionHistoryView.leading(self.leadingAnchor)
-        versionHistoryView.trailing(self.trailingAnchor)
         
+        
+//        self.addSubview(versionHistoryView)
+//        versionHistoryView.top(self.topAnchor, constant: 0)
+//        versionHistoryView.leading(self.leadingAnchor)
+//        versionHistoryView.trailing(self.trailingAnchor)
+//
         self.addSubview(openButton)
-        openButton.top(versionHistoryView.bottomAnchor, constant: 8)
+        openButton.top(versionHistoryLabel.bottomAnchor, constant: 8)
         openButton.leading(self.leadingAnchor)
         openButton.trailing(self.trailingAnchor)
         openButton.bottom(self.bottomAnchor)
