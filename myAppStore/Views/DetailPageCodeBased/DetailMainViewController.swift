@@ -81,12 +81,14 @@ class DetailMainViewController: BaseViewController {
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+
     }
     
     override func viewWillLayoutSubviews() {
         
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        
+//        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
