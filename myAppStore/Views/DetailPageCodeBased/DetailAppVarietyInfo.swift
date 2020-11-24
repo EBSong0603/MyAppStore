@@ -20,9 +20,8 @@ class DetailAppVarietyInfoItems {
     init() {
     }
     
-    func setData(with data: AppStoreModel.ResultsEntry?) {
+    func setData(with data: AppStoreModel.ResultsEntry) {
         
-        guard let data = data else {return}
         let UserRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
         
         let ageRate: String = data.contentAdvisoryRating
@@ -36,7 +35,7 @@ class DetailAppVarietyInfoItems {
                  InfoItems(topLabelText: "연령", middelLabelText: "\(ageRate)", bottomLabelText: "세", onImage: false, onRatingStarView: false),
                  InfoItems(topLabelText: "차트", middelLabelText: "#4", bottomLabelText: "\(categoryName)", onImage: false, onRatingStarView: false),
                  InfoItems(topLabelText: "개발자", middelLabelText: nil, bottomLabelText: "아무개", onImage: true, onRatingStarView: false),
-                 InfoItems(topLabelText: "언어", middelLabelText: "+\(languages)", bottomLabelText: " \(langsCount - 1)개 언어", onImage: false, onRatingStarView: false)
+                 InfoItems(topLabelText: "언어", middelLabelText: "\(languages)", bottomLabelText: " +\(langsCount - 1)개 언어", onImage: false, onRatingStarView: false)
         ]
     }
 }

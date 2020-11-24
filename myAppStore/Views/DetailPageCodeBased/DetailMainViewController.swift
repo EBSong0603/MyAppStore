@@ -25,6 +25,8 @@ class DetailMainViewController: BaseViewController {
         stackView.setStackViewStyle(axis: .vertical, spacing: 5, distribution: .equalSpacing)
         return stackView
     }()
+    
+
     private let appIconInfoView: DetailAppIconInfoView = DetailAppIconInfoView()
     private let appVerietyInfoView: DetailAppVerietyInfoView = DetailAppVerietyInfoView()
     
@@ -65,11 +67,11 @@ class DetailMainViewController: BaseViewController {
             }
         }
         
-        if let model: AppStoreModel.ResultsEntry = viewModel.inPut.selectedModel {
+        if let model: AppStoreModel.ResultsEntry =
+  
+            viewModel.inPut.selectedModel {
             naviTitleView.setData(with: model)
             appIconInfoView.setData(with: model)
-            
-            
             appVerietyInfoView.setData(with: model)
             appScreenShotsView.setData(with: model.screenshotUrls)
             appDescriptionView.setData(with: model)
