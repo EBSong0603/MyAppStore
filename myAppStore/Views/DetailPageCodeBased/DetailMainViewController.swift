@@ -27,6 +27,8 @@ class DetailMainViewController: BaseViewController {
     }()
     private let appIconInfoView: DetailAppIconInfoView = DetailAppIconInfoView()
     private let appVerietyInfoView: DetailAppVerietyInfoView = DetailAppVerietyInfoView()
+    
+ 
     private let appScreenShotsView: DetailScreenShotsView = DetailScreenShotsView()
     private let appDeviceInfoView: DetailDeviceInfoView = DetailDeviceInfoView()
     private let appDescriptionView: DetailAppDescriptionView = DetailAppDescriptionView()
@@ -66,6 +68,8 @@ class DetailMainViewController: BaseViewController {
         if let model: AppStoreModel.ResultsEntry = viewModel.inPut.selectedModel {
             naviTitleView.setData(with: model)
             appIconInfoView.setData(with: model)
+            
+            
             appVerietyInfoView.setData(with: model)
             appScreenShotsView.setData(with: model.screenshotUrls)
             appDescriptionView.setData(with: model)
@@ -85,7 +89,6 @@ class DetailMainViewController: BaseViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        
         
 //        navigationController?.navigationBar.prefersLargeTitles = false
 //        navigationController?.navigationItem.largeTitleDisplayMode = .never

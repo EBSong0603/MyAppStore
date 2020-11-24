@@ -7,32 +7,16 @@ import UIKit
 
 class DetailAppVerietyInfoView: ModuleView, UIScrollViewDelegate {
     
+    private let varietyInfoItems = DetailAppVarietyInfoItems()
+
     private let scrollView: UIScrollView = UIScrollView()
     
     private let hStackView = UIStackView().style(axis: .horizontal, spacing: 10, distribution: .fillProportionally)
-    private let reviewsView = ShortReviewView()
-    private let ageView = ShortAgeView()
-    private let chartView = ShortChartView()
-    private let developerView = ShortDeveloperView()
-    private let languagesView = ShortLanguagesView()
-    private let appSizeView = ShortSizeView()
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
-        
-        let views = [reviewsView, ageView, chartView, developerView, languagesView, appSizeView]
-        
-        for (index, view) in views.enumerated() {
-            if index != 5 {
-                let seperator = VerticalSeperatorView()
-                hStackView.addArrangedSubview(view)
-                hStackView.addArrangedSubview(seperator)
-            } else {
-                hStackView.addArrangedSubview(view)
-            }
-        }
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
     }
@@ -42,12 +26,21 @@ class DetailAppVerietyInfoView: ModuleView, UIScrollViewDelegate {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        reviewsView.setData(with: data)
-        ageView.setData(with: data)
-        chartView.setData(with: data)
-        developerView.setData(with: data)
-        languagesView.setData(with: data)
-        appSizeView.setData(with: data)
+       
+        varietyInfoItems.setData(with: data)
+        
+        for item in varietyInfoItems.items {
+            let shortInfoView = ShortInfoView(with: item)
+            shortInfoView.setData(with: data)
+            let separator = VerticalSeperatorView()
+            if item.topLabelText != "언어" {
+                hStackView.addArrangedSubview(shortInfoView)
+
+                hStackView.addArrangedSubview(separator)
+            } else {
+                hStackView.addArrangedSubview(shortInfoView)
+            }
+        }
     }
     
     override func configureAutolayouts() {
