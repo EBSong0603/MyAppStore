@@ -13,7 +13,7 @@ struct InfoItems {
     var onRatingStarView: Bool
 }
 
-class DetailAppVarietyInfoItems {
+class ShortInformationItems {
     
     var items: [InfoItems] = []
     

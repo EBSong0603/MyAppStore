@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DetailAppIconInfoView: ModuleView {
+class AppIconInfoView: ModuleView {
   
     private let appIconImageView: BasicAppIconImageView = {
         let imageView = BasicAppIconImageView(appIconStyle: .large)

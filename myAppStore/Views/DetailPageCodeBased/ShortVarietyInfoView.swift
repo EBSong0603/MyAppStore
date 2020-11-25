@@ -5,9 +5,9 @@
 
 import UIKit
 
-class DetailAppVerietyInfoView: ModuleView, UIScrollViewDelegate {
+class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
     
-    private let varietyInfoItems = DetailAppVarietyInfoItems()
+    private let varietyInfoItems = ShortInformationItems()
     
     private let scrollView: UIScrollView = UIScrollView()
     
@@ -93,7 +93,6 @@ class DetailAppVerietyInfoView: ModuleView, UIScrollViewDelegate {
                 hStackView.addArrangedSubview(separator)
                 }
             }
-            
         }
     }
     

@@ -5,20 +5,8 @@
 
 import UIKit
 
-class WhatsNewInformationView: ModuleView {
-    
-//    private let whatsNewLabel: BasicComponentLabel = {
-//        let label = BasicComponentLabel(labelStyle: .system20B)
-//        label.setStyle(title: "새로운기능", color: .black)
-//        return label
-//    }()
-//    
-//    private let versionLabel: BasicComponentLabel = {
-//        let label = BasicComponentLabel(labelStyle: .system15)
-//        label.setStyle(title: "버전기록", color: .systemBlue)
-//        return label
-//    }()
-    
+class WhatsNewView: ModuleView {
+
     private let versionHistoryLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
         label.setStyle(title: "버전 14.2", color: .gray)
@@ -30,9 +18,7 @@ class WhatsNewInformationView: ModuleView {
         label.setStyle(title: "1일 전", color: .gray)
         return label
     }()
-    
-//    private let versionHistoryView: VersionHistoryView = VersionHistoryView()
-    
+
     let whatsNewDescriptionLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
         label.setStyle(title: "기능이 향상되었어요!", color: .black)
@@ -67,8 +53,6 @@ class WhatsNewInformationView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
-//        versionHistoryView.setData(with: data)
         
         whatsNewDescriptionLabel.text = data.releaseNotes
         
@@ -115,12 +99,7 @@ class WhatsNewInformationView: ModuleView {
     }
     
     override func configureAutolayouts() {
-//
-//        self.addSubViews([whatsNewLabel, versionLabel])
-//        whatsNewLabel.top(self.topAnchor)
-//        whatsNewLabel.leading(self.leadingAnchor, constant: 16)
-//        versionLabel.trailing(self.trailingAnchor, constant: -16)
-//        versionLabel.centerY(whatsNewLabel.centerYAnchor)
+
         self.addSubview(versionHistoryLabel)
         self.addSubview(updatePeriodLabel)
         versionHistoryLabel.top(self.topAnchor, constant: 0)
@@ -128,14 +107,7 @@ class WhatsNewInformationView: ModuleView {
         
         updatePeriodLabel.trailing(self.trailingAnchor, constant: -16)
         updatePeriodLabel.centerY(versionHistoryLabel.centerYAnchor)
-        
-        
-        
-//        self.addSubview(versionHistoryView)
-//        versionHistoryView.top(self.topAnchor, constant: 0)
-//        versionHistoryView.leading(self.leadingAnchor)
-//        versionHistoryView.trailing(self.trailingAnchor)
-//
+
         self.addSubview(openButton)
         openButton.top(versionHistoryLabel.bottomAnchor, constant: 8)
         openButton.leading(self.leadingAnchor)

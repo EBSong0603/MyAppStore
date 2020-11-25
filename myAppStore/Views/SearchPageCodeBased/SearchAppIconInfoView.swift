@@ -5,7 +5,7 @@
 
 import UIKit
 
-class SearchPageAppIconInfoView: ModuleView {
+class SearchAppIconInfoView: ModuleView {
     
     var isGame: Bool = false
     
@@ -25,10 +25,14 @@ class SearchPageAppIconInfoView: ModuleView {
         let label = BasicComponentLabel(labelStyle: .system12)
         label.setStyle(title: "카테고리", color: .gray)
         return label
-    }()  
-    private let starRatingView: RatingContentsView = {
-        let view = RatingContentsView()
-        return view
+    }()
+    
+    private let starRatingView: BasicRatingStarView = BasicRatingStarView(starStyle: .middle, count: 5)
+
+    private let reviewCountLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system12)
+        label.setStyle(title: "100개", color: .gray)
+        return label
     }()
     
     private let downLoadButton: BasicButton = {
@@ -46,7 +50,7 @@ class SearchPageAppIconInfoView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        appContentsStackView.addArrangedSubviews([appNameLabel, appCategoryLabel, starRatingView])
+        appContentsStackView.addArrangedSubviews([appNameLabel, appCategoryLabel])
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +64,7 @@ class SearchPageAppIconInfoView: ModuleView {
         starRatingView.setData(with: data)
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
+        reviewCountLabel.text = data.userRatingCount.formatPoints(from: data.userRatingCount)
         
         let appIconUrl = data.artworkUrl512
         ImageCacheManager.load(with: appIconUrl, imageView: appIconImageView)
@@ -67,9 +72,10 @@ class SearchPageAppIconInfoView: ModuleView {
     }
     
     override func configureAutolayouts() {
+        
         let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
         
-        self.addSubViews([appIconImageView, appContentsStackView, downLoadButton, appPurchaseLabel])
+        self.addSubViews([appIconImageView, appContentsStackView, downLoadButton, appPurchaseLabel, reviewCountLabel, starRatingView])
         
         appIconImageView.top(self.topAnchor, constant: 16)
         appIconImageView.leading(self.leadingAnchor, constant: 16)
@@ -78,6 +84,13 @@ class SearchPageAppIconInfoView: ModuleView {
         appContentsStackView.centerY(appIconImageView.centerYAnchor)
         appContentsStackView.leading(appIconImageView.trailingAnchor, constant: 8)
         appContentsStackView.width(200 * ratio)
+
+        starRatingView.leading(appIconImageView.trailingAnchor, constant: 8)
+        starRatingView.top(appContentsStackView.bottomAnchor)
+        starRatingView.bottom(self.bottomAnchor)
+        
+        reviewCountLabel.leading(starRatingView.trailingAnchor, constant: 4)
+        reviewCountLabel.centerY(starRatingView.centerYAnchor)
 
         downLoadButton.trailing(self.trailingAnchor, constant: -16)
         downLoadButton.centerY(self.centerYAnchor)

@@ -5,7 +5,7 @@
 
 import UIKit
 
-class SearchMainViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class SearchViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
@@ -72,23 +72,23 @@ class SearchMainViewController: BaseViewController, UISearchControllerDelegate, 
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         //tableView Cell register
-        tableView.register(SearchPageTableViewCell.self,
-                           forCellReuseIdentifier: SearchPageTableViewCell.identifier)
+        tableView.register(SearchTableViewCell.self,
+                           forCellReuseIdentifier: SearchTableViewCell.identifier)
     }
 }
 
-extension SearchMainViewController: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
 }
 
-extension SearchMainViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.outPut.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchPageTableViewCell.identifier,
-                                                 for: indexPath) as! SearchPageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
+                                                 for: indexPath) as! SearchTableViewCell
         let model = viewModel.outPut.models[indexPath.row]
         cell.setData(with: model)
         return cell
@@ -101,7 +101,7 @@ extension SearchMainViewController: UITableViewDataSource {
         viewModel.inPut.selectedModel = model
         
         //다음 뷰컨트롤러 이니셜라이즈로 viewModel 넘기기
-        let vc: DetailMainViewController = DetailMainViewController(with: viewModel)
+        let vc: DetailViewController = DetailViewController(with: viewModel)
         
         navigationController?.pushViewController(vc, animated: true)
     }

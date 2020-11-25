@@ -18,9 +18,7 @@ class InfoTitleValueView: ModuleView {
         label.setStyle(title: "아무개", color: .black)
         return label
     }()
-    
-    private let openButton = UIButton()
-    
+
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")!
@@ -43,20 +41,20 @@ class InfoTitleValueView: ModuleView {
     }
     
     @objc func openButtonClicked() {
-    
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func willChangedConstraintSet() {
-//        con1 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-//        con1?.isActive = true
-//        con1?.priority = UILayoutPriority(rawValue: 500)
-//
-//        con2 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
-//        con2?.isActive = true
-//        con2?.priority = UILayoutPriority(rawValue: 250)
+        //        con1 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        //        con1?.isActive = true
+        //        con1?.priority = UILayoutPriority(rawValue: 500)
+        //
+        //        con2 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
+        //        con2?.isActive = true
+        //        con2?.priority = UILayoutPriority(rawValue: 250)
         
         if infoValueLabelConstraint == nil {
             infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
@@ -64,7 +62,7 @@ class InfoTitleValueView: ModuleView {
         }
     }
     
-    func setData(with item: InfoItem) {
+    func setItem(with item: InfoItem) {
         infoTitleLabel.text = item.title
         infoValueLabel.text = item.value
         
@@ -77,14 +75,14 @@ class InfoTitleValueView: ModuleView {
             if item.isArrow == true {
                 
                 arrowImageView.image = UIImage(systemName: "chevron.down")!
-                infoValueLabelConstraint.constant = -50
+                infoValueLabelConstraint.constant = -25
                 //                con2?.priority = .defaultHigh
                 
-               
+                
                 
             } else {
                 arrowImageView.isHidden = true
-                infoValueLabelConstraint.constant = -16
+                infoValueLabelConstraint.constant = 0
                 //                con2?.priority = .defaultLow
             }
         }
@@ -94,12 +92,12 @@ class InfoTitleValueView: ModuleView {
         
         self.addSubViews([infoTitleLabel, infoValueLabel, arrowImageView])
         infoTitleLabel.top(self.topAnchor, constant: 10)
-        infoTitleLabel.leading(self.leadingAnchor, constant: 16)
+        infoTitleLabel.leading(self.leadingAnchor, constant: 0)
         infoTitleLabel.bottom(self.bottomAnchor, constant: -10)
         
         infoValueLabel.centerY(infoTitleLabel.centerYAnchor)
         
         arrowImageView.centerY(infoTitleLabel.centerYAnchor)
-        arrowImageView.trailing(self.trailingAnchor, constant: -16)
+        arrowImageView.trailing(self.trailingAnchor, constant: 0)
     }
 }

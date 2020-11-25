@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DetailScreenShotsView: ModuleView {
+class ScreenShotsCollectionView: ModuleView {
     
     var screenshotData: [String] = []
     
@@ -59,15 +59,14 @@ class DetailScreenShotsView: ModuleView {
         collectionView.top(self.topAnchor)
         collectionView.leading(self.leadingAnchor)
         collectionView.trailing(self.trailingAnchor)
-//        collectionView.bottom(self.bottomAnchor)
+
         phoneImageView.top(collectionView.bottomAnchor)
-        phoneImageView.leading(self.leadingAnchor)
-//        phoneImageView.trailing(self.trailingAnchor)
+        phoneImageView.leading(self.leadingAnchor, constant: 16)
+
         phoneImageView.bottom(self.bottomAnchor)
         phoneLabel.leading(phoneImageView.trailingAnchor, constant: 8)
         phoneLabel.centerY(phoneImageView.centerYAnchor)
         phoneLabel.trailing(self.trailingAnchor)
-        
     }
     
     func setData(with urls: [String]) {
@@ -75,7 +74,7 @@ class DetailScreenShotsView: ModuleView {
     }
 }
 
-extension DetailScreenShotsView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension ScreenShotsCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

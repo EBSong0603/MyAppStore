@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DetailAppDescriptionView: ModuleView {
+class AppDescriptionView: ModuleView {
     
     private let infoLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)

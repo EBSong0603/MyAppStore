@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DetailMainViewController: BaseViewController {
+class DetailViewController: BaseViewController {
     
     private let viewModel: AppStoreViewModel
     
@@ -26,24 +26,19 @@ class DetailMainViewController: BaseViewController {
         return stackView
     }()
     
-
-    private let appIconInfoView: DetailAppIconInfoView = DetailAppIconInfoView()
-    private let appVerietyInfoView: DetailAppVerietyInfoView = DetailAppVerietyInfoView()
-    
- 
-    private let previewTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "미리보기", with: nil)
-    
-    private let appScreenShotsView: DetailScreenShotsView = DetailScreenShotsView()
-//    private let appDeviceInfoView: DetailDeviceInfoView = DetailDeviceInfoView()
-    private let appDescriptionView: DetailAppDescriptionView = DetailAppDescriptionView()
-    private let appRatingTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "평가 및 리뷰", with: "모두보기")
-    private let appRatingReviewView: DetailAppRatingReviewView = DetailAppRatingReviewView()
-    private let whatsNewTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "새로운 기능", with: "버전기록")
-    private let appWhatsNewInfoView: WhatsNewInformationView = WhatsNewInformationView()
-    private let informationTitleView: BigTitleCategoryView = BigTitleCategoryView(with: "정보", with: nil)
-    private let informationView: InformationTotalView = InformationTotalView()
+    private let appVerietyInfoView: ShortVarietyInfoView = ShortVarietyInfoView()
+    private let infomationItems = informationItems()
     
     private let naviTitleView: NaviTitleView = NaviTitleView()
+    private let appIconInfoView: AppIconInfoView = AppIconInfoView()
+    private let previewTitleView: InfoTitleCategoryView = InfoTitleCategoryView(with: "미리보기", with: nil)
+    private let appScreenShotsView: ScreenShotsCollectionView = ScreenShotsCollectionView()
+    private let appDescriptionView: AppDescriptionView = AppDescriptionView()
+    private let appRatingTitleView: InfoTitleCategoryView = InfoTitleCategoryView(with: "평가 및 리뷰", with: "모두보기")
+    private let appRatingReviewView: AppRatingReviewView = AppRatingReviewView()
+    private let whatsNewTitleView: InfoTitleCategoryView = InfoTitleCategoryView(with: "새로운 기능", with: "버전기록")
+    private let appWhatsNewInfoView: WhatsNewView = WhatsNewView()
+    private let informationTitleView: InfoTitleCategoryView = InfoTitleCategoryView(with: "정보", with: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,49 +51,68 @@ class DetailMainViewController: BaseViewController {
         let statusBarHeight: CGFloat = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         let navigationBarHeight: CGFloat = self.navigationController?.navigationBar.frame.height ?? 0
         navBackViewHeight = statusBarHeight + navigationBarHeight
+        
         navBackView.height(navBackViewHeight)
         setNavigationBar()
         prepareScrollView()
-        
-        let views = [appIconInfoView, appVerietyInfoView, whatsNewTitleView, appWhatsNewInfoView, previewTitleView, appScreenShotsView,
-                      appDescriptionView, appRatingTitleView, appRatingReviewView, informationTitleView, informationView]
-        for (index, view) in views.enumerated() {
-            if index != 3, index != 7, index != 4 {
-                let seperator = HorizonSeperatorView()
-                detailContentVStackView.addArrangedSubview(view)
-                detailContentVStackView.addArrangedSubview(seperator)
-            } else {
-                detailContentVStackView.addArrangedSubview(view)
-            }
-        }
+        detailViewSetup()
         
         if let model: AppStoreModel.ResultsEntry =
-  
             viewModel.inPut.selectedModel {
-            naviTitleView.setData(with: model)
-            appIconInfoView.setData(with: model)
-            appVerietyInfoView.setData(with: model)
-            appScreenShotsView.setData(with: model.screenshotUrls)
-            appDescriptionView.setData(with: model)
-            appRatingReviewView.setData(with: model)
-            appWhatsNewInfoView.setData(with: model)
-            informationView.setData(with: model)
+            setData(with: model)
         }
     }
     
-    func setNavigationBar() {
+    private func detailViewSetup() {
+        let views = [appIconInfoView, appVerietyInfoView, whatsNewTitleView,
+                     appWhatsNewInfoView, previewTitleView, appScreenShotsView,
+                     appDescriptionView, appRatingTitleView, appRatingReviewView,
+                     informationTitleView]
+        
+        for view in views {
+            if view is InfoTitleCategoryView {
+                detailContentVStackView.addArrangedSubview(view)
+            } else {
+                let separator = HorizonSeperatorView()
+                detailContentVStackView.addArrangedSubviews([view, separator])
+            }
+        }
+    }
+    
+    private func setData(with data: AppStoreModel.ResultsEntry) {
+        
+        naviTitleView.setData(with: data)
+        appIconInfoView.setData(with: data)
+        appVerietyInfoView.setData(with: data)
+        appScreenShotsView.setData(with: data.screenshotUrls)
+        appDescriptionView.setData(with: data)
+        appRatingReviewView.setData(with: data)
+        appWhatsNewInfoView.setData(with: data)
+        
+        infomationItems.setData(with: data)
+        let items = infomationItems.items
+        
+        for item in items {
+            let separator = HorizonSeperatorView()
+            let informationViews = InformationView()
+            informationViews.setItem(with: item)
+            detailContentVStackView.addArrangedSubview(informationViews)
+            detailContentVStackView.addArrangedSubview(separator)
+            
+        }
+    }
+    
+    private func setNavigationBar() {
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-
+        
     }
     
     override func viewWillLayoutSubviews() {
         
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//        navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -142,7 +156,7 @@ class DetailMainViewController: BaseViewController {
     }
 }
 
-extension DetailMainViewController: UIScrollViewDelegate {
+extension DetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
