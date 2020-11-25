@@ -9,11 +9,9 @@ class NaviTitleView: ModuleView {
     
     private let naviAppIconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(named: "DearMeAppIcon")!, radius: 5, contentMode: .scaleAspectFill)
-        imageView.width(30)
-        imageView.height(30)
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
+        imageView.setImageViewStyle(nil, radius: 5, contentMode: .scaleAspectFill)
+        imageView.contentMode = .scaleAspectFill
+        imageView.size(30)
         return imageView
     }()
     
@@ -40,7 +38,9 @@ class NaviTitleView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        naviAppIconImageView.load(with: data.artworkUrl512)
+
+        let naviAppIconUrl: String = data.artworkUrl512
+        ImageCacheManager.load(with: naviAppIconUrl, imageView: naviAppIconImageView)
     }
     
     override func configureAutolayouts() {

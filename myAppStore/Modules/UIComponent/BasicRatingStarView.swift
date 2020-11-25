@@ -50,6 +50,7 @@ class BasicRatingStarView: ModuleView {
     
     
     func setData(with data: AppStoreModel.ResultsEntry?) {
+        //nil일 경우를 위해 옵셔널 처리하고, nil일 경우 일일이 넣어준다(별의 형태 변화해야 하지않고 그냥 이미지로 쓰는경우)
         starHStackView.removeAllSubViews()
         
         var subViews: [UIView] = []
@@ -87,8 +88,7 @@ class BasicRatingStarView: ModuleView {
             imageName.append(".fill")
         }
         imageView.image = UIImage(systemName: imageName)!
-        imageView.width(style.rawValue.size)
-        imageView.height(style.rawValue.size)
+        imageView.size(style.rawValue.size)
         imageView.tintColor = style.rawValue.tintColor
         //imageView라는 객체 하나를 밷어냄, 이걸 가지고 어디선가 쓸수있게댐
         return imageView

@@ -7,27 +7,7 @@ import UIKit
 
 extension UIImageView {
     
-    func load(with url: String) {
-        
-        let cacheKey = NSString(string: url)
-        if let cachedImage = ImageCacheManager.nsCache.object(forKey: cacheKey) {
-            self.image = cachedImage
-            return
-        }
-        guard let imageURL = URL(string: url) else {return}
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else {return}
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                self.image = image
-                if let image = image {
-                    ImageCacheManager.nsCache.setObject(image, forKey: cacheKey)
-                }
-            }
-        }
-    }
-    
-    func setImageViewStyle(_ image: UIImage,
+    func setImageViewStyle(_ image: UIImage?,
                            radius: CGFloat = 0,
                            tintColor: UIColor = .clear,
                            contentMode: UIView.ContentMode = .scaleAspectFill) {
@@ -35,14 +15,9 @@ extension UIImageView {
         self.layer.cornerRadius = radius
         self.tintColor = tintColor
         self.contentMode = contentMode
-        self.image = image 
-    }
-    
-    func starImageView(_ image: UIImage = UIImage(systemName: "star")!, tintcolor: UIColor = .gray, width: CGFloat = 8, height: CGFloat = 8) {
-        self.width(width)
-        self.height(height)
-        self.tintColor = tintcolor
-        self.image = UIImage(systemName: "star.fill")
+        self.image = image
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
     }
 }
 

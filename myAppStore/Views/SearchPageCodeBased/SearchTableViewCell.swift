@@ -38,13 +38,10 @@ class SearchTableViewCell: BaseTableViewCell, Cellable {
         
         urls.forEach { url in
             let imageView = UIImageView()
-            imageView.load(with: url)
+            imageView.setImageViewStyle(nil, radius: 5, contentMode: .scaleAspectFill)
+            ImageCacheManager.load(with: url, imageView: imageView)
             myView.append(imageView)
-            imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 5
-            imageView.layer.borderWidth = 0.5
             imageView.height(210)
-            imageView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5).cgColor
         }
         captureImageStackView.addArrangedSubviews(myView)
     }

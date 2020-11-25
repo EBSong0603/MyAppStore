@@ -96,7 +96,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기
+        //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기(viewModel안의 input의 변화)
         let model = viewModel.outPut.models[indexPath.row]
         viewModel.inPut.selectedModel = model
         

@@ -23,8 +23,7 @@ class ScreenShotsCollectionView: ModuleView {
     private let phoneImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setImageViewStyle(UIImage(systemName: "iphone")!, tintColor: .black, contentMode: .scaleAspectFill)
-        imageView.height(13)
-        imageView.width(13)
+        imageView.size(13)
         return imageView
     }()
     private let phoneLabel: BasicComponentLabel = {
@@ -69,8 +68,9 @@ class ScreenShotsCollectionView: ModuleView {
         phoneLabel.trailing(self.trailingAnchor)
     }
     
-    func setData(with urls: [String]) {
-        screenshotData = urls
+    func setData(with data: AppStoreModel.ResultsEntry) {
+        screenshotData = data.screenshotUrls
+        
     }
 }
 

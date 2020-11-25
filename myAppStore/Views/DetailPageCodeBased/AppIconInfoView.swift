@@ -55,7 +55,8 @@ class AppIconInfoView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        appIconImageView.load(with: data.artworkUrl512)
+        let iconImageUrl = data.artworkUrl512
+        ImageCacheManager.load(with: iconImageUrl, imageView: appIconImageView)
         appNameLabel.text = data.trackName
         subAppNameLabel.text = data.artistName
     }

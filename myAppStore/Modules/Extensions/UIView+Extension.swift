@@ -31,6 +31,17 @@ extension UIView {
         self.widthAnchor.constraint(equalToConstant: equalToConstant).isActive =  true
     }
     
+    func height(_ equalToConstant: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true
+    }
+    
+    func size(_ equalToConstant: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: equalToConstant).isActive =  true
+        self.heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true
+        
+    }
     func widthDemension(_ equalTo: NSLayoutDimension) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalTo: equalTo).isActive = true
@@ -41,10 +52,7 @@ extension UIView {
         self.heightAnchor.constraint(equalTo: euqalTo).isActive = true
     }
     
-    func height(_ equalToConstant: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true
-    }
+   
     
     func centerY(_ equalTo: NSLayoutYAxisAnchor) {
         

@@ -40,22 +40,23 @@ class DetailViewController: BaseViewController {
     private let appWhatsNewInfoView: WhatsNewView = WhatsNewView()
     private let informationTitleView: InfoTitleCategoryView = InfoTitleCategoryView(with: "정보", with: nil)
     
+    init(with viewModel: AppStoreViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        let navBackViewHeight: CGFloat
-        let window = UIApplication.shared.windows.filter {
-            $0.isKeyWindow
-        }.first
-        let statusBarHeight: CGFloat = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        let navigationBarHeight: CGFloat = self.navigationController?.navigationBar.frame.height ?? 0
-        navBackViewHeight = statusBarHeight + navigationBarHeight
-        
-        navBackView.height(navBackViewHeight)
+        naviBackgroundViewSetup()
         setNavigationBar()
         prepareScrollView()
-        detailViewSetup()
+        viewsSetup()
         
         if let model: AppStoreModel.ResultsEntry =
             viewModel.inPut.selectedModel {
@@ -63,7 +64,23 @@ class DetailViewController: BaseViewController {
         }
     }
     
-    private func detailViewSetup() {
+    private func naviBackgroundViewSetup() {
+        
+        let navBackViewHeight: CGFloat
+        
+        let window = UIApplication.shared.windows.filter {
+            $0.isKeyWindow
+        }.first
+        
+        let statusBarHeight: CGFloat = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let navigationBarHeight: CGFloat = self.navigationController?.navigationBar.frame.height ?? 0
+        
+    
+        navBackViewHeight = statusBarHeight + navigationBarHeight
+        navBackView.height(navBackViewHeight)
+    }
+    
+    private func viewsSetup() {
         let views = [appIconInfoView, appVerietyInfoView, whatsNewTitleView,
                      appWhatsNewInfoView, previewTitleView, appScreenShotsView,
                      appDescriptionView, appRatingTitleView, appRatingReviewView,
@@ -84,7 +101,7 @@ class DetailViewController: BaseViewController {
         naviTitleView.setData(with: data)
         appIconInfoView.setData(with: data)
         appVerietyInfoView.setData(with: data)
-        appScreenShotsView.setData(with: data.screenshotUrls)
+        appScreenShotsView.setData(with: data)
         appDescriptionView.setData(with: data)
         appRatingReviewView.setData(with: data)
         appWhatsNewInfoView.setData(with: data)
@@ -98,7 +115,6 @@ class DetailViewController: BaseViewController {
             informationViews.setItem(with: item)
             detailContentVStackView.addArrangedSubview(informationViews)
             detailContentVStackView.addArrangedSubview(separator)
-            
         }
     }
     
@@ -108,24 +124,6 @@ class DetailViewController: BaseViewController {
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.barTintColor  = .clear
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    init(with viewModel: AppStoreViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func prepareScrollView() {

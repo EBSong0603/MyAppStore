@@ -6,6 +6,7 @@
 import Foundation
 
 class LogManager {
+    
     static func debug(_ itmes: String..., filename: String = #file, function: String = #function, line: Int = #line, separator: String = " ", terminator: String = "\n") {
         #if DEBUG
         let pretty = "\(URL(fileURLWithPath: filename).lastPathComponent)[#\(line)] \(function)\n\t -> "

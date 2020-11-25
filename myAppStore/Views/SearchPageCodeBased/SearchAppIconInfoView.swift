@@ -65,7 +65,7 @@ class SearchAppIconInfoView: ModuleView {
         appNameLabel.text = data.trackName
         appCategoryLabel.text = data.genres.joined(separator: ",")
         reviewCountLabel.text = data.userRatingCount.formatPoints(from: data.userRatingCount)
-        
+  
         let appIconUrl = data.artworkUrl512
         ImageCacheManager.load(with: appIconUrl, imageView: appIconImageView)
         appPurchaseLabel.isHidden = !data.isGameCenterEnabled

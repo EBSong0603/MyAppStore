@@ -25,7 +25,6 @@ class HorizonSeperatorView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-//        self.width(100)
         self.height(5)
     }
     

@@ -31,7 +31,6 @@
 		706E5C1B2542E05900581BA3 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E5C1A2542E05900581BA3 /* Int+Extension.swift */; };
 		707D3EAE2566683200C14269 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D3EAD2566683200C14269 /* ImageCacheManager.swift */; };
 		707D3EB22567B2FC00C14269 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D3EB12567B2FC00C14269 /* LogManager.swift */; };
-		70A16EF6254410C900FEC0DF /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A16EF5254410C900FEC0DF /* BasicLabel.swift */; };
 		70B4BD8A256D5D6D00BDEA8F /* ShortInformationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4BD89256D5D6D00BDEA8F /* ShortInformationItems.swift */; };
 		70B4BD90256D8D7D00BDEA8F /* informationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4BD8F256D8D7D00BDEA8F /* informationItems.swift */; };
 		70B4BD95256D929400BDEA8F /* InfoTitleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4BD94256D929300BDEA8F /* InfoTitleCategoryView.swift */; };
@@ -90,7 +89,6 @@
 		706E5C1A2542E05900581BA3 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		707D3EAD2566683200C14269 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		707D3EB12567B2FC00C14269 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
-		70A16EF5254410C900FEC0DF /* BasicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLabel.swift; sourceTree = "<group>"; };
 		70B4BD89256D5D6D00BDEA8F /* ShortInformationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInformationItems.swift; sourceTree = "<group>"; };
 		70B4BD8F256D8D7D00BDEA8F /* informationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = informationItems.swift; sourceTree = "<group>"; };
 		70B4BD94256D929300BDEA8F /* InfoTitleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTitleCategoryView.swift; sourceTree = "<group>"; };
@@ -155,11 +153,11 @@
 				70013951253AAB0A00595C03 /* AppDelegate.swift */,
 				70013953253AAB0A00595C03 /* SceneDelegate.swift */,
 				70013957253AAB0A00595C03 /* Main.storyboard */,
+				7029A901256E694E00FB0912 /* Resources */,
 				70CEE6FE253EA20E00569C10 /* Modules */,
 				70013973253AF0FD00595C03 /* Model */,
 				70FB8D0C2551CE1F000459E4 /* ViewModel */,
 				70CEE711253EBF5B00569C10 /* Views */,
-				70013967253AAB7600595C03 /* Asset */,
 				7001395F253AAB0F00595C03 /* Info.plist */,
 			);
 			path = myAppStore;
@@ -192,7 +190,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		701355DC2559444B00AD21CA /* ModuleViews */ = {
+		701355DC2559444B00AD21CA /* BaseViewComponent */ = {
 			isa = PBXGroup;
 			children = (
 				70CEE712253EBF6D00569C10 /* BaseViewController.swift */,
@@ -200,7 +198,7 @@
 				70DD5C812546F97B00738B8C /* BaseTableViewCell.swift */,
 				70DD5C7F2546F62F00738B8C /* BaseCollectionViewCell.swift */,
 			);
-			path = ModuleViews;
+			path = BaseViewComponent;
 			sourceTree = "<group>";
 		};
 		7029A8EF256E439300FB0912 /* ScreenShotsCollectionViewCell */ = {
@@ -225,6 +223,14 @@
 				70DDC24D256E3A6C008EA203 /* RatingStarBarView.swift */,
 			);
 			path = RatingReviewViewSubview;
+			sourceTree = "<group>";
+		};
+		7029A901256E694E00FB0912 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				70013967253AAB7600595C03 /* Asset */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		7049A507255AF25500C7D604 /* Services */ = {
@@ -271,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				70B4BD9C256DA30400BDEA8F /* InfoItems */,
-				701355DC2559444B00AD21CA /* ModuleViews */,
 				7049A507255AF25500C7D604 /* Services */,
 				70CEE716253EE7D500569C10 /* Protocols */,
 				70CEE70C253EADEF00569C10 /* UIComponent */,
@@ -303,9 +308,9 @@
 		70CEE70C253EADEF00569C10 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
+				701355DC2559444B00AD21CA /* BaseViewComponent */,
 				70FB8D192552D1AF000459E4 /* BasicButton.swift */,
 				7053595D2567FE7A00765CA6 /* BasicComponentLabel.swift */,
-				70A16EF5254410C900FEC0DF /* BasicLabel.swift */,
 				702CF827254FF4D1006D7B00 /* BasicRatingStarView.swift */,
 				7040576F255F01D40022A8DA /* BasicAppIconImageView.swift */,
 				7027C202255C4E32006A329B /* HorizonSeperatorView.swift */,
@@ -417,7 +422,6 @@
 				70C6406325406B3E00D06B6A /* UILabel+Extension.swift in Sources */,
 				70EDC26B2549A7AE00A3A0E9 /* AppDescriptionView.swift in Sources */,
 				70FB8CE025516B67000459E4 /* UITableViewCell+Extension.swift in Sources */,
-				70A16EF6254410C900FEC0DF /* BasicLabel.swift in Sources */,
 				70DD5C802546F62F00738B8C /* BaseCollectionViewCell.swift in Sources */,
 				70CEE6FD253DA98000569C10 /* ScreenShotsCollectionViewCell.swift in Sources */,
 				70CEE707253EA64B00569C10 /* String+Extension.swift in Sources */,

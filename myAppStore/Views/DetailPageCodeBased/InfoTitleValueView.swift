@@ -23,12 +23,12 @@ class InfoTitleValueView: ModuleView {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")!
         imageView.tintColor = .gray
-        imageView.width(20)
-        imageView.height(20)
+        imageView.size(20)
         return imageView
     }()
     
-    private var infoValueLabelConstraint: NSLayoutConstraint!
+    private var infoValueLabelConstraint: NSLayoutConstraint? = nil
+    
     
     private var con1: NSLayoutConstraint? = nil
     private var con2: NSLayoutConstraint? = nil
@@ -56,10 +56,16 @@ class InfoTitleValueView: ModuleView {
         //        con2?.isActive = true
         //        con2?.priority = UILayoutPriority(rawValue: 250)
         
-        if infoValueLabelConstraint == nil {
-            infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-            infoValueLabelConstraint.isActive = true
-        }
+        
+        
+//        if infoValueLabelConstraint == nil {
+//            infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+//            infoValueLabelConstraint.isActive = true
+//        }
+//
+        infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        infoValueLabelConstraint?.isActive = true
+        
     }
     
     func setItem(with item: InfoItem) {
@@ -72,17 +78,14 @@ class InfoTitleValueView: ModuleView {
             arrowImageView.tintColor = .systemBlue
             
         } else {
-            if item.isArrow == true {
+            if item.isArrow {
                 
                 arrowImageView.image = UIImage(systemName: "chevron.down")!
-                infoValueLabelConstraint.constant = -25
+                infoValueLabelConstraint?.constant = -25
                 //                con2?.priority = .defaultHigh
-                
-                
-                
             } else {
                 arrowImageView.isHidden = true
-                infoValueLabelConstraint.constant = 0
+                infoValueLabelConstraint?.constant = 0
                 //                con2?.priority = .defaultLow
             }
         }

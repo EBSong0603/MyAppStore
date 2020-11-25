@@ -38,7 +38,6 @@ class AppRatingReviewView: ModuleView {
     func setData(with data: AppStoreModel.ResultsEntry) {
         
         reviewIntLabel.text = "\(data.userRatingCount.Decimal(with: data.userRatingCount)) 개의 평가"
-
         averageRatingLabel.text = "\(data.averageUserRating)"
     }
     

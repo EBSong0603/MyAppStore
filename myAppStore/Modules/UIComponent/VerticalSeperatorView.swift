@@ -24,7 +24,6 @@ class VerticalSeperatorView: ModuleView {
         super.init(frame: frame)
         self.backgroundColor = .white
         self.width(1)
-//        self.height(70)
     }
     
     required init?(coder: NSCoder) {
