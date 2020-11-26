@@ -12,8 +12,8 @@ class BasicButton: UIButton {
         case gray
         var rawValue: (title: String, backgroundColor: UIColor, titleColor: UIColor) {
         switch self {
-        case .blue: return ("받기", .systemBlue, .white)
-        case .gray: return ("받기", .systemGray5, .systemBlue)
+        case .blue: return ("받기", UIColor(named: "ColorSetBlue")!, UIColor(named: "ColorSetWhite")!)
+        case .gray: return ("받기", UIColor(named: "ColorSetButtonGray")!, UIColor(named: "ColorSetBlue")!)
         }
     }
 }

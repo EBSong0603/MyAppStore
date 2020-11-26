@@ -12,7 +12,7 @@ class DetailViewController: BaseViewController {
     private let navBackView: UIView = {
         let navColor = #colorLiteral(red: 0.7813222603, green: 0.7775477566, blue: 0.785096764, alpha: 1)
         let view = UIView()
-        view.backgroundColor = navColor
+        view.backgroundColor = UIColor(named: "ColorSetNavibar")!
         view.alpha = 0
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black.cgColor
@@ -52,7 +52,7 @@ class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         naviBackgroundViewSetup()
         setNavigationBar()
         prepareScrollView()
@@ -62,6 +62,15 @@ class DetailViewController: BaseViewController {
             viewModel.inPut.selectedModel {
             setData(with: model)
         }
+        
+        let furtherButton = appIconInfoView.furtherButton
+        furtherButton.addTarget(self, action: #selector(furtherButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func furtherButtonClicked() {
+        let items = ["어플의 정보를 공유하세요!"]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true, completion: nil)
     }
     
     private func naviBackgroundViewSetup() {

@@ -7,6 +7,8 @@ import UIKit
 
 class AppIconInfoView: ModuleView {
   
+    var url: String?
+    
     private let appIconImageView: BasicAppIconImageView = {
         let imageView = BasicAppIconImageView(appIconStyle: .large)
         imageView.setStyle()
@@ -18,22 +20,23 @@ class AppIconInfoView: ModuleView {
         return button
     }()
     
-    private let furtherButton: UIButton = {
+     let furtherButton: UIButton = {
         let button = UIButton()
-        button.setImageButton(UIImage(systemName: "square.and.arrow.up")!, tintcolor: .systemBlue, scale: true)
+        button.setImageButton(UIImage(systemName: "square.and.arrow.up")!, tintcolor: UIColor(named: "ColorSetBlue")!, scale: true)
+        button.size(20)
         return button
     }()
      
-    private let appNameLabel: UILabel = {
-        let label = UILabel()
-        label.setStyle("앱이름", textColor: .black, font: UIFont.systemFont(ofSize: 20, weight: .semibold))
+    private let appNameLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system20SB)
+        label.setStyle(title: "앱이름", color: UIColor(named: "ColorSetBlack")!)
         label.numberOfLines = 2
         return label
     }()
     
-    private let subAppNameLabel: UILabel = { 
-        let label = UILabel()
-        label.setStyle("회사이름", textColor: .gray, font: UIFont.systemFont(ofSize: 15))
+    private let subAppNameLabel: BasicComponentLabel = {
+        let label = BasicComponentLabel(labelStyle: .system15)
+        label.setStyle(title: "앱설명", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
@@ -46,7 +49,7 @@ class AppIconInfoView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         appInfoVStackView.addArrangedSubviews([appNameLabel, subAppNameLabel])
     }
     

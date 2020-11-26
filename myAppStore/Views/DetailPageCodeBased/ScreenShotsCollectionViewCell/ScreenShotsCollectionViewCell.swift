@@ -17,6 +17,7 @@ class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

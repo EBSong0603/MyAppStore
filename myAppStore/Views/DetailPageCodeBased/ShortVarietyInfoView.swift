@@ -16,6 +16,7 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
     private let ratingVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
+        stackView.backgroundColor = .systemBackground
         stackView.alignment = .center
         
         return stackView
@@ -24,7 +25,7 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
     private let developerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.crop.square")
-        imageView.tintColor = .gray
+        imageView.tintColor = UIColor(named: "ColorSetGray")!
         return imageView
     }()
     
@@ -33,17 +34,19 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
-        scrollView.delegate = self
-        scrollView.showsHorizontalScrollIndicator = false
+        self.backgroundColor = .systemBackground
+        setScrollView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    func setItems(with item: InfoItems) {
+    func setScrollView() {
         
+        scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.backgroundColor = .systemBackground
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
@@ -61,12 +64,12 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
             vStackView.width(100)
             
             let topInfoLabel = BasicComponentLabel(labelStyle: .system12SB)
-            topInfoLabel.setStyle(title: "연령", color: .lightGray, alignment: .center)
+            topInfoLabel.setStyle(title: "연령", color: UIColor(named: "ColorSetLightGray")!, alignment: .center)
             let middleInfoLabel = BasicComponentLabel(labelStyle: .arial20)
-            middleInfoLabel.setStyle(title: "4+", color: .gray, alignment: .center)
+            middleInfoLabel.setStyle(title: "4+", color: UIColor(named: "ColorSetGray")!, alignment: .center)
 
             let bottomInfoLabel = BasicComponentLabel(labelStyle: .system12)
-            bottomInfoLabel.setStyle(title: "세", color: .gray, alignment: .center)
+            bottomInfoLabel.setStyle(title: "세", color: UIColor(named: "ColorSetGray")!, alignment: .center)
             
             topInfoLabel.text = item.topLabelText
             middleInfoLabel.text = item.middelLabelText

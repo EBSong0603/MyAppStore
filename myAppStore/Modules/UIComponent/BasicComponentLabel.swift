@@ -15,6 +15,7 @@ class BasicComponentLabel: UILabel {
         case system15B
         case system20
         case system20B
+        case system20SB
         case arial20
         case arial50
         var rawValue: (UIFont) {
@@ -26,6 +27,7 @@ class BasicComponentLabel: UILabel {
             case .system15B: return UIFont.systemFont(ofSize: 15, weight: .bold)
             case .system20: return UIFont.systemFont(ofSize: 20)
             case .system20B: return UIFont.systemFont(ofSize: 20, weight: .bold)
+            case .system20SB: return UIFont.systemFont(ofSize: 20, weight: .semibold)
             case .arial20: return UIFont(name: "Arial Rounded MT Bold", size: 20)!
             case .arial50: return UIFont(name: "Arial Rounded MT Bold", size: 50)!
             }

@@ -9,7 +9,7 @@ class AppRatingReviewView: ModuleView {
     
     private let averageRatingLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .arial50)
-        label.setStyle(title: "5.0", color: .black)
+        label.setStyle(title: "5.0", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
 
@@ -17,13 +17,13 @@ class AppRatingReviewView: ModuleView {
     
     private let maxRatingLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "5점 중", color: .gray)
+        label.setStyle(title: "5점 중", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
     private let reviewIntLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "2개의 평가", color: .gray)
+        label.setStyle(title: "2개의 평가", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     

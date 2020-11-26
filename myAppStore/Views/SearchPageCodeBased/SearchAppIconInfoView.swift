@@ -15,15 +15,15 @@ class SearchAppIconInfoView: ModuleView {
         return imageView
     }()
 
-    private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 0, distribution: .fillEqually)
+    private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 2, distribution: .fillEqually)
     private let appNameLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system15)
-        label.setStyle(title: "앱이름", color: .black)
+        label.setStyle(title: "앱이름", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
     private let appCategoryLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "카테고리", color: .gray)
+        label.setStyle(title: "카테고리", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
@@ -31,7 +31,7 @@ class SearchAppIconInfoView: ModuleView {
 
     private let reviewCountLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "100개", color: .gray)
+        label.setStyle(title: "100개", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
@@ -43,13 +43,13 @@ class SearchAppIconInfoView: ModuleView {
     
     private let appPurchaseLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system10)
-        label.setStyle(title: "앱내구입", color: .black)
+        label.setStyle(title: "앱내구입", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         appContentsStackView.addArrangedSubviews([appNameLabel, appCategoryLabel])
     }
     
@@ -81,13 +81,12 @@ class SearchAppIconInfoView: ModuleView {
         appIconImageView.leading(self.leadingAnchor, constant: 16)
         appIconImageView.bottom(self.bottomAnchor, constant: -16)
         
-        appContentsStackView.centerY(appIconImageView.centerYAnchor)
+        appContentsStackView.top(appIconImageView.topAnchor)
         appContentsStackView.leading(appIconImageView.trailingAnchor, constant: 8)
         appContentsStackView.width(200 * ratio)
 
-        starRatingView.leading(appIconImageView.trailingAnchor, constant: 8)
-        starRatingView.top(appContentsStackView.bottomAnchor)
-        starRatingView.bottom(self.bottomAnchor)
+        starRatingView.leading(appContentsStackView.leadingAnchor)
+        starRatingView.top(appContentsStackView.bottomAnchor, constant: 2)
         
         reviewCountLabel.leading(starRatingView.trailingAnchor, constant: 4)
         reviewCountLabel.centerY(starRatingView.centerYAnchor)

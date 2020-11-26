@@ -9,26 +9,26 @@ class WhatsNewView: ModuleView {
 
     private let versionHistoryLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "버전 14.2", color: .gray)
+        label.setStyle(title: "버전 14.2", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
     private let updatePeriodLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "1일 전", color: .gray)
+        label.setStyle(title: "1일 전", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
 
     let whatsNewDescriptionLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "기능이 향상되었어요!", color: .black)
+        label.setStyle(title: "기능이 향상되었어요!", color: UIColor(named: "ColorSetBlack")!)
         label.numberOfLines = 3
         return label
     }()
     
     private let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.alpha = 0.9
         return view
     }()
@@ -37,14 +37,14 @@ class WhatsNewView: ModuleView {
     
     let moreInfoLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "더보기", color: .systemBlue)
+        label.setStyle(title: "더보기", color: UIColor(named: "ColorSetBlue")!)
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         openButton.addTarget(self, action: #selector(openButtonClicked), for: .touchUpInside)
     }
     

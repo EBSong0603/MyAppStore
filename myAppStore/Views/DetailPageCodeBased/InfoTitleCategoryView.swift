@@ -12,13 +12,13 @@ class InfoTitleCategoryView: ModuleView {
     
     private let bigTitleLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system20B)
-        label.setStyle(title: "새로운기능", color: .black)
+        label.setStyle(title: "새로운기능", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
     
     private let subTitleLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system15)
-        label.setStyle(title: "버전기록", color: .systemBlue)
+        label.setStyle(title: "버전기록", color: UIColor(named: "ColorSetBlue")!)
         return label
     }()
     
@@ -26,6 +26,7 @@ class InfoTitleCategoryView: ModuleView {
         self.bigTitle = bigTitle
         self.subTitle = subTitle
         super.init(frame: .zero)
+        self.backgroundColor = .systemBackground
         setStyle()
     }
     

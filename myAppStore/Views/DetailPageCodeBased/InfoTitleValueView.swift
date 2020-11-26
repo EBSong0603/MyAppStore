@@ -9,20 +9,20 @@ class InfoTitleValueView: ModuleView {
     
     private let infoTitleLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "제공자", color: .gray)
+        label.setStyle(title: "제공자", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
     
     let infoValueLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "아무개", color: .black)
+        label.setStyle(title: "아무개", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
 
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")!
-        imageView.tintColor = .gray
+        imageView.tintColor = UIColor(named: "ColorSetGray")!
         imageView.size(20)
         return imageView
     }()
@@ -36,7 +36,7 @@ class InfoTitleValueView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         willChangedConstraintSet()
     }
     

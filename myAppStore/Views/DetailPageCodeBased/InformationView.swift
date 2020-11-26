@@ -15,7 +15,7 @@ class InformationView: ModuleView {
     private let infoTitleValueView = InfoTitleValueView()
     private let descriptionLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "디스크립션", color: .black)
+        label.setStyle(title: "디스크립션", color: UIColor(named: "ColorSetBlack")!)
         label.numberOfLines = 0
         return label
     }()
@@ -25,7 +25,7 @@ class InformationView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

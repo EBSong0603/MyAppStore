@@ -9,15 +9,14 @@ class AppDescriptionView: ModuleView {
     
     private let infoLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "앱디스크립션 내용", color: .black)
+        label.setStyle(title: "앱디스크립션 내용", color: UIColor(named: "ColorSetBlack")!)
         label.numberOfLines = 3
         return label
     }()
     
     private let moreInfoLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
-        label.setStyle(title: "더보기", color: .systemBlue)
-        label.backgroundColor = .white
+        label.setStyle(title: "더보기", color: UIColor(named: "ColorSetBlue")!)
         label.alpha = 1
         label.isUserInteractionEnabled = false
         return label
@@ -25,7 +24,7 @@ class AppDescriptionView: ModuleView {
     
     private let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.alpha = 0.9
         return view
     }()
@@ -34,7 +33,7 @@ class AppDescriptionView: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         openDescriptionButtom.addTarget(self, action: #selector(openDescriptionButtonClikced)
                                         , for: .touchUpInside)
     }

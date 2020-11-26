@@ -18,9 +18,9 @@ class BasicRatingStarView: ModuleView {
         //각 case(starStyle의 타입)가 가지고 있는 value들을 설정해줌
         var rawValue: (imageName: String, size: CGFloat, tintColor: UIColor) {
             switch self {
-            case .small: return ("star", 8, .lightGray)
-            case .middle: return ("star", 12, .gray)
-            case .large: return ("star", 14,.gray)
+            case .small: return ("star", 8, UIColor(named: "ColorSetGray")!)
+            case .middle: return ("star", 12, UIColor(named: "ColorSetGray")!)
+            case .large: return ("star", 14, UIColor(named: "ColorSetGray")!)
             }
         }
     }

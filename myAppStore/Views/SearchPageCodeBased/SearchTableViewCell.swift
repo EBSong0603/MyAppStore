@@ -19,7 +19,7 @@ class SearchTableViewCell: BaseTableViewCell, Cellable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

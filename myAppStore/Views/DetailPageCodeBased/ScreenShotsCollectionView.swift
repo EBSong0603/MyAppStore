@@ -17,24 +17,25 @@ class ScreenShotsCollectionView: ModuleView {
         cv.register(ScreenShotsCollectionViewCell.self,
                     forCellWithReuseIdentifier: ScreenShotsCollectionViewCell.identifier)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
         return cv
     }()
     
     private let phoneImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.setImageViewStyle(UIImage(systemName: "iphone")!, tintColor: .black, contentMode: .scaleAspectFill)
+        imageView.setImageViewStyle(UIImage(systemName: "iphone")!, tintColor: UIColor(named: "ColorSetGray")!, contentMode: .scaleAspectFill)
         imageView.size(13)
         return imageView
     }()
     private let phoneLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system15)
-        label.setStyle(title: "iPhone", color: .gray)
+        label.setStyle(title: "iPhone", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         self.heightAnchor.constraint(equalToConstant: 460).isActive = true
         prepareCollectionView()
         collectionView.showsHorizontalScrollIndicator = false
@@ -47,7 +48,11 @@ class ScreenShotsCollectionView: ModuleView {
     private func prepareCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
+
+//        collectionView.isPagingEnabled = true
+        
+        
     }
     
     override func configureAutolayouts() {
@@ -90,13 +95,33 @@ extension ScreenShotsCollectionView: UICollectionViewDelegateFlowLayout, UIColle
         return screenshotData.count
     }
     
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenShotsCollectionViewCell.identifier,
                                                       for: indexPath) as! ScreenShotsCollectionViewCell
-        cell.backgroundColor = .white
+        cell.backgroundColor = .systemBackground
         cell.setData(with: screenshotData[indexPath.row])
         return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+    
+    
+        let cellWidthIncludeSpacing = 500 + layout.minimumLineSpacing
+        
+        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludeSpacing
+        let index: Int
+        if velocity.x > 0 {
+            index = Int(ceil(estimatedIndex))
+            
+        } else if velocity.x < 0 {
+            index = Int(floor(estimatedIndex))
+        } else {
+            index = Int(round(estimatedIndex))
+        }
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludeSpacing, y: 0)
     }
 }
