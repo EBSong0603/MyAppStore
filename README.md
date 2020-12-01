@@ -100,7 +100,7 @@
 
 ### 사용자 설정 저장 - UserDefaults
 
-[관련 학습한 내용]((#userDefaults)
+[UserDefaults 학습한 내용](#userdefualts)
 
 - 마지막으로 검색한 검색어 저장 
 
