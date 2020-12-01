@@ -7,9 +7,9 @@
 ### Index
 
 - [기능](#기능)
-- [설계 및 구현](#설계-및-구현)
+- [설계](#설계)
 - [trouble shooting](#trouble-shooting)
-- [학습한 내용](#관련-학습-내용)
+- [학습내용](#학습-내용)
 
 ---
 
@@ -43,13 +43,13 @@
 
 ### 검색어 저장
 
-저장했던 검색어를 저장하여 다시 재검색 할 수 있다
+저장했던 검색어를 저장하여 클릭시 다시 재검색 할 수 있다
 
 ![](./images/display-6.gif)
 
 ---
 
-## 설계 및 구현
+## 설계
 
 ### View Controller 구성
 
@@ -67,9 +67,9 @@
 
 &nbsp;
 
-### 역할 분배
+### 역할
 
-#### view 관련
+#### view
 
 | class / struct               | 역할                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
@@ -98,10 +98,11 @@
 
 &nbsp;
 
-### 사용자 설정 저장 - UserDefaults
+### 검색한 키워드 저장 - UserDefaults
 
 - [UserDefaults 학습한 내용](#userDefaults)
 - 마지막으로 검색한 검색어 저장 
+- 저장된 검색어 클릭시 정보 재요청
 
 UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
 
@@ -146,25 +147,6 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   }
   ```
 &nbsp;
-
-### UIStackView의 Distribution 사용
-
-- 문제상황
-  - ScrollView위에 StackView를 올려 그 안에 Detail정보를 담은 각 View 객체들을 쌓아주는데, 평소대로 FillEqually를 사용하자 모든 뷰의 사이즈가 다 같아짐
-- 해결 방법 
-  - Distribution을 EqualSpacing 혹은 FillPropotionally로 바꿔줌
-
-&nbsp;
-
-### 앱의 New Version 출시날짜를 현재 날짜 기준 몇일, 몇주, 몇년 전인지에 대해서 보여줌
-
-- 문제상황
-  - open API 에서 제공하는 값은 released Date의 String 값
-  - 따라서, 현재 시간과 released Date 사이의 Time Gap을 구해야 함
-- 해결방법
-  - `TimeInterval`을 이용하여 Time Gap을 구하고 그 값을 기간의 조건에 따라 다르게 보여지도록 함
-  
- &nbsp;
  
 ### 각 View에서 공통적으로 사용될 Rating Star View를 공통 Component화 
 
@@ -175,12 +157,22 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
   - init을 이용하여 Rating Star View가 사용되는 상황에 따라 style을 지정하고, 갯수를 count로 받도록 함 
   - API로 제공되는 평점 데이터를 받도록 setData 메서드를 활용하여 평점에 따라 filled Star의 갯수를 지정함
   
+   &nbsp;
+  
+### 앱의 New Version 출시날짜를 현재 날짜 기준 몇일, 몇주, 몇년 전인지에 대해서 보여줌
+
+- 문제상황
+  - open API 에서 제공하는 값은 released Date의 String 값
+  - 따라서, 현재 시간과 released Date 사이의 Time Gap을 구해야 함
+- 해결방법
+  - `TimeInterval`을 이용하여 Time Gap을 구하고 그 값을 기간의 조건에 따라 다르게 보여지도록 함
+  
 &nbsp;
 
 
 ---
 
-## 관련 학습 내용
+## 학습 내용
 
 ### URL Loading System
 
