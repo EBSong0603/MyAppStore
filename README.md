@@ -67,11 +67,11 @@
 
 &nbsp;
 
-### 역할
+### Role
 
 #### view
 
-| class / struct               | 역할                                                         |
+| class / struct               | Role                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | `SearchPageViewController`   | AppStoreViewModel을 이용하여 받은 현재 검색 결과를 테이블뷰 상에 보여준다 |
 | `DetailViewController`       | SearchPageViewController에서 넘겨 받은 viewModel의 값의 디테일 정보를 보여준다  |
@@ -80,21 +80,23 @@
 
 #### Utilities
 
-| class / struct          | 역할                                                         |
+| class / struct          | Role                                                         |
 | ----------------------- | ------------------------------------------------------------ |
-| `Request Manager`       | URLSession을 이용하여 현재 검색어에 대한 정보를 요청함                |
+| `Request Manager`       | URLSession을 이용하여 현재 검색어에 대한 정보를 요청함                  |
 | `ImageCacheManager`     | NSCache 사용하여 이미지 Load 후 캐시에 저장하여 뷰가 보여질때마다 재요청 방지 |
+| `UserDefaultsManager`   | UserDefaults 사용하여 검색한 검색어를 저장                           |
+| `LogManager`            | 커스텀 Print를 사용하여 자세한 debug가 가능하도록 제공함                 |
 
 &nbsp;
 
-### 정보 받아오기 & 파싱하기 - 애플 Open API / URLSession / Codable
+### 정보 받아오기 & 파싱하기 - 애플 앱스토어 Open API / URLSession / Codable
 
->  [애플 Open API](https://itunes.apple.com/search?entity=software&country=KR)
+>  [애플 앱스토어 Open API](https://itunes.apple.com/search?entity=software&country=KR)
 
 - [URLSession 학습한 내용](#url-loading-system)
 - Codable
   - `AppStoreModel` 은 `Codable` protocol 을 준수
-  - `JSONDecoder` 사용하여 변환
+  - `JSONDecoder` 사용하여 변환함
 
 &nbsp;
 
@@ -103,8 +105,7 @@
 - [UserDefaults 학습한 내용](#userDefaults)
 - 마지막으로 검색한 검색어 저장 
 - 저장된 검색어 클릭시 정보 재요청
-
-UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
+- UserDefaultManager 를 이용해 저장될 key value 관리
 
 &nbsp;
 
@@ -176,57 +177,40 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
 
 ### URL Loading System
 
-> 표준 인터넷 프로토콜을 사용하여 서버와 url 로 소통하는 방식
-URL로 확인할 수 있는 리소스에 접근하는 방식을 URL Loading System 이라 한다.
-
-resource loading 은 **asynchronously** (**비동기**) 로 수행되므로, 유저의 이벤트에 응답할 수 있고 들어오는 데이터나 에러를 처리할 수 있다.
+> 표준 인터넷 프로토콜을 사용하여 서버와 url 로 소통하여, URL로 식별되는 자료에 접근할 수 있도록 한다
+Loading은 비동기적으로 처리되기 때문에 앱의 응답속도를 유지하면서 data와 error를 처리할 수 있다.
 
 #### URLSession 
 
 > Url 로 request 를 보내거나 받는 일을 담당하는 객체
-- 설정 : `URLSessionConfiguration`
-  - default 
-  - ephemeral
-  - background
-- `URLSession` instance 는 `URLSessionTask` 인스턴스를 한개 이상 생성하여 사용한다. 
-  - GET request 통해 데이터를 받아오는 일 : `URLSessionDataTask`
-  - POST / PUT request 통해 파일을 업로드 하는 일 : `URLSessionUploadTask`
-  - 원격 서버에서 파일을 다운로드 해오는 일 : `URLSessionDownloadTask`
-- Task 상태
-  - suspend
-  - resume
-  - cancel
+- 설정 : `URLSessionConfiguration` 3가지
+  - Default : 기본적인 디스크 기반의 Session
+  - Ephemeral : 어떠한 데이터도 저장하지 않는 Session
+  - Background : 앱이 종료된 이후에도 통신이 이루어지는 Session
+  
+- `URLSession` instance 는 `URLSessionTask` 를 이용해 생성 
+  - GET request 통해 데이터를 받아옴 : `URLSessionDataTask`
+  - POST / PUT request 통해 파일을 업로드 : `URLSessionUploadTask`
+  - 서버에서 파일을 다운로드 : `URLSessionDownloadTask`
+  
 - URLSession 이 데이터를 반환하는 두가지 방법 (비동기적으로 수행되므로, 끝남을 알리는 방법)
   1. completion handler - task 가 끝날 때 실행됨
   2. delegate 의 method 호출
 
 
-
 #### URLComponents
 
-> URL 을 구성하는 요소들을 구조체로 나타냄
+> URL 을 구성하는 요소들
 - queryItem property : URLQueryItem (name -value 짝으로 구성되어 URL 의 query 부분을 담당)
-- url property : 구성요소들로부터 생성된 URL
 
+### 네트워크 타입
 
-
-### 네트워크
-
-데이터를 URL 로부터 가져오려면 
-
-- 어떤 데이터를 주세요 : request
-- 응답 : reponse
+- request (요청)
+- eponse (응답)
 
 #### URLSession 활용한 data GET
 
-```swift
-func dataTask(with url: URL, 
-completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-```
-
-
-
-- `shared` : singleton URLSession instance - 간단한 request 용도
+- singleton 사용
 
 ```swift
 let task = URLSession.shared.dataTask(with: url) {
@@ -234,27 +218,25 @@ let task = URLSession.shared.dataTask(with: url) {
 }
 ```
 
-
-
 - Data : bytes or nil(error)
-- reponse: reponse 의 구현체. HTTPURLReponse 로 타입 캐스팅 가능
-  - HTTPURLResponse의 status code를 이용해 현재 상태코드를 사용할 수 있다(status code: 200-300사이: 확인 및 진행)
-- error: error 발생시 값 있음. Nil 이면 성공
-
-
+- reponse: reponse 의 구현체. HTTPURLReponse 로 타입 캐스팅하여 확인 및 사용가능
+  - HTTPURLResponse의 status code를 이용해 현재 상태코드를 사용할 수 있다(status code: 200-300사이: 확인 및 진행/ 그 외의 코드범위 구획화하여 error 확인)
+- error: error 발생시 값 있음. nil일때 success
 
 - 네트워크 종료시 .resume()
 
 
 ### GCD (Grand Central Dispatch)
 
-Thread 관련 작업은 GCD를 통해 처리하게 됨
+Thread 관련 작업d을 처리함
 Closure로 표현된 특정작업을 특정 Queue에 올려 태우고, 이 Queue를 특정 thread에서 실행하는 작업을 수행함
 비동기 수행을 원할 때, main queue(main flow) 말고 다른 수행 queue 로 작업을 보내고 싶을 때 사용
 
 - Dispatch Queue
  - main(serial) : main thread 에서 처리하는 serial-queue, 모든 UI작업은 Main queue에서 수행해야 한다
  - global(concurrent) : 전체 시스템에 공유되는 concurrent queue, 작업의 우선순위를 사전에 정의한 QoS로 정해줌
+ - sync : 동기 방식
+ - async : 비동기 방식
  - custom : 개발자가 임의로 정의하는 queue
 
 - Quality of Service(QoS)
@@ -264,20 +246,17 @@ Closure로 표현된 특정작업을 특정 Queue에 올려 태우고, 이 Queue
   - background : 유저가 인지하지 못하는 뒷단에서 실행되는 작업, user interaction은 없음
   
 ```swift
-var items: [Item]?
 DispatchQueue.main.async {
-    items = findItems(matching: "News")
+    code...
 }
-// async 클로져가 실행 완료 될 때, item 에 값이 할당 된다.
-// 선언했다고 해서 작업 완료 시점이 언제인지, 그리고 완료가 될지 안될지는 보장되지 않음
+// 선언만 했을뿐 작업의 종료시점과 성공여부는 보장할 수 없다.
 ```
 
-network request 같은 무거운 작업을 할 때는 background queue 에서 실행되는게 앱의 main 에서 실행되는것보다 권장됨
-
+network 통신등과 같은 무거운 작업은 background에서 권장되며 UI Update와 같은 가벼운 작업은 main 에서 권장된다.
 
 ### UserDefaults
 
-앱의 data 를 백그라운드 상태 혹은 종료시에도 없어지지 않고 persistent(영구) 보존할 수 있도록 해주는 user default database
+앱의 data를 저장해주는 database
 
 - key-value 형태로 저장된다. Key 는 String 만 가능
 - 저장 가능한 Value 형태 : NSData, NSString, NSNumber, NSArray, NSDictionary
@@ -285,5 +264,4 @@ network request 같은 무거운 작업을 할 때는 background queue 에서 �
   - UserDefaults 통해 가져온 데이터는 immutable 
   - plist extension 으로 저장됨
   - app launch 될 때, memory 에 올라온다. 
-- UserDefaults 변경에 알림을 받고 싶다면
-  - didChangeNotification 에 observer 를 등록하면 된다.
+
