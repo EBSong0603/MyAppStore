@@ -100,7 +100,7 @@
 
 ### 사용자 설정 저장 - UserDefaults
 
-[*관련 학습한 내용*]()
+[관련 학습한 내용]((#userDefaults)
 
 - 마지막으로 검색한 검색어 저장 
 
@@ -111,24 +111,6 @@ UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
 ---
 
 ## Trouble Shooting
-
-### 검색한 View를 StackView에 쌓아서 보여줄때, View가 새로 보여질때마다 새로운 View가 무한대로 생성되어 오토레이아웃이 깨지게 되는 문제
-
-- 문제상황  
-  - StackView안에 쌓아서 보여줘야 하는 재사용 View들이 새롭게 업데이트하여 보여질때마다 무한대로 생성되어 StackView안에 쌓이게 되어 오토레이아웃이 깨지게 됨
-- 해결 방법 : **StackView RemoveAllView** 
-
-    - StackView를 새로 쌓을때마다 처음 쌓아줬던 View를 지워줌(extension 사용)
-    
-    ```swift
-    func removeSubviews(_ views: [UIView]) {
-        for view in views {
-            self.removeArrangedSubview(view)
-            view.removeFromSuperview()
-        }
-    }
-    ```
-&nbsp;
 
 ### 검색시 Load되는 앱의 ScreenShot 이미지가 View가 보여질때마다 재요청
 
