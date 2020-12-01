@@ -11,6 +11,8 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
     //////////////////
     
     /////////////////////////////////////////////
+    //////////////////////////////////
+    /////////////////////////////////
    public var searchResults: [String] = []
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
