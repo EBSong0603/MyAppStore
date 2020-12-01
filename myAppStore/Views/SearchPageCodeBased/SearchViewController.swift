@@ -52,6 +52,12 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        
+        if let result = UserDefaultManager.shared.searchResult {
+           if result.count >= 0 {
+                isSearched = true
+            }
+        }
     }
     
     private func setNavigationBar() {
@@ -69,11 +75,15 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
         switch searchResults.count {
         case 0..<5:
             searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+            print("\(UserDefaultManager.shared.searchResult)")
         default:
             searchResults.remove(at: 4)
             searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+            print("\(UserDefaultManager.shared.searchResult)")
         }
-        UserDefaultManager.shared.searchResult = searchResults
+        
         
     }
     
@@ -128,18 +138,27 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return isSearched ? searchResults.count : viewModel.outPut.models.count
+        if let results = UserDefaultManager.shared.searchResult {
+            if isSearched {
+                return results.count
+            }
+        }
+        return viewModel.outPut.models.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if isSearched {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = searchResults[indexPath.row]
-            cell.textLabel?.textColor = .systemBlue
-            cell.textLabel?.font = .systemFont(ofSize: 20)
-            return cell
+            if let results = UserDefaultManager.shared.searchResult {
+                let cell = UITableViewCell()
+                cell.textLabel?.text = results[indexPath.row]
+                cell.textLabel?.textColor = .systemBlue
+                cell.textLabel?.font = .systemFont(ofSize: 20)
+                return cell
+            }
+            
+            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                  for: indexPath) as! SearchTableViewCell
@@ -151,11 +170,14 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if isSearched {
-            let searchText: String = searchResults[indexPath.row]
-            viewModel.requestData(term: searchText)
-            mySearchController.searchBar.text = searchText
-            isSearched = false
-            isNaviTitleHidden = true
+            if let result = UserDefaultManager.shared.searchResult {
+                let searchText: String = result[indexPath.row]
+                viewModel.requestData(term: searchText)
+                mySearchController.searchBar.text = searchText
+                isSearched = false
+                isNaviTitleHidden = true
+            }
+            
         } else {
             //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기(viewModel안의 input의 변화)
             let model = viewModel.outPut.models[indexPath.row]
