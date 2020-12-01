@@ -100,8 +100,7 @@
 
 ### 사용자 설정 저장 - UserDefaults
 
-[UserDefaults 학습한 내용](#userdefualts)
-
+- [UserDefaults 학습한 내용](#userDefaults)
 - 마지막으로 검색한 검색어 저장 
 
 UserDefaults 에 사용될 key 관리하는 struct `DataKeys`
