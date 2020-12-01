@@ -6,7 +6,11 @@
 import UIKit
 
 class SearchViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
+    ////////////////////////////
+    ////////////////////////
+    //////////////////
     
+    /////////////////////////////////////////////
    public var searchResults: [String] = []
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
