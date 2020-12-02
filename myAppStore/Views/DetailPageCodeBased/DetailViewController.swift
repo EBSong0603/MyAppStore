@@ -68,6 +68,7 @@ class DetailViewController: BaseViewController {
     }
     
     @objc func furtherButtonClicked() {
+        
         let items = ["어플의 정보를 공유하세요!"]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true, completion: nil)
@@ -83,7 +84,6 @@ class DetailViewController: BaseViewController {
         
         let statusBarHeight: CGFloat = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         let navigationBarHeight: CGFloat = self.navigationController?.navigationBar.frame.height ?? 0
-        
     
         navBackViewHeight = statusBarHeight + navigationBarHeight
         navBackView.height(navBackViewHeight)
@@ -95,11 +95,12 @@ class DetailViewController: BaseViewController {
                      appDescriptionView, appRatingTitleView, appRatingReviewView,
                      informationTitleView]
         
-        for view in views {
-            if view is InfoTitleCategoryView {
+        views.forEach { view in
+            switch view is InfoTitleCategoryView {
+            case true:
                 detailContentVStackView.addArrangedSubview(view)
-            } else {
-                let separator = HorizonSeperatorView()
+            default:
+                let separator: HorizonSeperatorView = HorizonSeperatorView()
                 detailContentVStackView.addArrangedSubviews([view, separator])
             }
         }
@@ -118,12 +119,12 @@ class DetailViewController: BaseViewController {
         infomationItems.setData(with: data)
         let items = infomationItems.items
         
-        for item in items {
-            let separator = HorizonSeperatorView()
-            let informationViews = InformationView()
+        items.forEach { item in
+        
+            let separator: HorizonSeperatorView = HorizonSeperatorView()
+            let informationViews: InformationView = InformationView()
             informationViews.setItem(with: item)
-            detailContentVStackView.addArrangedSubview(informationViews)
-            detailContentVStackView.addArrangedSubview(separator)
+            detailContentVStackView.addArrangedSubviews([informationViews, separator])
         }
     }
     

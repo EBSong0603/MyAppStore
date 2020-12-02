@@ -7,7 +7,6 @@ import UIKit
 
 class SearchViewController: BaseViewController {
     
-    
     private let tableView: UITableView = UITableView()
     
     private let mySearchController: UISearchController = UISearchController()
@@ -139,8 +138,6 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.titleView?.isHidden = true
         
         switch searchResults.count {
         case 0..<5:
