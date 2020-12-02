@@ -7,9 +7,12 @@ import UIKit
 
 class SearchViewController: BaseViewController {
     
-    public var searchResults: [String] = []
+    
     private let tableView: UITableView = UITableView()
+    
     private let mySearchController: UISearchController = UISearchController()
+    
+    public var searchResults: [String] = []
     
     private let viewModel: AppStoreViewModel = AppStoreViewModel()
     
@@ -21,8 +24,6 @@ class SearchViewController: BaseViewController {
     
     private var isNaviTitleHidden: Bool = false {
         didSet {
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController?.navigationItem.titleView?.isHidden = true
             mySearchController.isActive = true
         }
     }
@@ -122,7 +123,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 isSearched = false
                 isNaviTitleHidden = true
             }
-            
         } else {
             //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기(viewModel안의 input의 변화)
             let model = viewModel.outPut.models[indexPath.row]
@@ -166,7 +166,6 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
             viewModel.reset()
             return
         }
-        
         if text.isEmpty {
             viewModel.reset()
         } else {
