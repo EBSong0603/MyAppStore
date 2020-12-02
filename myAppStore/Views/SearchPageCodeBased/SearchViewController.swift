@@ -5,15 +5,9 @@
 
 import UIKit
 
-class SearchViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
-    ////////////////////////////
-    ////////////////////////
-    //////////////////
+class SearchViewController: BaseViewController {
     
-    /////////////////////////////////////////////
-    //////////////////////////////////
-    /////////////////////////////////
-   public var searchResults: [String] = []
+    public var searchResults: [String] = []
     private let tableView: UITableView = UITableView()
     private let mySearchController: UISearchController = UISearchController()
     
@@ -30,19 +24,17 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationController?.navigationItem.titleView?.isHidden = true
             mySearchController.isActive = true
-
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mySearchController.delegate = self
-        mySearchController.searchBar.delegate = self
+        
         view.backgroundColor = .systemBackground
+        
         prepareTableView()
         setNavigationBar()
-        
-        mySearchController.obscuresBackgroundDuringPresentation = false
+        prespareSearchBar()
         
         viewModel.isChanged = { isChangedTrue in
             self.tableView.reloadData()
@@ -50,11 +42,12 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         
         if let result = UserDefaultManager.shared.searchResult {
-           if result.count >= 0 {
+            if result.count >= 0 {
                 isSearched = true
             }
         }
@@ -66,55 +59,6 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.titleView?.isHidden = true
-       
-        switch searchResults.count {
-        case 0..<5:
-            searchResults.insert(searchBar.text!, at: 0)
-            UserDefaultManager.shared.searchResult = searchResults
-            print("\(UserDefaultManager.shared.searchResult)")
-        default:
-            searchResults.remove(at: 4)
-            searchResults.insert(searchBar.text!, at: 0)
-            UserDefaultManager.shared.searchResult = searchResults
-            print("\(UserDefaultManager.shared.searchResult)")
-        }
-        
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        isSearched = true
-        viewModel.reset()
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: false)
-    
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: false)
-    }
-    func fetchUserSearchKeywordAndRequestAPI(text: String) {
-        
-        guard let text = mySearchController.searchBar.text else {
-            viewModel.reset()
-    
-            return}
-        if text.isEmpty {
-            viewModel.reset()
-         
-        } else {
-            viewModel.requestData(term: text)
-          isSearched = false
-        }
-    }
     
     override func configureAutolayouts() {
         view.addSubview(tableView)
@@ -130,12 +74,15 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
         tableView.register(SearchTableViewCell.self,
                            forCellReuseIdentifier: SearchTableViewCell.identifier)
     }
+    
+    private func prespareSearchBar() {
+        mySearchController.delegate = self
+        mySearchController.searchBar.delegate = self
+        mySearchController.obscuresBackgroundDuringPresentation = false
+    }
 }
 
-extension SearchViewController: UITableViewDelegate {
-}
-
-extension SearchViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let results = UserDefaultManager.shared.searchResult {
@@ -144,11 +91,10 @@ extension SearchViewController: UITableViewDataSource {
             }
         }
         return viewModel.outPut.models.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         if isSearched {
             if let results = UserDefaultManager.shared.searchResult {
                 let cell = UITableViewCell()
@@ -157,9 +103,8 @@ extension SearchViewController: UITableViewDataSource {
                 cell.textLabel?.font = .systemFont(ofSize: 20)
                 return cell
             }
-            
-            
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                  for: indexPath) as! SearchTableViewCell
         let model = viewModel.outPut.models[indexPath.row]
@@ -189,3 +134,44 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.titleView?.isHidden = true
+        
+        switch searchResults.count {
+        case 0..<5:
+            searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+        default:
+            searchResults.remove(at: 4)
+            searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        isSearched = true
+        viewModel.reset()
+    }
+    
+    func fetchUserSearchKeywordAndRequestAPI(text: String) {
+        
+        guard let text = mySearchController.searchBar.text else {
+            viewModel.reset()
+            return
+        }
+        
+        if text.isEmpty {
+            viewModel.reset()
+        } else {
+            viewModel.requestData(term: text)
+            isSearched = false
+        }
+    }
+}
