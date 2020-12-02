@@ -22,7 +22,9 @@ class AppIconInfoView: ModuleView {
     
      let furtherButton: UIButton = {
         let button = UIButton()
-        button.setImageButton(UIImage(systemName: "square.and.arrow.up")!, tintcolor: UIColor(named: "ColorSetBlue")!, scale: true)
+        button.setImageButton(UIImage(systemName: "square.and.arrow.up")!,
+                              tintcolor: UIColor(named: "ColorSetBlue")!,
+                              scale: true)
         button.size(20)
         return button
     }()
@@ -58,6 +60,7 @@ class AppIconInfoView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
+        
         let iconImageUrl = data.artworkUrl512
         ImageCacheManager.load(with: iconImageUrl, imageView: appIconImageView)
         appNameLabel.text = data.trackName

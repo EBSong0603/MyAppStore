@@ -49,9 +49,10 @@ class InformationView: ModuleView {
     }
     
     @objc func openButtonClicked() {
+        
         descriptionLabel.isHidden = false
         
-        UIView.transition(with: self.descriptionLabel, duration: 0.1, options: .transitionCrossDissolve, animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: .transitionCrossDissolve, animations: {
             self.infoTitleValueView.infoValueLabel.alpha = 0
             self.infoTitleValueView.arrowImageView.isHidden = true
         })

@@ -29,7 +29,6 @@ class InfoTitleValueView: ModuleView {
     
     private var infoValueLabelConstraint: NSLayoutConstraint? = nil
     
-    
     private var con1: NSLayoutConstraint? = nil
     private var con2: NSLayoutConstraint? = nil
     
@@ -65,7 +64,6 @@ class InfoTitleValueView: ModuleView {
 //
         infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         infoValueLabelConstraint?.isActive = true
-        
     }
     
     func setItem(with item: InfoItem) {

@@ -190,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				70013971253AF0F600595C03 /* AppStoreModel.swift */,
+				70B4BD89256D5D6D00BDEA8F /* ShortInformationItems.swift */,
+				70B4BD8F256D8D7D00BDEA8F /* informationItems.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,19 +271,9 @@
 			path = DetailPageCodeBased;
 			sourceTree = "<group>";
 		};
-		70B4BD9C256DA30400BDEA8F /* InfoItems */ = {
-			isa = PBXGroup;
-			children = (
-				70B4BD89256D5D6D00BDEA8F /* ShortInformationItems.swift */,
-				70B4BD8F256D8D7D00BDEA8F /* informationItems.swift */,
-			);
-			path = InfoItems;
-			sourceTree = "<group>";
-		};
 		70CEE6FE253EA20E00569C10 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				70B4BD9C256DA30400BDEA8F /* InfoItems */,
 				7049A507255AF25500C7D604 /* Services */,
 				70CEE716253EE7D500569C10 /* Protocols */,
 				70CEE70C253EADEF00569C10 /* UIComponent */,

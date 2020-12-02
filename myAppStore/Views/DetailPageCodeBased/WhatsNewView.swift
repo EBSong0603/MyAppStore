@@ -55,44 +55,20 @@ class WhatsNewView: ModuleView {
     func setData(with data: AppStoreModel.ResultsEntry) {
         
         whatsNewDescriptionLabel.text = data.releaseNotes
-        
         versionHistoryLabel.text = data.version
         
         let todayDate = Date()
-        let realseStringDate = data.currentVersionReleaseDate
-        
-        let releasDate = realseStringDate.stringToDate(stringDate: realseStringDate)
-        
+        let releasDate = data.currentVersionReleaseDate.stringToDate()
         let interval = todayDate.timeIntervalSince(releasDate)
         let days = Int(interval / 86400)
 
-        let timeGap = releasDate.makeTimeGap(today: todayDate, date: releasDate)
-
-        switch days {
-        case 0:
-            print("zero")
-        case 1..<7:
-            updatePeriodLabel.text = "\(timeGap.dG)일 전"
-        case 7..<14:
-            updatePeriodLabel.text = "1주 전"
-        case 14..<21:
-            updatePeriodLabel.text = "2주 전"
-        case 21..<28:
-            updatePeriodLabel.text = "3주 전"
-        case 28..<35:
-            updatePeriodLabel.text = "4주 전"
-        case 35..<365:
-            updatePeriodLabel.text = "\(timeGap.mG)달 전"
-        case 365...Int.max:
-            updatePeriodLabel.text = "\(timeGap.yG)년 전"
-        default:
-            break
-        }
+        updatePeriodLabel.text = releasDate.makeTimeGap(fromToday: todayDate, timeGap: days)
     }
     
     @objc private func openButtonClicked() {
         whatsNewDescriptionLabel.numberOfLines = 0
-        UIView.transition(with: self.moreInfoLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
             self.moreInfoLabel.alpha = 0
             self.backView.alpha = 0
         })

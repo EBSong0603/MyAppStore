@@ -18,7 +18,6 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
         stackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
         stackView.backgroundColor = .systemBackground
         stackView.alignment = .center
-        
         return stackView
     }()
     
@@ -54,7 +53,7 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
         DetailViewRatingStarView.setData(with: data)
         varietyInfoItems.setData(with: data)
         
-        for item in varietyInfoItems.items {
+        varietyInfoItems.items.forEach { item in
             
             let separator = VerticalSeperatorView()
             let vStackView = UIStackView()
@@ -75,6 +74,7 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
             middleInfoLabel.text = item.middelLabelText
             bottomInfoLabel.text = item.bottomLabelText
             
+    
             if item.middelLabelText == nil, item.onImage == true {
                 
                 vStackView.addArrangedSubviews([topInfoLabel, developerImageView, bottomInfoLabel])

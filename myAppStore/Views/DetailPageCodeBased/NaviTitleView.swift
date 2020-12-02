@@ -23,12 +23,10 @@ class NaviTitleView: ModuleView {
     
     private let getButton: BasicButton = {
         let button = BasicButton(buttonStyle: .blue)
-        
         button.setStyle(title: "받기")
         return button
     }()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
