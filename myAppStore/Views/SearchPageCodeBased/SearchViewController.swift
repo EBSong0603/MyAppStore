@@ -5,11 +5,14 @@
 
 import UIKit
 
-class SearchViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class SearchViewController: BaseViewController {
     
-   public var searchResults: [String] = []
+    
     private let tableView: UITableView = UITableView()
+    
     private let mySearchController: UISearchController = UISearchController()
+    
+    public var searchResults: [String] = []
     
     private let viewModel: AppStoreViewModel = AppStoreViewModel()
     
@@ -21,22 +24,18 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
     
     private var isNaviTitleHidden: Bool = false {
         didSet {
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController?.navigationItem.titleView?.isHidden = true
             mySearchController.isActive = true
-
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mySearchController.delegate = self
-        mySearchController.searchBar.delegate = self
+        
         view.backgroundColor = .systemBackground
+        
         prepareTableView()
         setNavigationBar()
-        
-        mySearchController.obscuresBackgroundDuringPresentation = false
+        prespareSearchBar()
         
         viewModel.isChanged = { isChangedTrue in
             self.tableView.reloadData()
@@ -44,8 +43,15 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        
+        if let result = UserDefaultManager.shared.searchResult {
+            if result.count >= 0 {
+                isSearched = true
+            }
+        }
     }
     
     private func setNavigationBar() {
@@ -54,51 +60,6 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.titleView?.isHidden = true
-       
-        switch searchResults.count {
-        case 0..<5:
-            searchResults.insert(searchBar.text!, at: 0)
-        default:
-            searchResults.remove(at: 4)
-            searchResults.insert(searchBar.text!, at: 0)
-        }
-        UserDefaultManager.shared.searchResult = searchResults
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        isSearched = true
-        viewModel.reset()
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: false)
-    
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: false)
-    }
-    func fetchUserSearchKeywordAndRequestAPI(text: String) {
-        
-        guard let text = mySearchController.searchBar.text else {
-            viewModel.reset()
-    
-            return}
-        if text.isEmpty {
-            viewModel.reset()
-         
-        } else {
-            viewModel.requestData(term: text)
-          isSearched = false
-        }
-    }
     
     override func configureAutolayouts() {
         view.addSubview(tableView)
@@ -114,27 +75,37 @@ class SearchViewController: BaseViewController, UISearchControllerDelegate, UISe
         tableView.register(SearchTableViewCell.self,
                            forCellReuseIdentifier: SearchTableViewCell.identifier)
     }
+    
+    private func prespareSearchBar() {
+        mySearchController.delegate = self
+        mySearchController.searchBar.delegate = self
+        mySearchController.obscuresBackgroundDuringPresentation = false
+    }
 }
 
-extension SearchViewController: UITableViewDelegate {
-}
-
-extension SearchViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return isSearched ? searchResults.count : viewModel.outPut.models.count
+        if let results = UserDefaultManager.shared.searchResult {
+            if isSearched {
+                return results.count
+            }
+        }
+        return viewModel.outPut.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         if isSearched {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = searchResults[indexPath.row]
-            cell.textLabel?.textColor = .systemBlue
-            cell.textLabel?.font = .systemFont(ofSize: 20)
-            return cell
+            if let results = UserDefaultManager.shared.searchResult {
+                let cell = UITableViewCell()
+                cell.textLabel?.text = results[indexPath.row]
+                cell.textLabel?.textColor = .systemBlue
+                cell.textLabel?.font = .systemFont(ofSize: 20)
+                return cell
+            }
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                  for: indexPath) as! SearchTableViewCell
         let model = viewModel.outPut.models[indexPath.row]
@@ -145,11 +116,13 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if isSearched {
-            let searchText: String = searchResults[indexPath.row]
-            viewModel.requestData(term: searchText)
-            mySearchController.searchBar.text = searchText
-            isSearched = false
-            isNaviTitleHidden = true
+            if let result = UserDefaultManager.shared.searchResult {
+                let searchText: String = result[indexPath.row]
+                viewModel.requestData(term: searchText)
+                mySearchController.searchBar.text = searchText
+                isSearched = false
+                isNaviTitleHidden = true
+            }
         } else {
             //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기(viewModel안의 input의 변화)
             let model = viewModel.outPut.models[indexPath.row]
@@ -161,3 +134,43 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.titleView?.isHidden = true
+        
+        switch searchResults.count {
+        case 0..<5:
+            searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+        default:
+            searchResults.remove(at: 4)
+            searchResults.insert(searchBar.text!, at: 0)
+            UserDefaultManager.shared.searchResult = searchResults
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        isSearched = true
+        viewModel.reset()
+    }
+    
+    func fetchUserSearchKeywordAndRequestAPI(text: String) {
+        
+        guard let text = mySearchController.searchBar.text else {
+            viewModel.reset()
+            return
+        }
+        if text.isEmpty {
+            viewModel.reset()
+        } else {
+            viewModel.requestData(term: text)
+            isSearched = false
+        }
+    }
+}
