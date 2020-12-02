@@ -163,14 +163,15 @@ class DetailViewController: BaseViewController {
         detailContentVStackView.widthDemension(scrollView.frameLayoutGuide.widthAnchor)
     }
 }
-
+//MARK: ScrollViewController Setting
 extension DetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let contentOffsetY: CGFloat = scrollView.contentOffset.y
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0
-                                                       , options: .beginFromCurrentState, animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2,
+                                                       delay: 0,
+                                                       options: .beginFromCurrentState, animations: {
                                                         self.navBackView.alpha = (contentOffsetY > 14) ?  0.2 : 0
                                                         (self.navigationItem.titleView, self.naviTitleView.alpha) =
                                                             (contentOffsetY > 104) ? (self.naviTitleView, 1) : (nil, 0)

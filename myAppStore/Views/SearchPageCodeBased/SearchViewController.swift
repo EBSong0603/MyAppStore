@@ -24,6 +24,7 @@ class SearchViewController: BaseViewController {
     private var isNaviTitleHidden: Bool = false {
         didSet {
             mySearchController.isActive = true
+            navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
     
@@ -39,13 +40,7 @@ class SearchViewController: BaseViewController {
         viewModel.isChanged = { isChangedTrue in
             self.tableView.reloadData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        
+
         if let result = UserDefaultManager.shared.searchResult {
             if result.count >= 0 {
                 isSearched = true
@@ -53,10 +48,16 @@ class SearchViewController: BaseViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func setNavigationBar() {
         navigationItem.title = "검색"
         navigationItem.searchController = mySearchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
@@ -81,7 +82,7 @@ class SearchViewController: BaseViewController {
         mySearchController.obscuresBackgroundDuringPresentation = false
     }
 }
-
+//MARK: TableView Setting
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,10 +134,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: searchViewController Setting
 extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        navigationController?.navigationBar.prefersLargeTitles = false
+
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
         
         switch searchResults.count {
@@ -151,8 +155,7 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
+
         isSearched = true
         viewModel.reset()
     }

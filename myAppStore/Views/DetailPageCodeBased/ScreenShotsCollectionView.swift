@@ -27,6 +27,7 @@ class ScreenShotsCollectionView: ModuleView {
         imageView.size(13)
         return imageView
     }()
+    
     private let phoneLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system15)
         label.setStyle(title: "iPhone", color: UIColor(named: "ColorSetGray")!)
@@ -35,10 +36,10 @@ class ScreenShotsCollectionView: ModuleView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.backgroundColor = .systemBackground
         self.heightAnchor.constraint(equalToConstant: 460).isActive = true
         prepareCollectionView()
-        collectionView.showsHorizontalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
@@ -46,13 +47,11 @@ class ScreenShotsCollectionView: ModuleView {
     }
     
     private func prepareCollectionView() {
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
-
-//        collectionView.isPagingEnabled = true
-        
-        
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     override func configureAutolayouts() {
@@ -75,7 +74,6 @@ class ScreenShotsCollectionView: ModuleView {
     
     func setData(with data: AppStoreModel.ResultsEntry) {
         screenshotData = data.screenshotUrls
-        
     }
 }
 
@@ -107,13 +105,12 @@ extension ScreenShotsCollectionView: UICollectionViewDelegateFlowLayout, UIColle
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
-    
-    
+        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+  
         let cellWidthIncludeSpacing = 500 + layout.minimumLineSpacing
-        
         let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludeSpacing
         let index: Int
+
         if velocity.x > 0 {
             index = Int(ceil(estimatedIndex))
             

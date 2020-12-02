@@ -27,16 +27,6 @@ class RatingStarBarView: ModuleView {
     private let twoStarView = BasicRatingStarView(starStyle: .small, count: 2)
     private let oneStarView = BasicRatingStarView(starStyle: .small, count: 1)
     
-//    private let barImageView: UIImageView = {
-//       let imageView = UIImageView()
-//        imageView.width(180)
-//        imageView.height(5)
-//        imageView.backgroundColor = UIColor(named: "ColorSetLightGray")!
-//        imageView.clipsToBounds = true
-//        imageView.layer.cornerRadius = 2.5
-//        return imageView
-//    }()
-    
     private var starViews: [BasicRatingStarView] {
         return [fiveStarView, fourStarView, threeStarView, twoStarView, oneStarView]
     }

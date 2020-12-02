@@ -15,7 +15,9 @@ class SearchAppIconInfoView: ModuleView {
         return imageView
     }()
 
-    private let appContentsStackView = UIStackView().style(axis: .vertical, spacing: 2, distribution: .fillEqually)
+    private let appContentsStackView = UIStackView().style(axis: .vertical,
+                                                           spacing: 2,
+                                                           distribution: .fillEqually)
     private let appNameLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system15)
         label.setStyle(title: "앱이름", color: UIColor(named: "ColorSetBlack")!)
@@ -75,7 +77,8 @@ class SearchAppIconInfoView: ModuleView {
         
         let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
         
-        self.addSubViews([appIconImageView, appContentsStackView, downLoadButton, appPurchaseLabel, reviewCountLabel, starRatingView])
+        self.addSubViews([appIconImageView, appContentsStackView, downLoadButton,
+                          appPurchaseLabel, reviewCountLabel, starRatingView])
         
         appIconImageView.top(self.topAnchor, constant: 16)
         appIconImageView.leading(self.leadingAnchor, constant: 16)

@@ -12,19 +12,36 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func makeTimeGap(today: Date, date: Date ) -> (yG: Int, mG: Int, dG: Int, hG: Int) {
-
-        var result : (yG: Int, mG: Int, dG: Int, hG: Int) = (0, 0, 0, 0)
+    func makeTimeGap(fromToday: Date, timeGap: Int) -> String? {
+        
+        var timeGapString: String?
         let calendar = Calendar.current
-        let dateGap = calendar.dateComponents([.year, .month, .day, .hour], from: date, to: today)
-        if case let (y?, m?, d?, h?) = (dateGap.year, dateGap.month, dateGap.day, dateGap.hour) {
-    
-            result.yG = y
-            result.mG = m
-            result.dG = d
-            result.hG = h
+        let dateGapComponents = calendar.dateComponents([.year, .month, .day, .hour], from: self, to: fromToday)
+        
+        if case let (y?, m?, d?, h?) = (dateGapComponents.year, dateGapComponents.month, dateGapComponents.day, dateGapComponents.hour) {
+            
+            switch timeGap {
+            case 0:
+                timeGapString = "\(h)시간 전"
+            case 1..<7:
+                timeGapString = "\(d)일 전"
+            case 7..<14:
+                timeGapString = "1주 전"
+            case 14..<21:
+                timeGapString = "2주 전"
+            case 21..<28:
+                timeGapString = "3주 전"
+            case 28..<35:
+                timeGapString = "4주 전"
+            case 35..<365:
+                timeGapString = "\(m)달 전"
+            case 365...Int.max:
+                timeGapString = "\(y)년 전"
+            default:
+                break
+            }
         }
-        return result
+        return timeGapString
     }
 }
 

@@ -34,6 +34,7 @@ class AppDescriptionView: ModuleView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
+        
         openDescriptionButtom.addTarget(self, action: #selector(openDescriptionButtonClikced)
                                         , for: .touchUpInside)
     }
@@ -45,13 +46,10 @@ class AppDescriptionView: ModuleView {
     @objc private func openDescriptionButtonClikced() {
         
         infoLabel.numberOfLines = 0
-        UIView.transition(with: self.infoLabel,
-                          duration: 0.2,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                            self.moreInfoLabel.alpha = 0
-                            self.backView.alpha = 0
-                          })
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
+            self.moreInfoLabel.alpha = 0
+            self.backView.alpha = 0
+        }) 
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {

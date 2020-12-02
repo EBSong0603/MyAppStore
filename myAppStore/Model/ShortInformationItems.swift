@@ -17,9 +17,6 @@ class ShortInformationItems {
     
     var items: [InfoItems] = []
     
-    init() {
-    }
-    
     func setData(with data: AppStoreModel.ResultsEntry) {
         
         let UserRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
@@ -31,11 +28,31 @@ class ShortInformationItems {
         let languages: String = data.languageCodesISO2A.first ?? ""
         let langsCount: Int = data.languageCodesISO2A.count
         
-        items = [InfoItems(topLabelText: "\(UserRC) 개의 평가", middelLabelText: "\(data.averageUserRating)", bottomLabelText: nil, onImage: false, onRatingStarView: true),
-                 InfoItems(topLabelText: "연령", middelLabelText: "\(ageRate)", bottomLabelText: "세", onImage: false, onRatingStarView: false),
-                 InfoItems(topLabelText: "차트", middelLabelText: "#4", bottomLabelText: "\(categoryName)", onImage: false, onRatingStarView: false),
-                 InfoItems(topLabelText: "개발자", middelLabelText: nil, bottomLabelText: "아무개", onImage: true, onRatingStarView: false),
-                 InfoItems(topLabelText: "언어", middelLabelText: "\(languages)", bottomLabelText: " +\(langsCount - 1)개 언어", onImage: false, onRatingStarView: false)
+        items = [InfoItems(topLabelText: "\(UserRC) 개의 평가",
+                           middelLabelText: "\(data.averageUserRating)",
+                           bottomLabelText: nil,
+                           onImage: false,
+                           onRatingStarView: true),
+                 InfoItems(topLabelText: "연령",
+                           middelLabelText: "\(ageRate)",
+                           bottomLabelText: "세",
+                           onImage: false,
+                           onRatingStarView: false),
+                 InfoItems(topLabelText: "차트",
+                           middelLabelText: "#4",
+                           bottomLabelText: "\(categoryName)",
+                           onImage: false,
+                           onRatingStarView: false),
+                 InfoItems(topLabelText: "개발자",
+                           middelLabelText: nil,
+                           bottomLabelText: "아무개",
+                           onImage: true,
+                           onRatingStarView: false),
+                 InfoItems(topLabelText: "언어",
+                           middelLabelText: "\(languages)",
+                           bottomLabelText: " +\(langsCount - 1)개 언어",
+                           onImage: false,
+                           onRatingStarView: false)
         ]
     }
 }
