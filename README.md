@@ -45,7 +45,7 @@
 
 저장했던 검색어를 저장하여 클릭시 다시 재검색 할 수 있다
 
-![](./images/display-6.gif)
+<img src= "./Images/SearchPageCapture-4.png" width="250">
 
 ---
 
