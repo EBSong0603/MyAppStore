@@ -170,7 +170,6 @@
   
 &nbsp;
 
-
 ---
 
 ## 학습 내용
@@ -214,7 +213,7 @@ Loading은 비동기적으로 처리되기 때문에 앱의 응답속도를 유�
 
 ```swift
 let task = URLSession.shared.dataTask(with: url) {
-	// completion handler
+	completion...
 }
 ```
 
@@ -256,12 +255,21 @@ network 통신등과 같은 무거운 작업은 background에서 권장되며 UI
 
 ### UserDefaults
 
-앱의 data를 저장해주는 database
+App의 data를 저장해주는 영속적인 데이터베이스 
 
-- key-value 형태로 저장된다. Key 는 String 만 가능
+- key와 value 형태로 저장됨 (Key 는 String 타입으로만 저장가능)
 - 저장 가능한 Value 형태 : NSData, NSString, NSNumber, NSArray, NSDictionary
-- 특성
-  - UserDefaults 통해 가져온 데이터는 immutable 
-  - plist extension 으로 저장됨
-  - app launch 될 때, memory 에 올라온다. 
+- 앱안에서 영속적으로 간단하게 set, retrieve, override, remove 할 수있음
+- UserDefaults 통해 가져온 데이터는 영속적으로 저장된다
+- app이 런치될떄 memory에 올라탄다
+- Bool 타입과 Int 타입과같이 default값이 존재하는 타입들은 nil이 될 가능성을 만들어주기 위해 옵셔널로 만들어주는 작업 필요
+
+```swift
+extension UserDefaults {
+func maybeBool(forKey: String) -> Bool? {
+        return UserDefaults.standard.object(forKey: forKey) as? Bool
+    }
+  }
+```
+
 
