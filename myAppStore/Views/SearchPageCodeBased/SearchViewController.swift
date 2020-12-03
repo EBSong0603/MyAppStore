@@ -37,8 +37,8 @@ class SearchViewController: BaseViewController {
         setNavigationBar()
         prespareSearchBar()
         
-        viewModel.isChanged = { isChangedTrue in
-            self.tableView.reloadData()
+        viewModel.isChanged = { [weak self] isChangedTrue in
+            self?.tableView.reloadData()
         }
 
         if let result = UserDefaultManager.shared.searchResult {
@@ -154,12 +154,6 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
-        isSearched = true
-        viewModel.reset()
-    }
-    
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
         
         guard let text = mySearchController.searchBar.text else {
@@ -173,4 +167,12 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
             isSearched = false
         }
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+
+        isSearched = true
+        viewModel.reset()
+    }
+    
+ 
 }

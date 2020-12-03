@@ -27,7 +27,7 @@ class DetailViewController: BaseViewController {
     }()
     
     private let appVerietyInfoView: ShortVarietyInfoView = ShortVarietyInfoView()
-    private let infomationItems = informationItems()
+    private let infomationItems = InformationItems()
     
     private let naviTitleView: NaviTitleView = NaviTitleView()
     private let appIconInfoView: AppIconInfoView = AppIconInfoView()
