@@ -1,10 +1,7 @@
-//
 //  DetailInformation.swift
 //  myAppStore
-//
 //  Created by 송은비 on 2020/11/25.
 //  Copyright © 2020 EB. All rights reserved.
-//
 
 import UIKit
 
@@ -16,7 +13,7 @@ struct InfoItem {
     var icon: UIImage?
 }
 
-class informationItems {
+class InformationItems {
     
     var items:[InfoItem] = []
     
