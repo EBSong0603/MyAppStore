@@ -22,7 +22,17 @@ class RequestManager {
         case error
     }
     
-    static func request<Model: Decodable>(with type: Model.Type, path: String, param: [String:Any], response: @escaping ((Model?) -> Void)) {
+    enum requestError: Error {
+        case invalidURL
+        case failtedToResponse
+        case failedToGetData
+        case redirection
+        case clientError
+        case serverError
+        case error
+    }
+    
+    static func request<Model: Decodable>(with type: Model.Type, path: String, param: [String:Any], response: @escaping ((Result<Model?, Error>) -> Void)) {
         
         var urlComponents = URLComponents(string: Urls.domain + path)
         let queryItems = param
@@ -33,7 +43,6 @@ class RequestManager {
         guard let urlComps = urlComponents else { return }
         LogManager.debug("인코딩점\(urlComps)")
         let urlString = String(describing: urlComps)
-        print(urlString)
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, respon, error in
             
@@ -50,21 +59,23 @@ class RequestManager {
                 DispatchQueue.main.async {
                     do {
                         let result: Model = try JSONDecoder().decode(Model.self, from: data)
-                        response(result)
+                        response(.success(result))
                     } catch {
-                        response(nil)
+                        response(.failure(requestError.invalidURL))
                         print("error: \(error.localizedDescription)")
                     }
                 }
             case 300..<400:
                 print("300 Error")
+                response(.failure(requestError.redirection))
             case 400..<500:
                 print("400 Error")
+                response(.failure(requestError.clientError))
             case 500..<600:
                 print("500 Error")
-                response(nil)
+                response(.failure(requestError.serverError))
             default:
-                response(nil)
+                response(.failure(requestError.error))
             }
         }.resume()
     }

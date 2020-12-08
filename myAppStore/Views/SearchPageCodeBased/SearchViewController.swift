@@ -24,7 +24,7 @@ class SearchViewController: BaseViewController {
     private var isNaviTitleHidden: Bool = false {
         didSet {
             mySearchController.isActive = true
-            navigationController?.navigationBar.prefersLargeTitles = false
+//            navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
     
