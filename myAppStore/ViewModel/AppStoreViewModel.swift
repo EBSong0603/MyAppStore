@@ -20,7 +20,6 @@ class AppStoreViewModel {
     var outPut: OutPut = OutPut()
     var inPut: InPut = InPut()
     
-    
     func requestData(term: String) {
         // Full API: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
 
@@ -28,10 +27,15 @@ class AppStoreViewModel {
         let param: [String:Any] = ["entity":"software", "country":"KR", "term":"\(term)"]
   
         RequestManager.request(with: AppStoreModel.self, path: path, param: param) { [weak self] model  in
-            guard let self = self, let model = model else {return}
             
-            self.outPut.models = model.results
-            self.isChanged?(true)
+            switch model {
+            case .success(let model):
+                guard let model = model, let self = self else  { return }
+                self.outPut.models = model.results
+                self.isChanged?(true)
+            case .failure(let error):
+                print("failed error: \(error)")
+            }
         }
     }
     
