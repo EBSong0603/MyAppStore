@@ -9,6 +9,7 @@ class BaseTableViewCell: UITableViewCell, Viewable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         configureAutolayouts()
     }
     
@@ -17,6 +18,5 @@ class BaseTableViewCell: UITableViewCell, Viewable {
     }
     
     func configureAutolayouts() {
-
     }
 }

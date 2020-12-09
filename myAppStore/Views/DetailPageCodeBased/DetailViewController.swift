@@ -51,8 +51,8 @@ class DetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground
+        
         naviBackgroundViewSetup()
         setNavigationBar()
         prepareScrollView()
@@ -68,14 +68,12 @@ class DetailViewController: BaseViewController {
     }
     
     @objc func furtherButtonClicked() {
-        
         let items = ["어플의 정보를 공유하세요!"]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true, completion: nil)
     }
     
     private func naviBackgroundViewSetup() {
-        
         let navBackViewHeight: CGFloat
         
         let window = UIApplication.shared.windows.filter {
@@ -107,7 +105,6 @@ class DetailViewController: BaseViewController {
     }
     
     private func setData(with data: AppStoreModel.ResultsEntry) {
-        
         naviTitleView.setData(with: data)
         appIconInfoView.setData(with: data)
         appVerietyInfoView.setData(with: data)
@@ -118,9 +115,7 @@ class DetailViewController: BaseViewController {
         
         infomationItems.setData(with: data)
         let items = infomationItems.items
-        
         items.forEach { item in
-        
             let separator: HorizonSeperatorView = HorizonSeperatorView()
             let informationViews: InformationView = InformationView()
             informationViews.setItem(with: item)
@@ -129,7 +124,6 @@ class DetailViewController: BaseViewController {
     }
     
     private func setNavigationBar() {
-        
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.barTintColor  = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -141,7 +135,6 @@ class DetailViewController: BaseViewController {
     }
     
     override func configureAutolayouts() {
-        
         view.addSubview(scrollView)
         view.addSubview(navBackView)
         
@@ -167,7 +160,6 @@ class DetailViewController: BaseViewController {
 extension DetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let contentOffsetY: CGFloat = scrollView.contentOffset.y
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2,
                                                        delay: 0,

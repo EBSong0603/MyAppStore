@@ -60,7 +60,6 @@ class SearchAppIconInfoView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry?) {
-        
         guard let data = data else {return}
         
         starRatingView.setData(with: data)
@@ -74,7 +73,6 @@ class SearchAppIconInfoView: ModuleView {
     }
     
     override func configureAutolayouts() {
-        
         let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
         
         self.addSubViews([appIconImageView, appContentsStackView, downLoadButton,

@@ -18,7 +18,6 @@ class InformationItems {
     var items:[InfoItem] = []
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         let fileSize = data.fileSizeBytes.fileSizeTrans()
         
         let devices = data.supportedDevices.availableDevices(with: data)

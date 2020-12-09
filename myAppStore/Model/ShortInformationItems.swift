@@ -18,7 +18,6 @@ class ShortInformationItems {
     var items: [InfoItems] = []
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         let UserRC: String = data.userRatingCount.formatPoints(from: data.userRatingCount)
         
         let ageRate: String = data.contentAdvisoryRating

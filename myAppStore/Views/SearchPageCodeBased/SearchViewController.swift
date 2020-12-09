@@ -24,13 +24,11 @@ class SearchViewController: BaseViewController {
     private var isNaviTitleHidden: Bool = false {
         didSet {
             mySearchController.isActive = true
-//            navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground
         
         prepareTableView()
@@ -49,7 +47,6 @@ class SearchViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -82,6 +79,7 @@ class SearchViewController: BaseViewController {
         mySearchController.obscuresBackgroundDuringPresentation = false
     }
 }
+
 //MARK: TableView Setting
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -95,7 +93,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if isSearched {
             if let results = UserDefaultManager.shared.searchResult {
                 let cell = UITableViewCell()
@@ -114,7 +111,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if isSearched {
             if let result = UserDefaultManager.shared.searchResult {
                 let searchText: String = result[indexPath.row]
@@ -124,10 +120,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 isNaviTitleHidden = true
             }
         } else {
-            //지금 선택된 하나의 인덱스페스 데이터만 input 데이터에 넣어서 보내기(viewModel안의 input의 변화)
             let model = viewModel.outPut.models[indexPath.row]
             viewModel.inPut.selectedModel = model
-            //다음 뷰컨트롤러 이니셜라이즈로 viewModel 넘기기
             let vc: DetailViewController = DetailViewController(with: viewModel)
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -138,7 +132,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         navigationController?.navigationBar.prefersLargeTitles = false
 
         fetchUserSearchKeywordAndRequestAPI(text: searchBar.text!)
@@ -155,7 +148,6 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
     }
     
     func fetchUserSearchKeywordAndRequestAPI(text: String) {
-        
         guard let text = mySearchController.searchBar.text else {
             viewModel.reset()
             return
@@ -169,10 +161,7 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
         isSearched = true
         viewModel.reset()
     }
-    
- 
 }

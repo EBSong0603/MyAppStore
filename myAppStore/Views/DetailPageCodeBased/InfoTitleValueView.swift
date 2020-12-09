@@ -18,7 +18,7 @@ class InfoTitleValueView: ModuleView {
         label.setStyle(title: "아무개", color: UIColor(named: "ColorSetBlack")!)
         return label
     }()
-
+    
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")!
@@ -27,43 +27,28 @@ class InfoTitleValueView: ModuleView {
         return imageView
     }()
     
-    private var infoValueLabelConstraint: NSLayoutConstraint? = nil
-    
-    private var con1: NSLayoutConstraint? = nil
-    private var con2: NSLayoutConstraint? = nil
+    private var infoValueLabelConstraintshort: NSLayoutConstraint? = nil
+    private var infoValueLabelConstraintLong: NSLayoutConstraint? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .systemBackground
+        
         willChangedConstraintSet()
     }
     
-    @objc func openButtonClicked() {
-        
-    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func willChangedConstraintSet() {
-        //        con1 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        //        con1?.isActive = true
-        //        con1?.priority = UILayoutPriority(rawValue: 500)
-        //
-        //        con2 = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
-        //        con2?.isActive = true
-        //        con2?.priority = UILayoutPriority(rawValue: 250)
+        infoValueLabelConstraintshort = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        infoValueLabelConstraintshort?.isActive = true
+        infoValueLabelConstraintshort?.priority = UILayoutPriority(rawValue: 500)
         
-        
-        
-//        if infoValueLabelConstraint == nil {
-//            infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-//            infoValueLabelConstraint.isActive = true
-//        }
-//
-        infoValueLabelConstraint = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        infoValueLabelConstraint?.isActive = true
+        infoValueLabelConstraintLong = infoValueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -45)
+        infoValueLabelConstraintLong?.isActive = true
+        infoValueLabelConstraintLong?.priority = UILayoutPriority(rawValue: 250)
     }
     
     func setItem(with item: InfoItem) {
@@ -74,24 +59,20 @@ class InfoTitleValueView: ModuleView {
             arrowImageView.image = icon
             infoTitleLabel.textColor = .systemBlue
             arrowImageView.tintColor = .systemBlue
-            
         } else {
             if item.isArrow {
-                
                 arrowImageView.image = UIImage(systemName: "chevron.down")!
-                infoValueLabelConstraint?.constant = -25
-                //                con2?.priority = .defaultHigh
+                infoValueLabelConstraintLong?.priority = .defaultHigh
             } else {
                 arrowImageView.isHidden = true
-                infoValueLabelConstraint?.constant = 0
-                //                con2?.priority = .defaultLow
+                infoValueLabelConstraintLong?.priority = .defaultLow
             }
         }
     }
     
     override func configureAutolayouts() {
-        
         self.addSubViews([infoTitleLabel, infoValueLabel, arrowImageView])
+        
         infoTitleLabel.top(self.topAnchor, constant: 10)
         infoTitleLabel.leading(self.leadingAnchor, constant: 0)
         infoTitleLabel.bottom(self.bottomAnchor, constant: -10)
@@ -99,6 +80,6 @@ class InfoTitleValueView: ModuleView {
         infoValueLabel.centerY(infoTitleLabel.centerYAnchor)
         
         arrowImageView.centerY(infoTitleLabel.centerYAnchor)
-        arrowImageView.trailing(self.trailingAnchor, constant: 0)
+        arrowImageView.trailing(self.trailingAnchor, constant: -16)
     }
 }

@@ -22,7 +22,6 @@ class AppStoreViewModel {
     
     func requestData(term: String) {
         // Full API: "https://itunes.apple.com/search?entity=software&country=KR&term=cash"
-
         let path: String = "/search?"
         let param: [String:Any] = ["entity":"software", "country":"KR", "term":"\(term)"]
   

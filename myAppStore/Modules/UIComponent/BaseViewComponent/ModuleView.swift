@@ -18,7 +18,6 @@ class ModuleView: UIView, Viewable {
     }
     
     func configureAutolayouts() {
-        
     }
 }
 

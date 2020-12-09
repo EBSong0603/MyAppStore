@@ -6,7 +6,7 @@
 import UIKit
 
 class WhatsNewView: ModuleView {
-
+    
     private let versionHistoryLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
         label.setStyle(title: "버전 14.2", color: UIColor(named: "ColorSetGray")!)
@@ -18,7 +18,7 @@ class WhatsNewView: ModuleView {
         label.setStyle(title: "1일 전", color: UIColor(named: "ColorSetGray")!)
         return label
     }()
-
+    
     let whatsNewDescriptionLabel: BasicComponentLabel = {
         let label = BasicComponentLabel(labelStyle: .system12)
         label.setStyle(title: "기능이 향상되었어요!", color: UIColor(named: "ColorSetBlack")!)
@@ -43,8 +43,8 @@ class WhatsNewView: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .systemBackground
+        
         openButton.addTarget(self, action: #selector(openButtonClicked), for: .touchUpInside)
     }
     
@@ -53,7 +53,6 @@ class WhatsNewView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         whatsNewDescriptionLabel.text = data.releaseNotes
         versionHistoryLabel.text = data.version
         
@@ -61,7 +60,7 @@ class WhatsNewView: ModuleView {
         let releasDate = data.currentVersionReleaseDate.stringToDate()
         let interval = todayDate.timeIntervalSince(releasDate)
         let days = Int(interval / 86400)
-
+        
         updatePeriodLabel.text = releasDate.makeTimeGap(fromToday: todayDate, timeGap: days)
     }
     
@@ -75,7 +74,6 @@ class WhatsNewView: ModuleView {
     }
     
     override func configureAutolayouts() {
-
         self.addSubview(versionHistoryLabel)
         self.addSubview(updatePeriodLabel)
         versionHistoryLabel.top(self.topAnchor, constant: 0)
@@ -83,7 +81,7 @@ class WhatsNewView: ModuleView {
         
         updatePeriodLabel.trailing(self.trailingAnchor, constant: -16)
         updatePeriodLabel.centerY(versionHistoryLabel.centerYAnchor)
-
+        
         self.addSubview(openButton)
         openButton.top(versionHistoryLabel.bottomAnchor, constant: 8)
         openButton.leading(self.leadingAnchor)

@@ -50,8 +50,8 @@ class AppIconInfoView: ModuleView {
  
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .systemBackground
+        
         appInfoVStackView.addArrangedSubviews([appNameLabel, subAppNameLabel])
     }
     
@@ -60,7 +60,6 @@ class AppIconInfoView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         let iconImageUrl = data.artworkUrl512
         ImageCacheManager.load(with: iconImageUrl, imageView: appIconImageView)
         appNameLabel.text = data.trackName
@@ -68,7 +67,6 @@ class AppIconInfoView: ModuleView {
     }
 
     override func configureAutolayouts() {
-        
         self.addSubview(appIconImageView)
         self.addSubview(appInfoVStackView)
         self.addSubview(getButton)

@@ -33,11 +33,9 @@ class RatingStarBarView: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         for view in starViews {
             view.setData(with: nil)
         }
-        
         ratingStarVStackView.addArrangedSubviews(starViews)
         
         var ratingBarImageViews: [UIView] = []
@@ -58,8 +56,8 @@ class RatingStarBarView: ModuleView {
     }
     
     override func configureAutolayouts() {
-     
         self.addSubViews([ratingStarVStackView, ratingBarVStackView])
+        
         ratingStarVStackView.top(self.topAnchor)
         ratingStarVStackView.leading(self.leadingAnchor)
         ratingStarVStackView.bottom(self.bottomAnchor)

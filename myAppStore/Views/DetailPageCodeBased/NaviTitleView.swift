@@ -36,13 +36,11 @@ class NaviTitleView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-
         let naviAppIconUrl: String = data.artworkUrl512
         ImageCacheManager.load(with: naviAppIconUrl, imageView: naviAppIconImageView)
     }
     
     override func configureAutolayouts() {
-        
         let ratio: CGFloat = (UIScreen.main.bounds.width / 375)
         self.addSubViews([naviAppIconImageView, getButton])
         naviAppIconImageView.centerY(self.centerYAnchor)

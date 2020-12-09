@@ -24,7 +24,6 @@ class InformationView: ModuleView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .systemBackground
     }
     
@@ -33,7 +32,6 @@ class InformationView: ModuleView {
     }
     
     func setItem(with item: InfoItem) {
-        
         infoTitleValueView.setItem(with: item)
         infoTotalVStackView.addArrangedSubview(infoTitleValueView)
         
@@ -49,7 +47,6 @@ class InformationView: ModuleView {
     }
     
     @objc func openButtonClicked() {
-        
         descriptionLabel.isHidden = false
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: .transitionCrossDissolve, animations: {
@@ -59,12 +56,11 @@ class InformationView: ModuleView {
     }
     
     override func configureAutolayouts() {
-        
         self.addSubview(infoTotalVStackView)
         
         infoTotalVStackView.top(self.topAnchor)
         infoTotalVStackView.leading(self.leadingAnchor, constant: 16)
-        infoTotalVStackView.trailing(self.trailingAnchor, constant: -16)
+        infoTotalVStackView.trailing(self.trailingAnchor, constant: 0)
         infoTotalVStackView.bottom(self.bottomAnchor)
     }
 }

@@ -2,6 +2,7 @@
 //  myAppStore
 //  Created by 송은비 on 2020/10/20.
 //  Copyright © 2020 EB. All rights reserved.
+
 import Foundation
 
 public enum LanguageType {
@@ -73,10 +74,9 @@ extension String {
 }
 
 extension Array where Element == String {
+    
     func makeFilteredStringArray(count: Int) -> [String] {
-        //         let array: [String] = data //self () //매개변수 필요없음 익스텐션이라서요
         var each: [String] = []
-        //self, 여기에서 self.forEach 해줘야함
         self.forEach { piece in
             if each.count > count {return}
             each.append(piece)

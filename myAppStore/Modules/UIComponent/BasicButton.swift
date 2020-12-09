@@ -29,7 +29,6 @@ class BasicButton: UIButton {
     }
     
     func setStyle(title: String) {
-   
         self.setTitle(title, for: .normal)
         self.backgroundColor = style.rawValue.backgroundColor
         self.setTitleColor(style.rawValue.titleColor, for: .normal)

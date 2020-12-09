@@ -42,19 +42,16 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
     }
     
     func setScrollView() {
-        
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .systemBackground
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         DetailViewRatingStarView.setData(with: data)
         varietyInfoItems.setData(with: data)
         
         varietyInfoItems.items.forEach { item in
-            
             let separator = VerticalSeperatorView()
             let vStackView = UIStackView()
             vStackView.setStackViewStyle(axis: .vertical, spacing: 2, distribution: .fillEqually)
@@ -66,7 +63,7 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
             topInfoLabel.setStyle(title: "연령", color: UIColor(named: "ColorSetLightGray")!, alignment: .center)
             let middleInfoLabel = BasicComponentLabel(labelStyle: .arial20)
             middleInfoLabel.setStyle(title: "4+", color: UIColor(named: "ColorSetGray")!, alignment: .center)
-
+            
             let bottomInfoLabel = BasicComponentLabel(labelStyle: .system12)
             bottomInfoLabel.setStyle(title: "세", color: UIColor(named: "ColorSetGray")!, alignment: .center)
             
@@ -74,15 +71,12 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
             middleInfoLabel.text = item.middelLabelText
             bottomInfoLabel.text = item.bottomLabelText
             
-    
             if item.middelLabelText == nil, item.onImage == true {
-                
                 vStackView.addArrangedSubviews([topInfoLabel, developerImageView, bottomInfoLabel])
                 hStackView.addArrangedSubview(vStackView)
                 hStackView.addArrangedSubview(separator)
                 
             } else if item.bottomLabelText == nil, item.onRatingStarView == true {
-                
                 vStackView.addArrangedSubviews([topInfoLabel, middleInfoLabel, DetailViewRatingStarView])
                 hStackView.addArrangedSubview(vStackView)
                 hStackView.addArrangedSubview(separator)
@@ -91,16 +85,15 @@ class ShortVarietyInfoView: ModuleView, UIScrollViewDelegate {
                     vStackView.addArrangedSubviews([topInfoLabel, middleInfoLabel, bottomInfoLabel])
                     hStackView.addArrangedSubview(vStackView)
                 } else {
-                vStackView.addArrangedSubviews([topInfoLabel, middleInfoLabel, bottomInfoLabel])
-                hStackView.addArrangedSubview(vStackView)
-                hStackView.addArrangedSubview(separator)
+                    vStackView.addArrangedSubviews([topInfoLabel, middleInfoLabel, bottomInfoLabel])
+                    hStackView.addArrangedSubview(vStackView)
+                    hStackView.addArrangedSubview(separator)
                 }
             }
         }
     }
     
     override func configureAutolayouts() {
-        
         self.addSubview(scrollView)
         scrollView.addSubview(hStackView)
         

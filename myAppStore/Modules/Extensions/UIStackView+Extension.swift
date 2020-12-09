@@ -18,7 +18,6 @@ extension UIStackView {
         self.axis = axis
         self.spacing = spacing
         self.distribution = distribution
-        
     }
     
     func style(axis: NSLayoutConstraint.Axis,

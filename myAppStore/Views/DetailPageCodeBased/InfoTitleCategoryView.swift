@@ -23,7 +23,6 @@ class InfoTitleCategoryView: ModuleView {
     }()
     
     init(with bigTitle: String, with subTitle: String?) {
-        
         self.bigTitle = bigTitle
         self.subTitle = subTitle
         super.init(frame: .zero)
@@ -32,7 +31,6 @@ class InfoTitleCategoryView: ModuleView {
     }
     
    private func setStyle() {
-    
         bigTitleLabel.text = bigTitle
         subTitleLabel.text = subTitle
     }
@@ -44,7 +42,6 @@ class InfoTitleCategoryView: ModuleView {
     
     
     override func configureAutolayouts() {
-        
         self.addSubViews([bigTitleLabel, subTitleLabel])
         
         bigTitleLabel.top(self.topAnchor)

@@ -6,11 +6,7 @@
 import UIKit
 
 struct Urls {
-    //    #if DEBUG //디버그(현재 테스트 중일때의)
-    //    static let domain: String = "https://dev.itunes.apple.com"
-    //    #else //릴리즈(실제 릴리즈 할때의)
     static let domain: String = "https://itunes.apple.com"
-    //    #endif
 }
 
 class RequestManager {
@@ -33,7 +29,6 @@ class RequestManager {
     }
     
     static func request<Model: Decodable>(with type: Model.Type, path: String, param: [String:Any], response: @escaping ((Result<Model?, Error>) -> Void)) {
-        
         var urlComponents = URLComponents(string: Urls.domain + path)
         let queryItems = param
         urlComponents?.queryItems = queryItems.map {
@@ -43,11 +38,11 @@ class RequestManager {
         guard let urlComps = urlComponents else { return }
         LogManager.debug("인코딩점\(urlComps)")
         let urlString = String(describing: urlComps)
+        
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, respon, error in
             
             guard let responsed = respon as? HTTPURLResponse else { return }
-            
             switch responsed.statusCode {
             case 200..<300:
                 guard let printResonse = respon else { return }

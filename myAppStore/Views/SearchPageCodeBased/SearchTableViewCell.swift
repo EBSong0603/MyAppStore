@@ -27,7 +27,6 @@ class SearchTableViewCell: BaseTableViewCell, Cellable {
     }
     
     func setData(with cellData: AppStoreModel.ResultsEntry?) {
-        
         guard let cellData = cellData else {return}
         searchAppInfoView.setData(with: cellData)
         
@@ -47,7 +46,6 @@ class SearchTableViewCell: BaseTableViewCell, Cellable {
     }
     
     override func configureAutolayouts() {
-        
         contentView.addSubview(searchAppInfoView)
         contentView.addSubview(captureImageStackView)
         

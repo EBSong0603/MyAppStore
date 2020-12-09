@@ -44,7 +44,6 @@ class AppDescriptionView: ModuleView {
     }
     
     @objc private func openDescriptionButtonClikced() {
-        
         infoLabel.numberOfLines = 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
             self.moreInfoLabel.alpha = 0
@@ -53,22 +52,24 @@ class AppDescriptionView: ModuleView {
     }
     
     func setData(with data: AppStoreModel.ResultsEntry) {
-        
         infoLabel.text = data.description
         infoLabel.numberOfLines = 3
     }
     
     override func configureAutolayouts() {
-        
         self.addSubview(openDescriptionButtom)
+        
         openDescriptionButtom.top(self.topAnchor)
         openDescriptionButtom.leading(self.leadingAnchor)
         openDescriptionButtom.bottom(self.bottomAnchor, constant: -20)
         openDescriptionButtom.trailing(self.trailingAnchor)
         openDescriptionButtom.addSubViews([infoLabel, backView, moreInfoLabel])
+        
         infoLabel.edges(openDescriptionButtom, vConstant: 0, hConstant: 16)
+        
         moreInfoLabel.top(infoLabel.topAnchor, constant: 30)
         moreInfoLabel.trailing(openDescriptionButtom.trailingAnchor, constant: -16)
+        
         backView.top(moreInfoLabel.topAnchor, constant: -8)
         backView.leading(moreInfoLabel.leadingAnchor, constant: -8)
         backView.trailing(moreInfoLabel.trailingAnchor, constant: 8)

@@ -10,7 +10,6 @@ class ScreenShotsCollectionView: ModuleView {
     var screenshotData: [String] = []
     
     private let collectionView: UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -36,9 +35,9 @@ class ScreenShotsCollectionView: ModuleView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.backgroundColor = .systemBackground
         self.heightAnchor.constraint(equalToConstant: 460).isActive = true
+    
         prepareCollectionView()
     }
     
@@ -47,7 +46,6 @@ class ScreenShotsCollectionView: ModuleView {
     }
     
     private func prepareCollectionView() {
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
@@ -55,10 +53,10 @@ class ScreenShotsCollectionView: ModuleView {
     }
     
     override func configureAutolayouts() {
-        
         self.addSubview(collectionView)
         self.addSubview(phoneImageView)
         self.addSubview(phoneLabel)
+        
         collectionView.top(self.topAnchor)
         collectionView.leading(self.leadingAnchor)
         collectionView.trailing(self.trailingAnchor)
@@ -96,7 +94,6 @@ extension ScreenShotsCollectionView: UICollectionViewDelegateFlowLayout, UIColle
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenShotsCollectionViewCell.identifier,
                                                       for: indexPath) as! ScreenShotsCollectionViewCell
         cell.backgroundColor = .systemBackground

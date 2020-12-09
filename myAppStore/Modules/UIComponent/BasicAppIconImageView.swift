@@ -30,7 +30,6 @@ class BasicAppIconImageView: UIImageView {
     }
     
     func setStyle() {
-
         self.setImageViewStyle(nil, radius: style.rawValue.radius, contentMode: .scaleAspectFill)
         self.size(style.rawValue.size)
     }

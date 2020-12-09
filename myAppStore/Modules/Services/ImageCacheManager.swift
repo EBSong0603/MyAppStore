@@ -12,16 +12,15 @@ class ImageCacheManager {
     static func load(with url: String, imageView: UIImageView) {
         let cacheKey = NSString(string: url)
         if let cachedImage = nsCache.object(forKey: cacheKey) {
-//            image(cachedImage)
             imageView.image = cachedImage
             return
         }
-        guard let imageURL = URL(string: url) else {return}
+        guard let imageURL = URL(string: url) else { return }
+        
         DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else {return }
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
-//                image(imageFromData)
                 imageView.image = image
                 if let image = image {
                     nsCache.setObject(image, forKey: cacheKey)

@@ -13,7 +13,6 @@ extension Date {
     }
     
     func makeTimeGap(fromToday: Date, timeGap: Int) -> String? {
-        
         var timeGapString: String?
         let calendar = Calendar.current
         let dateGapComponents = calendar.dateComponents([.year, .month, .day, .hour], from: self, to: fromToday)

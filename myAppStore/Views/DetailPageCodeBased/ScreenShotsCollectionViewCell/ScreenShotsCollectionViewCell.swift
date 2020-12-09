@@ -25,7 +25,6 @@ class ScreenShotsCollectionViewCell: BaseCollectionViewCell {
     }
     
     func setData(with cellData: String) {
-        
         let screenShotsUrl = cellData
         ImageCacheManager.load(with: screenShotsUrl, imageView: capturedImage)
     }
